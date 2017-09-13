@@ -5,7 +5,7 @@ using System.Web;
 
 namespace KYHBPA_TeamA.Models
 {
-    public class Member
+    public class Member //member table
     {
         public int ID { get; set; }
         public string FirstName { get; set; }
