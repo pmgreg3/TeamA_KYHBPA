@@ -7,7 +7,7 @@ namespace KYHBPA_TeamA.Models
 {
     public class Member //member table
     {
-        public int ID { get; set; }
+        public int Id { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public DateTime DateofBirth { get; set; }   
