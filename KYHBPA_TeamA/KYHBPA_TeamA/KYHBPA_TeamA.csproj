@@ -228,6 +228,7 @@
     <Compile Include="Migrations\201709132056451_AddedMemberTable.Designer.cs">
       <DependentUpon>201709132056451_AddedMemberTable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Migrations\201709101953261_InitialCreate.cs" />
     <Compile Include="Migrations\201709101953261_InitialCreate.Designer.cs">
       <DependentUpon>201709101953261_InitialCreate.cs</DependentUpon>
