@@ -240,6 +240,14 @@
     <Compile Include="Migrations\201709202032566_AddedPhotoTable.Designer.cs">
       <DependentUpon>201709202032566_AddedPhotoTable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201709221428199_AddedEventsTable.cs" />
+    <Compile Include="Migrations\201709221428199_AddedEventsTable.Designer.cs">
+      <DependentUpon>201709221428199_AddedEventsTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709221430513_AddedDocumentsTable.cs" />
+    <Compile Include="Migrations\201709221430513_AddedDocumentsTable.Designer.cs">
+      <DependentUpon>201709221430513_AddedDocumentsTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Document.cs" />
@@ -349,6 +357,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201709111406196_Initial.resx">
       <DependentUpon>201709111406196_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709221428199_AddedEventsTable.resx">
+      <DependentUpon>201709221428199_AddedEventsTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709221430513_AddedDocumentsTable.resx">
+      <DependentUpon>201709221430513_AddedDocumentsTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
