@@ -8,7 +8,7 @@
 <h2>Create</h2>
 
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm("Create","Photo",FormMethod.Post, new { enctype = "multipart/form-data"}))
 {
     @Html.AntiForgeryToken()
     
@@ -31,6 +31,18 @@
                 @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
             </div>
         </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Image, htmlAttributes: new {@class = "control-label col-md-2"})
+            <div class="Col-md-10">
+                <a class='btn' href="javascript:;">
+                    Choose File...
+                    <input type="file" name="image" size="40"
+                           onchange='$("#upload-file-info").html($(this).val());' />
+                </a>
+            </div>
+        </div>
+             
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">

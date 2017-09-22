@@ -32,18 +32,25 @@ namespace KYHBPA_TeamA.Controllers
             return View();
         }
 
-        // GET: Photo/Create
+
+        // GET
+        public ActionResult Create()
+        {
+            return View();
+        }
+
+        // POST: Photo/Create
         [HttpPost]
-        public ActionResult Create(AddPhotoViewModel addPhotoViewModel)
+        public ActionResult Create(AddPhotoViewModel addViewModel, HttpPostedFileBase image = null)
         {
             if (ModelState.IsValid)
             {
                 var photo = new Photo()
                 {
                     TimeStamp = DateTime.Now,
-                    PhotoDesc = addPhotoViewModel.Description,
-                    PhotoData = new byte[addPhotoViewModel.Image.ContentLength],
-                    PhotoTitle = addPhotoViewModel.Title,
+                    PhotoDesc = addViewModel.Description,
+                    PhotoData = new byte[image.ContentLength],
+                    PhotoTitle = addViewModel.Title,
                 };
                 db.Photos.Add(photo);
                 db.SaveChanges();
@@ -115,5 +122,6 @@ namespace KYHBPA_TeamA.Controllers
                 return View();
             }
         }
+
     }
 }
