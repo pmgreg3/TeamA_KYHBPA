@@ -248,6 +248,10 @@
     <Compile Include="Migrations\201709221430513_AddedDocumentsTable.Designer.cs">
       <DependentUpon>201709221430513_AddedDocumentsTable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201709221439589_UpdatePhotoModel-AddPhotoData.cs" />
+    <Compile Include="Migrations\201709221439589_UpdatePhotoModel-AddPhotoData.Designer.cs">
+      <DependentUpon>201709221439589_UpdatePhotoModel-AddPhotoData.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Document.cs" />
@@ -363,6 +367,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201709221430513_AddedDocumentsTable.resx">
       <DependentUpon>201709221430513_AddedDocumentsTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709221439589_UpdatePhotoModel-AddPhotoData.resx">
+      <DependentUpon>201709221439589_UpdatePhotoModel-AddPhotoData.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
