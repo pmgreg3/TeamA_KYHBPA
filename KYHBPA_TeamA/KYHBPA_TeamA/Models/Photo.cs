@@ -12,6 +12,7 @@ namespace KYHBPA_TeamA.Models
         public string PhotoDesc { get; set; }
         public DateTime TimeStamp { get; set; }
         public byte[] PhotoData { get; set; }
+        public string MimeType { get; set; }
 
     }
 }

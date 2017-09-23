@@ -14,9 +14,11 @@ namespace KYHBPA_TeamA.Models
 
     public class DisplayPhotosViewModel
     {
+        public int Id { get; set; }
         public byte[] Data { get; set; }
         public string Description { get; set; }
         public string Title { get; set; }
         public DateTime Date { get; set; }
+
     }
 }

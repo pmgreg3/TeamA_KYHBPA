@@ -17,6 +17,7 @@ namespace KYHBPA_TeamA.Controllers
         {
             var photos = db.Photos.Select(p => new DisplayPhotosViewModel()
             {
+                Id = p.PhotoID,
                 Data = p.PhotoData,
                 Description = p.PhotoDesc,
                 Title = p.PhotoTitle,
@@ -51,7 +52,9 @@ namespace KYHBPA_TeamA.Controllers
                     PhotoDesc = addViewModel.Description,
                     PhotoData = new byte[image.ContentLength],
                     PhotoTitle = addViewModel.Title,
+                    MimeType = image.ContentType
                 };
+                image.InputStream.Read(photo.PhotoData, 0, image.ContentLength);
                 db.Photos.Add(photo);
                 db.SaveChanges();
 
@@ -121,6 +124,21 @@ namespace KYHBPA_TeamA.Controllers
             {
                 return View();
             }
+        }
+
+        /// <summary>
+        /// Returns photo from database if it is found
+        /// </summary>
+        /// <param name="id">ID of photo to get</param>
+        /// <returns>File of image to render</returns>
+        public FileContentResult GetPhoto(int id)
+        {
+            Photo photoToGet = db.Photos.Find(id);
+
+            if (photoToGet != null)
+                return File(photoToGet.PhotoData, photoToGet.MimeType);
+            else
+                return null;
         }
 
     }
