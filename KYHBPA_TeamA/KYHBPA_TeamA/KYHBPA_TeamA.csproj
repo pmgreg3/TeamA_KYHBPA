@@ -258,6 +258,10 @@
     <Compile Include="Migrations\201709230144083_AddMimeTypePropertyToPhotoTable.Designer.cs">
       <DependentUpon>201709230144083_AddMimeTypePropertyToPhotoTable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201709252012182_AddingMemberToApplicationUser.cs" />
+    <Compile Include="Migrations\201709252012182_AddingMemberToApplicationUser.Designer.cs">
+      <DependentUpon>201709252012182_AddingMemberToApplicationUser.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Document.cs" />
@@ -299,6 +303,7 @@
     <Content Include="Entity\KYHBPA.edmx.diagram">
       <DependentUpon>KYHBPA.edmx</DependentUpon>
     </Content>
+    <None Include="Properties\PublishProfiles\spike.cis420.net - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -383,6 +388,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201709230144083_AddMimeTypePropertyToPhotoTable.resx">
       <DependentUpon>201709230144083_AddMimeTypePropertyToPhotoTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709252012182_AddingMemberToApplicationUser.resx">
+      <DependentUpon>201709252012182_AddingMemberToApplicationUser.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
