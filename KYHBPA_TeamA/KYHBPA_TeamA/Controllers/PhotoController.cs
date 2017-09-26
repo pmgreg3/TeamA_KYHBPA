@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
@@ -105,9 +106,25 @@ namespace KYHBPA_TeamA.Controllers
         }
 
         // GET: Photo/Delete/5
-        public ActionResult Delete(int id)
+        public ActionResult Delete(int? id)
         {
-            return View();
+            if(id == null)
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+
+            var photo = db.Photos.Find(id);
+            var vm = new DisplayPhotosViewModel()
+            {
+                Id = photo.PhotoID,
+                Date = photo.TimeStamp,
+                Description = photo.PhotoDesc,
+                Title = photo.PhotoTitle,
+                Data = photo.PhotoData
+            };
+
+            if (photo == null)
+                return HttpNotFound();
+
+            return View(vm);
         }
 
         // POST: Photo/Delete/5
@@ -116,8 +133,9 @@ namespace KYHBPA_TeamA.Controllers
         {
             try
             {
-                // TODO: Add delete logic here
-
+                var photo = db.Photos.Find(id);
+                db.Photos.Remove(photo);
+                db.SaveChanges();
                 return RedirectToAction("Index");
             }
             catch
