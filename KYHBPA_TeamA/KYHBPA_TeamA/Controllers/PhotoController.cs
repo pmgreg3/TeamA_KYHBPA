@@ -67,35 +67,48 @@ namespace KYHBPA_TeamA.Controllers
             }
         }
 
-        // POST: Photo/Create
-        //[HttpPost]
-        //public ActionResult Create(FormCollection collection)
-        //{
-        //    try
-        //    {
-        //        // TODO: Add insert logic here
-
-        //        return RedirectToAction("Index");
-        //    }
-        //    catch
-        //    {
-        //        return View();
-        //    }
-        //}
-
         // GET: Photo/Edit/5
-        public ActionResult Edit(int id)
+        public ActionResult Edit(int? id)
         {
-            return View();
+            if (id == null)
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+
+            var photo = db.Photos.Find(id);
+            var vm = new DisplayPhotosViewModel()
+            {
+                Id = photo.PhotoID,
+                Date = photo.TimeStamp,
+                Description = photo.PhotoDesc,
+                Title = photo.PhotoTitle,
+                Data = photo.PhotoData
+            };
+
+            if (photo == null)
+                return HttpNotFound();
+
+            return View(vm);
         }
 
         // POST: Photo/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(DisplayPhotosViewModel photoVM, FormCollection collection)
         {
             try
             {
-                // TODO: Add update logic here
+                if (ModelState.IsValid)
+                {
+                    var photoToUpdate = db.Photos.FirstOrDefault(x => x.PhotoID == photoVM.Id);
+                    if (photoToUpdate != null)
+                    {
+                        photoToUpdate.PhotoDesc = photoVM.Description;
+                        photoToUpdate.PhotoTitle = photoVM.Title;
+                    }
+
+                    db.Entry(photoToUpdate).State = System.Data.Entity.EntityState.Modified;
+                    db.SaveChanges();
+                    TempData["message"] = string.Format($"{photoVM.Title} photo has been updated!");
+                    return RedirectToAction("Index");
+                }
 
                 return RedirectToAction("Index");
             }
