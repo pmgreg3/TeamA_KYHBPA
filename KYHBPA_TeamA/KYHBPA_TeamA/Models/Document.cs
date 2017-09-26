@@ -7,7 +7,7 @@ namespace KYHBPA_TeamA.Models
 {
     public class Document
     {
-        public int DocumentID { get; set; }
+        public int DocumentId { get; set; }
         public string DocumentName { get; set; }
         public string DocumentDescription { get; set; }
         public byte[] DocumentContent { get; set; }
