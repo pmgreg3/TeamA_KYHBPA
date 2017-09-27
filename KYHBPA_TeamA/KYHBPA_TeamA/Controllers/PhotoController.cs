@@ -16,7 +16,7 @@ namespace KYHBPA_TeamA.Controllers
         // GET: Photo
         public ActionResult Index()
         {
-            var photos = db.Photos.Select(p => new DisplayPhotosViewModel()
+            var photo = db.Photos.Select(p => new DisplayPhotosViewModel()
             {
                 Id = p.PhotoID,
                 Data = p.PhotoData,
@@ -25,13 +25,23 @@ namespace KYHBPA_TeamA.Controllers
                 Date = p.TimeStamp
             });
 
-            return View(photos);
+            return View(photo);
         }
 
         // GET: Photo/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            var photo = db.Photos.Find(id);
+            var newPhoto =  new DisplayPhotosViewModel()
+            {
+                Id = photo.PhotoID,
+                Data = photo.PhotoData,
+                Description = photo.PhotoDesc,
+                Title = photo.PhotoTitle,
+                Date = photo.TimeStamp
+            };
+
+            return View(newPhoto);
         }
 
 
