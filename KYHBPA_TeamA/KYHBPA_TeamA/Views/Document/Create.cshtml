@@ -1,4 +1,4 @@
-﻿@model KYHBPA_TeamA.Models.AddPhotoViewModel
+﻿@model KYHBPA_TeamA.Models.AddDocumentViewModel
 
 @{
     ViewBag.Title = "Create";
@@ -8,12 +8,12 @@
 <h2>Create</h2>
 
 
-@using (Html.BeginForm("Create","Photo",FormMethod.Post, new { enctype = "multipart/form-data"}))
+@using (Html.BeginForm("Create","Document",FormMethod.Post, new { enctype = "multipart/form-data"}))
 {
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>AddPhotoViewModel</h4>
+        <h4>AddDocumentViewModel</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
@@ -33,11 +33,11 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Image, htmlAttributes: new {@class = "control-label col-md-2"})
+            @Html.LabelFor(model => model.File, htmlAttributes: new {@class = "control-label col-md-2"})
             <div class="Col-md-10">
                 <a class='btn' href="javascript:;">
                     Choose File...
-                    <input type="file" accept="image/*" name="image" size="40"
+                    <input type="file" name="file" size="40"
                            onchange='$("#upload-file-info").html($(this).val());' />
                 </a>
             </div>
