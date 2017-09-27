@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
@@ -30,7 +31,17 @@ namespace KYHBPA_TeamA.Controllers
         // GET: Document/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            var document = db.Documents.Find(id);
+            var newDocument = new DisplayDocumentsViewModel()
+            {
+                Id = document.DocumentId,
+                Content = document.DocumentContent,
+                Description = document.DocumentDescription,
+                Title = document.DocumentName,
+                Date = document.DocumentUploadDateTime
+            };
+
+            return View(newDocument);
         }
 
 
@@ -65,18 +76,46 @@ namespace KYHBPA_TeamA.Controllers
             }
         }
         // GET: Document/Edit/5
-        public ActionResult Edit(int id)
+        public ActionResult Edit(int? id)
         {
-            return View();
+            if (id == null)
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+
+            var document = db.Documents.Find(id);
+            var vm = new DisplayDocumentsViewModel()
+            {
+                Id = document.DocumentId,
+                Content = document.DocumentContent,
+                Title = document.DocumentName,
+                Description = document.DocumentDescription                
+            };
+
+            if (document == null)
+                return HttpNotFound();
+
+            return View(vm);
         }
 
         // POST: Document/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(DisplayDocumentsViewModel documentVM, FormCollection collection)
         {
             try
             {
-                // TODO: Add update logic here
+                if (ModelState.IsValid)
+                {
+                    var documentToUpdate = db.Documents.FirstOrDefault(x => x.DocumentId == documentVM.Id);
+                    if (documentToUpdate != null)
+                    {
+                        documentToUpdate.DocumentDescription = documentVM.Description;
+                        documentToUpdate.DocumentName = documentVM.Title;
+                    }
+
+                    db.Entry(documentToUpdate).State = System.Data.Entity.EntityState.Modified;
+                    db.SaveChanges();
+                    TempData["message"] = string.Format($"{documentVM.Title} document has been updated!");
+                    return RedirectToAction("Index");
+                }
 
                 return RedirectToAction("Index");
             }
@@ -87,9 +126,25 @@ namespace KYHBPA_TeamA.Controllers
         }
 
         // GET: Document/Delete/5
-        public ActionResult Delete(int id)
+        public ActionResult Delete(int? id)
         {
-            return View();
+            if (id == null)
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+
+            var document = db.Documents.Find(id);
+            var vm = new DisplayDocumentsViewModel()
+            {
+                Id = document.DocumentId,
+                Content = document.DocumentContent,
+                Date = document.DocumentUploadDateTime,
+                Title = document.DocumentName,
+                Description = document.DocumentDescription
+            };
+
+            if (document == null)
+                return HttpNotFound();
+
+            return View(vm);
         }
 
         // POST: Document/Delete/5
@@ -98,8 +153,9 @@ namespace KYHBPA_TeamA.Controllers
         {
             try
             {
-                // TODO: Add delete logic here
-
+                var document = db.Documents.Find(id);
+                db.Documents.Remove(document);
+                db.SaveChanges();
                 return RedirectToAction("Index");
             }
             catch
