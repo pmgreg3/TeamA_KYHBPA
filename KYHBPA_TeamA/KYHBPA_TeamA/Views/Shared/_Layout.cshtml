@@ -46,3 +46,38 @@
     @RenderSection("scripts", required: false)
 </body>
 </html>
+<style>
+    ul {
+        display: inline-block;
+        list-style-type: none;
+        margin: 0px;
+        padding: 0px;
+        background-color: rgb(248, 246, 186);
+        position: absolute;
+        top: 0px;
+        width: 100%;
+    }
+
+    li {
+        display: inline;
+    }
+
+        li a {
+            display: inline-block;
+            color: black;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+            margin-top: 0px;
+            font-size: 20px;
+            top: 0px;
+        }
+
+            li a:hover:not(.active) {
+                background-color: rgb(148, 181, 252);
+            }
+
+    .active {
+        background-color: rgb(102, 148, 247);
+    }
+</style>
