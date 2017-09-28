@@ -9,9 +9,8 @@
 
 </head>
 <body>
-    <div class="container">
-        <div class="navbar navbar-inverse navbar-fixed-top" id="fluid">
-            <div class="container">
+    <div class="container" id="fluid">
+        <div class="navbar navbar-inverse navbar-fixed-top" >
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                         <span class="icon-bar"></span>
@@ -23,7 +22,9 @@
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
                         <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                        <li>@Html.ActionLink("About", "About", "Home")</li>
+                        <li>@Html.ActionLink("About", "About", "Home", new { @class = "dropdown" })
+                        <div class="dropdown-menu"
+                        </li>
                         <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
                         <li>@Html.ActionLink("Documents", "Index", "Document")</li>
                         <li>@Html.ActionLink("Photos", "Index", "Photo")</li>
@@ -32,7 +33,6 @@
                 </div>
             </div>
         </div>
-    </div>
     <div class="container body-content">
         @RenderBody()
         <hr />

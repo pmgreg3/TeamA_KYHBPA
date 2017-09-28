@@ -1,6 +1,7 @@
 ﻿body {
-     /*padding-top: 400px;*/  
-     padding-bottom: 40px;
+    /*padding-top: 400px;*/
+    padding-bottom: 40px;
+    background: rgb(248, 246, 186);
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -27,25 +28,34 @@ textarea {
 .navbar-inverse .navbar-nav > li > a, .navbar-inverse .navbar-brand {
     color: white;
     font-family: pp-sans-small-medium,Helvetica Neue,Arial,sans-serif;
-    font-size: 24px;
+    font-size: 20px;
+    letter-spacing:2px;
 }
 
 .navbar-inverse {
     /*background: url(https://www.paypalobjects.com/digitalassets/c/website/marketing/na/us/home/hero-uncookied-wire-transfer.jpg);*/
     /*background-size: cover;*/
-    background: none;
-    background-color:transparent;
-    border:none;
-    position:absolute;
+    border: none;
+    /*border-bottom: 1px white solid;*/
+    background: rgba(0,0,0,0.65);
 }
 
 #fluid {
-    background: url(../Content/hbpaBanner2.jpg);
+    background: url(../Content/hbpaBanner4.jpg);
     background-size: cover;
-    min-height:400px;
-    max-height:400px;
-    min-width:100%;
-    max-width:100%;
+    min-height: 400px;
+    max-height: 400px;
+    min-width: 100%;
+    max-width: 100%;
+    border-bottom: black 1px solid;
+    box-shadow: 0px 7px 20px 0px #0c0a0b;
 }
 
+
+.jumbotron {
+    background-image: radial-gradient(circle farthest-side at center bottom,#e4e5bc,rgba(81, 58, 50, 0.59) 290%);
+    margin-top: 20px;
+    border: 1px #d8daa7 solid;
+    box-shadow: 1px 4px 20px 0px;
+}
 
