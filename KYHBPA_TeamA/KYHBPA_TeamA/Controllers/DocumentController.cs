@@ -1,6 +1,7 @@
 ﻿using KYHBPA_TeamA.Models;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
@@ -162,6 +163,18 @@ namespace KYHBPA_TeamA.Controllers
             {
                 return View();
             }
+        }
+
+        public ActionResult Download(int id)
+        {
+            var document = db.Documents.Find(id);
+            var cd = new System.Net.Mime.ContentDisposition
+            {
+                FileName = document.DocumentName,
+                Inline = true
+            };
+            Response.AppendHeader("Content-Disposition", cd.ToString());
+            return File(document.DocumentContent, document.DocumentName);
         }
 
         /// <summary>

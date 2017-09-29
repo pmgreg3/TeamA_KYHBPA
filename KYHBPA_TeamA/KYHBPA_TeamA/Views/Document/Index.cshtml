@@ -13,9 +13,6 @@
 <table class="table">
     <tr>
         <th>
-            Document
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.Description)
         </th>
         <th>
@@ -30,14 +27,6 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @if (item.Content != null)
-            {
-                <div class="pull-left" style="margin-right: 10px">
-                    <img class="img-thumbnail" width="100" height="100" src="@Url.Action("GetDocument","Document",new { item.Id })" />
-                </div>
-            }
-        </td>
-        <td>
             @Html.DisplayFor(modelItem => item.Description)
         </td>
         <td>
@@ -48,7 +37,7 @@
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { item.Id }) |
-            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Download", "Download", new { item.Id }) |
             @Html.ActionLink("Delete", "Delete", new { item.Id })
         </td>
     </tr>
