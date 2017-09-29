@@ -19,6 +19,15 @@ namespace KYHBPA_TeamA.Models
         public string Description { get; set; }
         public string Title { get; set; }
         public DateTime Date { get; set; }
+        public bool InPhotoGallery { get; set; }
+    }
 
+    public class EditPhotosViewModel : DisplayPhotosViewModel
+    {
+    }
+
+    public class PhotoGalleryViewModel
+    {
+        public List<DisplayPhotosViewModel> Photos { get; set; }
     }
 }

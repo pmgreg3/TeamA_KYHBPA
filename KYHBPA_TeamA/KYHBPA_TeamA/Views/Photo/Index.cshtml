@@ -8,7 +8,7 @@
 {
     <div class="alert alert-success">@TempData["message"]</div>
 }
-<h2>Photo Gallery</h2>
+<h2>Photos</h2>
 
 <p>
     <button class="btn btn-primary col-md-2 pull-left" onclick="location.href='@Url.Action("Create", "Photo")'">Create New</button>
@@ -27,7 +27,9 @@
         <th>
             @Html.DisplayNameFor(model => model.Date)
         </th>
-        <th></th>
+        <th>
+            @Html.DisplayNameFor(model => model.InPhotoGallery)
+        </th>
     </tr>
 
 @foreach (var item in Model) {
@@ -48,6 +50,9 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.InPhotoGallery)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { item.Id }) |
