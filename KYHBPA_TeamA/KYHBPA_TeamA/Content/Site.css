@@ -33,10 +33,7 @@ textarea {
 }
 
 .navbar-inverse {
-    /*background: url(https://www.paypalobjects.com/digitalassets/c/website/marketing/na/us/home/hero-uncookied-wire-transfer.jpg);*/
-    /*background-size: cover;*/
     border: none;
-    /*border-bottom: 1px white solid;*/
     background: rgba(0,0,0,0.65);
 }
 
