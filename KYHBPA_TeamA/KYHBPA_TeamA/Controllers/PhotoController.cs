@@ -22,7 +22,9 @@ namespace KYHBPA_TeamA.Controllers
                 Data = p.PhotoData,
                 Description = p.PhotoDesc,
                 Title = p.PhotoTitle,
-                Date = p.TimeStamp
+                Date = p.TimeStamp,
+                InPhotoGallery = p.InPhotoGallery
+                
             });
 
             return View(photo);
@@ -84,13 +86,14 @@ namespace KYHBPA_TeamA.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
 
             var photo = db.Photos.Find(id);
-            var vm = new DisplayPhotosViewModel()
+            var vm = new EditPhotosViewModel()
             {
                 Id = photo.PhotoID,
                 Date = photo.TimeStamp,
                 Description = photo.PhotoDesc,
                 Title = photo.PhotoTitle,
-                Data = photo.PhotoData
+                Data = photo.PhotoData,
+                InPhotoGallery = photo.InPhotoGallery
             };
 
             if (photo == null)
@@ -101,7 +104,7 @@ namespace KYHBPA_TeamA.Controllers
 
         // POST: Photo/Edit/5
         [HttpPost]
-        public ActionResult Edit(DisplayPhotosViewModel photoVM, FormCollection collection)
+        public ActionResult Edit(EditPhotosViewModel photoVM, FormCollection collection)
         {
             try
             {
@@ -111,6 +114,7 @@ namespace KYHBPA_TeamA.Controllers
                     if (photoToUpdate != null)
                     {
                         photoToUpdate.PhotoDesc = photoVM.Description;
+                        photoToUpdate.InPhotoGallery = photoVM.InPhotoGallery;
                         photoToUpdate.PhotoTitle = photoVM.Title;
                     }
 
@@ -182,5 +186,31 @@ namespace KYHBPA_TeamA.Controllers
                 return null;
         }
 
+        /// <summary>
+        /// Gets photos for gallery
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult _ImageGallery()
+        {
+            var vm = new PhotoGalleryViewModel
+            {
+                Photos = new List<DisplayPhotosViewModel>()
+            };
+            var photos = db.Photos.Where(x => x.InPhotoGallery == true);
+
+            foreach(var i in photos)
+            {               
+                var photoToAdd = new DisplayPhotosViewModel()
+                {
+                    Id = i.PhotoID,
+                    Data = i.PhotoData,
+                    Description = i.PhotoDesc,
+                    Title = i.PhotoTitle
+                };
+                vm.Photos.Add(photoToAdd);
+            }
+
+            return View(vm);
+        }
     }
 }

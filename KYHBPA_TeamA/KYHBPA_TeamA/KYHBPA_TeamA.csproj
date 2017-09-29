@@ -231,6 +231,10 @@
     <Compile Include="Migrations\201709132056451_AddedMemberTable.Designer.cs">
       <DependentUpon>201709132056451_AddedMemberTable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201709282017016_AddedInImageGalleryPropToPhoto.cs" />
+    <Compile Include="Migrations\201709282017016_AddedInImageGalleryPropToPhoto.Designer.cs">
+      <DependentUpon>201709282017016_AddedInImageGalleryPropToPhoto.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Migrations\201709101953261_InitialCreate.cs" />
     <Compile Include="Migrations\201709101953261_InitialCreate.Designer.cs">
@@ -365,6 +369,7 @@
     <Content Include="Views\Photo\Details.cshtml" />
     <Content Include="Views\Document\Delete.cshtml" />
     <Content Include="Views\Document\Edit.cshtml" />
+    <Content Include="Views\Shared\_ImageGallery.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -404,6 +409,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201709252012182_AddingMemberToApplicationUser.resx">
       <DependentUpon>201709252012182_AddingMemberToApplicationUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709282017016_AddedInImageGalleryPropToPhoto.resx">
+      <DependentUpon>201709282017016_AddedInImageGalleryPropToPhoto.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
