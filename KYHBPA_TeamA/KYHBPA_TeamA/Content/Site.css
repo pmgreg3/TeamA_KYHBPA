@@ -58,4 +58,9 @@ textarea {
 
 .img-gallery-img{
     width:100%;
-}   
+    margin:auto;
+}
+
+.carousel-inner > .item > img{
+    margin:auto;
+}
