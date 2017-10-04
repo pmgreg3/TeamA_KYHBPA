@@ -18,14 +18,20 @@ namespace KYHBPA_TeamA.Controllers
 
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
+            ViewBag.Message = "About the KY HBPA page.";
 
             return View();
         }
 
         public ActionResult Contact()
         {
-            ViewBag.Message = "Your contact page.";
+            ViewBag.Message = "KY HBPA Contact information page.";
+
+            return View();
+        }
+        public ActionResult Board()
+        {
+            ViewBag.Message = "KY HBPA Board of Directors page.";
 
             return View();
         }

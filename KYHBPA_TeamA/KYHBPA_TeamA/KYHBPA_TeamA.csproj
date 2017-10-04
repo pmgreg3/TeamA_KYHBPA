@@ -284,6 +284,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\hbpaBanner4.jpg" />
+    <Content Include="Content\TwitterFeed_HBPA.PNG" />
     <Content Include="Entity\KYHBPA.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>KYHBPA.edmx</DependentUpon>
@@ -367,6 +368,7 @@
     <Content Include="Views\Document\Delete.cshtml" />
     <Content Include="Views\Document\Edit.cshtml" />
     <Content Include="Views\Shared\_ImageGallery.cshtml" />
+    <Content Include="Views\Home\Board.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -436,7 +438,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>51528</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
