@@ -1,0 +1,18 @@
+﻿@model IEnumerable<KYHBPA_TeamA.Models.Event>
+@{
+    ViewBag.Title = "Data";
+}
+
+
+<data>
+    @foreach (var ev in Model)
+    {
+        <event id="@ev.EventID">
+            <start_date><![CDATA[@String.Format("{0:MM/dd/yyyy}", @ev.EventDate)]]></start_date>
+            <end_date><![CDATA[@String.Format("{HH:mm}", @ev.EventTime)]]></end_date> <!--not sure if format is correct-->
+            <text><![CDATA[@ev.EventName]]></text>
+            <text><![CDATA[@ev.EventDescription]]></text>
+            <text><![CDATA[@ev.EventLocation]]></text>
+        </event>
+    }
+</data>

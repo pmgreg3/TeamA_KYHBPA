@@ -1,0 +1,96 @@
+﻿@*https://docs.dhtmlx.com/scheduler/how_to_start.html*@
+<script src="~/Scripts/dhtmlxScheduler/dhtmlxscheduler.js"></script>
+<link href="~/Scripts/dhtmlxScheduler/dhtmlxscheduler.css" rel="stylesheet" />
+
+<h2>Event Calendar using dxhtml Scheduler</h2>
+
+<!--have not worked on this view yet 10-4-->
+
+<div id="scheduler_here" class="dhx_cal_container" style='width:100%; height:700px; padding:10px;'>
+    <div class="dhx_cal_navline">
+        <div class="dhx_cal_prev_button">&nbsp;</div>
+        <div class="dhx_cal_next_button">&nbsp;</div>
+        <div class="dhx_cal_today_button"></div>
+        <div class="dhx_cal_date"></div>
+        <div class="dhx_cal_tab" name="day_tab" style="right: 204px;"></div>
+        <div class="dhx_cal_tab" name="week_tab" style="right: 140px;"></div>
+        <div class="dhx_cal_tab" name="month_tab" style="right: 76px;"></div>
+    </div>
+    <div class="dhx_cal_header"></div>
+    <div class="dhx_cal_data"></div>
+</div>
+<script>
+    var textofEventLastModified;
+    var isEditable = true;
+    var eventWasJustDeleted = false;
+
+    scheduler.config.xml_date = "%m/%d/%y %H:%i";
+    scheduler.init('scheduler_here', new Date(), "month");
+    scheduler.load("/Event/Data", "json");  //path to the newly created action
+    scheduler.config.full_day = true;
+
+
+    scheduler.attachEvent("onAfterLightbox", function () {
+        textofEventLastModified = $('textarea').val();
+        var currentEvents = scheduler.getEvents();
+        //var ev = currentEvents[currentEvents.length - 1];
+
+        var obj = currentEvents.filter(function (obj) {
+            return obj["text"] === textofEventLastModified;
+        })[0];
+
+        if (eventWasJustDeleted) {
+            return;
+        }
+        var props = { "id": obj.id, "text": obj.text , "start_date": obj.start_date, "end_date": obj.end_date};
+
+        $.ajax({
+            url: "/Event/Save",
+            contentType: "application/json",
+            async: true,
+            type: "POST",
+            dataType: "json",
+            data: JSON.stringify(props),
+            error: function (jqXHR, textStatus, errorThrown) {
+                console.log("FAIL: " + errorThrown);
+            },
+            success: function (data, textStatus, jqXHR) {
+                scheduler.init('scheduler_here', new Date(), "month");
+                console.log("SUCCES");
+            }
+        });
+        eventWasJustDeleted = false;
+        scheduler.init('scheduler_here', new Date(), "month");
+    });
+    scheduler.attachEvent("onBeforeEventDelete", function () {
+        textofEventLastModified = $('textarea').val();
+        var currentEvents = scheduler.getEvents();
+        //var ev = currentEvents[currentEvents.length - 1];
+
+        var obj = currentEvents.filter(function (obj) {
+            return obj["text"] === textofEventLastModified;
+        })[0];
+
+
+        var props = { "id": obj.id, "text": obj.text, "start_date": obj.start_date, "end_date": obj.end_date };
+
+        $.ajax({
+            url: "/Event/Delete",
+            contentType: "application/json",
+            async: true,
+            type: "POST",
+            dataType: "json",
+            data: JSON.stringify(props),
+            error: function (jqXHR, textStatus, errorThrown) {
+                console.log("FAIL: " + errorThrown);
+            },
+            success: function (data, textStatus, jqXHR) {
+                scheduler.init('scheduler_here', new Date(), "month");
+                console.log("SUCCES");
+            }
+        });
+        eventWasJustDeleted = true;
+    });
+
+
+</script>
