@@ -154,10 +154,16 @@ namespace KYHBPA_TeamA.Controllers
                 var user = new KYHBPAUser
                 {
                     UserName = model.Email,
-                    Email = model.Email
+                    Email = model.Email,
+                    Member = new Member()
+                    {
+                        FirstName = model.FirstName
+                    }
                 };
 
                 // TODO: add member to login credential
+                
+
 
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
