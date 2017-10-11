@@ -368,7 +368,6 @@
     <Content Include="Views\Document\Edit.cshtml" />
     <Content Include="Views\Shared\_ImageGallery.cshtml" />
     <Content Include="Views\Home\Benefits.cshtml" />
-    <Content Include="Views\Benevolence.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
