@@ -18,7 +18,7 @@ namespace KYHBPA_TeamA.Controllers
 
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
+            ViewBag.Message = "Your About page.";
 
             return View();
         }
@@ -26,6 +26,12 @@ namespace KYHBPA_TeamA.Controllers
         public ActionResult Contact()
         {
             ViewBag.Message = "Your contact page.";
+
+            return View();
+        }
+        public ActionResult Benefits()
+        {
+            ViewBag.Message = "Your Benevolence page.";
 
             return View();
         }
