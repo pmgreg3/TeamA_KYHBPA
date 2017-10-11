@@ -281,7 +281,7 @@ table {
   .navbar {
     display: none;
   }
-  .table td,
+    .table td,
   .table th {
     background-color: #fff !important;
   }
