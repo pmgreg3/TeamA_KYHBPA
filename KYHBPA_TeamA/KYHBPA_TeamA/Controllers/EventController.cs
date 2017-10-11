@@ -68,20 +68,20 @@ namespace KYHBPA_TeamA.Controllers
             //return new SchedulerAjaxData(_db.Events);
         }
 
-        public ActionResult Save(string id, string name, string description, string location, 
-            string date, string time)
+        public ActionResult Save(string id, string text, string description, string location, 
+            string start_date, string end_date)
         {
 
             var existingEvent = _db.Events.FirstOrDefault(e => e.EventID.ToString() == id);
-            var newDate = Convert.ToDateTime(date);
-            var newTime = Convert.ToDateTime(time);
+            var newDate = Convert.ToDateTime(start_date);
+            var newTime = Convert.ToDateTime(end_date);
 
 
             if (existingEvent != null)
             {
                 existingEvent.EventDate = newDate;
                 existingEvent.EventTime = newTime;
-                existingEvent.EventName = name;
+                existingEvent.EventName = text;
                 existingEvent.EventDescription = description;
                 existingEvent.EventLocation = location;
             }
@@ -92,7 +92,7 @@ namespace KYHBPA_TeamA.Controllers
                 {
                     EventDate = newDate,
                     EventTime = newTime,
-                    EventName = name,
+                    EventName = text,
                     EventDescription = description,
                     EventLocation = location
 
