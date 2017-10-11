@@ -35,5 +35,11 @@ namespace KYHBPA_TeamA.Controllers
 
             return View();
         }
+        public ActionResult Benefits()
+        {
+            ViewBag.Message = "Your Benevolence page.";
+
+            return View();
+        }
     }
 }

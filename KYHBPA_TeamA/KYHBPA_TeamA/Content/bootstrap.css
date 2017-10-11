@@ -20,13 +20,17 @@
  */
 
 /*! normalize.css v2.1.0 | MIT License | git.io/normalize */
-
+u {
+    text-decoration: underline;
+}
 article,
 aside,
 details,
 figcaption,
 figure,
-footer,
+footer {
+    font-size: x-small;
+}
 header,
 hgroup,
 main,
@@ -705,7 +709,7 @@ blockquote:after {
 
 address {
   display: block;
-  margin-bottom: 20px;
+  margin-bottom: 5px;
   font-style: normal;
   line-height: 1.428571429;
 }
@@ -4928,8 +4932,8 @@ a.list-group-item.active > .badge,
 }
 
 .jumbotron {
-  padding: 30px;
-  margin-bottom: 30px;
+  padding: 20px;
+  margin-bottom: 20px;
   font-size: 21px;
   font-weight: 200;
   line-height: 2.1428571435;
