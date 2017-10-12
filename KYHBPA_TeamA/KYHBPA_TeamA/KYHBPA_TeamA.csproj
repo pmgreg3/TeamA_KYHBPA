@@ -199,6 +199,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\BoardOfDirectorsController.cs" />
     <Compile Include="Controllers\DocumentController.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -276,6 +277,8 @@
       <DependentUpon>201709252012182_AddingMemberToApplicationUser.cs</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\BoardOfDirectors.cs" />
+    <Compile Include="Models\BoardOfDirectorsViewModels.cs" />
     <Compile Include="Models\Document.cs" />
     <Compile Include="Models\Event.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -380,6 +383,11 @@
     <Content Include="Views\Home\Benefits.cshtml" />
     <Content Include="Views\Home\Board.cshtml" />
     <Content Include="Views\Error\ErrorPage.cshtml" />
+    <Content Include="Views\BoardOfDirectors\Create.cshtml" />
+    <Content Include="Views\BoardOfDirectors\Delete.cshtml" />
+    <Content Include="Views\BoardOfDirectors\Details.cshtml" />
+    <Content Include="Views\BoardOfDirectors\Edit.cshtml" />
+    <Content Include="Views\BoardOfDirectors\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
