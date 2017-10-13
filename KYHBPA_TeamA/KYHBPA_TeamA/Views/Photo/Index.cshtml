@@ -1,4 +1,5 @@
-﻿@model IEnumerable<KYHBPA_TeamA.Models.DisplayPhotosViewModel>
+﻿@model PagedList.IPagedList<KYHBPA_TeamA.Models.DisplayPhotosViewModel>
+@using PagedList.Mvc
 
 @{
     ViewBag.Title = "Index";
@@ -13,22 +14,29 @@
 <p>
     <button class="btn btn-primary col-md-2 pull-left" onclick="location.href='@Url.Action("Create", "Photo")'">Create New</button>
 </p>
+@using (Html.BeginForm("Index", "Photo", FormMethod.Get))
+{
+    <p>
+        @Html.TextBox("SearchString", ViewBag.CurrentFilter as string, new { placeholder = "Title to search"})
+        <input type="submit" value="Search" />
+    </p>
+}
 <table class="table">
     <tr>
         <th>
             Image
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Description)
+            @Html.ActionLink("Title", "Index", new { sortOrder = ViewBag.Title, currentFilter = ViewBag.CurrentFilter })
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Title)
+            Description
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Date)
+            @Html.ActionLink("Date", "Index", new { sortOrder = ViewBag.DateSortParm, currentFilter = ViewBag.CurrentFilter })
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.InPhotoGallery)
+            Photo Gallery
         </th>
     </tr>
 
@@ -43,10 +51,10 @@
             }
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Description)
+            @Html.DisplayFor(modelItem => item.Title)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Title)
+            @Html.DisplayFor(modelItem => item.Description)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Date)
@@ -63,3 +71,8 @@
 }
 
 </table>
+<br />
+Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount)
+
+@Html.PagedListPager(Model, page => Url.Action("Index",
+    new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
