@@ -15,9 +15,24 @@ namespace KYHBPA_TeamA.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Photo
-        public ActionResult Index()
+        public ActionResult Index(string sortOrder, string currentFilter, string searchString, int? page)
         {
-            var photo = db.Photos.Select(p => new DisplayPhotosViewModel()
+            ViewBag.CurrentSort = sortOrder;
+            ViewBag.Title = String.IsNullOrEmpty(sortOrder) ? "title_desc" : "";
+            ViewBag.DateSortParm = sortOrder == "Date" ? "date_desc" : "Date";
+
+            if (searchString != null)
+            {
+                page = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
+
+            ViewBag.CurrentFilter = searchString;
+
+            var photoViewModels = db.Photos.Select(p => new DisplayPhotosViewModel()
             {
                 Id = p.PhotoID,
                 Data = p.PhotoData,
@@ -25,10 +40,34 @@ namespace KYHBPA_TeamA.Controllers
                 Title = p.PhotoTitle,
                 Date = p.TimeStamp,
                 InPhotoGallery = p.InPhotoGallery
-                
+
             });
 
-            return View(photo);
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                photoViewModels = photoViewModels.Where(p => p.Title.Contains(searchString)
+                                       || p.Description.Contains(searchString));
+            }
+            switch (sortOrder)
+            {
+                case "title_desc":
+                    photoViewModels = photoViewModels.OrderByDescending(s => s.Title);
+                    break;
+                case "Date":
+                    photoViewModels = photoViewModels.OrderBy(s => s.Date);
+                    break;
+                case "date_desc":
+                    photoViewModels = photoViewModels.OrderByDescending(s => s.Date);
+                    break;
+                default:  // Title ascending 
+                    photoViewModels = photoViewModels.OrderBy(s => s.Title);
+                    break;
+            }
+
+           
+            int pageSize = 3;
+            int pageNumber = (page ?? 1);
+            return View(photoViewModels.ToPagedList(pageNumber, pageSize));
         }
 
         // GET: Photo/Details/5
