@@ -6,6 +6,7 @@ using System.Net;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using PagedList;
 
 namespace KYHBPA_TeamA.Controllers
 {
@@ -14,9 +15,32 @@ namespace KYHBPA_TeamA.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Photo
-        public ActionResult Index()
+        /// <summary>
+        /// Pagination for indexing the photos
+        /// </summary>
+        /// <param name="sortOrder">Viewbag filter</param>
+        /// <param name="currentFilter">Viewbag existing filter</param>
+        /// <param name="searchString">Filter</param>
+        /// <param name="page">Current page</param>
+        /// <returns>View with index list</returns>
+        public ActionResult Index(string sortOrder, string currentFilter, string searchString, int? page)
         {
-            var photo = db.Photos.Select(p => new DisplayPhotosViewModel()
+            ViewBag.CurrentSort = sortOrder;
+            ViewBag.Title = String.IsNullOrEmpty(sortOrder) ? "title_desc" : "";
+            ViewBag.DateSortParm = sortOrder == "Date" ? "date_desc" : "Date";
+
+            if (searchString != null)
+            {
+                page = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
+
+            ViewBag.CurrentFilter = searchString;
+
+            var photoViewModels = db.Photos.Select(p => new DisplayPhotosViewModel()
             {
                 Id = p.PhotoID,
                 Data = p.PhotoData,
@@ -24,10 +48,34 @@ namespace KYHBPA_TeamA.Controllers
                 Title = p.PhotoTitle,
                 Date = p.TimeStamp,
                 InPhotoGallery = p.InPhotoGallery
-                
+
             });
 
-            return View(photo);
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                photoViewModels = photoViewModels.Where(p => p.Title.Contains(searchString)
+                                       || p.Description.Contains(searchString));
+            }
+            switch (sortOrder)
+            {
+                case "title_desc":
+                    photoViewModels = photoViewModels.OrderByDescending(s => s.Title);
+                    break;
+                case "Date":
+                    photoViewModels = photoViewModels.OrderBy(s => s.Date);
+                    break;
+                case "date_desc":
+                    photoViewModels = photoViewModels.OrderByDescending(s => s.Date);
+                    break;
+                default:  // Title ascending 
+                    photoViewModels = photoViewModels.OrderBy(s => s.Title);
+                    break;
+            }
+
+           
+            int pageSize = 5;
+            int pageNumber = (page ?? 1);
+            return View(photoViewModels.ToPagedList(pageNumber, pageSize));
         }
 
         // GET: Photo/Details/5
