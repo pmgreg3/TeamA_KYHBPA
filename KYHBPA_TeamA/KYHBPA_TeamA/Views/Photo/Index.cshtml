@@ -11,16 +11,29 @@
 }
 <h2>Photos</h2>
 
-<p>
-    <button class="btn btn-primary col-md-2 pull-left" onclick="location.href='@Url.Action("Create", "Photo")'">Create New</button>
-</p>
+
 @using (Html.BeginForm("Index", "Photo", FormMethod.Get))
 {
-    <p>
-        @Html.TextBox("SearchString", ViewBag.CurrentFilter as string, new { placeholder = "Title to search"})
-        <input type="submit" value="Search" />
-    </p>
+    @*<div class="row">
+        <div class="col-md-6">
+                @Html.TextBox("SearchString", ViewBag.CurrentFilter as string, new { placeholder = "Title to search", @class = "form-control col-md-10" })
+                <input type="submit" value="Search" class="btn btn-primary d-inline col-md-2 pull-right"/>
+        </div>
+    </div>*@
+        <div class="row" id="SearchArea">
+            <div class="col-md-6 pull-left">
+                <div id="custom-search-input">
+                    <div class="input-group col-md-12">
+                        @Html.TextBox("SearchString", ViewBag.CurrentFilter as string, new { placeholder = "Search by Title", @class = "form-control  input-lg" })
+                        <span class="input-group-btn">
+                            <input type="submit" value="Search" class="btn btn-primary" />
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
 }
+
 <table class="table">
     <tr>
         <th>
@@ -37,6 +50,9 @@
         </th>
         <th>
             Photo Gallery
+        </th>
+        <th>
+            <button class="btn btn-default pull-right" onclick="location.href='@Url.Action("Create", "Photo")'">Add Photo</button>
         </th>
     </tr>
 
@@ -71,6 +87,7 @@
 }
 
 </table>
+    
 <br />
 Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount)
 
