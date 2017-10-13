@@ -21,16 +21,14 @@
         </div>
     </div>*@
         <div class="row" id="SearchArea">
-            <div class="col-md-6 pull-left">
                 <div id="custom-search-input">
                     <div class="input-group col-md-12">
-                        @Html.TextBox("SearchString", ViewBag.CurrentFilter as string, new { placeholder = "Search by Title", @class = "form-control  input-lg" })
+                        @Html.TextBox("SearchString", ViewBag.CurrentFilter as string, new { placeholder = "Search by title or description", @class = "form-control  input-lg" })
                         <span class="input-group-btn">
                             <input type="submit" value="Search" class="btn btn-primary" />
                         </span>
                     </div>
                 </div>
-            </div>
         </div>
 }
 
@@ -89,7 +87,10 @@
 </table>
     
 <br />
-Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount)
+<div class="text-center">
+    Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
 
-@Html.PagedListPager(Model, page => Url.Action("Index",
+    @Html.PagedListPager(Model, page => Url.Action("Index",
     new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+</div>
+

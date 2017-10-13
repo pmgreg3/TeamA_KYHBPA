@@ -15,6 +15,14 @@ namespace KYHBPA_TeamA.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Photo
+        /// <summary>
+        /// Pagination for indexing the photos
+        /// </summary>
+        /// <param name="sortOrder">Viewbag filter</param>
+        /// <param name="currentFilter">Viewbag existing filter</param>
+        /// <param name="searchString">Filter</param>
+        /// <param name="page">Current page</param>
+        /// <returns>View with index list</returns>
         public ActionResult Index(string sortOrder, string currentFilter, string searchString, int? page)
         {
             ViewBag.CurrentSort = sortOrder;
@@ -65,7 +73,7 @@ namespace KYHBPA_TeamA.Controllers
             }
 
            
-            int pageSize = 3;
+            int pageSize = 5;
             int pageNumber = (page ?? 1);
             return View(photoViewModels.ToPagedList(pageNumber, pageSize));
         }
