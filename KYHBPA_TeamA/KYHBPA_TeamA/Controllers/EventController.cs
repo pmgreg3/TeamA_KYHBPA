@@ -47,13 +47,14 @@ namespace KYHBPA_TeamA.Controllers
                 var formattingEvent = new
                 {
                     id = ev.EventID,
-                    date = ev.EventDate.ToString(),
-                    time = ev.EventTime.ToString(),
-                    //start_date = ev.start_date.Date.ToString("yyyy-MM-dd"),
-                    //end_date = ev.end_date.Date.ToString("yyyy-MM-dd"),
-                    name = ev.EventName,
-                    description = ev.EventDescription,
-                    location = ev.EventLocation
+                    start_date = ev.EventDate.ToString("MM/dd/yyyy"),
+                    end_date = ev.EventTime.ToString("MM/dd/yyyy"),
+                    //start_date = ev.EventDate.Date.ToString("MM/dd/yyyy HH:mm"),
+                    //end_date = ev.EventTime.Date.ToString("MM/dd/yyyy HH:mm"),
+
+                    //name = ev.EventName,
+                    text = ev.EventDescription
+                    //location = ev.EventLocation
 
                 };
                 formatedEvents.Add(formattingEvent);
