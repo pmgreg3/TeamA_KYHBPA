@@ -243,6 +243,10 @@
     <Compile Include="Migrations\201709282017016_AddedInImageGalleryPropToPhoto.Designer.cs">
       <DependentUpon>201709282017016_AddedInImageGalleryPropToPhoto.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201710140204134_PhotoUpdate.cs" />
+    <Compile Include="Migrations\201710140204134_PhotoUpdate.Designer.cs">
+      <DependentUpon>201710140204134_PhotoUpdate.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Migrations\201709101953261_InitialCreate.cs" />
     <Compile Include="Migrations\201709101953261_InitialCreate.Designer.cs">
@@ -430,6 +434,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201709282017016_AddedInImageGalleryPropToPhoto.resx">
       <DependentUpon>201709282017016_AddedInImageGalleryPropToPhoto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710140204134_PhotoUpdate.resx">
+      <DependentUpon>201710140204134_PhotoUpdate.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
