@@ -60,17 +60,22 @@ namespace KYHBPA_TeamA.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(AddBoardofDirectorsViewModel addViewModel, HttpPostedFileBase bod = null)
+        public ActionResult Create(CreateBODMemberViewModel addViewModel, HttpPostedFileBase file)
         {
             if (ModelState.IsValid)
             {
+                byte[] uploadedFile = new byte[file.InputStream.Length];
+                addViewModel.File.InputStream.Read(uploadedFile, 0, file.ContentLength);
                 var boardOfDirectors = new BoardOfDirectors()
                 {
                     Title = addViewModel.Title,
-                    PhotoContent = new byte[bod.ContentLength],
+                    FirstName = addViewModel.FirstName,
+                    LastName = addViewModel.LastName,
+                    Email = addViewModel.Email, 
+                    PhotoContent = uploadedFile,
    
                 };
-                bod.InputStream.Read(boardOfDirectors.PhotoContent, 0, bod.ContentLength);
+                
                 db.BoardOfDirectors.Add(boardOfDirectors);
                 db.SaveChanges();
 
@@ -91,14 +96,13 @@ namespace KYHBPA_TeamA.Controllers
             }
 
             var boardOfDirectors = db.BoardOfDirectors.Find(id);
-            var vm = new DisplayBoardOfDirectorsViewModel()
+            var vm = new EditBODMemberViewModel()
             {
-                Id = boardOfDirectors.Id,
+                ID = boardOfDirectors.Id,
                 FirstName = boardOfDirectors.FirstName,
                 LastName = boardOfDirectors.LastName,
                 Title = boardOfDirectors.Title,
                 Email = boardOfDirectors.Email,
-                Description = boardOfDirectors.Description,
                 PhotoContent = boardOfDirectors.PhotoContent
             };
 
@@ -112,16 +116,16 @@ namespace KYHBPA_TeamA.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(DisplayBoardOfDirectorsViewModel BODVM, FormCollection collection)
+        public ActionResult Edit(EditBODMemberViewModel BODVM, FormCollection collection)
         {
             try
             {
                 if (ModelState.IsValid)
                 {
-                    var BODToUpdate = db.BoardOfDirectors.FirstOrDefault(x => x.Id == BODVM.Id);
+                    var BODToUpdate = db.BoardOfDirectors.FirstOrDefault(x => x.Id == BODVM.ID);
                     if (BODToUpdate != null)
                     {
-                        BODToUpdate.Description = BODVM.Description;
+                        
                         BODToUpdate.FirstName = BODVM.FirstName;
                         BODToUpdate.LastName = BODVM.LastName;
                         BODToUpdate.Title = BODVM.Title;
