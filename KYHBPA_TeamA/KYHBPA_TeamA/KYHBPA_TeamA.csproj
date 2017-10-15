@@ -634,6 +634,7 @@
     <Content Include="Views\Document\Delete.cshtml" />
     <Content Include="Views\Document\Edit.cshtml" />
     <Content Include="Views\Shared\_ImageGallery.cshtml" />
+    <Content Include="Views\Home\Benefits.cshtml" />
     <Content Include="Views\Home\Board.cshtml" />
     <Content Include="Views\Event\Data.cshtml" />
     <Content Include="Views\Event\Index.cshtml" />
