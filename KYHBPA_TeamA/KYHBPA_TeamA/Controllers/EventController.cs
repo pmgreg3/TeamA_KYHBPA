@@ -47,14 +47,11 @@ namespace KYHBPA_TeamA.Controllers
                 var formattingEvent = new
                 {
                     id = ev.EventID,
-                    start_date = ev.EventDate.ToString("MM/dd/yyyy"),
-                    end_date = ev.EventTime.ToString("MM/dd/yyyy"),
+                    start_date = ev.EventDate.ToString("MM/dd/%y"),
+                    end_date = ev.EventTime.ToString("MM/dd/%y"),
                     //start_date = ev.EventDate.Date.ToString("MM/dd/yyyy HH:mm"),
                     //end_date = ev.EventTime.Date.ToString("MM/dd/yyyy HH:mm"),
-
-                    //name = ev.EventName,
                     text = ev.EventDescription
-                    //location = ev.EventLocation
 
                 };
                 formatedEvents.Add(formattingEvent);
@@ -82,9 +79,7 @@ namespace KYHBPA_TeamA.Controllers
             {
                 existingEvent.EventDate = newDate;
                 existingEvent.EventTime = newTime;
-                existingEvent.EventName = text;
-                existingEvent.EventDescription = description;
-                existingEvent.EventLocation = location;
+                existingEvent.EventDescription = text;
             }
             else
             {
@@ -93,10 +88,7 @@ namespace KYHBPA_TeamA.Controllers
                 {
                     EventDate = newDate,
                     EventTime = newTime,
-                    EventName = text,
-                    EventDescription = description,
-                    EventLocation = location
-
+                    EventDescription = text,
                 };
                 _db.Events.Add(newEvent);
             }

@@ -23,13 +23,13 @@ namespace KYHBPA_TeamA.Controllers
         //    return new Dpm().CallBack(this);
         //}
 
-        public ActionResult Edit(string id, string name,string description, string location)
+        public ActionResult Edit(string id, string name,string text, string location)
         {
 
             var eventToModify = _db.Events.FirstOrDefault(ev => ev.EventID.ToString() == id);
 
             eventToModify.EventName = name;
-            eventToModify.EventDescription = description;
+            eventToModify.EventDescription = text;
             eventToModify.EventLocation = location;
             _db.SaveChanges();
 
