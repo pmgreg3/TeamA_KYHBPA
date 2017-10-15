@@ -47,8 +47,8 @@ namespace KYHBPA_TeamA.Controllers
                 var formattingEvent = new
                 {
                     id = ev.EventID,
-                    start_date = ev.EventDate.ToString("MM/dd/%y"),
-                    end_date = ev.EventTime.ToString("MM/dd/%y"),
+                    start_date = ev.EventDate.ToString("MM/dd/%y HH:mm"),
+                    end_date = ev.EventTime.ToString("MM/dd/%y HH:mm"),
                     //start_date = ev.EventDate.Date.ToString("MM/dd/yyyy HH:mm"),
                     //end_date = ev.EventTime.Date.ToString("MM/dd/yyyy HH:mm"),
                     text = ev.EventDescription
