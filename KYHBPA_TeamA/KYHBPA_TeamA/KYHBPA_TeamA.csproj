@@ -200,6 +200,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\CalendarController.cs" />
+    <Compile Include="Controllers\BoardOfDirectorsController.cs" />
     <Compile Include="Controllers\DocumentController.cs" />
     <Compile Include="Controllers\EventController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -243,6 +244,10 @@
     <Compile Include="Migrations\201709282017016_AddedInImageGalleryPropToPhoto.Designer.cs">
       <DependentUpon>201709282017016_AddedInImageGalleryPropToPhoto.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201710140204134_PhotoUpdate.cs" />
+    <Compile Include="Migrations\201710140204134_PhotoUpdate.Designer.cs">
+      <DependentUpon>201710140204134_PhotoUpdate.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Migrations\201709101953261_InitialCreate.cs" />
     <Compile Include="Migrations\201709101953261_InitialCreate.Designer.cs">
@@ -277,7 +282,11 @@
       <DependentUpon>201709252012182_AddingMemberToApplicationUser.cs</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\BoardOfDirectors.cs" />
+    <Compile Include="Models\BoardOfDirectorsViewModels.cs" />
+    <Compile Include="Models\CreateBODMemberViewModel.cs" />
     <Compile Include="Models\Document.cs" />
+    <Compile Include="Models\EditBODMemberViewModel.cs" />
     <Compile Include="Models\Event.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -635,6 +644,11 @@
     <Content Include="Views\Document\Edit.cshtml" />
     <Content Include="Views\Shared\_ImageGallery.cshtml" />
     <Content Include="Views\Home\Benefits.cshtml" />
+    <Content Include="Views\BoardOfDirectors\Create.cshtml" />
+    <Content Include="Views\BoardOfDirectors\Delete.cshtml" />
+    <Content Include="Views\BoardOfDirectors\Details.cshtml" />
+    <Content Include="Views\BoardOfDirectors\Edit.cshtml" />
+    <Content Include="Views\BoardOfDirectors\Index.cshtml" />
     <Content Include="Views\Home\Board.cshtml" />
     <Content Include="Views\Event\Data.cshtml" />
     <Content Include="Views\Event\Index.cshtml" />
@@ -681,6 +695,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201709282017016_AddedInImageGalleryPropToPhoto.resx">
       <DependentUpon>201709282017016_AddedInImageGalleryPropToPhoto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710140204134_PhotoUpdate.resx">
+      <DependentUpon>201710140204134_PhotoUpdate.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
