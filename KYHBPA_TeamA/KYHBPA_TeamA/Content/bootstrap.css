@@ -24,7 +24,7 @@ u {
     text-decoration: underline;
 }
 form {
-    color:antiquewhite;
+    color:inherit;
     font-size:medium;
 }
 article,
@@ -33,7 +33,7 @@ details,
 figcaption,
 figure,
 footer {
-    font-size: x-small;
+    font-size: inherit;
 }
 header,
 hgroup,
@@ -394,7 +394,7 @@ hr {
   margin-top: 20px;
   margin-bottom: 20px;
   border: 0;
-  border-top: 1px solid #eeeeee;
+  border-top: 1px solid black;
 }
 
 .sr-only {
@@ -6013,6 +6013,7 @@ body.modal-open,
 
 .carousel {
   position: relative;
+  max-height
 }
 
 .carousel-inner {
