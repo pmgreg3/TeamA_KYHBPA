@@ -21,7 +21,6 @@
                 </div>
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
-                        <li>@Html.ActionLink("Home", "Index", "Home")</li>
                         <li class="dropdown">
                             <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                                 About Us
@@ -45,27 +44,9 @@
         @RenderBody()
         <hr id="hrfooter" />
         <footer>
-            <div class="col-md-5">
-                <address>
-                    <b>Kentucky HBPA</b><br />
-                    3729 S. Fourth Street<br />
-                    Louisville, KY 40214-1712<br />
-                    </address>
-            </div>
-            <div class="col-md-5">
-                <form action = "https://www.paypal.com/us/home" target="_blank">
-                    <input type="submit" value="Donate Today!"/>
-                </form>
-            </div>
-            <div class="col-md-2">
-                <address>
-                <a href="mailto:Kentuckyhbpa@gmail.com">Kentuckyhbpa@gmail.com</a><br />
-                <u>Phone</u>: (502)363-1077<br />
-                <u>Toll Free</u>: (800)928-4272<br />
-                <u>Fax</u>: (502)367-6800
-                </address>
-            </div>
-            <p>&copy; @DateTime.Now.Year - Kentucky Horseman's Benevolent and Protective Association</p>
+            <div class="text-center">
+            <p id="footerinfo">&copy; @DateTime.Now.Year - Kentucky Horseman's Benevolent and Protective Association | All Rights Reserved</p>
+            <p id="footerinfo">3729 S. Fourth Street | Louisville, KY 40214-1712 | (502)363-1077 | <a href="mailto:Kentuckyhbpa@gmail.com">KentuckyHBPA@gmail.com</a></div>
         </footer>
     </div>
 
