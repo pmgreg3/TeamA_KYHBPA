@@ -63,11 +63,12 @@ textarea {
 
 .carousel-inner > .item > img{
     margin:auto;
-    max-height:700px
+    max-height:700px;
 }
 
 .carousel{
-    max-height:700px
+    max-height:700px;
+    min-height:700px;
 }
 
 .input {
@@ -102,4 +103,18 @@ textarea {
 
 #SearchArea{
     margin-bottom:4px;
+}
+
+
+
+/*Drop Down menu Style*/
+.navbar-nav > li > .dropdown-menu {
+    background: rgba(0,0,0,0.65);
+    color:white;
+    font-size:22px;
+    padding:7px;
+}
+
+.dropdown-menu > li > a{
+    color:white;
 }
