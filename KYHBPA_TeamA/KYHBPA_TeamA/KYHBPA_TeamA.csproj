@@ -199,6 +199,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\BlogController.cs" />
     <Compile Include="Controllers\BoardOfDirectorsController.cs" />
     <Compile Include="Controllers\DocumentController.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
@@ -282,9 +283,17 @@
       <DependentUpon>201709252012182_AddingMemberToApplicationUser.cs</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Blog.cs" />
+    <Compile Include="Models\BlogListViewModel.cs" />
+    <Compile Include="Models\BlogPostDetailsViewModel.cs" />
     <Compile Include="Models\BoardOfDirectors.cs" />
     <Compile Include="Models\BoardOfDirectorsViewModels.cs" />
+    <Compile Include="Models\Category.cs" />
+    <Compile Include="Models\CategoryListViewModel.cs" />
+    <Compile Include="Models\Comment.cs" />
+    <Compile Include="Models\CreateBlogPostViewModel.cs" />
     <Compile Include="Models\CreateBODMemberViewModel.cs" />
+    <Compile Include="Models\CreateCommentViewModel.cs" />
     <Compile Include="Models\Document.cs" />
     <Compile Include="Models\EditBODMemberViewModel.cs" />
     <Compile Include="Models\Event.cs" />
@@ -293,7 +302,9 @@
     <Compile Include="Models\Photo.cs" />
     <Compile Include="Models\DocumentViewModels.cs" />
     <Compile Include="Models\PhotoViewModels.cs" />
+    <Compile Include="Models\Tag.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\BlogRepository.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="Models\Member.cs" />
   </ItemGroup>
@@ -652,6 +663,7 @@
     <Content Include="Views\Event\Data.cshtml" />
     <Content Include="Views\Event\Index.cshtml" />
     <Content Include="Views\Error\ErrorPage.cshtml" />
+    <Content Include="Views\Blog\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
