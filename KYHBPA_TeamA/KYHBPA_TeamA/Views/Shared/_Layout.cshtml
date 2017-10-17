@@ -17,48 +17,55 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    @Html.ActionLink("Kentucky HBPA", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-                </div>
+                    
+                        @Html.ActionLink("Kentucky HBPA", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+</div>
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
-                        <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                        <li>@Html.ActionLink("About", "About", "Home")</li>
-                        <li>@Html.ActionLink("Benefits", "Benefits", "Home")</li>
-                        <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                       
+<li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                About Us
+                                <span class="caret"></span>
+                            </a>
+                       
+                            <ul class="dropdown-menu">
+                                <li>@Html.ActionLink("Benefits", "Benefits", "Home")</li>
+                                <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                                <li>@Html.ActionLink("Our Board", "Index", "BoardOfDirectors")</li>
+                            </ul>
+                        </li>                                               
                         <li>@Html.ActionLink("Documents", "Index", "Document")</li>
-                        <li>@Html.ActionLink("Photos", "Index", "Photo")</li>
+                        <li>@Html.ActionLink("Photos", "Index", "Photo")</li>                     
                         <li>@Html.ActionLink("Events","Index","Event")</li>
-                        <li>@Html.ActionLink("Board of Directors", "Index", "BoardOfDirectors")</li>
-                    </ul>
-                    @Html.Partial("_LoginPartial")
-                </div>
-            </div>
+                        <li>
+                            <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+
+                                <!-value="https://www.paypal.com/us/home">
+
+
+                                <!-- Display the payment button. -->
+                                <input type="image" name="submit"
+                                       src="https://www.paypalobjects.com/webstatic/en_US/i/btn/png/btn_donate_92x26.png"
+                                       alt="Donate">
+                                <img alt="" width="1" height="1"
+                                     src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif">
+
+                            </form>
+
+</ul>
+                        @Html.Partial("_LoginPartial")
+</div>
+          
+</div>
         </div>
     <div class="container body-content">
         @RenderBody()
-        <hr />
+        <hr id="hrfooter" />
         <footer>
-            <div class="col-md-5">
-                <address>
-                    <b>Kentucky HBPA</b><br />
-                    3729 S. Fourth Street<br />
-                    Louisville, KY 40214-1712<br />
-                    </address>
-            </div>
-            <div class="col-md-5">
-                <form action = "https://www.paypal.com/us/home" target="_blank">
-                    <input type="submit" value="Donate Today!"/>
-                </form>
-            </div>
-            <div class="col-md-2">
-                <address>
-                <u>Email</u>: <a href="mailto:Kentuckyhbpa@gmail.com">Kentuckyhbpa@gmail.com</a><br />
-                <u>Phone</u>: (502)363-1077<br />
-                <u>Toll Free</u>: (800)928-4272<br />
-                <u>Fax</u>: (502)367-6800
-                </address>
-            </div>
-            <p>&copy; @DateTime.Now.Year - Kentucky Horseman's Benevolent and Protective Association</p>
+            <div class="text-center">
+            <p id="footerinfo">&copy; @DateTime.Now.Year - Kentucky Horseman's Benevolent and Protective Association | All Rights Reserved</p>
+            <p id="footerinfo">3729 S. Fourth Street | Louisville, KY 40214-1712 | (502)363-1077 | <a href="mailto:Kentuckyhbpa@gmail.com">KentuckyHBPA@gmail.com</a></div>
         </footer>
     </div>
 
@@ -67,38 +74,3 @@
     @RenderSection("scripts", required: false)
 </body>
 </html>
-<style>
-    ul {
-        display: inline-block;
-        list-style-type: none;
-        margin: 0px;
-        padding: 0px;
-        background-color: rgb(248, 246, 186);
-        position: absolute;
-        top: 0px;
-        width: 100%;
-    }
-
-    li {
-        display: inline;
-    }
-
-        li a {
-            display: inline-block;
-            color: black;
-            text-align: center;
-            padding: 14px 16px;
-            text-decoration: none;
-            margin-top: 0px;
-            font-size: 20px;
-            top: 0px;
-        }
-
-            li a:hover:not(.active) {
-                background-color: rgb(148, 181, 252);
-            }
-
-    .active {
-        background-color: rgb(102, 148, 247);
-    }
-</style>

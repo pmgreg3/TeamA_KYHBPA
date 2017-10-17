@@ -87,15 +87,15 @@ namespace KYHBPA_TeamA.Models
         [Display(Name = "Date of Birth")]
         public DateTime DateOfBirth { get; set; }
 
-        [Required]
+        //[Required] - Don't need for website signup info (WTB)
         [Display(Name = "Street Address")]
         public string Street { get; set; }
 
-        [Required]
+        //[Required] - Don't need for website signup info (WTB)
         [Display(Name = "City")]
         public string City { get; set; }
 
-        [Required]
+        //[Required] - Don't need for website signup info (WTB)
         [Display(Name = "State")]
         public string State { get; set; }
 

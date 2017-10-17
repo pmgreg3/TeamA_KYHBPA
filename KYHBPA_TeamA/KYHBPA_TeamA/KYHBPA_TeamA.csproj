@@ -202,6 +202,7 @@
     <Compile Include="Controllers\CalendarController.cs" />
     <Compile Include="Controllers\BoardOfDirectorsController.cs" />
     <Compile Include="Controllers\DocumentController.cs" />
+    <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\EventController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -558,7 +559,6 @@
     <Content Include="Content\locale\recurring\repeat_template_ro.html" />
     <Content Include="Content\locale\recurring\repeat_template_ru.html" />
     <Content Include="Content\locale\recurring\repeat_template_sk.html" />
-    <Content Include="Content\TwitterFeed_HBPA.PNG" />
     <Content Include="Entity\KYHBPA.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>KYHBPA.edmx</DependentUpon>
@@ -652,6 +652,7 @@
     <Content Include="Views\Home\Board.cshtml" />
     <Content Include="Views\Event\Data.cshtml" />
     <Content Include="Views\Event\Index.cshtml" />
+    <Content Include="Views\Error\ErrorPage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

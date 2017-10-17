@@ -1,11 +1,11 @@
 ﻿@model IEnumerable<KYHBPA_TeamA.Models.DisplayBoardOfDirectorsViewModel>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Our Board";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<h2>Board of Directors</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -20,7 +20,7 @@
             Picture
         </th>
         <th>
-            Info
+            Contact Information
         </th>
         <th></th>
     </tr>
@@ -33,7 +33,7 @@
                 @Html.DisplayFor(modelItem => item.Title)
             </td>
             <td>
-                <img src="@(string.Format("data:image/gif;base64,{0}", Convert.ToBase64String(item.PhotoContent)))" />
+                <img class="img-thumbnail" width="100" height="100" src="@(string.Format("data:image/gif;base64,{0}", Convert.ToBase64String(item.PhotoContent)))" />
             </td>
 
             <td>
