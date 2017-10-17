@@ -565,6 +565,9 @@
     <Content Include="Content\locale\recurring\repeat_template_ru.html" />
     <Content Include="Content\locale\recurring\repeat_template_sk.html" />
     <Content Include="Content\regular.js" />
+    <Content Include="Content\slider1.jpg" />
+    <Content Include="Content\slider2.jpg" />
+    <Content Include="Content\slider3.jpg" />
     <Content Include="Content\solid.js" />
     <Content Include="Content\solid.svg" />
     <Content Include="Entity\KYHBPA.Context.tt">
