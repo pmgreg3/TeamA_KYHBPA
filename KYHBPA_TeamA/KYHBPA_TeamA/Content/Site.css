@@ -38,10 +38,10 @@ textarea {
 }
 
 #fluid {
-    background: url(../Content/hbpaBanner4.jpg);
+    background: url('../Content/Kentucky_Derby_2009_Panorama BETTER.jpg');
     background-size: cover;
-    min-height: 400px;
-    max-height: 400px;
+    min-height: 380px;
+    max-height: 380px;
     min-width: 100%;
     max-width: 100%;
     border-bottom: black 1px solid;
@@ -117,4 +117,9 @@ textarea {
 
 .dropdown-menu > li > a{
     color:white;
+}
+
+#paypal-btn {
+    height: 32px;
+    margin: 8px;
 }

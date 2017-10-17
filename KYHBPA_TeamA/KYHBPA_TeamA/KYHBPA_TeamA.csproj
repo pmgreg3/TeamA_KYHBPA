@@ -498,6 +498,7 @@
     <Content Include="Content\imgs_glossy\top-separator.gif" />
     <Content Include="Content\imgs_glossy\white_tab.png" />
     <Content Include="Content\imgs_glossy\white_tab_wide.png" />
+    <Content Include="Content\Kentucky_Derby_2009_Panorama BETTER.jpg" />
     <Content Include="Content\locale\locale_ar.js" />
     <Content Include="Content\locale\locale_be.js" />
     <Content Include="Content\locale\locale_ca.js" />
@@ -559,6 +560,7 @@
     <Content Include="Content\locale\recurring\repeat_template_ro.html" />
     <Content Include="Content\locale\recurring\repeat_template_ru.html" />
     <Content Include="Content\locale\recurring\repeat_template_sk.html" />
+    <Content Include="Content\logo.png" />
     <Content Include="Entity\KYHBPA.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>KYHBPA.edmx</DependentUpon>
