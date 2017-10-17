@@ -4,15 +4,45 @@
     ViewBag.Title = "Home Page";
 }
 
+@section ImageGallery{
+        <!--Image Gallery-->
+@Html.Action("_ImageGallery", "Photo")
+}
 
-<div class="jumbotron">
+
+<section id="socialMediaSpan">
+    <div class="text-center">
+        <svg class="socialMediaIcon">
+            <use xlink:href="~/Content/brands.svg#instagram"></use>
+        </svg>
+        <svg class="socialMediaIcon">
+            <use xlink:href="~/Content/brands.svg#facebook-square"></use>
+        </svg>
+        <svg class="socialMediaIcon">
+            <use xlink:href="~/Content/brands.svg#youtube"></use>
+        </svg>
+        <svg class="socialMediaIcon">
+            <use xlink:href="~/Content/brands.svg#twitter"></use>
+        </svg>
+    </div>
+</section>
+
+
+<section id="primary">
+    <h1 class="common-Uppercase">Kentucky Horsemen's <br> Benevolent and Protective <br> Association</h1>
+    <h3 class="common-UppercaseTitle">Become a Member Today!</h3>
+    <p class="common-BodyText">You are invited to drop into the HBPA office to meet the staff and 
+    learn more about current projects and how you can get 
+    involved in helping to improve the industry. There are no membership fees.
+    Remember – This is your organization. Become an active participant and one of the “Horsemen Helping Horseman”.</p>
+</section>
+
+
+<div class="jumbotron" id="homeIndexJumbo">
     <h1><b>Horsemen Helping Horsemen</b></h1>
     <p>Welcome to the Kentucky Horsemen's Benevolent and Protective Association, where the horsemen of Kentucky come together to work on the betterment of racing on all levels.</p>
     <p><a href="/Home/About" class="btn btn-primary btn-lg">Learn more about our History &raquo;</a></p>
 </div>
-
-<!--Image Gallery-->
-@Html.Action("_ImageGallery", "Photo")
 
 <hr />
 <!--Triple Threat Column Layout -->

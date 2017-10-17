@@ -41,6 +41,9 @@
                 </div>
             </div>
         </div>
+
+    @RenderSection("ImageGallery", required: false)
+
     <div class="container body-content">
         @RenderBody()
         <hr id="hrfooter" />
@@ -71,6 +74,7 @@
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/Content/fontawesome")
     @RenderSection("scripts", required: false)
 </body>
 </html>

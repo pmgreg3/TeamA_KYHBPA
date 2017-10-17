@@ -1,7 +1,7 @@
 ﻿body {
-    /*padding-top: 400px;*/
-    padding-bottom: 40px;
-    background: rgb(248, 246, 186);
+    padding-top: 50px;
+    padding-bottom: 400px;
+    background: #f6f9fc;
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -21,39 +21,28 @@
 input,
 select,
 textarea {
-    /*max-width: 280px;*/
+
 }
 
 /*Banner text stuff*/
 .navbar-inverse .navbar-nav > li > a, .navbar-inverse .navbar-brand {
     color: white;
-    font-family: pp-sans-small-medium,Helvetica Neue,Arial,sans-serif;
+    font-family: Camphor,Open Sans,Segoe UI,sans-serif;
     font-size: 20px;
-    letter-spacing:2px;
 }
 
 .navbar-inverse {
     border: none;
-    background: rgba(0,0,0,0.65);
+    /*background: #00c453;*/
+    background: #24b47e;
 }
 
 #fluid {
-    background: url(../Content/hbpaBanner4.jpg);
-    background-size: cover;
-    min-height: 400px;
-    max-height: 400px;
-    min-width: 100%;
-    max-width: 100%;
-    border-bottom: black 1px solid;
-    box-shadow: 0px 7px 20px 0px #0c0a0b;
+
 }
 
 
 .jumbotron {
-    background-image: radial-gradient(circle farthest-side at center bottom,#e4e5bc,rgba(81, 58, 50, 0.59) 290%);
-    margin-top: 20px;
-    border: 1px #d8daa7 solid;
-    box-shadow: 1px 4px 20px 0px;
 }
 
 .img-gallery-img{
@@ -61,14 +50,26 @@ textarea {
     margin:auto;
 }
 
-.carousel-inner > .item > img{
-    margin:auto;
-    max-height:700px;
+/*Social media span*/
+#socialMediaSpan {
+    border-bottom: 2px solid #cccdce;
+    padding-top: 20px;
+}
+
+.socialMediaIcon {
+    height: 4em;
+    width: 4em;
+    fill: #24b47e;
+    margin-left: 90px;
+    margin-right: 90px;
+}
+
+.carousel-inner > .item > img {
+    margin: auto;
 }
 
 .carousel{
-    max-height:700px;
-    min-height:700px;
+    max-height:800px;
 }
 
 .input {
@@ -117,4 +118,46 @@ textarea {
 
 .dropdown-menu > li > a{
     color:white;
+}
+
+/*Home Index Section*/
+#primary {
+    height: 760px;
+    text-align: center;
+    background: #f6f9fc;
+    vertical-align:central;
+    font-family: Camphor,Open Sans,Segoe UI,sans-serif;
+    /*background-size: cover;*/
+    /*background-image: url("https://s3-ap-southeast-1.amazonaws.com/files.blogbeats.me/original/597b0ac510cf220009722709-597b0bc110cf22000972270c-horse_race.jpg")*/
+}
+
+#homeIndexJumbo{
+    background-image:url(hbpaBanner4.jpg);
+    background-size:cover;
+    color:white;
+    text-shadow:2px 2px 40px black;
+    margin-top:5px;
+}
+
+.common-Uppercase {
+    color: #24b47e;
+    font-weight: 600;
+    font-size:41px;
+    text-transform: uppercase;
+    letter-spacing: .025em;
+    font-family: Camphor,Open Sans,Segoe UI,sans-serif;
+}
+
+.common-BodyText {
+    font-weight: 400;
+    font-size: 17px;
+    line-height: 26px;
+    color: #6b7c93;
+}
+
+.common-UppercaseTitle {
+    color: #24b47e;
+    text-transform:uppercase;
+    font-size:22px;
+    line-height:33px;
 }
