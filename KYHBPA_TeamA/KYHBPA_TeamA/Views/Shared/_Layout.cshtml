@@ -10,59 +10,40 @@
 </head>
 <body>
     <div class="container" id="fluid">
-        <h1 id="KYHBPA-title">
-            Kentucky Horsemen's Benevolent and Protective Association
-        </h1>
-        <img id="logo" src="~/Content/logo.png"/>
-        <div class="navbar navbar-inverse navbar-fixed-top">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-
-                @Html.ActionLink("Kentucky HBPA", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+        <div class="navbar navbar-inverse navbar-fixed-top" >
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    @Html.ActionLink("Kentucky HBPA", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                About Us
+                                <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li>@Html.ActionLink("Benefits", "Benefits", "Home")</li>
+                                <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                                <li>@Html.ActionLink("Our Board", "Index", "BoardOfDirectors")</li>
+                            </ul>
+                        </li>                                               
+                        <li>@Html.ActionLink("Documents", "Index", "Document")</li>
+                        <li>@Html.ActionLink("Photos", "Index", "Photo")</li>                     
+                        <li>@Html.ActionLink("Events","Index","Event")</li>
+                    </ul>
+                    @Html.Partial("_LoginPartial")
+                </div>
             </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-
-                    <li class="dropdown">
-                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                            About Us
-                            <span class="caret"></span>
-                        </a>
-
-                        <ul class="dropdown-menu">
-                            <li>@Html.ActionLink("Benefits", "Benefits", "Home")</li>
-                            <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                            <li>@Html.ActionLink("Our Board", "Index", "BoardOfDirectors")</li>
-                        </ul>
-                    </li>
-                    <li>@Html.ActionLink("Documents", "Index", "Document")</li>
-                    <li>@Html.ActionLink("Photos", "Index", "Photo")</li>
-                    <li>@Html.ActionLink("Events", "Index", "Event")</li>
-                    <li>
-                        <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
-
-                            <!-value="https://www.paypal.com/us/home">
-
-
-                            <!-- Display the payment button. -->
-                            <input id="paypal-btn" type="image" name="submit"
-                                   src="https://www.paypalobjects.com/webstatic/en_US/i/btn/png/btn_donate_92x26.png"
-                                   alt="Donate">
-                            <img alt="" width="1" height="1"
-                                 src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif">
-
-                        </form>
-
-                </ul>
-                @Html.Partial("_LoginPartial")
-            </div>
-
         </div>
-    </div>
+
+    @RenderSection("ImageGallery", required: false)
+
     <div class="container body-content">
         @RenderBody()
         <hr id="hrfooter" />
@@ -76,6 +57,7 @@
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/Content/fontawesome")
     @RenderSection("scripts", required: false)
 </body>
 </html>
