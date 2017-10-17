@@ -123,3 +123,20 @@ textarea {
     height: 32px;
     margin: 8px;
 }
+#KYHBPA-title {
+    color: white;
+    font-size: 3vmax;
+    text-align: center;
+    position: relative;
+    top: 290px;
+    text-shadow:3px 4px 8px black;
+    width:auto;
+    
+}
+
+#logo {
+    height: 110px;
+    width: 148.5px;
+    left: 25px;
+    position: absolute;
+}
