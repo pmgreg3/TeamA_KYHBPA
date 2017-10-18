@@ -95,8 +95,7 @@ textarea {
     border-radius:4px;
     font-size:15px;
     font-weight:600;
-    text-transform:uppercase;
-    letter-spacing:.25em;
+    text-transform:uppercase;   
     text-decoration:none;
     transition:all .15s ease;
 }
@@ -104,6 +103,8 @@ textarea {
 .common-Button:hover {
     transform: translateY(-1px);
     box-shadow: 0 7px 14px rgba(50,50,93,.1), 0 3px 6px rgba(0,0,0,.08);
+    text-decoration: none;
+    letter-spacing: .10em;
 }
 
 .carousel-inner > .item > img {
