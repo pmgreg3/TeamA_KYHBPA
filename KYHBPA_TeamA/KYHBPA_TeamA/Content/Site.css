@@ -1,7 +1,7 @@
 ﻿body {
-    /*padding-top: 400px;*/
-    padding-bottom: 40px;
-    background: rgb(248, 246, 186);
+    padding-top: 50px;
+    padding-bottom: 400px;
+    background: #f6f9fc;
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -21,39 +21,28 @@
 input,
 select,
 textarea {
-    /*max-width: 280px;*/
+
 }
 
 /*Banner text stuff*/
 .navbar-inverse .navbar-nav > li > a, .navbar-inverse .navbar-brand {
     color: white;
-    font-family: pp-sans-small-medium,Helvetica Neue,Arial,sans-serif;
+    font-family: Camphor,Open Sans,Segoe UI,sans-serif;
     font-size: 20px;
-    letter-spacing:2px;
 }
 
 .navbar-inverse {
     border: none;
-    background: rgba(0,0,0,0.65);
+    /*background: #00c453;*/
+    background: #24b47e;
 }
 
 #fluid {
-    background: url(../Content/hbpaBanner4.jpg);
-    background-size: cover;
-    min-height: 400px;
-    max-height: 400px;
-    min-width: 100%;
-    max-width: 100%;
-    border-bottom: black 1px solid;
-    box-shadow: 0px 7px 20px 0px #0c0a0b;
+
 }
 
 
 .jumbotron {
-    background-image: radial-gradient(circle farthest-side at center bottom,#e4e5bc,rgba(81, 58, 50, 0.59) 290%);
-    margin-top: 20px;
-    border: 1px #d8daa7 solid;
-    box-shadow: 1px 4px 20px 0px;
 }
 
 .img-gallery-img{
@@ -61,14 +50,85 @@ textarea {
     margin:auto;
 }
 
-.carousel-inner > .item > img{
-    margin:auto;
-    max-height:700px;
+/*Social media span*/
+#socialMediaSpan {
+    border-bottom: 1px solid #cccdce;
+    padding-top: 20px;
+    background-image:url(hypnotize.png);
+    text-align:center;
+}
+
+#socialMediaList li{
+    display: inline-flex;
+    list-style-type:none;    
+    justify-content:space-between center;
+}
+
+.socialMediaListIcon {
+    height:4em;
+    width:4em;
+    margin-right:6em;
+}
+
+.socialMediaListIcon:hover{
+    cursor:pointer;
+}
+
+.socialMediaIcon {
+    height: 4em;
+    width: 4em;
+    fill: #24b47e;
+}
+
+/*Intro below social media span*/
+.cols{
+    display:flex;
+    background:#fff;
+    border-radius:10px;
+}
+
+#becomeAMember {
+    flex: 1;
+    padding: 20px;
+    border-width: 0 4px 0 0;
+    border: 1px solid #f6f9fc;
+}
+
+#learnMore {
+    flex: 1;
+    padding:20px;
+    border-width: 0 0 0 4px;
+    border: 1px solid #f6f9fc;
+} 
+
+.common-Button{
+    white-space:nowrap;
+    display:inline-block;
+    height:40px;
+    line-height:40px;
+    padding:0 14px;
+    box-shadow:0 4px 6px rgba(50,50,93,.11),0 1px 3px rgba(0,0,0,.08);
+    border-radius:4px;
+    font-size:15px;
+    font-weight:600;
+    text-transform:uppercase;   
+    text-decoration:none;
+    transition:all .15s ease;
+}
+
+.common-Button:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 7px 14px rgba(50,50,93,.1), 0 3px 6px rgba(0,0,0,.08);
+    text-decoration: none;
+    letter-spacing: .10em;
+}
+
+.carousel-inner > .item > img {
+    margin: auto;
 }
 
 .carousel{
-    max-height:700px;
-    min-height:700px;
+    max-height:800px;
 }
 
 .input {
@@ -91,11 +151,11 @@ textarea {
     border-left: solid 1px #ccc;
 }
 
-    #custom-search-input button:hover {
-        border: 0;
-        box-shadow: none;
-        border-left: solid 1px #ccc;
-    }
+#custom-search-input button:hover {
+     border: 0;
+     box-shadow: none;
+     border-left: solid 1px #ccc;
+}
 
 #custom-search-input .glyphicon-search {
     font-size: 23px;
@@ -117,4 +177,108 @@ textarea {
 
 .dropdown-menu > li > a{
     color:white;
+}
+
+/*Home Index Section*/
+#primary {
+    text-align: center;
+    background: #f6f9fc;
+    font-family: Camphor,Open Sans,Segoe UI,sans-serif;
+
+}
+
+#homeIndexJumbo{
+    background-image:url(hbpaBanner4.jpg);
+    background-size:cover;
+    color:white;
+    text-shadow:2px 2px 40px black;
+    margin-top:5px;
+}
+
+.common-Uppercase {
+    color: #24b47e;
+    font-weight: 600;
+    font-size:41px;
+    text-transform: uppercase;
+    letter-spacing: .025em;
+    font-family: Camphor,Open Sans,Segoe UI,sans-serif;
+}
+
+.common-BodyText {
+    font-weight: 400;
+    font-size: 17px;
+    line-height: 26px;
+    color: #6b7c93;
+}
+
+.common-UppercaseTitle {
+    color: #24b47e;
+    text-transform:uppercase;
+    font-size:22px;
+    line-height:33px;
+}
+
+/*Twitter and Facebook Section*/
+#twitterEmbed {
+    background: #fff;
+    border-width: 0 1px 0 1px;
+    border: 1px solid #f6f9fc;
+    border-left: 15px solid #f6f9fc !important;
+}
+
+#facebookEmbed {
+    background: #fff;
+    border-width: 0 1px 0 1px;
+    border: 1px solid #f6f9fc;
+    border-right: 15px solid #f6f9fc !important;
+}
+
+#socialEmbeds {
+    border-radius:10px;
+}
+
+
+/*Benefits bar*/
+#benefitsBar {
+    background-image: url("hypnotize.png");
+    border-radius: 10px;
+    text-align: center;
+    margin-top: 0px;
+    padding: 3px;
+    border: 1px solid #f6f9fc;
+}
+
+#benefitsBar .container-lg {
+    transition: 1s cubic-bezier(.19,1,.22,1);
+    will-change: transform;
+    filter: blur(0)
+}
+
+#benefitsBar:hover .container-lg{
+    opacity:.7;
+    transform:scale(.95);
+    filter:blur(10px);
+}
+
+
+#benefitsBar .common-Button{
+    transition: .7s cubic-bezier(.19,1,.22,1);
+    opacity:0;
+    left:50%;
+    z-index:1;
+    position:absolute;
+    transform:translate(-50%,5px);
+    will-change:transform, opacity;
+}
+
+#benefitsBar:hover .common-Button {
+    opacity: 1;
+    transform: translate(-50%,50px);
+    background-color:#fff;
+    font-weight:600;
+}
+
+#benefitsBar a {
+    text-decoration: none;
+    font-family: Camphor,Open Sans,Segoe UI,sans-serif;
 }

@@ -4,33 +4,96 @@
     ViewBag.Title = "Home";
 }
 
-
-<div class="jumbotron">
-    <h1><b>Horsemen Helping Horsemen</b></h1>
-    <p>Welcome to the Kentucky Horsemen's Benevolent and Protective Association, where the horsemen of Kentucky come together to work on the betterment of racing on all levels.</p>
-    <p><a href="/Home/About" class="btn btn-primary btn-lg">Learn more about our History &raquo;</a></p>
-</div>
-
-<!--Image Gallery-->
+@section ImageGallery{
+        <!--Image Gallery-->
 @Html.Action("_ImageGallery", "Photo")
+}
 
-<hr />
-<!--Triple Threat Column Layout -->
-<div class="row">
-    <div id="Twitter" class="col-md-6">
-        <hr />
-        <h2 class="text-center">Twitter</h2>
-        <hr />
+
+<section id="socialMediaSpan">
+    <ul id="socialMediaList">
+        <li>
+            <div class="socialMediaListIcon" onclick="window.open('http://www.instagram.com')">
+                <svg class="socialMediaIcon">
+                    <use xlink:href="~/Content/brands.svg#instagram"></use>
+                </svg>
+            </div>
+        </li>
+        <li>
+            <div class="socialMediaListIcon" onclick="window.open('http://www.facebook.com')">
+                <svg class="socialMediaIcon">
+                    <use xlink:href="~/Content/brands.svg#facebook-square"></use>
+                </svg>
+            </div>
+        </li>
+        <li>
+            <div class="socialMediaListIcon" onclick="window.open('http://www.youtube.com')">
+                <svg class="socialMediaIcon">
+                    <use href="~/Content/brands.svg#youtube"></use>
+                </svg>
+            </div>
+        </li>
+        <li>
+            <div class="socialMediaListIcon" onclick="window.open('http://www.twitter.com')">
+                <svg class="socialMediaIcon">
+                    <use xlink:href="~/Content/brands.svg#twitter-square"></use>
+                </svg>
+            </div>
+        </li>
+    </ul>
+</section>
+
+
+<section id="primary">
+    <h1 class="common-Uppercase">Kentucky Horsemen's <br> Benevolent and Protective <br> Association</h1>
+    <div class="cols container-lg">
+        <section id="becomeAMember">
+            <h3 class="common-UppercaseTitle">Become a Member Today!</h3>
+            <p class="common-BodyText">
+                You are invited to drop into the HBPA office to meet the staff and
+                learn more about current projects and how you can get
+                involved in helping to improve the industry. There are no membership fees.
+                Remember – This is your organization. Become an active participant and one of the “Horsemen Helping Horseman”.
+            </p>
+            <i class="fa fa-handshake fa-6x" style="color:#3ecf8e"></i>
+            <br />
+            <a href="/Account/Register" class="common-Button">Create account</a>
+        </section>
+        <section id="learnMore">
+            <h3 class="common-UppercaseTitle">Learn more about us</h3>
+            <p class="common-BodyText">
+                We urge all horsemen to join the HBPA, and urge you to take an 
+                active role in the direction and policies of your organization. 
+                By doing so, you are affirming your confidence in the goals and future 
+                endeavors of the HBPA. Lets bring our community closer together
+                and welcome new members.   
+            </p>
+            <i class="fa fa-users fa-6x" style="color:#3ecf8e"></i>
+            <br />
+            <a href="/Home/Benefits" class="common-Button">Learn more</a>
+        </section>
+    </div>
+</section>
+<section id="benefitsBar">
+    <a class="common-Button" href="/Home/Benefits">Benefits</a>
+    <div class="container-lg">
+        <h3 class="common-UppercaseTitle">Learn about our benefits.</h3>
+        <p class="common-BodyText"> Our shield, your protection.</p>
+        <i class="fa fa-shield-check fa-5x" style="color:#24b47e; padding-bottom:4px;"></i>
+    </div>
+</section>
+
+<div id="socialEmbeds" class="row">
+    <div id="twitterEmbed" class="col-md-6">
+        <h2 class="text-center common-UppercaseTitle">Recent Tweets</h2>
         <p class="text-center">
             <a class="twitter-timeline" href="https://twitter.com/KyHBPA?ref_src=twsrc%5Etfw" data-height="600" data-width="500">Tweets by KyHBPA</a>
             <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
         </p>
     </div>
-    <div id="Facebook" class="col-md-6">
-        <hr />
-        <h2 class="text-center">Facebook</h2>
-        <hr />
-        <p class="text-center"><iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FKYhbpa%2F&tabs=timeline&width=340&height=600&small_header=true&adapt_container_width=true&hide_cover=false&show_facepile=true&appId" width="500" height="600" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true"></iframe></p>
+    <div id="facebookEmbed" class="col-md-6">
+        <h2 class="text-center common-UppercaseTitle">Facebook Feed</h2>
+        <p class="text-center"><iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FKYhbpa%2F&tabs=timeline&width=500&height=600&small_header=true&adapt_container_width=true&hide_cover=false&show_facepile=true&appId" width="500" height="600" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true"></iframe></p>
     </div>
 </div>
 <div class="row">
