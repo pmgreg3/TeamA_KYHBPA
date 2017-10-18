@@ -1,4 +1,4 @@
-﻿/*using KYHBPA_TeamA.Models;
+﻿using KYHBPA_TeamA.Models;
 using KYHBPA_TeamA.Repositories;
 using System;
 using System.Collections.Generic;
@@ -193,4 +193,4 @@ namespace KYHBPA_TeamA.Controllers
             return RedirectToAction("Index");
         }
     }
-}*/
+}

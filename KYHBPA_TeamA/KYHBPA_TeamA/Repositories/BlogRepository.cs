@@ -1,4 +1,4 @@
-﻿/*using KYHBPA_TeamA.Models;
+﻿using KYHBPA_TeamA.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -34,4 +34,4 @@ namespace KYHBPA_TeamA.Repositories
             return _db.Posts.Where(p => p.Published != false).Count();
         }
     }
-}*/
+}
