@@ -351,6 +351,7 @@
     <Content Include="Content\connector\tree_connector.php" />
     <Content Include="Content\connector\update.php" />
     <Content Include="Content\connector\xss_filter.php" />
+    <Content Include="Content\darkness.png" />
     <Content Include="Content\dhtmlxscheduler.css" />
     <Content Include="Content\dhtmlxscheduler_classic.css" />
     <Content Include="Content\dhtmlxscheduler_contrast_black.css" />
@@ -398,6 +399,7 @@
     <Content Include="Content\fontawesome.js" />
     <Content Include="Content\fontawesome.min.js" />
     <Content Include="Content\hbpaBanner4.jpg" />
+    <Content Include="Content\hypnotize.png" />
     <Content Include="Content\imgs\buttons.png" />
     <Content Include="Content\imgs\but_repeat.gif" />
     <Content Include="Content\imgs\calendar.gif" />
