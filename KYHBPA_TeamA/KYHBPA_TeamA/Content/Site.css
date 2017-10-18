@@ -55,14 +55,29 @@ textarea {
     border-bottom: 1px solid #cccdce;
     padding-top: 20px;
     background-image:url(hypnotize.png);
+    text-align:center;
+}
+
+#socialMediaList li{
+    display: inline-flex;
+    list-style-type:none;    
+    justify-content:space-between center;
+}
+
+.socialMediaListIcon {
+    height:4em;
+    width:4em;
+    margin-right:6em;
+}
+
+.socialMediaListIcon:hover{
+    cursor:pointer;
 }
 
 .socialMediaIcon {
     height: 4em;
     width: 4em;
     fill: #24b47e;
-    margin-left: 90px;
-    margin-right: 90px;
 }
 
 /*Intro below social media span*/
@@ -136,11 +151,11 @@ textarea {
     border-left: solid 1px #ccc;
 }
 
-    #custom-search-input button:hover {
-        border: 0;
-        box-shadow: none;
-        border-left: solid 1px #ccc;
-    }
+#custom-search-input button:hover {
+     border: 0;
+     box-shadow: none;
+     border-left: solid 1px #ccc;
+}
 
 #custom-search-input .glyphicon-search {
     font-size: 23px;
