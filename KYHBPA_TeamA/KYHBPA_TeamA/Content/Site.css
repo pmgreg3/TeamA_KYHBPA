@@ -243,7 +243,6 @@ textarea {
     opacity:.7;
     transform:scale(.95);
     filter:blur(10px);
-
 }
 
 
@@ -254,6 +253,7 @@ textarea {
     z-index:1;
     position:absolute;
     transform:translate(-50%,5px);
+    will-change:transform, opacity;
 }
 
 #benefitsBar:hover .common-Button {
