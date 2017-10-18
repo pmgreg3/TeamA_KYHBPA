@@ -371,6 +371,7 @@
     <Content Include="Content\connector\tree_connector.php" />
     <Content Include="Content\connector\update.php" />
     <Content Include="Content\connector\xss_filter.php" />
+    <Content Include="Content\darkness.png" />
     <Content Include="Content\dhtmlxscheduler.css" />
     <Content Include="Content\dhtmlxscheduler_classic.css" />
     <Content Include="Content\dhtmlxscheduler_contrast_black.css" />
