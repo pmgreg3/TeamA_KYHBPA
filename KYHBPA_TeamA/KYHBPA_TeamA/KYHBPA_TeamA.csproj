@@ -205,6 +205,7 @@
     <Compile Include="Controllers\EventController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\MembershipsController.cs" />
     <Compile Include="Controllers\PhotoController.cs" />
     <Compile Include="Entity\AspNetRole.cs">
       <DependentUpon>KYHBPA.tt</DependentUpon>
@@ -248,14 +249,22 @@
     <Compile Include="Migrations\201710140204134_PhotoUpdate.Designer.cs">
       <DependentUpon>201710140204134_PhotoUpdate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201710180149352_FixingMembership.cs" />
+    <Compile Include="Migrations\201710180149352_FixingMembership.Designer.cs">
+      <DependentUpon>201710180149352_FixingMembership.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710180151519_MakingDateTimesNullable.cs" />
+    <Compile Include="Migrations\201710180151519_MakingDateTimesNullable.Designer.cs">
+      <DependentUpon>201710180151519_MakingDateTimesNullable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710180157466_RemovingMemberID.cs" />
+    <Compile Include="Migrations\201710180157466_RemovingMemberID.Designer.cs">
+      <DependentUpon>201710180157466_RemovingMemberID.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Migrations\201709101953261_InitialCreate.cs" />
     <Compile Include="Migrations\201709101953261_InitialCreate.Designer.cs">
       <DependentUpon>201709101953261_InitialCreate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201709111406196_Initial.cs" />
-    <Compile Include="Migrations\201709111406196_Initial.Designer.cs">
-      <DependentUpon>201709111406196_Initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\201709202032566_AddedPhotoTable.cs" />
     <Compile Include="Migrations\201709202032566_AddedPhotoTable.Designer.cs">
@@ -290,12 +299,12 @@
     <Compile Include="Models\Event.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Membership.cs" />
     <Compile Include="Models\Photo.cs" />
     <Compile Include="Models\DocumentViewModels.cs" />
     <Compile Include="Models\PhotoViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
-    <Compile Include="Models\Member.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\404ErrorPage.css" />
@@ -663,6 +672,12 @@
     <Content Include="Views\Event\Data.cshtml" />
     <Content Include="Views\Event\Index.cshtml" />
     <Content Include="Views\Error\ErrorPage.cshtml" />
+    <Content Include="Views\Memberships\Create.cshtml" />
+    <Content Include="Views\Memberships\Delete.cshtml" />
+    <Content Include="Views\Memberships\Details.cshtml" />
+    <Content Include="Views\Memberships\Edit.cshtml" />
+    <Content Include="Views\Memberships\Index.cshtml" />
+    <Content Include="Views\Home\Membership.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -686,9 +701,6 @@
     <EmbeddedResource Include="Migrations\201709101953261_InitialCreate.resx">
       <DependentUpon>201709101953261_InitialCreate.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201709111406196_Initial.resx">
-      <DependentUpon>201709111406196_Initial.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201709221428199_AddedEventsTable.resx">
       <DependentUpon>201709221428199_AddedEventsTable.cs</DependentUpon>
     </EmbeddedResource>
@@ -709,6 +721,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201710140204134_PhotoUpdate.resx">
       <DependentUpon>201710140204134_PhotoUpdate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710180149352_FixingMembership.resx">
+      <DependentUpon>201710180149352_FixingMembership.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710180151519_MakingDateTimesNullable.resx">
+      <DependentUpon>201710180151519_MakingDateTimesNullable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710180157466_RemovingMemberID.resx">
+      <DependentUpon>201710180157466_RemovingMemberID.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

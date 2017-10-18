@@ -41,5 +41,11 @@ namespace KYHBPA_TeamA.Controllers
 
             return View();
         }
+        public ActionResult Membership()
+        {
+            ViewBag.Message = "Your membership page.";
+
+            return View();
+        }
     }
 }
