@@ -52,8 +52,9 @@ textarea {
 
 /*Social media span*/
 #socialMediaSpan {
-    border-bottom: 2px solid #cccdce;
+    border-bottom: 1px solid #cccdce;
     padding-top: 20px;
+    background-image:url(hypnotize.png);
 }
 
 .socialMediaIcon {
@@ -232,3 +233,37 @@ textarea {
     border: 1px solid #f6f9fc;
 }
 
+#benefitsBar .container-lg {
+    transition: 1s cubic-bezier(.19,1,.22,1);
+    will-change: transform;
+    filter: blur(0)
+}
+
+#benefitsBar:hover .container-lg{
+    opacity:.7;
+    transform:scale(.95);
+    filter:blur(10px);
+
+}
+
+
+#benefitsBar .common-Button{
+    transition: .7s cubic-bezier(.19,1,.22,1);
+    opacity:0;
+    left:50%;
+    z-index:1;
+    position:absolute;
+    transform:translate(-50%,5px);
+}
+
+#benefitsBar:hover .common-Button {
+    opacity: 1;
+    transform: translate(-50%,50px);
+    background-color:#fff;
+    font-weight:600;
+}
+
+#benefitsBar a {
+    text-decoration: none;
+    font-family: Camphor,Open Sans,Segoe UI,sans-serif;
+}
