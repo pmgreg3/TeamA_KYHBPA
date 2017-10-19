@@ -249,6 +249,10 @@
     <Compile Include="Migrations\201710140204134_PhotoUpdate.Designer.cs">
       <DependentUpon>201710140204134_PhotoUpdate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201710182117363_Update-blog.cs" />
+    <Compile Include="Migrations\201710182117363_Update-blog.Designer.cs">
+      <DependentUpon>201710182117363_Update-blog.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Migrations\201709101953261_InitialCreate.cs" />
     <Compile Include="Migrations\201709101953261_InitialCreate.Designer.cs">
@@ -715,6 +719,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201710140204134_PhotoUpdate.resx">
       <DependentUpon>201710140204134_PhotoUpdate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710182117363_Update-blog.resx">
+      <DependentUpon>201710182117363_Update-blog.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
