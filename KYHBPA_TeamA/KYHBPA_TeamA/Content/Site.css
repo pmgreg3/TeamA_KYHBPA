@@ -263,16 +263,20 @@ textarea {
 /*Twitter and Facebook Section*/
 #twitterEmbed {
     background: #fff;
+    flex:1;
+    padding:30px;
     border-width: 0 1px 0 1px;
     border: 1px solid #f6f9fc;
-    border-left: 15px solid #f6f9fc !important;
+    text-align:center;
 }
 
 #facebookEmbed {
     background: #fff;
+    flex: 1;
+    padding: 30px;
     border-width: 0 1px 0 1px;
     border: 1px solid #f6f9fc;
-    border-right: 15px solid #f6f9fc !important;
+    text-align: center;
 }
 
 #socialEmbeds {
@@ -286,7 +290,7 @@ textarea {
     border-radius: 10px;
     text-align: center;
     margin-top: 0px;
-    padding: 3px;
+    padding: 30px;
     border: 1px solid #f6f9fc;
 }
 
