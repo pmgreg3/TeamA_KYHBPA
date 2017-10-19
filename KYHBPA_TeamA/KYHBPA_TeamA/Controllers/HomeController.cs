@@ -13,7 +13,14 @@ namespace KYHBPA_TeamA.Controllers
 
         public ActionResult Index()
         {
-            return View();
+            var first = new DateTime(DateTime.Today.Year, DateTime.Today.Month, 1);
+            var events = db.Events.Where(e => e.EventDate >= first).Select(a => new HomepageEvent
+            {
+                //Map the properties you need
+                Title = a.EventName,
+
+            });
+            return View(events);
         }
 
         public ActionResult About()
