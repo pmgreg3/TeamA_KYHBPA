@@ -85,21 +85,56 @@ textarea {
     display:flex;
     background:#fff;
     border-radius:10px;
+
 }
 
 #becomeAMember {
-    flex: 1;
-    padding: 20px;
+    padding: 20px 0;
+    flex:1;
     border-width: 0 4px 0 0;
     border: 1px solid #f6f9fc;
 }
 
+
 #learnMore {
+    padding: 20px 0;
     flex: 1;
-    padding:20px;
     border-width: 0 0 0 4px;
     border: 1px solid #f6f9fc;
-} 
+}
+
+@media (min-width:1040px) {
+    #becomeAMember {
+        flex: 1;
+        border-width: 0 4px 0 0;
+        padding:70px;
+        border: 1px solid #f6f9fc;
+    }
+
+    #learnMore {
+        flex: 1;
+        padding: 70px;
+        border-width: 0 0 0 4px;
+        border: 1px solid #f6f9fc;
+    }
+}
+
+@media (max-width:670px) {
+    #becomeAMember {
+        border-width: 0 1px 0 0;
+        flex:1;
+    }
+
+    #learnMore {
+        border-width: 0 0 0 1px;
+        flex: 1;
+    }
+
+    #facebookEmbed{
+        display:none;
+    }
+}
+
 
 .common-Button{
     white-space:nowrap;
