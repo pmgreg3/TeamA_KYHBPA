@@ -41,5 +41,11 @@ namespace KYHBPA_TeamA.Controllers
 
             return View();
         }
+        public ActionResult Polls()
+        {
+            ViewBag.Message = "Your Polls page.";
+
+            return View();
+        }
     }
 }
