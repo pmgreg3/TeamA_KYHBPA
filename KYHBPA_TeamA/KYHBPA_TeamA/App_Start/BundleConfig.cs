@@ -17,6 +17,8 @@ namespace KYHBPA_TeamA
             bundles.Add(new ScriptBundle("~/Content/fontawesome").Include(
                     "~/Content/fontawesome.js",
                     "~/Content/solid.js",
+                    "~/Content/brands.min.js",
+                    "~/Content/fontawesome-pro-brands/index.js",
                     "~/Content/regular.js"
                 ));
 
@@ -31,6 +33,7 @@ namespace KYHBPA_TeamA
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
+                      "~/Content/fontawesome-pro-brands.css",
                       "~/Content/Site.css"));
         }
     }

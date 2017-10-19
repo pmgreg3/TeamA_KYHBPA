@@ -24,7 +24,7 @@ textarea {
 
 }
 
-/*Banner text stuff*/
+/*Navbar text stuff*/
 .navbar-inverse .navbar-nav > li > a, .navbar-inverse .navbar-brand {
     color: white;
     font-family: Camphor,Open Sans,Segoe UI,sans-serif;
@@ -37,13 +37,17 @@ textarea {
     background: #24b47e;
 }
 
-#fluid {
-
+.donate-Button {
+    height: unset !important;
+    color: #fff !important;
+    background: #003087 !important;
 }
 
-
-.jumbotron {
+.donate-Button:hover {
+     background: #003087 !important;
+     transform:none !important;
 }
+
 
 .img-gallery-img{
     width:100%;
@@ -285,7 +289,7 @@ textarea {
 
 
 /*Benefits bar*/
-#benefitsBar {
+#benefitsBar{
     background-image: url("hypnotize.png");
     border-radius: 10px;
     text-align: center;
@@ -327,6 +331,15 @@ textarea {
 #benefitsBar a {
     text-decoration: none;
     font-family: Camphor,Open Sans,Segoe UI,sans-serif;
+}
+
+#spacerBar {
+    background-image: url("hypnotize.png");
+    border-radius: 10px;
+    text-align: center;
+    margin-top: 0px;
+    padding: 30px;
+    border: 1px solid #f6f9fc;
 }
 
 #whatYouNeed {
