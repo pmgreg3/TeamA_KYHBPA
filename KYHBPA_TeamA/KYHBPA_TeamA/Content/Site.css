@@ -34,7 +34,7 @@ textarea {
 
 .navbar-inverse {
     border: none;
-    background: rgba(0,0,0,0.65);
+    background: rgba(24, 148, 170, 0.65);
 }
 
 #fluid {
@@ -67,8 +67,9 @@ textarea {
 }
 
 .carousel{
-    max-height:700px;
-    min-height:700px;
+    max-height:600px;
+    min-height:600px;
+    margin-top:25px;
 }
 
 .input {

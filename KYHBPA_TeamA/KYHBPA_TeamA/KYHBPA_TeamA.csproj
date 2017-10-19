@@ -289,6 +289,7 @@
     <Compile Include="Models\Document.cs" />
     <Compile Include="Models\EditBODMemberViewModel.cs" />
     <Compile Include="Models\Event.cs" />
+    <Compile Include="Models\HomepageEvent.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Photo.cs" />

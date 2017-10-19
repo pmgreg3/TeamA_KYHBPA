@@ -4,6 +4,9 @@
     ViewBag.Title = "Home";
 }
 
+<!--Image Gallery-->
+@Html.Action("_ImageGallery", "Photo")
+
 
 <div class="jumbotron">
     <h1><b>Horsemen Helping Horsemen</b></h1>
@@ -11,10 +14,8 @@
     <p><a href="/Home/About" class="btn btn-primary btn-lg">Learn more about our History &raquo;</a></p>
 </div>
 
-<!--Image Gallery-->
-@Html.Action("_ImageGallery", "Photo")
 
-<hr />
+
 <!--Triple Threat Column Layout -->
 <div class="row">
     <div id="Twitter" class="col-md-6">
