@@ -237,6 +237,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\ActionLinkExtensions.cs" />
+    <Compile Include="Helpers\Constants.cs" />
+    <Compile Include="Helpers\Extensions.cs" />
     <Compile Include="Migrations\201709132056451_AddedMemberTable.cs" />
     <Compile Include="Migrations\201709132056451_AddedMemberTable.Designer.cs">
       <DependentUpon>201709132056451_AddedMemberTable.cs</DependentUpon>
@@ -673,6 +676,8 @@
     <Content Include="Views\Blog\Edit.cshtml" />
     <Content Include="Views\Blog\List.cshtml" />
     <Content Include="Views\Blog\Manage.cshtml" />
+    <Content Include="Views\Shared\_PagerPartial.cshtml" />
+    <Content Include="Views\Shared\_PostTemplatePartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
