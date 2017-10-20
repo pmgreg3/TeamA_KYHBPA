@@ -22,6 +22,8 @@ namespace KYHBPA_TeamA.Controllers
             return View(viewModel);
         }
 
+        
+
         public ActionResult About()
         {
             ViewBag.Message = "About the KY HBPA page.";
