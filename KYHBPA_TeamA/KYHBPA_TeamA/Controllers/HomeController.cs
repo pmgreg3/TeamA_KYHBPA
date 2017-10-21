@@ -16,15 +16,20 @@ namespace KYHBPA_TeamA.Controllers
             var first = new DateTime(DateTime.Today.Year, DateTime.Today.Month, 1);
             var events = db.Events.Where(e => e.EventDate >= first).Select(a => new PhotoGalleryViewModel
             {
+                List < Event > eventListForViewModel = new List<Event>()
+                {
+                    new Event()
+                    {
+                        EventDescription = "event description....."
+                    }
+                };
+            PhotoGalleryViewModel.Events = eventListForViewModel;
                 //Map the properties you need
-                Description = a.EventDescription,
-                Start_Time = a.EventDate,
-                End_Time = a.EventTime,
-
-
+                //Description = a.EventDescription,
+                //Start_Time = a.EventDate,
+                //End_Time = a.EventTime,
             }).ToList();
-            
-            
+                      
             return View();
         }
 
