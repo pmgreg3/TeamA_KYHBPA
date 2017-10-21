@@ -2,6 +2,7 @@
     padding-top: 50px;
     padding-bottom: 400px;
     background: #f6f9fc;
+    font-family: Camphor,Open Sans,Segoe UI,sans-serif;
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -121,6 +122,20 @@ textarea {
         border-width: 0 0 0 4px;
         border: 1px solid #f6f9fc;
     }
+
+    #raceTracks {
+        flex: 1;
+        border-width: 0 4px 0 0;
+        padding: 70px;
+        border: 1px solid #f6f9fc;
+    }
+
+    #upcomingEvents {
+        flex: 1;
+        padding: 70px;
+        border-width: 0 0 0 4px;
+        border: 1px solid #f6f9fc;
+    }
 }
 
 @media (max-width:670px) {
@@ -133,6 +148,17 @@ textarea {
         border-width: 0 0 0 1px;
         flex: 1;
     }
+
+    #upcomingEvents {
+        border-width: 0 0 0 1px;
+        flex: 1;
+    }
+
+    #raceTracks {
+        border-width: 0 1px 0 0;
+        flex: 1;
+    }
+
 
     #facebookEmbed{
         display:none;
@@ -162,12 +188,26 @@ textarea {
     letter-spacing: .10em;
 }
 
+
+.common-ButtonVariant {
+    color: #fff !important;
+    background: #24b47e !important;
+}
+
 .carousel-inner > .item > img {
     margin: auto;
 }
 
-.carousel{
-    max-height:800px;
+.carousel {
+    max-height: 800px;
+    box-shadow:1px -12px 20px 14px black
+}
+
+.carousel-caption {
+    background: rgba(0,0,0,0.4);
+    right:0;
+    left:0;
+    position:absolute;
 }
 
 .input {
@@ -339,6 +379,24 @@ textarea {
     text-align: center;
     margin-top: 0px;
     padding: 30px;
+    border: 1px solid #f6f9fc;
+}
+
+
+/*Racetracks section*/
+#raceTracks li{
+    display:inline-block;
+
+}
+
+#raceTracks {
+    flex: 1;
+    border: 1px solid #f6f9fc;
+}
+
+/*Events Section*/
+#upcomingEvents {
+    flex: 1;
     border: 1px solid #f6f9fc;
 }
 
