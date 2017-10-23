@@ -29,6 +29,7 @@
             {
                 <div class="item ">
                     <h1 class="carousel-caption">@Model.Photos.ElementAt(i).Description
+                        <i class="fab facebook-square" style="margin-bottom: 1rem;"></i>
                     </h1>
                     <img src="@Url.Action("GetPhoto", "Photo", new { Model.Photos.ElementAt(i).Id })"  />
                 </div>
