@@ -4595,10 +4595,10 @@ textarea.input-group-sm > .input-group-btn > .btn {
   border-bottom-color: #ffffff;
 }
 
-.navbar-inverse .navbar-nav > .dropdown > a .caret {
-  border-top-color: #999999;
-  border-bottom-color: #999999;
-}
+    .navbar-inverse .navbar-nav > .dropdown > a .caret {
+        border-top-color: #156a4b;
+        border-bottom-color: #156a4b;
+    }
 
 .navbar-inverse .navbar-nav > .open > a .caret,
 .navbar-inverse .navbar-nav > .open > a:hover .caret,
