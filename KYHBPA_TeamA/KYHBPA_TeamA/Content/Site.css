@@ -258,21 +258,26 @@ textarea {
     padding: 7px;
 }
 
-#brandLogo{
-    height:50px;
-    width:80px;
+#brandLogo {
+    height: 50px;
+    width: 80px;
+    margin-left:15px;
 }
 
-.showMe{
-    display:none;
+.showMe {
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s, opacity 0.5s linear;
 }
 
 .brandText {
     color: #fff;
-    font-weight: 600;
+    font-weight: 200;
     font-size: 29px;
     text-transform: uppercase;
     font-family: Camphor,Open Sans,Segoe UI,sans-serif;
+    margin-left:6px;
+    padding-left:5px;
 } 
 
 #brandArea {
@@ -287,7 +292,10 @@ textarea {
 }
 
 #brandArea:hover .showMe {
-    display:inline-block;
+     visibility: visible;
+     opacity: 1;
+     color: #fff;
+     text-decoration: none;
 }
 
 
