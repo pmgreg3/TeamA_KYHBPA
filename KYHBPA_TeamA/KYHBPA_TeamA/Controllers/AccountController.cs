@@ -157,6 +157,7 @@ namespace KYHBPA_TeamA.Controllers
                     Email = model.Email,
                     FirstName = model.FirstName,
                     LastName = model.LastName,
+                    AppliedForMembership = false
                     //Membership = new Membership() { } Membership will not be creatued until user applies
                 };
 

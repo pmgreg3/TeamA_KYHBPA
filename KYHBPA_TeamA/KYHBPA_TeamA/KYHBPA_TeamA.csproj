@@ -261,6 +261,10 @@
     <Compile Include="Migrations\201710180157466_RemovingMemberID.Designer.cs">
       <DependentUpon>201710180157466_RemovingMemberID.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201710230023117_AddedToMembership.cs" />
+    <Compile Include="Migrations\201710230023117_AddedToMembership.Designer.cs">
+      <DependentUpon>201710230023117_AddedToMembership.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Migrations\201709101953261_InitialCreate.cs" />
     <Compile Include="Migrations\201709101953261_InitialCreate.Designer.cs">
@@ -300,6 +304,7 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Membership.cs" />
+    <Compile Include="Models\MembershipsViewModels.cs" />
     <Compile Include="Models\Photo.cs" />
     <Compile Include="Models\DocumentViewModels.cs" />
     <Compile Include="Models\PhotoViewModels.cs" />
@@ -678,6 +683,7 @@
     <Content Include="Views\Memberships\Edit.cshtml" />
     <Content Include="Views\Memberships\Index.cshtml" />
     <Content Include="Views\Home\Membership.cshtml" />
+    <Content Include="Views\Memberships\MembershipError.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -730,6 +736,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201710180157466_RemovingMemberID.resx">
       <DependentUpon>201710180157466_RemovingMemberID.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710230023117_AddedToMembership.resx">
+      <DependentUpon>201710230023117_AddedToMembership.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

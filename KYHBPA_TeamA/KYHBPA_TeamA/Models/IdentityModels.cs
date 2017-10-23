@@ -14,6 +14,7 @@ namespace KYHBPA_TeamA.Models
         public Membership Membership { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
+        public bool AppliedForMembership { get; set; }
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<KYHBPAUser> manager)
         {

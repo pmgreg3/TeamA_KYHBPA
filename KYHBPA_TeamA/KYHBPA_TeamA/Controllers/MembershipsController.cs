@@ -52,19 +52,60 @@ namespace KYHBPA_TeamA.Controllers
         [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,DateofBirth,MembershipEnrollment,Email,PhoneNumber,Address,City,State,ZipCode,LicenseNumber,IsOwner,IsTrainer,IsOwnerAndTrainer,AgreedToTerms,Signature,Affiliation,ManagingPartner")] Membership membership)
+        public ActionResult Create(MembershipsViewModels.CreateMembershipViewModel viewModel)
         {
-            if (ModelState.IsValid)
+            //db.Users.Find(User.Identity.GetUserId()).Membership.ID == null
+            //if (ModelState.IsValid)
+
+            //{
+            //    if(db.Users.Find(User.Identity.GetUserId()).Membership == null)
+            //    {
+            //        db.Users.Find(User.Identity.GetUserId()).Membership = membership;
+            //        db.Memberships.Add(membership);
+            //        db.SaveChanges();
+            //        return RedirectToAction("Index");
+            //    }
+            //    else
+            //    {
+            //        return RedirectToAction("MembershipError");
+            //    }
+            //}
+            //return View(membership);
+
+            if (ModelState.IsValid && db.Users.Find(User.Identity.GetUserId()).AppliedForMembership == false)
             {
+                var membership = new Membership()
+                { 
+                    DateofBirth = viewModel.DateofBirth,
+                    PhoneNumber = viewModel.PhoneNumber,
+                    Address = viewModel.Address,
+                    City = viewModel.City,
+                    State = viewModel.State,
+                    ZipCode = viewModel.ZipCode,
+                    LicenseNumber = viewModel.LicenseNumber,
+                    IsOwner = viewModel.IsOwner,
+                    IsTrainer = viewModel.IsTrainer,
+                    Affiliation = viewModel.Affiliation,
+                    ManagingPartner = viewModel.ManagingPartner,
+                    AgreedToTerms = viewModel.AgreedToTerms,
+                    Signature = viewModel.Signature,
+                    MembershipEnrollment = DateTime.Now
+                };
 
-                db.Users.Find(User.Identity.GetUserId()).Membership = membership;
-                db.Memberships.Add(membership);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                if(membership.IsOwner == true && membership.IsTrainer == true)
+                {
+                    membership.IsOwnerAndTrainer = true;
+                }
+                
+                    db.Users.Find(User.Identity.GetUserId()).AppliedForMembership = true;
+                    db.Users.Find(User.Identity.GetUserId()).Membership = membership;
+                    db.Memberships.Add(membership);
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+
+               
             }
-
-            return View(membership);
-        }
+            return RedirectToAction("MembershipError");        }
 
         // GET: Memberships/Edit/5
         [Authorize]
@@ -88,7 +129,7 @@ namespace KYHBPA_TeamA.Controllers
         [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,DateofBirth,MembershipEnrollment,Email,PhoneNumber,Address,City,State,ZipCode,LicenseNumber,IsOwner,IsTrainer,IsOwnerAndTrainer,AgreedToTerms,Signature,Affiliation,ManagingPartner")] Membership membership)
+        public ActionResult Edit([Bind(Include = "ID,DateofBirth,MembershipEnrollment,PhoneNumber,Address,City,State,ZipCode,LicenseNumber,IsOwner,IsTrainer,IsOwnerAndTrainer,AgreedToTerms,Signature,Affiliation,ManagingPartner")] Membership membership)
         {
             if (ModelState.IsValid)
             {
