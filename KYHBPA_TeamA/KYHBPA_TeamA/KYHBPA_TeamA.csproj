@@ -369,6 +369,7 @@
     <Content Include="Content\dhtmlxscheduler_contrast_white.css" />
     <Content Include="Content\dhtmlxscheduler_flat.css" />
     <Content Include="Content\dhtmlxscheduler_glossy.css" />
+    <Content Include="Content\eventsImage.png" />
     <Content Include="Content\ext\dhtmlxscheduler_active_links.js" />
     <Content Include="Content\ext\dhtmlxscheduler_agenda_view.js" />
     <Content Include="Content\ext\dhtmlxscheduler_all_timed.js" />
@@ -578,6 +579,11 @@
     <Content Include="Content\locale\recurring\repeat_template_ro.html" />
     <Content Include="Content\locale\recurring\repeat_template_ru.html" />
     <Content Include="Content\locale\recurring\repeat_template_sk.html" />
+    <Content Include="Content\logo.png" />
+    <Content Include="Content\logoForKyhbpa.png" />
+    <Content Include="Content\logoForKyhbpa2.png" />
+    <Content Include="Content\logoForKyhbpa3.png" />
+    <Content Include="Content\partnershipBar.png" />
     <Content Include="Content\regular.js" />
     <Content Include="Content\slider1.jpg" />
     <Content Include="Content\slider2.jpg" />
