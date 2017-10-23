@@ -39,6 +39,9 @@ namespace KYHBPA_TeamA.Models
         public DbSet<Photo> Photos { get; set; }
         public DbSet<Event> Events { get; set; }
         public DbSet<Document> Documents { get; set; }
+        public DbSet<Post> Posts { get; set; }
+        public DbSet<Category> Categories { get; set; }
+        public DbSet<Comment> Comments { get; set; }
 
     }
 }

@@ -199,6 +199,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\BlogController.cs" />
     <Compile Include="Controllers\BoardOfDirectorsController.cs" />
     <Compile Include="Controllers\DocumentController.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
@@ -236,6 +237,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\ActionLinkExtensions.cs" />
+    <Compile Include="Helpers\Constants.cs" />
+    <Compile Include="Helpers\Extensions.cs" />
     <Compile Include="Migrations\201709132056451_AddedMemberTable.cs" />
     <Compile Include="Migrations\201709132056451_AddedMemberTable.Designer.cs">
       <DependentUpon>201709132056451_AddedMemberTable.cs</DependentUpon>
@@ -247,6 +251,10 @@
     <Compile Include="Migrations\201710140204134_PhotoUpdate.cs" />
     <Compile Include="Migrations\201710140204134_PhotoUpdate.Designer.cs">
       <DependentUpon>201710140204134_PhotoUpdate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710182117363_Update-blog.cs" />
+    <Compile Include="Migrations\201710182117363_Update-blog.Designer.cs">
+      <DependentUpon>201710182117363_Update-blog.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Migrations\201709101953261_InitialCreate.cs" />
@@ -282,9 +290,17 @@
       <DependentUpon>201709252012182_AddingMemberToApplicationUser.cs</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Blog.cs" />
+    <Compile Include="Models\BlogListViewModel.cs" />
+    <Compile Include="Models\BlogPostDetailsViewModel.cs" />
     <Compile Include="Models\BoardOfDirectors.cs" />
     <Compile Include="Models\BoardOfDirectorsViewModels.cs" />
+    <Compile Include="Models\Category.cs" />
+    <Compile Include="Models\CategoryListViewModel.cs" />
+    <Compile Include="Models\Comment.cs" />
+    <Compile Include="Models\CreateBlogPostViewModel.cs" />
     <Compile Include="Models\CreateBODMemberViewModel.cs" />
+    <Compile Include="Models\CreateCommentViewModel.cs" />
     <Compile Include="Models\Document.cs" />
     <Compile Include="Models\EditBODMemberViewModel.cs" />
     <Compile Include="Models\Event.cs" />
@@ -293,7 +309,9 @@
     <Compile Include="Models\Photo.cs" />
     <Compile Include="Models\DocumentViewModels.cs" />
     <Compile Include="Models\PhotoViewModels.cs" />
+    <Compile Include="Models\Tag.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\BlogRepository.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="Models\Member.cs" />
   </ItemGroup>
@@ -676,6 +694,14 @@
     <Content Include="Views\Error\ErrorPage.cshtml" />
     <Content Include="Views\Home\Polls.cshtml" />
     <Content Include="Views\Home\GamblingEducation.cshtml" />
+    <Content Include="Views\Blog\Create.cshtml" />
+    <Content Include="Views\Blog\CreateComment.cshtml" />
+    <Content Include="Views\Blog\Details.cshtml" />
+    <Content Include="Views\Blog\Edit.cshtml" />
+    <Content Include="Views\Blog\List.cshtml" />
+    <Content Include="Views\Blog\Manage.cshtml" />
+    <Content Include="Views\Shared\_PagerPartial.cshtml" />
+    <Content Include="Views\Shared\_PostTemplatePartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -722,6 +748,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201710140204134_PhotoUpdate.resx">
       <DependentUpon>201710140204134_PhotoUpdate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710182117363_Update-blog.resx">
+      <DependentUpon>201710182117363_Update-blog.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
