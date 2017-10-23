@@ -27,6 +27,19 @@ form {
     color:inherit;
     font-size:medium;
 }
+#map {
+    position: absolute;
+    height: 66%;
+    width: 33%;
+}
+.logoImage {
+    position:absolute;
+    top:3px;
+    left: 17px;
+    z-index: 21;
+    max-width: 85px;
+    height: auto;
+}
 article,
 aside,
 details,
@@ -144,6 +157,7 @@ sub {
 }
 
 img {
+  vertical-align: middle;
   border: 0;
 }
 

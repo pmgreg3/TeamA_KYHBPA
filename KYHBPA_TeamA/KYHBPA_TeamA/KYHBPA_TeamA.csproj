@@ -396,6 +396,7 @@
     <Content Include="Content\ext\dhtmlxscheduler_week_agenda.js" />
     <Content Include="Content\ext\dhtmlxscheduler_wp.js" />
     <Content Include="Content\ext\dhtmlxscheduler_year_view.js" />
+    <Content Include="Content\favicon.ico" />
     <Content Include="Content\fontawesome.js" />
     <Content Include="Content\fontawesome.min.js" />
     <Content Include="Content\hbpaBanner4.jpg" />
@@ -563,6 +564,7 @@
     <Content Include="Content\locale\recurring\repeat_template_ro.html" />
     <Content Include="Content\locale\recurring\repeat_template_ru.html" />
     <Content Include="Content\locale\recurring\repeat_template_sk.html" />
+    <Content Include="Content\Logo.png" />
     <Content Include="Content\regular.js" />
     <Content Include="Content\slider1.jpg" />
     <Content Include="Content\slider2.jpg" />
