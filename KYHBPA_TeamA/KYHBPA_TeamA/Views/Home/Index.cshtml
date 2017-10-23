@@ -73,8 +73,8 @@
             <a href="/Home/Benefits" class="common-Button">Learn more</a>
         </section>
     </div>
-    <div id="Join" class="col-md-8">
-        <hr />
+    @*<div id="Join" class="col-md-8">*@
+        @*<hr />
         <h2 class="text-center">Events</h2>
         <hr />
         @foreach (var items in Model.Events)
@@ -83,12 +83,12 @@
             <p class="col-lg-12" id="EventDescription">@items.EventDescription</p>
             <br />
             @*<p class="col-md-3" id="Start"> Start Time: </p>*@
-            <p class="col-md-6" id="EventStart"><b>Start Time:</b>@items.EventDate</p>
+            @*<p class="col-md-6" id="EventStart"><b>Start Time:</b>@items.EventDate</p>
             @*<p class="col-md-3" id="End"> End Time: </p>*@
-            <p class="col-md-6" id="EventEnd"><b>End Time:</b>@items.EventTime</p>
+            @*<p class="col-md-6" id="EventEnd"><b>End Time:</b>@items.EventTime</p>
             <br />
 
-        }
+        }*@
 
 <section id="benefitsBar">
     <a class="common-Button" href="/Home/Benefits">Benefits</a>
@@ -137,7 +137,16 @@
         </section>
         <section id="upcomingEvents">
             <h2 class="common-UppercaseTitle">Upcoming Events</h2>
-            <img src="~/Content/eventsImage.png"/>
+
+            @foreach (var items in Model.Events)
+            {
+                <br />
+                <div class="DescrSquare"><p class="col-lg-12" id="EventDescription">@items.EventDescription</p></div>
+                <div class="TimeSquare"> <p class="col-md-6" id="EventStart"><b>Start Time:</b>@items.EventDate</p>
+                <p class="col-md-6" id="EventEnd"><b>End Time:</b>@items.EventTime</p></div>
+                <br />
+
+            }
         </section>
     </div>
 </section>   

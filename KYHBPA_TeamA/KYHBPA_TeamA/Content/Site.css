@@ -476,3 +476,34 @@ textarea {
 #hrfooter {
     border-top: 1px solid #fefefe;
 }
+
+#EventDescription{
+    font-size:18px;
+    font-weight:600;
+    text-align:left;
+    margin-bottom:0px;
+    padding:15px;
+}
+
+#EventStart{
+    font-size:15px;
+    color:white;
+}
+
+#EventEnd {
+    font-size: 15px;
+    color: white;
+}
+
+.DescrSquare {
+    background-image: url(hypnotize.png);
+    margin-bottom:0px;
+}
+
+.TimeSquare {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    background: #24b47e;
+    padding-top:10px;
+}
