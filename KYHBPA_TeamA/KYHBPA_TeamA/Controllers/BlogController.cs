@@ -98,7 +98,7 @@ namespace KYHBPA_TeamA.Controllers
         }
 
 
-        public ActionResult Edit(int id)
+        /*public ActionResult Edit(int id)
         {
             var post = _db.Posts.FirstOrDefault(p => p.Id == id);
 
@@ -117,7 +117,7 @@ namespace KYHBPA_TeamA.Controllers
             };
 
             return View(viewModel);
-        }
+        }*/
 
 
         public ActionResult Details(int id)
