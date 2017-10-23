@@ -258,8 +258,43 @@ textarea {
     padding: 7px;
 }
 
-.dropdown-menu > li > a{
-    color:white;
+#brandLogo{
+    height:50px;
+    width:80px;
+}
+
+.showMe{
+    display:none;
+}
+
+.brandText {
+    color: #fff;
+    font-weight: 600;
+    font-size: 29px;
+    text-transform: uppercase;
+    font-family: Camphor,Open Sans,Segoe UI,sans-serif;
+} 
+
+#brandArea {
+    display: block;
+    margin-right:35px;
+    padding-left:5px;
+
+}
+
+#brandArea:hover .hideMe  {
+    display: none;
+}
+
+#brandArea:hover .showMe {
+    display:inline-block;
+}
+
+
+
+
+.dropdown-menu > li > a {
+    color: white;
 }
 
 /*Home Index Section*/
