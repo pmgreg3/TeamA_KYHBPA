@@ -1,0 +1,31 @@
+﻿
+@{
+    ViewBag.Title = "List";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model KYHBPA_TeamA.Models.BlogListViewModel
+
+<div id="content">
+
+    <h2 class="common-Uppercase">Blogs</h2>
+
+    @Html.ActionLink("Create", "Create", "Blog", new { @class = "btn btn-primary" })
+
+    @Html.Partial("_PagerPartial", Model)
+
+    @if (Model.Posts.Count > 0)
+    {
+        foreach (var post in Model.Posts)
+        {
+            @Html.Partial("_PostTemplatePartial", post)
+        }
+    }
+    else
+    {
+        <p>No posts found!</p>
+    }
+
+    @Html.Partial("_PagerPartial", Model)
+
+</div>

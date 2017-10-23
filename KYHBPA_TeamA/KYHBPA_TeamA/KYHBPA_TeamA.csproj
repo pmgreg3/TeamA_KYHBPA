@@ -199,6 +199,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\BlogController.cs" />
     <Compile Include="Controllers\BoardOfDirectorsController.cs" />
     <Compile Include="Controllers\DocumentController.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
@@ -237,6 +238,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\ActionLinkExtensions.cs" />
+    <Compile Include="Helpers\Constants.cs" />
+    <Compile Include="Helpers\Extensions.cs" />
     <Compile Include="Migrations\201709132056451_AddedMemberTable.cs" />
     <Compile Include="Migrations\201709132056451_AddedMemberTable.Designer.cs">
       <DependentUpon>201709132056451_AddedMemberTable.cs</DependentUpon>
@@ -264,6 +268,10 @@
     <Compile Include="Migrations\201710230023117_AddedToMembership.cs" />
     <Compile Include="Migrations\201710230023117_AddedToMembership.Designer.cs">
       <DependentUpon>201710230023117_AddedToMembership.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710182117363_Update-blog.cs" />
+    <Compile Include="Migrations\201710182117363_Update-blog.Designer.cs">
+      <DependentUpon>201710182117363_Update-blog.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Migrations\201709101953261_InitialCreate.cs" />
@@ -295,9 +303,17 @@
       <DependentUpon>201709252012182_AddingMemberToApplicationUser.cs</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Blog.cs" />
+    <Compile Include="Models\BlogListViewModel.cs" />
+    <Compile Include="Models\BlogPostDetailsViewModel.cs" />
     <Compile Include="Models\BoardOfDirectors.cs" />
     <Compile Include="Models\BoardOfDirectorsViewModels.cs" />
+    <Compile Include="Models\Category.cs" />
+    <Compile Include="Models\CategoryListViewModel.cs" />
+    <Compile Include="Models\Comment.cs" />
+    <Compile Include="Models\CreateBlogPostViewModel.cs" />
     <Compile Include="Models\CreateBODMemberViewModel.cs" />
+    <Compile Include="Models\CreateCommentViewModel.cs" />
     <Compile Include="Models\Document.cs" />
     <Compile Include="Models\EditBODMemberViewModel.cs" />
     <Compile Include="Models\Event.cs" />
@@ -308,13 +324,16 @@
     <Compile Include="Models\Photo.cs" />
     <Compile Include="Models\DocumentViewModels.cs" />
     <Compile Include="Models\PhotoViewModels.cs" />
+    <Compile Include="Models\Tag.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\BlogRepository.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\404ErrorPage.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\brands.min.js" />
     <Content Include="Content\brands.svg" />
     <Content Include="Content\connector\base_connector.php" />
     <Content Include="Content\connector\chart_connector.php" />
@@ -365,13 +384,13 @@
     <Content Include="Content\connector\tree_connector.php" />
     <Content Include="Content\connector\update.php" />
     <Content Include="Content\connector\xss_filter.php" />
-    <Content Include="Content\darkness.png" />
     <Content Include="Content\dhtmlxscheduler.css" />
     <Content Include="Content\dhtmlxscheduler_classic.css" />
     <Content Include="Content\dhtmlxscheduler_contrast_black.css" />
     <Content Include="Content\dhtmlxscheduler_contrast_white.css" />
     <Content Include="Content\dhtmlxscheduler_flat.css" />
     <Content Include="Content\dhtmlxscheduler_glossy.css" />
+    <Content Include="Content\eventsImage.png" />
     <Content Include="Content\ext\dhtmlxscheduler_active_links.js" />
     <Content Include="Content\ext\dhtmlxscheduler_agenda_view.js" />
     <Content Include="Content\ext\dhtmlxscheduler_all_timed.js" />
@@ -410,6 +429,10 @@
     <Content Include="Content\ext\dhtmlxscheduler_week_agenda.js" />
     <Content Include="Content\ext\dhtmlxscheduler_wp.js" />
     <Content Include="Content\ext\dhtmlxscheduler_year_view.js" />
+    <Content Include="Content\fontawesome-pro-brands.css" />
+    <Content Include="Content\fontawesome-pro-brands\index.es.js" />
+    <Content Include="Content\fontawesome-pro-brands\index.js" />
+    <Content Include="Content\favicon.ico" />
     <Content Include="Content\fontawesome.js" />
     <Content Include="Content\fontawesome.min.js" />
     <Content Include="Content\hbpaBanner4.jpg" />
@@ -577,6 +600,10 @@
     <Content Include="Content\locale\recurring\repeat_template_ro.html" />
     <Content Include="Content\locale\recurring\repeat_template_ru.html" />
     <Content Include="Content\locale\recurring\repeat_template_sk.html" />
+    <Content Include="Content\logo.png" />
+    <Content Include="Content\logoForKyhbpa.png" />
+    <Content Include="Content\logoForKyhbpa3.png" />
+    <Content Include="Content\partnershipBar.png" />
     <Content Include="Content\regular.js" />
     <Content Include="Content\slider1.jpg" />
     <Content Include="Content\slider2.jpg" />
@@ -609,6 +636,7 @@
     <Content Include="Entity\KYHBPA.edmx.diagram">
       <DependentUpon>KYHBPA.edmx</DependentUpon>
     </Content>
+    <Content Include="Content\fontawesome-pro-brands\package.json" />
     <None Include="Properties\PublishProfiles\spike.cis420.net - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\dhtmlxscheduler.js" />
@@ -684,6 +712,16 @@
     <Content Include="Views\Memberships\Index.cshtml" />
     <Content Include="Views\Home\Membership.cshtml" />
     <Content Include="Views\Memberships\MembershipError.cshtml" />
+    <Content Include="Views\Home\Polls.cshtml" />
+    <Content Include="Views\Home\GamblingEducation.cshtml" />
+    <Content Include="Views\Blog\Create.cshtml" />
+    <Content Include="Views\Blog\CreateComment.cshtml" />
+    <Content Include="Views\Blog\Details.cshtml" />
+    <Content Include="Views\Blog\Edit.cshtml" />
+    <Content Include="Views\Blog\List.cshtml" />
+    <Content Include="Views\Blog\Manage.cshtml" />
+    <Content Include="Views\Shared\_PagerPartial.cshtml" />
+    <Content Include="Views\Shared\_PostTemplatePartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -739,6 +777,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201710230023117_AddedToMembership.resx">
       <DependentUpon>201710230023117_AddedToMembership.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710182117363_Update-blog.resx">
+      <DependentUpon>201710182117363_Update-blog.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

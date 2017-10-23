@@ -1,14 +1,14 @@
 ﻿@model IEnumerable<KYHBPA_TeamA.Models.DisplayDocumentsViewModel>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Documents";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Document Library</h2>
+<h2 class="common-Uppercase text-center">Document Library</h2>
 
 <p>
-    <button class="btn btn-primary col-md-2 pull-left" onclick="location.href='@Url.Action("Create", "Document")'">Create New</button>
+    @Html.ActionLink("Create New", "Create", "", new { @class = "common-Button" })
 </p>
 <table class="table">
     <tr>

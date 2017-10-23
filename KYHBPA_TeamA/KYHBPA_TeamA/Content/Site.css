@@ -1,7 +1,7 @@
 ﻿body {
     padding-top: 50px;
-    padding-bottom: 400px;
     background: #f6f9fc;
+    font-family: Camphor,Open Sans,Segoe UI,sans-serif;
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -24,11 +24,24 @@ textarea {
 
 }
 
-/*Banner text stuff*/
+/*Navbar text stuff*/
 .navbar-inverse .navbar-nav > li > a, .navbar-inverse .navbar-brand {
     color: white;
     font-family: Camphor,Open Sans,Segoe UI,sans-serif;
     font-size: 20px;
+}
+
+
+.navbar-inverse .navbar-nav > li > a:hover {
+     background-color: rgb(17, 154, 103) !important;
+}
+
+.dropdown-menu > li > a:hover {
+    background-color: rgb(17, 154, 103) !important;
+}
+
+.navbar-inverse .navbar-nav > .open > a, .navbar-inverse .navbar-nav > .open > a:hover, .navbar-inverse .navbar-nav > .open > a:focus {
+    background-color: #52e1a8;
 }
 
 .navbar-inverse {
@@ -37,13 +50,17 @@ textarea {
     background: #24b47e;
 }
 
-#fluid {
-
+.donate-Button {
+    height: unset !important;
+    color: #fff !important;
+    background: #003087 !important;
 }
 
-
-.jumbotron {
+.donate-Button:hover {
+     background: #003087 !important;
+     transform:none !important;
 }
+
 
 .img-gallery-img{
     width:100%;
@@ -85,21 +102,90 @@ textarea {
     display:flex;
     background:#fff;
     border-radius:10px;
+
 }
 
 #becomeAMember {
-    flex: 1;
-    padding: 20px;
+    padding: 20px 0;
+    flex:1;
     border-width: 0 4px 0 0;
     border: 1px solid #f6f9fc;
 }
 
+
 #learnMore {
+    padding: 20px 0;
     flex: 1;
-    padding:20px;
     border-width: 0 0 0 4px;
     border: 1px solid #f6f9fc;
-} 
+}
+
+#raceTracks > ul{
+    padding-right:40px;
+}
+
+
+@media (min-width:1040px) {
+    #becomeAMember {
+        flex: 1;
+        border-width: 0 4px 0 0;
+        padding:70px;
+        border: 1px solid #f6f9fc;
+    }
+
+    #learnMore {
+        flex: 1;
+        padding: 70px;
+        border-width: 0 0 0 4px;
+        border: 1px solid #f6f9fc;
+    }
+
+    #raceTracks {
+        flex: 1;
+        border-width: 0 4px 0 0;
+        padding: 70px;
+        border: 1px solid #f6f9fc;
+    }
+
+    #upcomingEvents {
+        flex: 1;
+        padding: 70px;
+        border-width: 0 0 0 4px;
+        border: 1px solid #f6f9fc;
+    }
+}
+
+@media (max-width:670px) {
+    #becomeAMember {
+        border-width: 0 1px 0 0;
+        flex:1;
+    }
+
+    #learnMore {
+        border-width: 0 0 0 1px;
+        flex: 1;
+    }
+
+    #upcomingEvents {
+        border-width: 0 0 0 1px;
+        flex: 1;
+    }
+
+    #raceTracks {
+        border-width: 0 1px 0 0;
+        flex: 1;
+    }
+
+
+    #facebookEmbed{
+        display:none;
+    }
+
+    #spacerBar{
+        display:none;
+    }
+}
+
 
 .common-Button{
     white-space:nowrap;
@@ -123,12 +209,27 @@ textarea {
     letter-spacing: .10em;
 }
 
+
+.common-ButtonVariant {
+    color: #fff !important;
+    background: #24b47e !important;
+    margin:5px;
+}
+
 .carousel-inner > .item > img {
     margin: auto;
 }
 
-.carousel{
-    max-height:800px;
+.carousel {
+    max-height: 800px;
+    box-shadow:1px -12px 20px 14px black
+}
+
+.carousel-caption {
+    background: rgba(0,0,0,0.4);
+    right:0;
+    left:0;
+    position:absolute;
 }
 
 .input {
@@ -169,14 +270,57 @@ textarea {
 
 /*Drop Down menu Style*/
 .navbar-nav > li > .dropdown-menu {
-    background: rgba(0,0,0,0.65);
-    color:white;
-    font-size:22px;
-    padding:7px;
+    background: rgb(82, 225, 168);
+    color: white;
+    font-size: 22px;
+    padding: 7px;
 }
 
-.dropdown-menu > li > a{
-    color:white;
+#brandLogo {
+    height: 50px;
+    width: 80px;
+    margin-left:15px;
+}
+
+.showMe {
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s, opacity 0.5s linear;
+}
+
+.brandText {
+    color: #fff;
+    font-weight: 200;
+    font-size: 29px;
+    text-transform: uppercase;
+    font-family: Camphor,Open Sans,Segoe UI,sans-serif;
+    margin-left:6px;
+    padding-left:5px;
+} 
+
+#brandArea {
+    display: block;
+    margin-right:35px;
+    padding-left:5px;
+
+}
+
+#brandArea:hover .hideMe  {
+    display: none;
+}
+
+#brandArea:hover .showMe {
+     visibility: visible;
+     opacity: 1;
+     color: #fff;
+     text-decoration: none;
+}
+
+
+
+
+.dropdown-menu > li > a {
+    color: white;
 }
 
 /*Home Index Section*/
@@ -210,6 +354,13 @@ textarea {
     line-height: 26px;
     color: #6b7c93;
 }
+.common-LargerBodyText {
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 26px;
+    color: #6b7c93;
+}
+
 
 .common-UppercaseTitle {
     color: #24b47e;
@@ -221,16 +372,20 @@ textarea {
 /*Twitter and Facebook Section*/
 #twitterEmbed {
     background: #fff;
+    flex:1;
+    padding:30px;
     border-width: 0 1px 0 1px;
     border: 1px solid #f6f9fc;
-    border-left: 15px solid #f6f9fc !important;
+    text-align:center;
 }
 
 #facebookEmbed {
     background: #fff;
+    flex: 1;
+    padding: 30px;
     border-width: 0 1px 0 1px;
     border: 1px solid #f6f9fc;
-    border-right: 15px solid #f6f9fc !important;
+    text-align: center;
 }
 
 #socialEmbeds {
@@ -239,12 +394,12 @@ textarea {
 
 
 /*Benefits bar*/
-#benefitsBar {
+#benefitsBar{
     background-image: url("hypnotize.png");
     border-radius: 10px;
     text-align: center;
     margin-top: 0px;
-    padding: 3px;
+    padding: 30px;
     border: 1px solid #f6f9fc;
 }
 
@@ -281,4 +436,43 @@ textarea {
 #benefitsBar a {
     text-decoration: none;
     font-family: Camphor,Open Sans,Segoe UI,sans-serif;
+}
+
+#spacerBar {
+    background-image: url("hypnotize.png");
+    border-radius: 10px;
+    text-align: center;
+    margin-top: 0px;
+    padding: 30px;
+    border: 1px solid #f6f9fc;
+}
+
+
+/*Racetracks section*/
+#raceTracks li{
+    display:inline-block;
+
+}
+
+#raceTracks {
+    flex: 1;
+    border: 1px solid #f6f9fc;
+}
+
+/*Events Section*/
+#upcomingEvents {
+    flex: 1;
+    border: 1px solid #f6f9fc;
+}
+
+#whatYouNeed {
+    flex: 1;
+    padding: 20px;
+    border-width: 0 4px 0 0;
+    border: 1px solid #f6f9fc;
+}
+
+
+#hrfooter {
+    border-top: 1px solid #fefefe;
 }
