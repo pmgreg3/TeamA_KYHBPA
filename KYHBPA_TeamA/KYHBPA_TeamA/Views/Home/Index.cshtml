@@ -77,12 +77,17 @@
         <hr />
         <h2 class="text-center">Events</h2>
         <hr />
-        @foreach(var items in Model.Events)
+        @foreach (var items in Model.Events)
         {
-            <b>@items.EventDescription</b>
-            <p>@items.EventDate</p>
-            <p>@items.EventTime</p>
-            
+            <br />
+            <p class="col-lg-12" id="EventDescription">@items.EventDescription</p>
+            <br />
+            @*<p class="col-md-3" id="Start"> Start Time: </p>*@
+            <p class="col-md-6" id="EventStart"><b>Start Time:</b>@items.EventDate</p>
+            @*<p class="col-md-3" id="End"> End Time: </p>*@
+            <p class="col-md-6" id="EventEnd"><b>End Time:</b>@items.EventTime</p>
+            <br />
+
         }
 
 <section id="benefitsBar">
