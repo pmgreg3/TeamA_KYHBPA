@@ -32,6 +32,10 @@ textarea {
     font-size: 20px;
 }
 
+.navbar-inverse .navbar-nav > .open > a, .navbar-inverse .navbar-nav > .open > a:hover, .navbar-inverse .navbar-nav > .open > a:focus {
+    background-color: #52e1a8;
+}
+
 .navbar-inverse {
     border: none;
     /*background: #00c453;*/
@@ -248,10 +252,10 @@ textarea {
 
 /*Drop Down menu Style*/
 .navbar-nav > li > .dropdown-menu {
-    background: rgba(0,0,0,0.65);
-    color:white;
-    font-size:22px;
-    padding:7px;
+    background: rgb(82, 225, 168);
+    color: white;
+    font-size: 22px;
+    padding: 7px;
 }
 
 .dropdown-menu > li > a{
