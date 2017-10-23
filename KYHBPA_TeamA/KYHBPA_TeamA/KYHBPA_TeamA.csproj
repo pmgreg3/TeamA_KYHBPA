@@ -567,6 +567,7 @@
     <Content Include="Content\locale\recurring\repeat_template_ro.html" />
     <Content Include="Content\locale\recurring\repeat_template_ru.html" />
     <Content Include="Content\locale\recurring\repeat_template_sk.html" />
+    <Content Include="Content\logoForKyhbpa.png" />
     <Content Include="Content\regular.js" />
     <Content Include="Content\slider1.jpg" />
     <Content Include="Content\slider2.jpg" />
