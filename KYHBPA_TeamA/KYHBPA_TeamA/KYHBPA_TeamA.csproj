@@ -664,7 +664,7 @@
     <Content Include="Views\Event\Index.cshtml" />
     <Content Include="Views\Error\ErrorPage.cshtml" />
     <Content Include="Views\Home\Polls.cshtml" />
-    <Content Include="Views\Home\WageringEducation.cshtml" />
+    <Content Include="Views\Home\GamblingEducation.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -210,6 +210,13 @@ textarea {
     line-height: 26px;
     color: #6b7c93;
 }
+.common-LargerBodyText {
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 26px;
+    color: #6b7c93;
+}
+
 
 .common-UppercaseTitle {
     color: #24b47e;
@@ -281,4 +288,11 @@ textarea {
 #benefitsBar a {
     text-decoration: none;
     font-family: Camphor,Open Sans,Segoe UI,sans-serif;
+}
+
+#whatYouNeed {
+    flex: 1;
+    padding: 20px;
+    border-width: 0 4px 0 0;
+    border: 1px solid #f6f9fc;
 }

@@ -47,9 +47,9 @@ namespace KYHBPA_TeamA.Controllers
 
             return View();
         }
-        public ActionResult WageringEducation()
+        public ActionResult GamblingEducation()
         {
-            ViewBag.Message = "Your wagering education page.";
+            ViewBag.Message = "Your gambling education page.";
 
             return View();
         }
