@@ -73,7 +73,17 @@
             <a href="/Home/Benefits" class="common-Button">Learn more</a>
         </section>
     </div>
-</section>
+    <div id="Join" class="col-md-8">
+        <hr />
+        <h2 class="text-center">Events</h2>
+        <hr />
+        @foreach(var items in Model.Events)
+        {
+            <b>@items.EventDescription</b>
+            <p>@items.EventDate</p>
+            <p>@items.EventTime</p>
+            
+        }
 
 <section id="benefitsBar">
     <a class="common-Button" href="/Home/Benefits">Benefits</a>
