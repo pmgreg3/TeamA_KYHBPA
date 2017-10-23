@@ -17,25 +17,9 @@ namespace KYHBPA_TeamA.Controllers
             var events = db.Events.Where(e => e.EventDate >= first).ToList();
             var viewModel = new PhotoGalleryViewModel
             {
-                Events = HomepageEvent
+                Events = events
             };
             return View(viewModel);
-            //var events = db.Events.Where(e => e.EventDate >= first).Select(a => new PhotoGalleryViewModel
-            //{
-            //    List < Event > eventListForViewModel = new List<Event>()
-            //    {
-            //        new Event()
-            //        {
-            //            EventDescription = "event description....."
-            //        }
-            //    };
-            //PhotoGalleryViewModel.Events = eventListForViewModel;
-                //Map the properties you need
-                //Description = a.EventDescription,
-                //Start_Time = a.EventDate,
-                //End_Time = a.EventTime,
-            //}).ToList();
-           // return View(events);
         }
 
         public ActionResult About()
