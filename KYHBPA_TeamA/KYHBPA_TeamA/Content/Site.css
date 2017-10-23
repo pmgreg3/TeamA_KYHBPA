@@ -1,6 +1,5 @@
 ﻿body {
     padding-top: 50px;
-    padding-bottom: 400px;
     background: #f6f9fc;
     font-family: Camphor,Open Sans,Segoe UI,sans-serif;
 }
@@ -121,6 +120,11 @@ textarea {
     border: 1px solid #f6f9fc;
 }
 
+#raceTracks > ul{
+    padding-right:40px;
+}
+
+
 @media (min-width:1040px) {
     #becomeAMember {
         flex: 1;
@@ -176,6 +180,10 @@ textarea {
     #facebookEmbed{
         display:none;
     }
+
+    #spacerBar{
+        display:none;
+    }
 }
 
 
@@ -205,6 +213,7 @@ textarea {
 .common-ButtonVariant {
     color: #fff !important;
     background: #24b47e !important;
+    margin:5px;
 }
 
 .carousel-inner > .item > img {

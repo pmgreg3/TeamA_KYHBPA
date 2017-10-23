@@ -571,6 +571,7 @@
     <Content Include="Content\logoForKyhbpa.png" />
     <Content Include="Content\logoForKyhbpa2.png" />
     <Content Include="Content\logoForKyhbpa3.png" />
+    <Content Include="Content\partnershipBar.png" />
     <Content Include="Content\regular.js" />
     <Content Include="Content\slider1.jpg" />
     <Content Include="Content\slider2.jpg" />
