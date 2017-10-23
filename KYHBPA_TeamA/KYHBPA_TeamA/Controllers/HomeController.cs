@@ -41,5 +41,17 @@ namespace KYHBPA_TeamA.Controllers
 
             return View();
         }
+        public ActionResult Polls()
+        {
+            ViewBag.Message = "Your Polls page.";
+
+            return View();
+        }
+        public ActionResult GamblingEducation()
+        {
+            ViewBag.Message = "Your gambling education page.";
+
+            return View();
+        }
     }
 }

@@ -2,14 +2,14 @@
 @using PagedList.Mvc
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Photos";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 @if (TempData["message"] != null)
 {
     <div class="alert alert-success">@TempData["message"]</div>
 }
-<h2>Photos</h2>
+<h2 class="common-Uppercase text-center">Photos</h2>
 
 
 @using (Html.BeginForm("Index", "Photo", FormMethod.Get))

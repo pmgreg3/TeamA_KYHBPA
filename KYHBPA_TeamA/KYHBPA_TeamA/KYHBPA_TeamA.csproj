@@ -312,6 +312,8 @@
     <Content Include="Content\404ErrorPage.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\brands.min.js" />
+    <Content Include="Content\brands.svg" />
     <Content Include="Content\connector\base_connector.php" />
     <Content Include="Content\connector\chart_connector.php" />
     <Content Include="Content\connector\combo_connector.php" />
@@ -405,7 +407,14 @@
     <Content Include="Content\ext\dhtmlxscheduler_week_agenda.js" />
     <Content Include="Content\ext\dhtmlxscheduler_wp.js" />
     <Content Include="Content\ext\dhtmlxscheduler_year_view.js" />
+    <Content Include="Content\fontawesome-pro-brands.css" />
+    <Content Include="Content\fontawesome-pro-brands\index.es.js" />
+    <Content Include="Content\fontawesome-pro-brands\index.js" />
+    <Content Include="Content\favicon.ico" />
+    <Content Include="Content\fontawesome.js" />
+    <Content Include="Content\fontawesome.min.js" />
     <Content Include="Content\hbpaBanner4.jpg" />
+    <Content Include="Content\hypnotize.png" />
     <Content Include="Content\imgs\buttons.png" />
     <Content Include="Content\imgs\but_repeat.gif" />
     <Content Include="Content\imgs\calendar.gif" />
@@ -569,6 +578,12 @@
     <Content Include="Content\locale\recurring\repeat_template_ro.html" />
     <Content Include="Content\locale\recurring\repeat_template_ru.html" />
     <Content Include="Content\locale\recurring\repeat_template_sk.html" />
+    <Content Include="Content\regular.js" />
+    <Content Include="Content\slider1.jpg" />
+    <Content Include="Content\slider2.jpg" />
+    <Content Include="Content\slider3.jpg" />
+    <Content Include="Content\solid.js" />
+    <Content Include="Content\solid.svg" />
     <Content Include="Entity\KYHBPA.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>KYHBPA.edmx</DependentUpon>
@@ -595,6 +610,7 @@
     <Content Include="Entity\KYHBPA.edmx.diagram">
       <DependentUpon>KYHBPA.edmx</DependentUpon>
     </Content>
+    <Content Include="Content\fontawesome-pro-brands\package.json" />
     <None Include="Properties\PublishProfiles\spike.cis420.net - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\dhtmlxscheduler.js" />
@@ -663,6 +679,8 @@
     <Content Include="Views\Event\Data.cshtml" />
     <Content Include="Views\Event\Index.cshtml" />
     <Content Include="Views\Error\ErrorPage.cshtml" />
+    <Content Include="Views\Home\Polls.cshtml" />
+    <Content Include="Views\Home\GamblingEducation.cshtml" />
     <Content Include="Views\Blog\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
