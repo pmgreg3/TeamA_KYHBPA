@@ -1,7 +1,7 @@
 ﻿body {
     padding-top: 50px;
+    padding-bottom: 400px;
     background: #f6f9fc;
-    font-family: Camphor,Open Sans,Segoe UI,sans-serif;
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -50,15 +50,12 @@ textarea {
     background: #24b47e;
 }
 
-.donate-Button {
-    height: unset !important;
-    color: #fff !important;
-    background: #003087 !important;
+#fluid {
+
 }
 
-.donate-Button:hover {
-     background: #003087 !important;
-     transform:none !important;
+
+.jumbotron {
 }
 
 
@@ -79,6 +76,73 @@ textarea {
     display: inline-flex;
     list-style-type:none;    
     justify-content:space-between center;
+}
+
+.socialMediaListIcon {
+    height:4em;
+    width:4em;
+    margin-right:6em;
+}
+
+.socialMediaListIcon:hover{
+    cursor:pointer;
+}
+
+.socialMediaIcon {
+    height: 4em;
+    width: 4em;
+    fill: #24b47e;
+}
+
+/*Intro below social media span*/
+.cols{
+    display:flex;
+    background:#fff;
+    border-radius:10px;
+}
+
+#becomeAMember {
+    flex: 1;
+    padding: 20px;
+    border-width: 0 4px 0 0;
+    border: 1px solid #f6f9fc;
+}
+
+#learnMore {
+    flex: 1;
+    padding:20px;
+    border-width: 0 0 0 4px;
+    border: 1px solid #f6f9fc;
+} 
+
+.common-Button{
+    white-space:nowrap;
+    display:inline-block;
+    height:40px;
+    line-height:40px;
+    padding:0 14px;
+    box-shadow:0 4px 6px rgba(50,50,93,.11),0 1px 3px rgba(0,0,0,.08);
+    border-radius:4px;
+    font-size:15px;
+    font-weight:600;
+    text-transform:uppercase;   
+    text-decoration:none;
+    transition:all .15s ease;
+}
+
+.common-Button:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 7px 14px rgba(50,50,93,.1), 0 3px 6px rgba(0,0,0,.08);
+    text-decoration: none;
+    letter-spacing: .10em;
+}
+
+.carousel-inner > .item > img {
+    margin: auto;
+}
+
+.carousel{
+    max-height:800px;
 }
 
 .socialMediaListIcon {
