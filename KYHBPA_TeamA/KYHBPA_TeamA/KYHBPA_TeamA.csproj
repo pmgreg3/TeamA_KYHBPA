@@ -588,7 +588,6 @@
     <Content Include="Content\locale\recurring\repeat_template_sk.html" />
     <Content Include="Content\logo.png" />
     <Content Include="Content\logoForKyhbpa.png" />
-    <Content Include="Content\logoForKyhbpa2.png" />
     <Content Include="Content\logoForKyhbpa3.png" />
     <Content Include="Content\partnershipBar.png" />
     <Content Include="Content\regular.js" />
