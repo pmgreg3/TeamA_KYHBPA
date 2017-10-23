@@ -69,6 +69,13 @@
         <hr />
         <h2 class="text-center">Events</h2>
         <hr />
+        @foreach(var items in Model.Events)
+        {
+            <b>@items.EventDescription</b>
+            <p>@items.EventDate</p>
+            <p>@items.EventTime</p>
+            
+        }
 
     </div>
 </div>

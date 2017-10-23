@@ -29,6 +29,6 @@ namespace KYHBPA_TeamA.Models
     public class PhotoGalleryViewModel
     {
         public List<DisplayPhotosViewModel> Photos { get; set; }
-        public List<HomepageEvent> Events { get; set; }
+        public List<Event> Events { get; set; }
     }
 }
