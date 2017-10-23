@@ -14,7 +14,6 @@ namespace KYHBPA_TeamA.Models
             { get { return true; } }
 
 
-            public bool iAgree { get; set; }
 
             [Required]
             [Display(Name = "Date of birth")]

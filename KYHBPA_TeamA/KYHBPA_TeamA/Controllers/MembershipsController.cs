@@ -72,40 +72,54 @@ namespace KYHBPA_TeamA.Controllers
             //}
             //return View(membership);
 
-            if (ModelState.IsValid && db.Users.Find(User.Identity.GetUserId()).AppliedForMembership == false)
+            if (ModelState.IsValid)
             {
-                var membership = new Membership()
-                { 
-                    DateofBirth = viewModel.DateofBirth,
-                    PhoneNumber = viewModel.PhoneNumber,
-                    Address = viewModel.Address,
-                    City = viewModel.City,
-                    State = viewModel.State,
-                    ZipCode = viewModel.ZipCode,
-                    LicenseNumber = viewModel.LicenseNumber,
-                    IsOwner = viewModel.IsOwner,
-                    IsTrainer = viewModel.IsTrainer,
-                    Affiliation = viewModel.Affiliation,
-                    ManagingPartner = viewModel.ManagingPartner,
-                    AgreedToTerms = viewModel.AgreedToTerms,
-                    Signature = viewModel.Signature,
-                    MembershipEnrollment = DateTime.Now
-                };
-
-                if(membership.IsOwner == true && membership.IsTrainer == true)
+                if (db.Users.Find(User.Identity.GetUserId()).AppliedForMembership == false)
                 {
-                    membership.IsOwnerAndTrainer = true;
-                }
-                
+                    var membership = new Membership()
+                    {
+                        DateofBirth = viewModel.DateofBirth,
+                        PhoneNumber = viewModel.PhoneNumber,
+                        Address = viewModel.Address,
+                        City = viewModel.City,
+                        State = viewModel.State,
+                        ZipCode = viewModel.ZipCode,
+                        LicenseNumber = viewModel.LicenseNumber,
+                        IsOwner = viewModel.IsOwner,
+                        IsTrainer = viewModel.IsTrainer,
+                        Affiliation = viewModel.Affiliation,
+                        ManagingPartner = viewModel.ManagingPartner,
+                        AgreedToTerms = viewModel.AgreedToTerms,
+                        Signature = viewModel.Signature,
+                        MembershipEnrollment = DateTime.Now
+                    };
+
+                    if (membership.IsOwner == true && membership.IsTrainer == true)
+                    {
+                        membership.IsOwnerAndTrainer = true;
+                    }
+
                     db.Users.Find(User.Identity.GetUserId()).AppliedForMembership = true;
                     db.Users.Find(User.Identity.GetUserId()).Membership = membership;
                     db.Memberships.Add(membership);
                     db.SaveChanges();
                     return RedirectToAction("Index");
 
-               
+                }
+                else
+                {
+                    return RedirectToAction("MembershipError");
+                }
             }
-            return RedirectToAction("MembershipError");        }
+            else
+                return View();
+        }
+
+        public ActionResult MembershipError()
+        {
+            return View();
+        }
+    
 
         // GET: Memberships/Edit/5
         [Authorize]
