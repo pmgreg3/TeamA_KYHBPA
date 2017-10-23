@@ -471,3 +471,8 @@ textarea {
     border-width: 0 4px 0 0;
     border: 1px solid #f6f9fc;
 }
+
+
+#hrfooter {
+    border-top: 1px solid #fefefe;
+}
