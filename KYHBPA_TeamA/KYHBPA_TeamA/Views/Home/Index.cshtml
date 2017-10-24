@@ -122,8 +122,17 @@
         </section>
         <section id="upcomingEvents">
             <h2 class="common-UppercaseTitle">Upcoming Events</h2>
-            @*<img src="~/Content/eventsImage.png"/>*@
-            
+            @foreach (var items in Model.Events)
+            {
+                <br />
+                <div class="DescrSquare"><p class="col-lg-12" id="EventDescription">@items.EventDescription</p></div>
+                <div class="TimeSquare">
+                    <p class="col-md-6" id="EventStart"><b>Start Time:</b>@items.EventDate</p>
+                    <p class="col-md-6" id="EventEnd"><b>End Time:</b>@items.EventTime</p>
+                </div>
+                <br />
+
+            }
         </section>
     </div>
 </section>   
