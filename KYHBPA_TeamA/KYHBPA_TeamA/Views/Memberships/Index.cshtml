@@ -1,0 +1,117 @@
+﻿@model IEnumerable<KYHBPA_TeamA.Models.Membership>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.DateofBirth)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MembershipEnrollment)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PhoneNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Address)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.City)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.State)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ZipCode)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LicenseNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsOwner)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsTrainer)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsOwnerAndTrainer)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AgreedToTerms)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Signature)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Affiliation)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ManagingPartner)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.DateofBirth)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MembershipEnrollment)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PhoneNumber)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Address)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.City)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.State)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ZipCode)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LicenseNumber)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsOwner)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsTrainer)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsOwnerAndTrainer)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AgreedToTerms)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Signature)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Affiliation)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ManagingPartner)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+        </td>
+    </tr>
+}
+
+</table>
