@@ -199,7 +199,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
-    <Compile Include="Controllers\BlogController.cs" />
+    <Compile Include="Controllers\CalendarController.cs" />
     <Compile Include="Controllers\BoardOfDirectorsController.cs" />
     <Compile Include="Controllers\DocumentController.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
@@ -320,7 +320,6 @@
     <Content Include="Content\404ErrorPage.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
-    <Content Include="Content\brands.min.js" />
     <Content Include="Content\brands.svg" />
     <Content Include="Content\connector\base_connector.php" />
     <Content Include="Content\connector\chart_connector.php" />
@@ -417,10 +416,6 @@
     <Content Include="Content\ext\dhtmlxscheduler_week_agenda.js" />
     <Content Include="Content\ext\dhtmlxscheduler_wp.js" />
     <Content Include="Content\ext\dhtmlxscheduler_year_view.js" />
-    <Content Include="Content\fontawesome-pro-brands.css" />
-    <Content Include="Content\fontawesome-pro-brands\index.es.js" />
-    <Content Include="Content\fontawesome-pro-brands\index.js" />
-    <Content Include="Content\favicon.ico" />
     <Content Include="Content\fontawesome.js" />
     <Content Include="Content\fontawesome.min.js" />
     <Content Include="Content\hbpaBanner4.jpg" />
@@ -588,10 +583,6 @@
     <Content Include="Content\locale\recurring\repeat_template_ro.html" />
     <Content Include="Content\locale\recurring\repeat_template_ru.html" />
     <Content Include="Content\locale\recurring\repeat_template_sk.html" />
-    <Content Include="Content\logo.png" />
-    <Content Include="Content\logoForKyhbpa.png" />
-    <Content Include="Content\logoForKyhbpa3.png" />
-    <Content Include="Content\partnershipBar.png" />
     <Content Include="Content\regular.js" />
     <Content Include="Content\slider1.jpg" />
     <Content Include="Content\slider2.jpg" />
