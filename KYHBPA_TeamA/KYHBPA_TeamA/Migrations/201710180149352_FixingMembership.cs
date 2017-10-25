@@ -34,8 +34,8 @@ namespace KYHBPA_TeamA.Migrations
                 .PrimaryKey(t => t.ID);
             
             AddColumn("dbo.AspNetUsers", "MemberID", c => c.Int(nullable: false));
-            AddColumn("dbo.AspNetUsers", "FirstName", c => c.String());
-            AddColumn("dbo.AspNetUsers", "LastName", c => c.String());
+            //AddColumn("dbo.AspNetUsers", "FirstName", c => c.String());
+            //AddColumn("dbo.AspNetUsers", "LastName", c => c.String());
             AddColumn("dbo.AspNetUsers", "Membership_ID", c => c.Int());
             CreateIndex("dbo.AspNetUsers", "Membership_ID");
             AddForeignKey("dbo.AspNetUsers", "Membership_ID", "dbo.Memberships", "ID");
@@ -76,8 +76,8 @@ namespace KYHBPA_TeamA.Migrations
             DropForeignKey("dbo.AspNetUsers", "Membership_ID", "dbo.Memberships");
             DropIndex("dbo.AspNetUsers", new[] { "Membership_ID" });
             DropColumn("dbo.AspNetUsers", "Membership_ID");
-            DropColumn("dbo.AspNetUsers", "LastName");
-            DropColumn("dbo.AspNetUsers", "FirstName");
+            //DropColumn("dbo.AspNetUsers", "LastName");
+            //DropColumn("dbo.AspNetUsers", "FirstName");
             DropColumn("dbo.AspNetUsers", "MemberID");
             DropTable("dbo.Memberships");
             CreateIndex("dbo.AspNetUsers", "Member_MemberID");
