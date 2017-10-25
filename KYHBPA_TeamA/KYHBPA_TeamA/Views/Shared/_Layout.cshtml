@@ -11,42 +11,52 @@
 </head>
 <body>
     <div class="container" id="fluid">
-        <div class="navbar navbar-inverse navbar-fixed-top" >
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    
-                        @Html.ActionLink("Kentucky HBPA", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-</div>
-                <div class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav">
-                       
-<li class="dropdown">
-                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                                About Us
-                                <span class="caret"></span>
-                            </a>
-                       
-                            <ul class="dropdown-menu">
-                                <li>@Html.ActionLink("Benefits", "Benefits", "Home")</li>
-                                <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                                <li>@Html.ActionLink("Our Board", "Index", "BoardOfDirectors")</li>
-                            </ul>
-                        </li>                                               
-                        <li>@Html.ActionLink("Documents", "Index", "Document")</li>
-                        <li>@Html.ActionLink("Photos", "Index", "Photo")</li>                     
-                        <li>@Html.ActionLink("Events","Index","Event")</li>
-                        
+        <div class="navbar navbar-inverse navbar-fixed-top">
+            @*<div onscroll="logoScroll()">
+                    <div class="logoshadow"></div>
+                    <img class="logoimage" href="~/Home/Index" src="~/Content/Logo.png" width="150" height="10" alt="KYHBPA" />
+                </div>*@
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <div id="brandArea" style="height:50px; width:80px;">
+                    <img class="hideMe" src="~/Content/logoForKyhbpa3.png" id="brandLogo" />
+                    @Html.ActionLink("KYHBPA", "Index", "Home", new { area = "" }, new { @class = "showMe brandText" })
+                </div>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            About
+                            <span class="caret"></span>
+                        </a>
 
-</ul>
-                        @Html.Partial("_LoginPartial")
-</div>
-          
-</div>
+                        <ul class="dropdown-menu">
+                            <li>@Html.ActionLink("About Us", "About", "Home")</li>
+                            <li>@Html.ActionLink("Benefits", "Benefits", "Home")</li>
+                            <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                            <li>@Html.ActionLink("Our Board", "Index", "BoardOfDirectors")</li>
+                            <li>@Html.ActionLink("Gambling Education", "GamblingEducation", "Home")</li>
+                        </ul>
+                    </li>
+                    <li>@Html.ActionLink("Events", "Index", "Event")</li>
+                    <li>@Html.ActionLink("Polls", "Polls", "Home")</li>
+                    <li>@Html.ActionLink("Photos", "Index", "Photo")</li>
+                    <li>@Html.ActionLink("Documents", "Index", "Document")</li>
+                    <li>@Html.ActionLink("Blogs", "Index", "Blog")</li>
+                    <li>@Html.ActionLink("Membership", "Membership", "Home")</li>
+
+
+                </ul>
+
+                @Html.Partial("_LoginPartial")
+            </div>
         </div>
+    </div>
 
     @RenderSection("ImageGallery", required: false)
 

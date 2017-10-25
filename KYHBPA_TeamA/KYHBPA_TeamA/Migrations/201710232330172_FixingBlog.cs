@@ -3,7 +3,7 @@ namespace KYHBPA_TeamA.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class Updateblog : DbMigration
+    public partial class FixingBlog : DbMigration
     {
         public override void Up()
         {

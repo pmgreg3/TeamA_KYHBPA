@@ -10,7 +10,11 @@ namespace KYHBPA_TeamA.Models
     // You can add profile data for the user by adding more properties to your ApplicationUser class, please visit https://go.microsoft.com/fwlink/?LinkID=317594 to learn more.
     public class KYHBPAUser : IdentityUser
     {
-        public Member Member { get; set; }
+        
+        public Membership Membership { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public bool AppliedForMembership { get; set; }
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<KYHBPAUser> manager)
         {
@@ -35,7 +39,6 @@ namespace KYHBPA_TeamA.Models
 
 
         public DbSet<BoardOfDirectors> BoardOfDirectors { get; set; }
-        public DbSet<Member> Members { get; set; }
         public DbSet<Photo> Photos { get; set; }
         public DbSet<Event> Events { get; set; }
         public DbSet<Document> Documents { get; set; }
@@ -43,5 +46,6 @@ namespace KYHBPA_TeamA.Models
         public DbSet<Category> Categories { get; set; }
         public DbSet<Comment> Comments { get; set; }
 
+        public System.Data.Entity.DbSet<KYHBPA_TeamA.Models.Membership> Memberships { get; set; }
     }
 }

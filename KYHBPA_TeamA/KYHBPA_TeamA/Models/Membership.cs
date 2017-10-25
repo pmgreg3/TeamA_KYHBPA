@@ -5,15 +5,11 @@ using System.Web;
 
 namespace KYHBPA_TeamA.Models
 {
-    public class Member //member table
+    public class Membership
     {
-        public int MemberID { get; set; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public DateTime DateofBirth { get; set; }   
-        public DateTime MembershipEnrollment { get; set; }
-        public decimal Income { get; set; }
-        public string Email { get; set; }   
+        public int ID { get; set; }
+        public DateTime? DateofBirth { get; set; }
+        public DateTime? MembershipEnrollment { get; set; }
         public string PhoneNumber { get; set; }
         public string Address { get; set; }
         public string City { get; set; }
