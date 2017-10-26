@@ -22,6 +22,9 @@
         <th class=" common-BodyText">
             Contact Information
         </th>
+        <th class=" common-BodyText">
+            About Me!
+        </th>
         <th></th>
     </tr>
 
@@ -40,7 +43,14 @@
                 <div>
                     @Html.DisplayFor(modelItem => item.FirstName) @Html.DisplayFor(modelItem => item.LastName)
                 </div>
-              @Html.DisplayFor(modelItem => item.Email)
+               
+                <div>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </div>
+            
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
             </td>
             <td>
                 @Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @class = "common-Button" }) 

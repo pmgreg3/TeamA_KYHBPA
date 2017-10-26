@@ -73,7 +73,7 @@ namespace KYHBPA_TeamA.Controllers
                     LastName = addViewModel.LastName,
                     Email = addViewModel.Email, 
                     PhotoContent = uploadedFile,
-   
+                    Description = addViewModel.Description
                 };
                 
                 db.BoardOfDirectors.Add(boardOfDirectors);
@@ -103,7 +103,8 @@ namespace KYHBPA_TeamA.Controllers
                 LastName = boardOfDirectors.LastName,
                 Title = boardOfDirectors.Title,
                 Email = boardOfDirectors.Email,
-                PhotoContent = boardOfDirectors.PhotoContent
+                PhotoContent = boardOfDirectors.PhotoContent,
+                Description = boardOfDirectors.Description
             };
 
             if (boardOfDirectors == null)
@@ -129,6 +130,7 @@ namespace KYHBPA_TeamA.Controllers
                         BODToUpdate.FirstName = BODVM.FirstName;
                         BODToUpdate.LastName = BODVM.LastName;
                         BODToUpdate.Title = BODVM.Title;
+                        BODToUpdate.Description = BODVM.Description;
                         BODToUpdate.Email = BODVM.Email;
                     }
 
