@@ -155,10 +155,10 @@ namespace KYHBPA_TeamA.Controllers
                 {
                     UserName = model.Email,
                     Email = model.Email,
-                    Member = new Member()
-                    {
-                        FirstName = model.FirstName
-                    }
+                    FirstName = model.FirstName,
+                    LastName = model.LastName,
+                    AppliedForMembership = false
+                    //Membership = new Membership() { } Membership will not be creatued until user applies
                 };
 
                 // TODO: add member to login credential

@@ -1,0 +1,84 @@
+﻿@model KYHBPA_TeamA.Models.BlogPostDetailsViewModel
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ShortDescription)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ShortDescription)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Published)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Published)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PostedOn)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PostedOn)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Modified)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Modified)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SelectedCategoryId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SelectedCategoryId)
+        </dd>
+    </dl>
+
+    <h3>Comments</h3>
+    <hr />
+    @foreach (var comment in Model.Comments)
+    {
+        <p style="color:dodgerblue;font-weight:600;font-size:20px;">@comment.Name</p>
+            <p>@comment.Text</p>
+
+    }
+</div>
+<br />
+
+<p>
+    @Html.ActionLink("Back to List", "Index")
+</p>

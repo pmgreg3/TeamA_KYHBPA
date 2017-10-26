@@ -1,0 +1,70 @@
+﻿
+@{
+    ViewBag.Title = "_PostTemplatePartial";
+}
+
+@model KYHBPA_TeamA.Models.Post
+@using KYHBPA_TeamA.Helpers;
+
+<div class="post">
+    <div class="post-meta">
+        <div class="row">
+
+            <!--Heading-->
+            <div class="post-title">
+                <h2>@Html.PostLink(Model)</h2>
+            </div>
+
+        </div>
+
+        <div class="row">
+
+            <!--Category-->
+            <div class="post-category">
+                <span>Category: </span>@Html.CategoryLink(Model.Category)
+            </div>
+
+            <!--Posted date-->
+            <div class="posted-date">
+                @Model.PostedOn.ToConfigLocalTime()
+            </div>
+
+        </div>
+
+    </div>
+
+    <!--Short Description-->
+    <div class="post-body">
+        @Html.Raw(Model.ShortDescription)
+    </div>
+
+    <div class="post-foot">
+        @if (User.IsInRole("Admin"))
+        {
+            @Html.ActionLink("Edit", "Edit", "Blog",
+                    new
+                    {
+                        Id = Model.Id
+                    },
+                    new { title = "Edit Post" }
+                )
+        }
+
+
+        @Html.ActionLink("Read More", "Details", "Blog",
+        new
+        {
+            Id = Model.Id
+        },
+        new { title = "Read More" }
+    ) |
+
+        @Html.ActionLink("Comment", "CreateComment", "Blog",
+        new
+        {
+            Id = Model.Id
+        },
+        new { title = "Comment" }
+    )
+    </div>
+</div>
