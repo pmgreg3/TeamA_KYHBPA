@@ -14,6 +14,7 @@ namespace KYHBPA_TeamA.Models
         public string FirstName { get; set; }
         [Display(Name = "Last Name")]
         public string LastName { get; set; }
+        public string Description { get; set; }
         public string Email { get; set; }
         public HttpPostedFileBase File { get; set; } = null;
         public byte[] PhotoContent { get; set; }
