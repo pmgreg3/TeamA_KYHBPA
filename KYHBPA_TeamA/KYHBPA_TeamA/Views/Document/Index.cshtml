@@ -1,11 +1,11 @@
 ﻿@model IEnumerable<KYHBPA_TeamA.Models.DisplayDocumentsViewModel>
 
 @{
-    ViewBag.Title = "Documents";
+    ViewBag.Title = "News";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2 class="common-Uppercase text-center">Document Library</h2>
+<h2 class="common-Uppercase text-center">News Library</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create", "", new { @class = "common-Button" })
@@ -13,13 +13,13 @@
 <table class="table">
     <tr>
         <th>
-            Document
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Description)
+            News
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Date)
@@ -38,11 +38,12 @@
             }
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Description)
-        </td>
-        <td>
             @Html.DisplayFor(modelItem => item.Title)
         </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+
         <td>
             @Html.DisplayFor(modelItem => item.Date)
         </td>
