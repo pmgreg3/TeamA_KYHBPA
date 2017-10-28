@@ -176,7 +176,7 @@ namespace KYHBPA_TeamA.Controllers
                     // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
                     // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
                     // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
-                    await this.UserManager.AddToRoleAsync(user.UserName, model.UserRoles);
+                    await this.UserManager.AddToRoleAsync(user.Id, "User");
                     return RedirectToAction("Index", "Home");
                 }
                 ViewBag.Name = new SelectList(context.Roles.Where(u => !u.Name.Contains("Admin")).ToList(), "Name", "Name");
@@ -358,7 +358,7 @@ namespace KYHBPA_TeamA.Controllers
                     // If the user does not have an account, then prompt the user to create an account
                     ViewBag.ReturnUrl = returnUrl;
                     ViewBag.LoginProvider = loginInfo.Login.LoginProvider;
-                    return View("ExternalLoginConfirmation", new ExternalLoginConfirmationViewModel { Email = loginInfo.Email });
+                    return View("ExternalLoginConfirmation", new ExternalLoginConfirmationViewModel { UserName = loginInfo.Email });
             }
         }
 
@@ -382,7 +382,7 @@ namespace KYHBPA_TeamA.Controllers
                 {
                     return View("ExternalLoginFailure");
                 }
-                var user = new KYHBPAUser { UserName = model.Email, Email = model.Email };
+                var user = new KYHBPAUser { UserName = model.UserName, Email = model.UserName };
                 var result = await UserManager.CreateAsync(user);
                 if (result.Succeeded)
                 {

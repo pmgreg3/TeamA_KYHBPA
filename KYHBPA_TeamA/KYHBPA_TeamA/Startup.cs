@@ -12,6 +12,7 @@ namespace KYHBPA_TeamA
         public void Configuration(IAppBuilder app)
         {
             ConfigureAuth(app);
+            createRolesandUsers();
         }
 
         // Creates default User roles and Admin user for login
