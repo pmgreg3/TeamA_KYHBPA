@@ -44,17 +44,23 @@ namespace KYHBPA_TeamA.Controllers
         //    return View(blogPosts);
         //}
 
+        // GET: Blog/Manage
+        [Authorize(Roles = "Admin")]
         public ActionResult Manage()
         {
             return View();
         }
 
+        // GET: Blog/Create
+        [Authorize(Roles = "Admin,Employee,Member,User")]
         [HttpGet]
         public ActionResult Create()
         {
             return View(new CreateBlogPostViewModel() { PostedOn = DateTime.Today.Date });
         }
 
+        // GET: Blog/Create
+        [Authorize(Roles = "Admin,Employee,Member,User")]
         [HttpPost]
         public ActionResult Create(CreateBlogPostViewModel viewModel)
         {
@@ -160,6 +166,7 @@ namespace KYHBPA_TeamA.Controllers
             return View("List", listViewModel);
         }
 
+        [Authorize(Roles = "Admin,Employee,Member,User")]
         [HttpGet]
         public ActionResult CreateComment(int Id)
         {
@@ -173,6 +180,7 @@ namespace KYHBPA_TeamA.Controllers
             return View(viewModel);
         }
 
+        [Authorize(Roles = "Admin,Employee,Member,User")]
         [HttpPost]
         public ActionResult CreateComment(CreateCommentViewModel viewModel)
         {
