@@ -32,22 +32,22 @@ textarea {
 }
 
 
-.navbar-inverse .navbar-nav > li > a:hover {
-     background-color: rgb(17, 154, 103) !important;
-}
+    .navbar-inverse .navbar-nav > li > a:hover {
+        background-color: #0162a1 !important;
+    }
 
 .dropdown-menu > li > a:hover {
-    background-color: rgb(17, 154, 103) !important;
+    background-color: #0162a1 !important;
 }
 
 .navbar-inverse .navbar-nav > .open > a, .navbar-inverse .navbar-nav > .open > a:hover, .navbar-inverse .navbar-nav > .open > a:focus {
-    background-color: #52e1a8;
+    background-color: #0162a1;
 }
 
 .navbar-inverse {
     border: none;
     /*background: #00c453;*/
-    background: #24b47e;
+    background: #01436e;
 }
 
 .donate-Button {
@@ -94,7 +94,7 @@ textarea {
 .socialMediaIcon {
     height: 4em;
     width: 4em;
-    fill: #24b47e;
+    fill: #015287;
 }
 
 /*Intro below social media span*/
@@ -212,8 +212,8 @@ textarea {
 
 .common-ButtonVariant {
     color: #fff !important;
-    background: #24b47e !important;
-    margin:5px;
+    background: #0266a7 !important;
+    margin: 5px;
 }
 
 .carousel-inner > .item > img {
@@ -270,7 +270,7 @@ textarea {
 
 /*Drop Down menu Style*/
 .navbar-nav > li > .dropdown-menu {
-    background: rgb(82, 225, 168);
+    background: #01436e;
     color: white;
     font-size: 22px;
     padding: 7px;
@@ -340,9 +340,9 @@ textarea {
 }
 
 .common-Uppercase {
-    color: #24b47e;
+    color: #015287;
     font-weight: 600;
-    font-size:41px;
+    font-size: 41px;
     text-transform: uppercase;
     letter-spacing: .025em;
     font-family: Camphor,Open Sans,Segoe UI,sans-serif;
@@ -358,15 +358,15 @@ textarea {
     font-weight: 400;
     font-size: 20px;
     line-height: 26px;
-    color: #6b7c93;
+    color: #015287;
 }
 
 
 .common-UppercaseTitle {
-    color: #24b47e;
-    text-transform:uppercase;
-    font-size:22px;
-    line-height:33px;
+    color: #015287;
+    text-transform: uppercase;
+    font-size: 22px;
+    line-height: 33px;
 }
 
 /*Twitter and Facebook Section*/
