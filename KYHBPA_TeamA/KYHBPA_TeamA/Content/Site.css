@@ -379,6 +379,11 @@ textarea {
     text-align:center;
 }
 
+#instagramEmbed{
+    padding:30px;
+
+}
+
 #facebookEmbed {
     background: #fff;
     flex: 1;
