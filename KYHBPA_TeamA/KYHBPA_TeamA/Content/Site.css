@@ -99,7 +99,7 @@
 }
 
 #becomeAMember {
-    padding: 20px 0;
+    padding: 40px 0;
     flex:1;
     border-width: 0 4px 0 0;
     border: 1px solid #f6f9fc;
@@ -107,7 +107,7 @@
 
 
 #learnMore {
-    padding: 20px 0;
+    padding: 40px 0;
     flex: 1;
     border-width: 0 0 0 4px;
     border: 1px solid #f6f9fc;
@@ -122,13 +122,13 @@
     #becomeAMember {
         flex: 1;
         border-width: 0 4px 0 0;
-        padding:70px;
+        padding:20px;
         border: 1px solid #f6f9fc;
     }
 
     #learnMore {
         flex: 1;
-        padding: 70px;
+        padding: 20px;
         border-width: 0 0 0 4px;
         border: 1px solid #f6f9fc;
     }
@@ -136,13 +136,13 @@
     #raceTracks {
         flex: 1;
         border-width: 0 4px 0 0;
-        padding: 70px;
+        padding: 20px;
         border: 1px solid #f6f9fc;
     }
 
     #upcomingEvents {
         flex: 1;
-        padding: 70px;
+        padding: 20px;
         border-width: 0 0 0 4px;
         border: 1px solid #f6f9fc;
     }
