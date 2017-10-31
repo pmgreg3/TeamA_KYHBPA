@@ -30,30 +30,44 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li class="dropdown">
-                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                            About
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="/Home/About">
+                            About Us
                             <span class="caret"></span>
                         </a>
-
-                        <ul class="dropdown-menu">
-                            <li>@Html.ActionLink("About Us", "About", "Home")</li>
-                            <li>@Html.ActionLink("Benefits", "Benefits", "Home")</li>
-                            <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                        <ul class="dropdown-menu"> 
+                            <li>@Html.ActionLink("Learn More", "About", "Home")</li>
                             <li>@Html.ActionLink("Our Board", "Index", "BoardOfDirectors")</li>
-                            <li>@Html.ActionLink("Gambling Education", "GamblingEducation", "Home")</li>
                         </ul>
                     </li>
-                    <li>@Html.ActionLink("Events", "Index", "Event")</li>
-                    <li>@Html.ActionLink("Polls", "Polls", "Home")</li>
-                    <li>@Html.ActionLink("Photos", "Index", "Photo")</li>
-                    <li>@Html.ActionLink("Documents", "Index", "Document")</li>
-                    <li>@Html.ActionLink("Blogs", "Index", "Blog")</li>
-                    <li>@Html.ActionLink("Membership", "Membership", "Home")</li>
-
-
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="/Home/About">
+                            Membership
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>@Html.ActionLink("Become a Member", "Membership", "Home")</li>
+                            <li>@Html.ActionLink("Benefits", "Benefits", "Home")</li>
+                            <li>@Html.ActionLink("Polls", "Polls", "Home")</li>
+                            <li>@Html.ActionLink("Documents", "Index", "Document")</li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="/Home/About">
+                            News
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>@Html.ActionLink("Events", "Index", "Event")</li>
+                            <li>@Html.ActionLink("Blogs", "Index", "Blog")</li>
+                            <li>@Html.ActionLink("Racing Education", "GamblingEducation", "Home")</li>
+                        </ul>
+                    </li>
+                    <li>@Html.ActionLink("Photo Gallery", "Index", "Photo")</li>
+                    <li>@Html.ActionLink("Contact Us", "Contact", "Home")</li>
                 </ul>
 
                 @Html.Partial("_LoginPartial")
+
             </div>
         </div>
     </div>
