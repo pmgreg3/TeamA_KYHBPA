@@ -366,21 +366,14 @@
 #twitterEmbed {
     background: #fff;
     flex:1;
-    padding:30px;
     border-width: 0 1px 0 1px;
     border: 1px solid #f6f9fc;
     text-align:center;
 }
 
-#instagramEmbed{
-    padding:30px;
-
-}
-
 #facebookEmbed {
     background: #fff;
     flex: 1;
-    padding: 30px;
     border-width: 0 1px 0 1px;
     border: 1px solid #f6f9fc;
     text-align: center;
@@ -468,6 +461,13 @@
     padding: 20px;
     border-width: 0 4px 0 0;
     border: 1px solid #f6f9fc;
+}
+
+/*About Me page*/
+#About {
+    padding-left: 50px;
+    padding-right: 50px;
+    padding-bottom: 30px;
 }
 
 
