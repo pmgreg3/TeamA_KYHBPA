@@ -48,40 +48,40 @@
     background: #003087 !important;
 }
 
-.donate-Button:hover {
-     background: #003087 !important;
-     transform:none !important;
-}
+    .donate-Button:hover {
+        background: #003087 !important;
+        transform: none !important;
+    }
 
 
-.img-gallery-img{
-    width:100%;
-    margin:auto;
+.img-gallery-img {
+    width: 100%;
+    margin: auto;
 }
 
 /*Social media span*/
 #socialMediaSpan {
     border-bottom: 1px solid #cccdce;
     padding-top: 20px;
-    background-image:url(hypnotize.png);
-    text-align:center;
+    background-image: url(hypnotize.png);
+    text-align: center;
 }
 
-#socialMediaList li{
+#socialMediaList li {
     display: inline-flex;
-    list-style-type:none;    
-    justify-content:space-between center;
+    list-style-type: none;
+    justify-content: space-between center;
 }
 
 .socialMediaListIcon {
-    height:4em;
-    width:4em;
-    margin-right:6em;
+    height: 4em;
+    width: 4em;
+    margin-right: 6em;
 }
 
-.socialMediaListIcon:hover{
-    cursor:pointer;
-}
+    .socialMediaListIcon:hover {
+        cursor: pointer;
+    }
 
 .socialMediaIcon {
     height: 4em;
@@ -90,16 +90,15 @@
 }
 
 /*Intro below social media span*/
-.cols{
-    display:flex;
-    background:#fff;
-    border-radius:10px;
-
+.cols {
+    display: flex;
+    background: #fff;
+    border-radius: 10px;
 }
 
 #becomeAMember {
     padding: 40px 0;
-    flex:1;
+    flex: 1;
     border-width: 0 4px 0 0;
     border: 1px solid #f6f9fc;
 }
@@ -112,8 +111,8 @@
     border: 1px solid #f6f9fc;
 }
 
-#raceTracks > ul{
-    padding-right:40px;
+#raceTracks > ul {
+    padding-right: 40px;
 }
 
 
@@ -121,7 +120,7 @@
     #becomeAMember {
         flex: 1;
         border-width: 0 4px 0 0;
-        padding:20px;
+        padding: 20px;
         border: 1px solid #f6f9fc;
     }
 
@@ -150,7 +149,7 @@
 @media (max-width:670px) {
     #becomeAMember {
         border-width: 0 1px 0 0;
-        flex:1;
+        flex: 1;
     }
 
     #learnMore {
@@ -169,37 +168,37 @@
     }
 
 
-    #facebookEmbed{
-        display:none;
+    #facebookEmbed {
+        display: none;
     }
 
-    #spacerBar{
-        display:none;
+    #spacerBar {
+        display: none;
     }
 }
 
 
-.common-Button{
-    white-space:nowrap;
-    display:inline-block;
-    height:40px;
-    line-height:40px;
-    padding:0 14px;
-    box-shadow:0 4px 6px rgba(50,50,93,.11),0 1px 3px rgba(0,0,0,.08);
-    border-radius:4px;
-    font-size:15px;
-    font-weight:600;
-    text-transform:uppercase;   
-    text-decoration:none;
-    transition:all .15s ease;
-}
-
-.common-Button:hover {
-    transform: translateY(-1px);
-    box-shadow: 0 7px 14px rgba(50,50,93,.1), 0 3px 6px rgba(0,0,0,.08);
+.common-Button {
+    white-space: nowrap;
+    display: inline-block;
+    height: 40px;
+    line-height: 40px;
+    padding: 0 14px;
+    box-shadow: 0 4px 6px rgba(50,50,93,.11),0 1px 3px rgba(0,0,0,.08);
+    border-radius: 4px;
+    font-size: 15px;
+    font-weight: 600;
+    text-transform: uppercase;
     text-decoration: none;
-    letter-spacing: .10em;
+    transition: all .15s ease;
 }
+
+    .common-Button:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 7px 14px rgba(50,50,93,.1), 0 3px 6px rgba(0,0,0,.08);
+        text-decoration: none;
+        letter-spacing: .10em;
+    }
 
 
 .common-ButtonVariant {
@@ -214,7 +213,7 @@
 
 .carousel {
     max-height: 800px;
-    box-shadow:1px -12px 20px 14px black
+    box-shadow: 1px -12px 20px 14px black
 }
 
 .carousel-caption {
@@ -223,7 +222,7 @@
     left: 0;
     position: absolute;
     font-family: Camphor,Open Sans,Segoe UI,sans-serif;
-    font-weight:300;
+    font-weight: 300;
 }
 
 .input {
@@ -246,18 +245,18 @@
     border-left: solid 1px #ccc;
 }
 
-#custom-search-input button:hover {
-     border: 0;
-     box-shadow: none;
-     border-left: solid 1px #ccc;
-}
+    #custom-search-input button:hover {
+        border: 0;
+        box-shadow: none;
+        border-left: solid 1px #ccc;
+    }
 
 #custom-search-input .glyphicon-search {
     font-size: 23px;
 }
 
-#SearchArea{
-    margin-bottom:4px;
+#SearchArea {
+    margin-bottom: 4px;
 }
 
 
@@ -273,7 +272,7 @@
 #brandLogo {
     height: 50px;
     width: 80px;
-    margin-left:15px;
+    margin-left: 15px;
 }
 
 .showMe {
@@ -288,27 +287,26 @@
     font-size: 29px;
     text-transform: uppercase;
     font-family: Camphor,Open Sans,Segoe UI,sans-serif;
-    margin-left:6px;
-    padding-left:5px;
-} 
+    margin-left: 6px;
+    padding-left: 5px;
+}
 
 #brandArea {
     display: block;
-    margin-right:35px;
-    padding-left:5px;
-
+    margin-right: 35px;
+    padding-left: 5px;
 }
 
-#brandArea:hover .hideMe  {
-    display: none;
-}
+    #brandArea:hover .hideMe {
+        display: none;
+    }
 
-#brandArea:hover .showMe {
-     visibility: visible;
-     opacity: 1;
-     color: #fff;
-     text-decoration: none;
-}
+    #brandArea:hover .showMe {
+        visibility: visible;
+        opacity: 1;
+        color: #fff;
+        text-decoration: none;
+    }
 
 
 
@@ -322,15 +320,14 @@
     text-align: center;
     background: #f6f9fc;
     font-family: Camphor,Open Sans,Segoe UI,sans-serif;
-
 }
 
-#homeIndexJumbo{
-    background-image:url(hbpaBanner4.jpg);
-    background-size:cover;
-    color:white;
-    text-shadow:2px 2px 40px black;
-    margin-top:5px;
+#homeIndexJumbo {
+    background-image: url(hbpaBanner4.jpg);
+    background-size: cover;
+    color: white;
+    text-shadow: 2px 2px 40px black;
+    margin-top: 5px;
 }
 
 .common-Uppercase {
@@ -348,6 +345,7 @@
     line-height: 26px;
     color: #6b7c93;
 }
+
 .common-LargerBodyText {
     font-weight: 400;
     font-size: 20px;
@@ -366,10 +364,10 @@
 /*Twitter and Facebook Section*/
 #twitterEmbed {
     background: #fff;
-    flex:1;
+    flex: 1;
     border-width: 0 1px 0 1px;
     border: 1px solid #f6f9fc;
-    text-align:center;
+    text-align: center;
 }
 
 #facebookEmbed {
@@ -381,12 +379,12 @@
 }
 
 #socialEmbeds {
-    border-radius:10px;
+    border-radius: 10px;
 }
 
 
 /*Benefits bar*/
-#benefitsBar{
+#benefitsBar {
     background-image: url("hypnotize.png");
     border-radius: 10px;
     text-align: center;
@@ -395,40 +393,40 @@
     border: 1px solid #f6f9fc;
 }
 
-#benefitsBar .container-lg {
-    transition: 1s cubic-bezier(.19,1,.22,1);
-    will-change: transform;
-    filter: blur(0)
-}
+    #benefitsBar .container-lg {
+        transition: 1s cubic-bezier(.19,1,.22,1);
+        will-change: transform;
+        filter: blur(0)
+    }
 
-#benefitsBar:hover .container-lg{
-    opacity:.7;
-    transform:scale(.95);
-    filter:blur(10px);
-}
+    #benefitsBar:hover .container-lg {
+        opacity: .7;
+        transform: scale(.95);
+        filter: blur(10px);
+    }
 
 
-#benefitsBar .common-Button{
-    transition: .7s cubic-bezier(.19,1,.22,1);
-    opacity:0;
-    left:50%;
-    z-index:1;
-    position:absolute;
-    transform:translate(-50%,5px);
-    will-change:transform, opacity;
-}
+    #benefitsBar .common-Button {
+        transition: .7s cubic-bezier(.19,1,.22,1);
+        opacity: 0;
+        left: 50%;
+        z-index: 1;
+        position: absolute;
+        transform: translate(-50%,5px);
+        will-change: transform, opacity;
+    }
 
-#benefitsBar:hover .common-Button {
-    opacity: 1;
-    transform: translate(-50%,50px);
-    background-color:#fff;
-    font-weight:600;
-}
+    #benefitsBar:hover .common-Button {
+        opacity: 1;
+        transform: translate(-50%,50px);
+        background-color: #fff;
+        font-weight: 600;
+    }
 
-#benefitsBar a {
-    text-decoration: none;
-    font-family: Camphor,Open Sans,Segoe UI,sans-serif;
-}
+    #benefitsBar a {
+        text-decoration: none;
+        font-family: Camphor,Open Sans,Segoe UI,sans-serif;
+    }
 
 #spacerBar {
     background-image: url("hypnotize.png");
@@ -441,9 +439,8 @@
 
 
 /*Racetracks section*/
-#raceTracks li{
-    display:inline-block;
-
+#raceTracks li {
+    display: inline-block;
 }
 
 #raceTracks {
