@@ -14,6 +14,14 @@ namespace KYHBPA_TeamA.Controllers
         public ActionResult Index()
         {
             return View();
+            var first = new DateTime(DateTime.Today.Year, DateTime.Today.Month, 1);
+            var events = db.Events.Where(e => e.EventDate >= first).ToList();
+            var viewModel = new PhotoGalleryViewModel
+
+            {
+                Events = events
+            };
+            return View(viewModel);
         }
 
         public ActionResult About()
