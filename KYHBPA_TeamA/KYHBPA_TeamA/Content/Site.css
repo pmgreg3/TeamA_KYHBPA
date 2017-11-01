@@ -26,21 +26,20 @@
 
 
     .navbar-inverse .navbar-nav > li > a:hover {
-        background-color: #0162a1 !important;
+        background-color: #177955 !important;
     }
 
 .dropdown-menu > li > a:hover {
-    background-color: #0162a1 !important;
+    background-color: #0b3928 !important;
 }
 
 .navbar-inverse .navbar-nav > .open > a, .navbar-inverse .navbar-nav > .open > a:hover, .navbar-inverse .navbar-nav > .open > a:focus {
-    background-color: #0162a1;
+    background-color: #0b3928;
 }
 
 .navbar-inverse {
     border: none;
-    /*background: #00c453;*/
-    background: #01436e;
+    background: #072419;
 }
 
 .donate-Button {
@@ -87,7 +86,7 @@
 .socialMediaIcon {
     height: 4em;
     width: 4em;
-    fill: #015287;
+    fill: #072419;
 }
 
 /*Intro below social media span*/
@@ -220,9 +219,11 @@
 
 .carousel-caption {
     background: rgba(0,0,0,0.4);
-    right:0;
-    left:0;
-    position:absolute;
+    right: 0;
+    left: 0;
+    position: absolute;
+    font-family: Camphor,Open Sans,Segoe UI,sans-serif;
+    font-weight:300;
 }
 
 .input {
@@ -263,7 +264,7 @@
 
 /*Drop Down menu Style*/
 .navbar-nav > li > .dropdown-menu {
-    background: #01436e;
+    background: #072419;
     color: white;
     font-size: 22px;
     padding: 7px;
@@ -333,7 +334,7 @@
 }
 
 .common-Uppercase {
-    color: #015287;
+    color: #072419;
     font-weight: 600;
     font-size: 41px;
     text-transform: uppercase;
@@ -351,12 +352,12 @@
     font-weight: 400;
     font-size: 20px;
     line-height: 26px;
-    color: #015287;
+    color: #072419;
 }
 
 
 .common-UppercaseTitle {
-    color: #015287;
+    color: #072419;
     text-transform: uppercase;
     font-size: 22px;
     line-height: 33px;
