@@ -1,12 +1,15 @@
 ﻿@model IEnumerable<KYHBPA_TeamA.Models.DisplayBoardOfDirectorsViewModel>
 
 @{
-    ViewBag.Title = "Our Board";
+    ViewBag.Title = "Our Board-Admin";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2 class="common-Uppercase text-center">Board of Directors</h2>
+<h2 class="common-Uppercase text-center">Board of Directors - Administrator View</h2>
 
+<p>
+    @Html.ActionLink("Create New", "Create", "", new { @class = "common-Button" })
+</p>
 <table class="table">
     <tr>
 
@@ -14,7 +17,7 @@
             @Html.DisplayNameFor(model => model.Title)
         </th>
         <th class=" common-BodyText">
-            Picture 
+            Picture
         </th>
         <th class=" common-BodyText">
             Contact Information
@@ -28,7 +31,7 @@
     @foreach (var item in Model)
     {
         <tr>
-            
+
             <td>
                 @Html.DisplayFor(modelItem => item.Title)
             </td>
@@ -40,14 +43,19 @@
                 <div>
                     @Html.DisplayFor(modelItem => item.FirstName) @Html.DisplayFor(modelItem => item.LastName)
                 </div>
-               
+
                 <div>
                     @Html.DisplayFor(modelItem => item.Email)
                 </div>
-            
+
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @class = "common-Button" })
+
+                @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "common-Button" })
             </td>
         </tr>
     }

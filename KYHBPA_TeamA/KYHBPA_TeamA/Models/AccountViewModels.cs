@@ -8,7 +8,7 @@ namespace KYHBPA_TeamA.Models
     {
         [Required]
         [Display(Name = "Email")]
-        public string Email { get; set; }
+        public string UserName { get; set; }
     }
 
     public class ExternalLoginListViewModel
@@ -50,9 +50,8 @@ namespace KYHBPA_TeamA.Models
     public class LoginViewModel
     {
         [Required]
-        [Display(Name = "Email")]
-        [EmailAddress]
-        public string Email { get; set; }
+        [Display(Name = "User Name")]
+        public string UserName { get; set; }
 
         [Required]
         [DataType(DataType.Password)]
@@ -65,10 +64,17 @@ namespace KYHBPA_TeamA.Models
 
     public class RegisterViewModel
     {
+        [Display(Name = "User Roles")]
+        public string UserRoles { get; set; }
+
         [Required]
         [EmailAddress]
         [Display(Name = "Email")]
         public string Email { get; set; }
+
+        [Required]
+        [Display(Name = "User Name")]
+        public string UserName { get; set; }
 
         [Required]
         [Display(Name = "First Name")]
@@ -82,7 +88,7 @@ namespace KYHBPA_TeamA.Models
         [Display(Name = "Last Name")]
         public string LastName { get; set; }
 
-        [Required]
+        //[Required] - Don't need for website signup info (WTB)
         [DataType(DataType.DateTime)]
         [Display(Name = "Date of Birth")]
         public DateTime DateOfBirth { get; set; }

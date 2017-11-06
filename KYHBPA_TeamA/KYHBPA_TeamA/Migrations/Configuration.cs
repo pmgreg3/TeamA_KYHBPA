@@ -10,7 +10,6 @@ namespace KYHBPA_TeamA.Migrations
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
-            ContextKey = "KYHBPA_TeamA.Models.ApplicationDbContext";
         }
 
         protected override void Seed(KYHBPA_TeamA.Models.ApplicationDbContext context)
