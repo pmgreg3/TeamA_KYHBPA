@@ -5,8 +5,8 @@
 }
 
 @section ImageGallery{
-        <!--Image Gallery-->
-@Html.Action("_ImageGallery", "Photo")
+    <!--Image Gallery-->
+    @Html.Action("_ImageGallery", "Photo")
 }
 
 
@@ -45,7 +45,7 @@
 
 
 <section id="primary">
-    <h1 class="common-Uppercase">Kentucky Horsemen's <br> Benevolent and Protective <br> Association</h1>
+    <h1 class="common-Uppercase">Kentucky Horsemen's Benevolent <br />and Protective Association</h1>
     <div class="cols container-lg">
         <section id="becomeAMember">
             <h3 class="common-UppercaseTitle">Become a Member Today!</h3>
@@ -55,20 +55,20 @@
                 involved in helping to improve the industry. There are no membership fees.
                 Remember – This is your organization. Become an active participant and one of the “Horsemen Helping Horseman”.
             </p>
-            <i class="fa fa-handshake fa-6x" style="color:#01436e"></i>
+            <i class="fa fa-handshake fa-6x" style="color:#072419"></i>
             <br />
             <a href="/Account/Register" class="common-Button">Create account</a>
         </section>
         <section id="learnMore">
-            <h3 class="common-UppercaseTitle">Learn more about us</h3>
+            <h3 class="common-UppercaseTitle">Learn more about us!</h3>
             <p class="common-BodyText">
-                We urge all horsemen to join the HBPA, and urge you to take an 
-                active role in the direction and policies of your organization. 
-                By doing so, you are affirming your confidence in the goals and future 
+                We urge all horsemen to join the HBPA, and urge you to take an
+                active role in the direction and policies of your organization.
+                By doing so, you are affirming your confidence in the goals and future
                 endeavors of the HBPA. Lets bring our community closer together
-                and welcome new members.   
+                and welcome new members.
             </p>
-            <i class="fa fa-users fa-6x" style="color:#01436e"></i>
+            <i class="fa fa-users fa-6x" style="color:#072419"></i>
             <br />
             <a href="/Home/Benefits" class="common-Button">Learn more</a>
         </section>
@@ -80,36 +80,46 @@
     <div class="container-lg">
         <h3 class="common-UppercaseTitle">Learn about our membership.</h3>
         <p class="common-BodyText"> Our shield, your protection.</p>
-        <i class="fa fa-shield-check fa-5x" style="color:#01436e; padding-bottom:4px;"></i>
+        <i class="fa fa-shield-check fa-5x" style="color:#072419; padding-bottom:4px;"></i>
     </div>
 </section>
 
 <div id="socialEmbeds" class="cols container-lg">
     <section id="twitterEmbed">
-        <h2 class="text-center common-UppercaseTitle">Recent Tweets</h2>
+        <h2 class="text-center common-UppercaseTitle">
+            <svg class="socialMediaIcon">
+                <use xlink:href="~/Content/brands.svg#twitter-square"></use>
+            </svg>
+        </h2>
         <a class="twitter-timeline" data-width="340" data-height="500" href="https://twitter.com/KyHBPA?ref_src=twsrc%5Etfw"></a>
         <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
     </section>
 
     <section id="instagramEmbed">
-        <h2 class="text-center common-UppercaseTitle">Instagram</h2>
-        <blockquote class="instagram-media" data-instgrm-version="7" style=" background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:658px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);"><div style="padding:8px;"> <div style=" background:#F8F8F8; line-height:0; margin-top:40px; padding:50.0% 0; text-align:center; width:100%;"> <div style=" background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACwAAAAsCAMAAAApWqozAAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAAAMUExURczMzPf399fX1+bm5mzY9AMAAADiSURBVDjLvZXbEsMgCES5/P8/t9FuRVCRmU73JWlzosgSIIZURCjo/ad+EQJJB4Hv8BFt+IDpQoCx1wjOSBFhh2XssxEIYn3ulI/6MNReE07UIWJEv8UEOWDS88LY97kqyTliJKKtuYBbruAyVh5wOHiXmpi5we58Ek028czwyuQdLKPG1Bkb4NnM+VeAnfHqn1k4+GPT6uGQcvu2h2OVuIf/gWUFyy8OWEpdyZSa3aVCqpVoVvzZZ2VTnn2wU8qzVjDDetO90GSy9mVLqtgYSy231MxrY6I2gGqjrTY0L8fxCxfCBbhWrsYYAAAAAElFTkSuQmCC); display:block; height:44px; margin:0 auto -44px; position:relative; top:-22px; width:44px;"></div></div><p style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; line-height:17px; margin-bottom:0; margin-top:8px; overflow:hidden; padding:8px 0 7px; text-align:center; text-overflow:ellipsis; white-space:nowrap;"><a href="https://www.instagram.com/p/BXiinyghyZm/" style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:normal; line-height:17px; text-decoration:none;" target="_blank">A post shared by PA HBPA (@@pa_hbpa)</a> on <time style=" font-family:Arial,sans-serif; font-size:14px; line-height:17px;" datetime="2017-08-08T16:35:01+00:00">Aug 8, 2017 at 9:35am PDT</time></p></div></blockquote>
-        <script async defer src="//platform.instagram.com/en_US/embeds.js"></script>    </section>
+        <h2 class="text-center common-UppercaseTitle"><svg class="socialMediaIcon">
+    <use xlink:href="~/Content/brands.svg#instagram"></use>
+</svg></h2>
+        <script src="//lightwidget.com/widgets/lightwidget.js"></script><iframe src="//lightwidget.com/widgets/742a05f5e19d5427b44d0313e41d0d52.html" scrolling="no" allowtransparency="true" class="lightwidget-widget" style="width: 100%; border: 0; overflow: hidden;"></iframe>
+    </section>
 
     <section id="facebookEmbed">
-        <h2 class="text-center common-UppercaseTitle">Facebook Feed</h2>
+        <h2 class="text-center common-UppercaseTitle">
+            <svg class="socialMediaIcon">
+                <use xlink:href="~/Content/brands.svg#facebook-square"></use>
+            </svg>
+        </h2>
         <div class="fb-page" data-href="https://www.facebook.com/KYhbpa/" data-tabs="timeline" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="false"><blockquote cite="https://www.facebook.com/KYhbpa/" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/KYhbpa/">Kentucky HBPA</a></blockquote></div>
     </section>
 
 </div>
 
- 
+
 <section id="primary">
     <div class="cols container-lg">
         <section id="raceTracks">
-            <h2 class="text-center common-UppercaseTitle">Kentucky Track Conditions</h2>
+            <h2 class="text-center common-UppercaseTitle">Check the Track before you race!</h2>
             <p class="common-BodyText">
-                Here are some of our favorite race tracks!  You can click on the links below to check track conditions and keep up with track news.  
+                In a hurry to get to the big race? Look no further! You can click on the links below to check track conditions and keep up with track news.
             </p>
             <ul list-style="none">
                 <li>
@@ -127,14 +137,24 @@
             </ul>
         </section>
         <section id="upcomingEvents">
-            <h2 class="common-UppercaseTitle">Upcoming Events</h2>
-            <img src="~/Content/eventsImage.png"/>
+            <h2 class="common-UppercaseTitle">Stay Current</h2>
+            @foreach (var items in Model.Events)
+            {
+                <br />
+                <div class="DescrSquare"><p class="col-lg-12" id="EventDescription">@items.EventDescription</p></div>
+                <div class="TimeSquare">
+                    <p class="col-md-6" id="EventStart"><b>Start Time:</b>@items.EventDate</p>
+                    <p class="col-md-6" id="EventEnd"><b>End Time:</b>@items.EventTime</p>
+                </div>
+                <br />
+
+            }
         </section>
     </div>
-</section>   
+</section>
 
 <section id="spacerBar">
-    <h2 class="text-center common-UppercaseTitle">Partner Organizations</h2>
+    <h2 class="text-center common-UppercaseTitle">Looking for more organizations like us?</h2>
     <div class="container-lg">
         <img src="~/Content/partnershipBar.png" width="1000" />
     </div>
