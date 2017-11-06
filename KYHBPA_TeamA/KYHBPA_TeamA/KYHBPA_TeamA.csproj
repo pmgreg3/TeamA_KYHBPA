@@ -273,6 +273,10 @@
     <Compile Include="Migrations\201710232330172_FixingBlog.Designer.cs">
       <DependentUpon>201710232330172_FixingBlog.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201711050726577_updatedphotoswithpartners.cs" />
+    <Compile Include="Migrations\201711050726577_updatedphotoswithpartners.Designer.cs">
+      <DependentUpon>201711050726577_updatedphotoswithpartners.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Migrations\201709101953261_InitialCreate.cs" />
     <Compile Include="Migrations\201709101953261_InitialCreate.Designer.cs">
@@ -780,6 +784,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201710232330172_FixingBlog.resx">
       <DependentUpon>201710232330172_FixingBlog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711050726577_updatedphotoswithpartners.resx">
+      <DependentUpon>201711050726577_updatedphotoswithpartners.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

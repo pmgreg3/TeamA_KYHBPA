@@ -47,7 +47,8 @@ namespace KYHBPA_TeamA.Controllers
                 Description = p.PhotoDesc,
                 Title = p.PhotoTitle,
                 Date = p.TimeStamp,
-                InPhotoGallery = p.InPhotoGallery
+                InPhotoGallery = p.InPhotoGallery,
+                IsPartnerOrg = p.IsPartnerOrg
 
             });
 
@@ -72,7 +73,7 @@ namespace KYHBPA_TeamA.Controllers
                     break;
             }
 
-           
+
             int pageSize = 5;
             int pageNumber = (page ?? 1);
             return View(photoViewModels.ToPagedList(pageNumber, pageSize));
@@ -82,7 +83,7 @@ namespace KYHBPA_TeamA.Controllers
         public ActionResult Details(int id)
         {
             var photo = db.Photos.Find(id);
-            var newPhoto =  new DisplayPhotosViewModel()
+            var newPhoto = new DisplayPhotosViewModel()
             {
                 Id = photo.PhotoID,
                 Data = photo.PhotoData,
@@ -141,7 +142,8 @@ namespace KYHBPA_TeamA.Controllers
                 Description = photo.PhotoDesc,
                 Title = photo.PhotoTitle,
                 Data = photo.PhotoData,
-                InPhotoGallery = photo.InPhotoGallery
+                InPhotoGallery = photo.InPhotoGallery,
+                IsPartnerOrg = photo.IsPartnerOrg
             };
 
             if (photo == null)
@@ -163,6 +165,7 @@ namespace KYHBPA_TeamA.Controllers
                     {
                         photoToUpdate.PhotoDesc = photoVM.Description;
                         photoToUpdate.InPhotoGallery = photoVM.InPhotoGallery;
+                        photoToUpdate.IsPartnerOrg = photoVM.IsPartnerOrg;
                         photoToUpdate.PhotoTitle = photoVM.Title;
                     }
 
@@ -183,7 +186,7 @@ namespace KYHBPA_TeamA.Controllers
         // GET: Photo/Delete/5
         public ActionResult Delete(int? id)
         {
-            if(id == null)
+            if (id == null)
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
 
             var photo = db.Photos.Find(id);
@@ -246,8 +249,8 @@ namespace KYHBPA_TeamA.Controllers
             };
             var photos = db.Photos.Where(x => x.InPhotoGallery == true);
 
-            foreach(var i in photos)
-            {               
+            foreach (var i in photos)
+            {
                 var photoToAdd = new DisplayPhotosViewModel()
                 {
                     Id = i.PhotoID,
@@ -258,6 +261,29 @@ namespace KYHBPA_TeamA.Controllers
                 vm.Photos.Add(photoToAdd);
             }
 
+            return View(vm);
+        }
+
+        public ActionResult _PartnerOrgs()
+        {
+            var vm = new PartnerOrgViewModel
+            {
+                Partners = new List<DisplayPartnerOrgViewModel>()
+            };
+
+            var photos = db.Photos.Where(x => x.IsPartnerOrg == true);
+
+            foreach (var i in photos)
+            {
+                var partnerToAdd = new DisplayPartnerOrgViewModel()
+                {
+                    Id = i.PhotoID,
+                    Data = i.PhotoData,
+                    Description = i.PhotoDesc,
+                    Title = i.PhotoTitle
+                };
+                vm.Partners.Add(partnerToAdd);
+            }
             return View(vm);
         }
     }
