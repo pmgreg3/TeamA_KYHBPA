@@ -41,4 +41,9 @@ namespace KYHBPA_TeamA.Models
     {
         public List<DisplayPartnerOrgViewModel> Partners { get; set; }
     }
+
+    public class PartnerOrgViewModel
+    {
+        public List<DisplayPartnerOrgViewModel> Partners { get; set; }
+    }
 }
