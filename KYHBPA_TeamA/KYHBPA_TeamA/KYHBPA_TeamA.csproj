@@ -726,6 +726,7 @@
     <Content Include="Views\Blog\Manage.cshtml" />
     <Content Include="Views\Shared\_PagerPartial.cshtml" />
     <Content Include="Views\Shared\_PostTemplatePartial.cshtml" />
+    <Content Include="Views\Photo\_PartnerOrgs.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
