@@ -736,6 +736,7 @@
     <Content Include="Views\Document\Admin.cshtml" />
     <Content Include="Views\BoardOfDirectors\Admin.cshtml" />
     <Content Include="Views\Photo\Admin.cshtml" />
+    <Content Include="Views\Shared\_PartnerOrgs.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
