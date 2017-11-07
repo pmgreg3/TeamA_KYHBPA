@@ -1,0 +1,47 @@
+﻿@model KYHBPA_TeamA.Models.PartnerOrgViewModel
+
+@{
+    Layout = null;
+}
+
+<div id="carousel" class="carousel slide" data-ride="carousel">
+    <!-- Menu -->
+    <ol class="carousel-indicators">
+        <li data-target="#carousel" data-slide-to="0" class="active"></li>
+        <li data-target="#carousel" data-slide-to="1"></li>
+        <li data-target="#carousel" data-slide-to="2"></li>
+    </ol>
+
+    <!-- Items -->
+    <div class="carousel-inner">
+
+        @for (int i = 0; i < Model.Photos.Count; i++)
+        {
+            if (i == 0)
+            {
+                <div class="item active">
+                    <h1 class="carousel-caption">
+                        @Model.Photos.ElementAt(i).Description
+                </h1>
+                <img src="@Url.Action("GetPhoto", "Photo", new { Model.Photos.ElementAt(i).Id })" />
+            </div>
+            }
+            if (i != 0)
+            {
+                <div class="item ">
+                    <h1 class="carousel-caption">
+                        @Model.Photos.ElementAt(i).Description
+                </h1>
+                <img src="@Url.Action("GetPhoto", "Photo", new { Model.Photos.ElementAt(i).Id })" />
+            </div>
+            }
+        }
+    </div>
+    <a href="#carousel" class="left carousel-control" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left"></span>
+    </a>
+    <a href="#carousel" class="right carousel-control" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right"></span>
+    </a>
+</div>
+
