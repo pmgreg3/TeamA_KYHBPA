@@ -503,3 +503,21 @@
     background: #072419;
     padding-top: 10px;
 }
+
+.facebookIcon {
+    height: 4em;
+    width: 4em;
+    fill: rgba(59, 89, 152, 1);
+}
+
+.instagramIcon {
+    height: 5.5em;
+    width: 5.5em;
+    fill: url(#MyGradient);
+}
+
+.twitterIcon {
+    height: 4em;
+    width: 4em;
+    fill: rgba(0, 172, 237, 1);
+}
