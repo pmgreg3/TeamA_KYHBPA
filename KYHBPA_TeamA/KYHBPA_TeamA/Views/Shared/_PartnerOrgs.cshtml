@@ -1,5 +1,4 @@
-﻿@model KYHBPA_TeamA.Models.PartnerOrgViewModel
-
+﻿
 @{
     Layout = null;
 }
@@ -21,7 +20,7 @@
             {
                 <div class="item active">
                     <h1 class="carousel-caption">
-                        @Model.Partners.ElementAt(i).Description
+                        @Model.Photos.ElementAt(i).Description
                 </h1>
                 <img src="@Url.Action("GetPhoto", "Photo", new { Model.Partners.ElementAt(i).Id })" />
             </div>
@@ -30,7 +29,7 @@
             {
                 <div class="item ">
                     <h1 class="carousel-caption">
-                        @Model.Partners.ElementAt(i).Description
+                        @Model.Photos.ElementAt(i).Description
                 </h1>
                 <img src="@Url.Action("GetPhoto", "Photo", new { Model.Partners.ElementAt(i).Id })" />
             </div>
