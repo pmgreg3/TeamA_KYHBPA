@@ -44,14 +44,32 @@ namespace KYHBPA_TeamA.Controllers
             return View(newDocument);
         }
 
+        // GET: Document/Admin
+        [Authorize(Roles="Admin")]
+        public ActionResult Admin()
+        {
+            var docs = db.Documents.Select(d => new DisplayDocumentsViewModel()
+            {
+                Id = d.DocumentId,
+                Content = d.DocumentContent,
+                Description = d.DocumentDescription,
+                Title = d.DocumentName,
+                Date = d.DocumentUploadDateTime
+            });
+
+            return View(docs);
+        }
+
 
         // GET
+        [Authorize(Roles = "Admin")]
         public ActionResult Create()
         {
             return View();
         }
 
         // POST: Document/Create
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public ActionResult Create(AddDocumentViewModel addViewModel, HttpPostedFileBase file = null)
         {
@@ -75,7 +93,9 @@ namespace KYHBPA_TeamA.Controllers
                 return View();
             }
         }
+
         // GET: Document/Edit/5
+        [Authorize(Roles = "Admin")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -97,6 +117,7 @@ namespace KYHBPA_TeamA.Controllers
         }
 
         // POST: Document/Edit/5
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public ActionResult Edit(DisplayDocumentsViewModel documentVM, FormCollection collection)
         {
@@ -126,6 +147,7 @@ namespace KYHBPA_TeamA.Controllers
         }
 
         // GET: Document/Delete/5
+        [Authorize(Roles = "Admin")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -148,6 +170,7 @@ namespace KYHBPA_TeamA.Controllers
         }
 
         // POST: Document/Delete/5
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public ActionResult Delete(int id, FormCollection collection)
         {
