@@ -73,6 +73,7 @@
     </div>
 
     @RenderSection("ImageGallery", required: false)
+    @RenderSection("PartnerOrg", required: false)
 
     <div class="container body-content">
         @RenderBody()
@@ -84,6 +85,8 @@
             </div>
         </footer>
     </div>
+
+    @RenderSection("PartnerOrg", required: false)
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")

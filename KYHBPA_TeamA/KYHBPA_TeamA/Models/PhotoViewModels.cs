@@ -20,9 +20,14 @@ namespace KYHBPA_TeamA.Models
         public string Title { get; set; }
         public DateTime Date { get; set; }
         public bool InPhotoGallery { get; set; }
+        public bool IsPartnerOrg { get; set; }
     }
 
     public class EditPhotosViewModel : DisplayPhotosViewModel
+    {
+    }
+
+    public class DisplayPartnerOrgViewModel: DisplayPhotosViewModel
     {
     }
 
@@ -31,4 +36,10 @@ namespace KYHBPA_TeamA.Models
         public List<DisplayPhotosViewModel> Photos { get; set; }
         public List<Event> Events { get; set; }
     }
+
+    public class PartnerOrgViewModel
+    {
+        public List<DisplayPartnerOrgViewModel> Partners { get; set; }
+    }
+
 }
