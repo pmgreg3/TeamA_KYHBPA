@@ -521,3 +521,10 @@
     width: 4em;
     fill: rgba(0, 172, 237, 1);
 }
+
+
+/*PartnerOrgsCarousel*/
+
+#partnerCarousel{
+    box-shadow:unset;
+}

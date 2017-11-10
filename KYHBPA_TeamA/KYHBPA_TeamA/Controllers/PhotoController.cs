@@ -330,24 +330,38 @@ namespace KYHBPA_TeamA.Controllers
 
         public ActionResult _PartnerOrgs()
         {
-            var vm = new PartnerOrgViewModel
+            int NUM_ITEMS_IN_SLIDE = 4;
+
+            var vm = new PartnerOrgSlides
             {
-                Partners = new List<DisplayPartnerOrgViewModel>()
+                Slides = new List<PartnerOrgSlide>()
             };
 
-            var photos = db.Photos.Where(x => x.IsPartnerOrg == true);
 
-            foreach (var i in photos)
+            var photos = db.Photos.Where(x => x.IsPartnerOrg == true).OrderBy(x => x.TimeStamp);
+            var totalNumOfPartners = db.Photos.Where(x => x.IsPartnerOrg == true).Count();
+            var numOfSlides = Math.Ceiling((double)totalNumOfPartners / NUM_ITEMS_IN_SLIDE);
+
+            for(int i = 0; i < numOfSlides; i++)
             {
-                var partnerToAdd = new DisplayPartnerOrgViewModel()
+                PartnerOrgSlide slide = new PartnerOrgSlide();
+                int photoCounter = i * NUM_ITEMS_IN_SLIDE;
+                var slidePhotos = photos.Skip(i).Take(NUM_ITEMS_IN_SLIDE);
+
+                foreach(var photo in slidePhotos)
                 {
-                    Id = i.PhotoID,
-                    Data = i.PhotoData,
-                    Description = i.PhotoDesc,
-                    Title = i.PhotoTitle
-                };
-                vm.Partners.Add(partnerToAdd);
+                    var partnerToAdd = new DisplayPartnerOrgViewModel()
+                    {
+                        Id = photo.PhotoID,
+                        Data = photo.PhotoData,
+                        Description = photo.PhotoDesc,
+                        Title = photo.PhotoTitle
+                    };
+                    slide.PartnerPhotos.Add(partnerToAdd);
+                }
+                vm.Slides.Add(slide);
             }
+          
             return View(vm);
         }
     }
