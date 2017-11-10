@@ -14,5 +14,6 @@ namespace KYHBPA_TeamA.Models
         public byte[] PhotoData { get; set; }
         public string MimeType { get; set; }
         public bool InPhotoGallery { get; set; }
+        public bool IsPartnerOrg { get; set; }
     }
 }

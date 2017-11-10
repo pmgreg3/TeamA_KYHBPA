@@ -47,7 +47,8 @@ namespace KYHBPA_TeamA.Controllers
                 Description = p.PhotoDesc,
                 Title = p.PhotoTitle,
                 Date = p.TimeStamp,
-                InPhotoGallery = p.InPhotoGallery
+                InPhotoGallery = p.InPhotoGallery,
+                IsPartnerOrg = p.IsPartnerOrg
 
             });
 
@@ -72,7 +73,7 @@ namespace KYHBPA_TeamA.Controllers
                     break;
             }
 
-           
+
             int pageSize = 5;
             int pageNumber = (page ?? 1);
             return View(photoViewModels.ToPagedList(pageNumber, pageSize));
@@ -82,7 +83,7 @@ namespace KYHBPA_TeamA.Controllers
         public ActionResult Details(int id)
         {
             var photo = db.Photos.Find(id);
-            var newPhoto =  new DisplayPhotosViewModel()
+            var newPhoto = new DisplayPhotosViewModel()
             {
                 Id = photo.PhotoID,
                 Data = photo.PhotoData,
@@ -95,7 +96,7 @@ namespace KYHBPA_TeamA.Controllers
         }
 
         // GET: Photo/Admin
-        [Authorize(Roles ="Admin")]
+        //[Authorize(Roles ="Admin")]
         public ActionResult Admin(string sortOrder, string currentFilter, string searchString, int? page)
         {
             ViewBag.CurrentSort = sortOrder;
@@ -153,14 +154,14 @@ namespace KYHBPA_TeamA.Controllers
 
 
         // GET
-        [Authorize(Roles = "Admin,Employee,Member,User")]
+        //[Authorize(Roles = "Admin,Employee,Member,User")]
         public ActionResult Create()
         {
             return View();
         }
 
         // POST: Photo/Create
-        [Authorize(Roles = "Admin,Employee,Member,User")]
+        //[Authorize(Roles = "Admin,Employee,Member,User")]
         [HttpPost]
         public ActionResult Create(AddPhotoViewModel addViewModel, HttpPostedFileBase image = null)
         {
@@ -172,7 +173,8 @@ namespace KYHBPA_TeamA.Controllers
                     PhotoDesc = addViewModel.Description,
                     PhotoData = new byte[image.ContentLength],
                     PhotoTitle = addViewModel.Title,
-                    MimeType = image.ContentType
+                    MimeType = image.ContentType,
+                    
                 };
                 image.InputStream.Read(photo.PhotoData, 0, image.ContentLength);
                 db.Photos.Add(photo);
@@ -187,7 +189,7 @@ namespace KYHBPA_TeamA.Controllers
         }
 
         // GET: Photo/Edit/5
-        [Authorize(Roles = "Admin,Employee,Member,User")]
+        //[Authorize(Roles = "Admin,Employee,Member,User")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -201,7 +203,8 @@ namespace KYHBPA_TeamA.Controllers
                 Description = photo.PhotoDesc,
                 Title = photo.PhotoTitle,
                 Data = photo.PhotoData,
-                InPhotoGallery = photo.InPhotoGallery
+                InPhotoGallery = photo.InPhotoGallery,
+                IsPartnerOrg = photo.IsPartnerOrg
             };
 
             if (photo == null)
@@ -211,7 +214,7 @@ namespace KYHBPA_TeamA.Controllers
         }
 
         // POST: Photo/Edit/5
-        [Authorize(Roles = "Admin,Employee,Member,User")]
+        //[Authorize(Roles = "Admin,Employee,Member,User")]
         [HttpPost]
         public ActionResult Edit(EditPhotosViewModel photoVM, FormCollection collection)
         {
@@ -224,6 +227,7 @@ namespace KYHBPA_TeamA.Controllers
                     {
                         photoToUpdate.PhotoDesc = photoVM.Description;
                         photoToUpdate.InPhotoGallery = photoVM.InPhotoGallery;
+                        photoToUpdate.IsPartnerOrg = photoVM.IsPartnerOrg;
                         photoToUpdate.PhotoTitle = photoVM.Title;
                     }
 
@@ -242,10 +246,10 @@ namespace KYHBPA_TeamA.Controllers
         }
 
         // GET: Photo/Delete/5
-        [Authorize(Roles = "Admin,Employee")]
+        //[Authorize(Roles = "Admin,Employee")]
         public ActionResult Delete(int? id)
         {
-            if(id == null)
+            if (id == null)
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
 
             var photo = db.Photos.Find(id);
@@ -309,8 +313,8 @@ namespace KYHBPA_TeamA.Controllers
             };
             var photos = db.Photos.Where(x => x.InPhotoGallery == true);
 
-            foreach(var i in photos)
-            {               
+            foreach (var i in photos)
+            {
                 var photoToAdd = new DisplayPhotosViewModel()
                 {
                     Id = i.PhotoID,
@@ -321,6 +325,29 @@ namespace KYHBPA_TeamA.Controllers
                 vm.Photos.Add(photoToAdd);
             }
 
+            return View(vm);
+        }
+
+        public ActionResult _PartnerOrgs()
+        {
+            var vm = new PartnerOrgViewModel
+            {
+                Partners = new List<DisplayPartnerOrgViewModel>()
+            };
+
+            var photos = db.Photos.Where(x => x.IsPartnerOrg == true);
+
+            foreach (var i in photos)
+            {
+                var partnerToAdd = new DisplayPartnerOrgViewModel()
+                {
+                    Id = i.PhotoID,
+                    Data = i.PhotoData,
+                    Description = i.PhotoDesc,
+                    Title = i.PhotoTitle
+                };
+                vm.Partners.Add(partnerToAdd);
+            }
             return View(vm);
         }
     }

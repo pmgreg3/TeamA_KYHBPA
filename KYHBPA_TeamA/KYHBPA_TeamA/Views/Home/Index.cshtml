@@ -168,7 +168,10 @@
 <section id="spacerBar">
     <h2 class="text-center common-UppercaseTitle">Looking for more organizations like us?</h2>
     <div class="container-lg">
-        <img src="~/Content/partnershipBar.png" width="1000" />
+        @section PartnerOrg{
+            <!--Image Gallery-->
+            @Html.Action("_PartnerOrgs", "Photo")
+        }
     </div>
 </section>
 
