@@ -37,8 +37,13 @@ namespace KYHBPA_TeamA.Models
         public List<Event> Events { get; set; }
     }
 
-    public class PartnerOrgViewModel
+    public class PartnerOrgSlide
     {
-        public List<DisplayPartnerOrgViewModel> Partners { get; set; }
+        public List<DisplayPartnerOrgViewModel> PartnerPhotos { get; set; } = new List<DisplayPartnerOrgViewModel>();
+    }
+
+    public class PartnerOrgSlides
+    {
+        public List<PartnerOrgSlide> Slides { get; set; }
     }
 }
