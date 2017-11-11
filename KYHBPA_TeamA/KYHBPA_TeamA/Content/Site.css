@@ -527,4 +527,31 @@
 
 #partnerCarousel{
     box-shadow:unset;
+    position:center;
+}
+
+#partnerPhotoBox img{
+    margin-left:auto;
+    margin-right:auto;
+    display:block;
+}
+
+#partnerControlLeft{
+    color:black;
+    position:absolute;
+    left:5%;
+    top:50%;
+}
+
+#partnerControlRight{
+    color:black;
+    position:absolute;
+    right:5%;
+    top:50%;
+}
+
+#partnerCarouselContainer{
+    position:absolute;
+    top:50%;
+    width:100%;
 }
