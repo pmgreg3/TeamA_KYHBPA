@@ -15,7 +15,7 @@ namespace KYHBPA_TeamA.Controllers
         {
             TimeZoneInfo easternZone = TimeZoneInfo.FindSystemTimeZoneById("Eastern Standard Time");
 
-            var first = new DateTime(DateTime.Today.Year, DateTime.Today.Month, 1);
+            var first = new DateTime(DateTime.Today.Year, DateTime.Today.Month, DateTime.Today.Day);
             var events = db.Events.OrderBy(e => e.EventDate).ToList().Where(e => e.EventDate >= first && e.EventTime <= first.AddDays(30)).ToList()
                 .Select(e => new Event()
                 {
