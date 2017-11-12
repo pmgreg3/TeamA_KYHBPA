@@ -23,7 +23,7 @@ namespace KYHBPA_TeamA
             var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(context));
             var UserManager = new UserManager<KYHBPAUser>(new UserStore<KYHBPAUser>(context));
 
-            // In StartUp, creating first Admin Role and deafault Admin User
+            // In StartUp, creating first Admin Role and deafault Admin User 
             if (!roleManager.RoleExists("Admin"))
             {
                 // Creates Admin role
