@@ -8,10 +8,11 @@
 
 <div id="content">
 
-    <h2 class="common-Uppercase">Blogs</h2>
+    <h2 class="common-Uppercase">News and Blog</h2>
 
-    @Html.ActionLink("Create", "Create", "Blog", new { @class = "btn btn-primary" })
-
+    <a href="/Blog/Create" class="common-Button">Create</a>
+    <a href="/Blog/ViewByCategory/1" class="common-Button">Browse Blog Posts</a>
+    <a href="/Blog/ViewByCategory/2" class="common-Button">Browse News</a>
     @Html.Partial("_PagerPartial", Model)
 
     @if (Model.Posts.Count > 0)
