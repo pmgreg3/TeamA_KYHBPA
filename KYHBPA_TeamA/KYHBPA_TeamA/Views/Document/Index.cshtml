@@ -7,13 +7,10 @@
 
 <h2 class="common-Uppercase text-center">Documents Library</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create", "", new { @class = "common-Button" })
-</p>
 <table class="table">
     <tr>
         <th>
-            News
+            Documents
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Title)
@@ -48,9 +45,7 @@
             @Html.DisplayFor(modelItem => item.Date)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { item.Id }) |
-            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Delete", "Delete", new { item.Id })
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ })
         </td>
     </tr>
 }

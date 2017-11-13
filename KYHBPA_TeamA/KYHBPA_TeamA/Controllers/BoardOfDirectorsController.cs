@@ -48,8 +48,26 @@ namespace KYHBPA_TeamA.Controllers
 
             return View(newBoardOfDirectors);
         }
+        // GET: BoardOfDirectors/Admin
+        [Authorize(Roles ="Admin")]
+        public ActionResult Admin()
+        {
+            var BoardOfDirectors = db.BoardOfDirectors.Select(p => new DisplayBoardOfDirectorsViewModel()
+            {
+                Id = p.Id,
+                FirstName = p.FirstName,
+                LastName = p.LastName,
+                Title = p.Title,
+                Email = p.Email,
+                Description = p.Description,
+                PhotoContent = p.PhotoContent
+            });
+
+            return View(BoardOfDirectors);
+        }
 
         // GET: BoardOfDirectors/Create
+        [Authorize(Roles = "Admin")]
         public ActionResult Create()
         {
             return View();
@@ -58,6 +76,7 @@ namespace KYHBPA_TeamA.Controllers
         // POST: BoardOfDirectors/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(CreateBODMemberViewModel addViewModel, HttpPostedFileBase file)
@@ -88,6 +107,7 @@ namespace KYHBPA_TeamA.Controllers
         }
 
         // GET: BoardOfDirectors/Edit/5
+        [Authorize(Roles = "Admin")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -115,6 +135,7 @@ namespace KYHBPA_TeamA.Controllers
         // POST: BoardOfDirectors/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(EditBODMemberViewModel BODVM, FormCollection collection)
@@ -149,6 +170,7 @@ namespace KYHBPA_TeamA.Controllers
         }
 
         // GET: BoardOfDirectors/Delete/5
+        [Authorize(Roles = "Admin")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -174,6 +196,7 @@ namespace KYHBPA_TeamA.Controllers
             return View(vm);
         }
         // POST: BoardOfDirectors/Delete/5
+        [Authorize(Roles = "Admin")]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult Delete(int id, FormCollection collection)
