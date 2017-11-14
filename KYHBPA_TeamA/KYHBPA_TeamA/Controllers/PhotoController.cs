@@ -346,7 +346,7 @@ namespace KYHBPA_TeamA.Controllers
             {
                 PartnerOrgSlide slide = new PartnerOrgSlide();
                 int photoCounter = i * NUM_ITEMS_IN_SLIDE;
-                var slidePhotos = photos.Skip(i).Take(NUM_ITEMS_IN_SLIDE);
+                var slidePhotos = photos.Skip(photoCounter).Take(NUM_ITEMS_IN_SLIDE);
 
                 foreach(var photo in slidePhotos)
                 {
