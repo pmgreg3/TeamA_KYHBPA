@@ -42,13 +42,14 @@ namespace KYHBPA_TeamA.Controllers
             var events = _db.Events;
 
             var formatedEvents = new List<object>();
+            TimeZoneInfo easternZone = TimeZoneInfo.FindSystemTimeZoneById("Eastern Standard Time");
             foreach (var ev in events)
             {
                 var formattingEvent = new
                 {
                     id = ev.EventID,
-                    start_date = ev.EventDate.ToString("MM/dd/%y HH:mm"),
-                    end_date = ev.EventTime.ToString("MM/dd/%y HH:mm"),
+                    start_date = TimeZoneInfo.ConvertTimeFromUtc(ev.EventDate, easternZone).ToString("MM/dd/%y HH:mm"),
+                    end_date = TimeZoneInfo.ConvertTimeFromUtc(ev.EventTime, easternZone).ToString("MM/dd/%y HH:mm"),
                     //start_date = ev.EventDate.Date.ToString("MM/dd/yyyy HH:mm"),
                     //end_date = ev.EventTime.Date.ToString("MM/dd/yyyy HH:mm"),
                     text = ev.EventDescription
@@ -71,8 +72,8 @@ namespace KYHBPA_TeamA.Controllers
         {
 
             var existingEvent = _db.Events.FirstOrDefault(e => e.EventID.ToString() == id);
-            var newDate = Convert.ToDateTime(start_date);
-            var newTime = Convert.ToDateTime(end_date);
+            var newDate = Convert.ToDateTime(start_date).ToUniversalTime();
+            var newTime = Convert.ToDateTime(end_date).ToUniversalTime();
 
 
             if (existingEvent != null)
