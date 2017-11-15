@@ -83,6 +83,7 @@
             @Html.DisplayFor(modelItem => item.IsPartnerOrg)
         </td>
         <td>
+            @Html.ActionLink("Edit", "Edit", new { item.Id }) |
             @Html.ActionLink("Details", "Details", new { item.Id })
         </td>
     </tr>
