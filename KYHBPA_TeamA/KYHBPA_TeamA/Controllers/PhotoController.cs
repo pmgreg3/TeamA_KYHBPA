@@ -47,7 +47,8 @@ namespace KYHBPA_TeamA.Controllers
                 Description = p.PhotoDesc,
                 Title = p.PhotoTitle,
                 Date = p.TimeStamp,
-                InPhotoGallery = p.InPhotoGallery
+                InPhotoGallery = p.InPhotoGallery,
+                IsPartnerOrg = p.IsPartnerOrg
 
             });
 
@@ -72,7 +73,7 @@ namespace KYHBPA_TeamA.Controllers
                     break;
             }
 
-           
+
             int pageSize = 5;
             int pageNumber = (page ?? 1);
             return View(photoViewModels.ToPagedList(pageNumber, pageSize));
@@ -82,7 +83,7 @@ namespace KYHBPA_TeamA.Controllers
         public ActionResult Details(int id)
         {
             var photo = db.Photos.Find(id);
-            var newPhoto =  new DisplayPhotosViewModel()
+            var newPhoto = new DisplayPhotosViewModel()
             {
                 Id = photo.PhotoID,
                 Data = photo.PhotoData,
@@ -172,7 +173,7 @@ namespace KYHBPA_TeamA.Controllers
                     PhotoDesc = addViewModel.Description,
                     PhotoData = new byte[image.ContentLength],
                     PhotoTitle = addViewModel.Title,
-                    MimeType = image.ContentType
+                    MimeType = image.ContentType                    
                 };
                 image.InputStream.Read(photo.PhotoData, 0, image.ContentLength);
                 db.Photos.Add(photo);
@@ -201,7 +202,8 @@ namespace KYHBPA_TeamA.Controllers
                 Description = photo.PhotoDesc,
                 Title = photo.PhotoTitle,
                 Data = photo.PhotoData,
-                InPhotoGallery = photo.InPhotoGallery
+                InPhotoGallery = photo.InPhotoGallery,
+                IsPartnerOrg = photo.IsPartnerOrg
             };
 
             if (photo == null)
@@ -224,6 +226,7 @@ namespace KYHBPA_TeamA.Controllers
                     {
                         photoToUpdate.PhotoDesc = photoVM.Description;
                         photoToUpdate.InPhotoGallery = photoVM.InPhotoGallery;
+                        photoToUpdate.IsPartnerOrg = photoVM.IsPartnerOrg;
                         photoToUpdate.PhotoTitle = photoVM.Title;
                     }
 
@@ -245,7 +248,7 @@ namespace KYHBPA_TeamA.Controllers
         [Authorize(Roles = "Admin,Employee")]
         public ActionResult Delete(int? id)
         {
-            if(id == null)
+            if (id == null)
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
 
             var photo = db.Photos.Find(id);
@@ -309,8 +312,8 @@ namespace KYHBPA_TeamA.Controllers
             };
             var photos = db.Photos.Where(x => x.InPhotoGallery == true);
 
-            foreach(var i in photos)
-            {               
+            foreach (var i in photos)
+            {
                 var photoToAdd = new DisplayPhotosViewModel()
                 {
                     Id = i.PhotoID,
@@ -321,6 +324,43 @@ namespace KYHBPA_TeamA.Controllers
                 vm.Photos.Add(photoToAdd);
             }
 
+            return View(vm);
+        }
+
+        public ActionResult _PartnerOrgs()
+        {
+            int NUM_ITEMS_IN_SLIDE = 4;
+
+            var vm = new PartnerOrgSlides
+            {
+                Slides = new List<PartnerOrgSlide>()
+            };
+
+
+            var photos = db.Photos.Where(x => x.IsPartnerOrg == true).OrderBy(x => x.TimeStamp);
+            var totalNumOfPartners = db.Photos.Where(x => x.IsPartnerOrg == true).Count();
+            var numOfSlides = Math.Ceiling((double)totalNumOfPartners / NUM_ITEMS_IN_SLIDE);
+
+            for(int i = 0; i < numOfSlides; i++)
+            {
+                PartnerOrgSlide slide = new PartnerOrgSlide();
+                int photoCounter = i * NUM_ITEMS_IN_SLIDE;
+                var slidePhotos = photos.Skip(photoCounter).Take(NUM_ITEMS_IN_SLIDE);
+
+                foreach(var photo in slidePhotos)
+                {
+                    var partnerToAdd = new DisplayPartnerOrgViewModel()
+                    {
+                        Id = photo.PhotoID,
+                        Data = photo.PhotoData,
+                        Description = photo.PhotoDesc,
+                        Title = photo.PhotoTitle
+                    };
+                    slide.PartnerPhotos.Add(partnerToAdd);
+                }
+                vm.Slides.Add(slide);
+            }
+          
             return View(vm);
         }
     }

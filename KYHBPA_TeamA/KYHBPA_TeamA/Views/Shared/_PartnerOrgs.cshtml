@@ -1,0 +1,68 @@
+﻿@model KYHBPA_TeamA.Models.PartnerOrgSlides
+
+@{
+    Layout = null;
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="carousel slide multi-item-carousel" id="partnerCarousel">
+            <div class="carousel-inner">
+                @for (int i = 0; i < Model.Slides.Count; i++)
+            {
+                if (i == 0)
+                {
+                        <div class="item active">
+                            @for (int iterator = 0; iterator < Model.Slides.ElementAt(i).PartnerPhotos.Count; iterator++)
+                    {
+                                <div class="col-md-3" id="partnerPhotoBox">
+                                    <img src="@Url.Action("GetPhoto", "Photo", new { Model.Slides.ElementAt(i).PartnerPhotos.ElementAt(iterator).Id })" />
+                                </div>
+                            }
+                        </div>
+                    }
+
+                    if (i != 0)
+                    {
+                        <div class="item">
+                            @for (int iterator = 0; iterator < Model.Slides.ElementAt(i).PartnerPhotos.Count; iterator++)
+                            {
+                                <div class="col-md-3" id="partnerPhotoBox">
+                                    <img src="@Url.Action("GetPhoto", "Photo", new { Model.Slides.ElementAt(i).PartnerPhotos.ElementAt(iterator).Id })" />
+                                </div>
+                            }
+                        </div>
+                    }
+
+                }
+            </div>
+            <a class="left carousel-control" id="partnerCarouselControlContainer" href="#partnerCarousel" data-slide="prev"><i class="glyphicon glyphicon-chevron-left" id="partnerControlLeft"></i></a>
+            <a class="right carousel-control" id="partnerCarouselControlContainer" href="#partnerCarousel" data-slide="next"><i class="glyphicon glyphicon-chevron-right" id="partnerControlRight"></i></a>
+        </div>
+    </div>
+</div>
+
+
+
+<script type="text/javascript">
+    // Instantiate the Bootstrap carousel
+    $('.multi-item-carousel').carousel({
+        interval: false
+    });
+
+    // for every slide in carousel, copy the next slide's item in the slide.
+    // Do the same for the next, next item.
+    $('.multi-item-carousel .item').each(function () {
+        var next = $(this).next();
+        if (!next.length) {
+            next = $(this).siblings(':first');
+        }
+        next.children(':first-child').clone().appendTo($(this));
+
+        if (next.next().length > 0) {
+            next.next().children(':first-child').clone().appendTo($(this));
+        } else {
+            $(this).siblings(':first').children(':first-child').clone().appendTo($(this));
+        }
+    });
+</script>

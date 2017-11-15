@@ -520,3 +520,43 @@
     width: 4em;
     fill: rgba(0, 172, 237, 1);
 }
+
+
+/*PartnerOrgsCarousel*/
+
+#partnerCarousel {
+    box-shadow: unset;
+    position: center;
+    background-color:#fff;
+    border-radius:4px;
+}
+
+#partnerPhotoBox img {
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+
+#partnerControlLeft {
+    color: black;
+    position: absolute;
+    left: 1%;
+    top: 50%;
+}
+
+#partnerControlRight {
+    color: black;
+    position: absolute;
+    right: -30%;
+    top: 50%;
+}
+
+#partnerCarouselControlContainer {
+    background-image:unset;
+}
+
+#partnerCarouselContainer {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+}
