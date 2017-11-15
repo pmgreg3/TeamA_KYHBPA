@@ -527,6 +527,8 @@
 #partnerCarousel {
     box-shadow: unset;
     position: center;
+    background-color:#fff;
+    border-radius:4px;
 }
 
 #partnerPhotoBox img {
@@ -540,6 +542,7 @@
     position: absolute;
     left: 1%;
     top: 50%;
+    background-image:unset;
 }
 
 #partnerControlRight {
@@ -547,6 +550,7 @@
     position: absolute;
     right: -30%;
     top: 50%;
+    background-image:unset;
 }
 
 #partnerCarouselContainer {
