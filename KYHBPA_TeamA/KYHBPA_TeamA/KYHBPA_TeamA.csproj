@@ -720,7 +720,7 @@
     <Content Include="Views\Home\Membership.cshtml" />
     <Content Include="Views\Memberships\MembershipError.cshtml" />
     <Content Include="Views\Home\Polls.cshtml" />
-    <Content Include="Views\Home\GamblingEducation.cshtml" />
+    <Content Include="Views\Home\RacingEducation.cshtml" />
     <Content Include="Views\Blog\Create.cshtml" />
     <Content Include="Views\Blog\CreateComment.cshtml" />
     <Content Include="Views\Blog\Details.cshtml" />
