@@ -32,6 +32,9 @@ form {
     height: 66%;
     width: 33%;
 }
+#RememberMe {
+    float: none;
+}
 /*.logoImage {
     position:absolute;
     top:3px;
