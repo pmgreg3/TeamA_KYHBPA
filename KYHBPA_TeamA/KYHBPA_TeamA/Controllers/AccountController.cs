@@ -154,17 +154,17 @@ namespace KYHBPA_TeamA.Controllers
         {
             if (ModelState.IsValid)
             {
-                //{
-                //    UserName = model.UserName,
-                //    Email = model.Email,
-                //    FirstName = model.FirstName,
-                //    LastName = model.LastName,
-                //    AppliedForMembership = false
-                //    //Membership = new Membership() { } Membership will not be creatued until user applies
-                //};
+                var user = new KYHBPAUser 
+                {
+                    UserName = model.UserName,
+                    Email = model.Email,
+                    FirstName = model.FirstName,
+                    LastName = model.LastName,
+                    AppliedForMembership = false
+                    //Membership = new Membership() { } Membership will not be creatued until user applies
+                };
 
                 // TODO: add member to login credential
-                var user = new KYHBPAUser { UserName = model.UserName, Email = model.Email };
 
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
