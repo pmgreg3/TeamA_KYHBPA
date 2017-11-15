@@ -67,6 +67,7 @@ namespace KYHBPA_TeamA.Controllers
             //return new SchedulerAjaxData(_db.Events);
         }
 
+        [Authorize]
         public ActionResult Save(string id, string text, string description, string location, 
             string start_date, string end_date)
         {
@@ -101,6 +102,7 @@ namespace KYHBPA_TeamA.Controllers
             return View("Index");
         }
 
+        [Authorize]
         public ActionResult Delete(string id, string name, string description, string location, string date, string time)
         {
 
