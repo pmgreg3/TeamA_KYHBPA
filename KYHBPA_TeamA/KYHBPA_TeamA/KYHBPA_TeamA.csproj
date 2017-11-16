@@ -644,6 +644,7 @@
       <DependentUpon>KYHBPA.edmx</DependentUpon>
     </Content>
     <Content Include="Content\fontawesome-pro-brands\package.json" />
+    <None Include="Properties\PublishProfiles\kentuckyhbpa.org - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\spike.cis420.net - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\dhtmlxscheduler.js" />
