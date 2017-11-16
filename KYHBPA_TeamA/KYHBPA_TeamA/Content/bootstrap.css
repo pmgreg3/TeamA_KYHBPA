@@ -35,6 +35,36 @@ form {
 #RememberMe {
     float: none;
 }
+.container-fluid {
+    margin-right: auto;
+    margin-left: auto;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+.row::before, 
+.container-fluid::before {
+    content: " ";
+    display: table;
+}
+small,
+.small {
+    font-size: 86%;
+}
+.fa-facebook-square
+.fa-facebook-square::before {
+    content: square;
+}
+.fa-lg {
+    font-size: 1.3333333em;
+    line-height: .75em;
+}
+.fa {
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: 14px;
+    line-height: 1;
+    font-size:inherit;
+    text-rendering: auto;
+}
 /*.logoImage {
     position:absolute;
     top:3px;
