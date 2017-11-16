@@ -243,71 +243,11 @@
     <Compile Include="Helpers\ActionLinkExtensions.cs" />
     <Compile Include="Helpers\Constants.cs" />
     <Compile Include="Helpers\Extensions.cs" />
-    <Compile Include="Migrations\201709132056451_AddedMemberTable.cs" />
-    <Compile Include="Migrations\201709132056451_AddedMemberTable.Designer.cs">
-      <DependentUpon>201709132056451_AddedMemberTable.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201709282017016_AddedInImageGalleryPropToPhoto.cs" />
-    <Compile Include="Migrations\201709282017016_AddedInImageGalleryPropToPhoto.Designer.cs">
-      <DependentUpon>201709282017016_AddedInImageGalleryPropToPhoto.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201710140204134_PhotoUpdate.cs" />
-    <Compile Include="Migrations\201710140204134_PhotoUpdate.Designer.cs">
-      <DependentUpon>201710140204134_PhotoUpdate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201710180149352_FixingMembership.cs" />
-    <Compile Include="Migrations\201710180149352_FixingMembership.Designer.cs">
-      <DependentUpon>201710180149352_FixingMembership.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201710180151519_MakingDateTimesNullable.cs" />
-    <Compile Include="Migrations\201710180151519_MakingDateTimesNullable.Designer.cs">
-      <DependentUpon>201710180151519_MakingDateTimesNullable.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201710180157466_RemovingMemberID.cs" />
-    <Compile Include="Migrations\201710180157466_RemovingMemberID.Designer.cs">
-      <DependentUpon>201710180157466_RemovingMemberID.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201710230023117_AddedToMembership.cs" />
-    <Compile Include="Migrations\201710230023117_AddedToMembership.Designer.cs">
-      <DependentUpon>201710230023117_AddedToMembership.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201710232330172_FixingBlog.cs" />
-    <Compile Include="Migrations\201710232330172_FixingBlog.Designer.cs">
-      <DependentUpon>201710232330172_FixingBlog.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201711050726577_updatedphotoswithpartners.cs" />
-    <Compile Include="Migrations\201711050726577_updatedphotoswithpartners.Designer.cs">
-      <DependentUpon>201711050726577_updatedphotoswithpartners.cs</DependentUpon>
+    <Compile Include="Migrations\201711161854039_initial.cs" />
+    <Compile Include="Migrations\201711161854039_initial.Designer.cs">
+      <DependentUpon>201711161854039_initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Migrations\201709101953261_InitialCreate.cs" />
-    <Compile Include="Migrations\201709101953261_InitialCreate.Designer.cs">
-      <DependentUpon>201709101953261_InitialCreate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201709202032566_AddedPhotoTable.cs" />
-    <Compile Include="Migrations\201709202032566_AddedPhotoTable.Designer.cs">
-      <DependentUpon>201709202032566_AddedPhotoTable.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201709221428199_AddedEventsTable.cs" />
-    <Compile Include="Migrations\201709221428199_AddedEventsTable.Designer.cs">
-      <DependentUpon>201709221428199_AddedEventsTable.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201709221430513_AddedDocumentsTable.cs" />
-    <Compile Include="Migrations\201709221430513_AddedDocumentsTable.Designer.cs">
-      <DependentUpon>201709221430513_AddedDocumentsTable.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201709221439589_UpdatePhotoModel-AddPhotoData.cs" />
-    <Compile Include="Migrations\201709221439589_UpdatePhotoModel-AddPhotoData.Designer.cs">
-      <DependentUpon>201709221439589_UpdatePhotoModel-AddPhotoData.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201709230144083_AddMimeTypePropertyToPhotoTable.cs" />
-    <Compile Include="Migrations\201709230144083_AddMimeTypePropertyToPhotoTable.Designer.cs">
-      <DependentUpon>201709230144083_AddMimeTypePropertyToPhotoTable.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201709252012182_AddingMemberToApplicationUser.cs" />
-    <Compile Include="Migrations\201709252012182_AddingMemberToApplicationUser.Designer.cs">
-      <DependentUpon>201709252012182_AddingMemberToApplicationUser.cs</DependentUpon>
-    </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Blog.cs" />
     <Compile Include="Models\BlogListViewModel.cs" />
@@ -756,58 +696,11 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201709101953261_InitialCreate.resx">
-      <DependentUpon>201709101953261_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201709221428199_AddedEventsTable.resx">
-      <DependentUpon>201709221428199_AddedEventsTable.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201709221430513_AddedDocumentsTable.resx">
-      <DependentUpon>201709221430513_AddedDocumentsTable.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201709221439589_UpdatePhotoModel-AddPhotoData.resx">
-      <DependentUpon>201709221439589_UpdatePhotoModel-AddPhotoData.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201709230144083_AddMimeTypePropertyToPhotoTable.resx">
-      <DependentUpon>201709230144083_AddMimeTypePropertyToPhotoTable.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201709252012182_AddingMemberToApplicationUser.resx">
-      <DependentUpon>201709252012182_AddingMemberToApplicationUser.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201709282017016_AddedInImageGalleryPropToPhoto.resx">
-      <DependentUpon>201709282017016_AddedInImageGalleryPropToPhoto.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201710140204134_PhotoUpdate.resx">
-      <DependentUpon>201710140204134_PhotoUpdate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201710180149352_FixingMembership.resx">
-      <DependentUpon>201710180149352_FixingMembership.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201710180151519_MakingDateTimesNullable.resx">
-      <DependentUpon>201710180151519_MakingDateTimesNullable.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201710180157466_RemovingMemberID.resx">
-      <DependentUpon>201710180157466_RemovingMemberID.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201710230023117_AddedToMembership.resx">
-      <DependentUpon>201710230023117_AddedToMembership.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201710232330172_FixingBlog.resx">
-      <DependentUpon>201710232330172_FixingBlog.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201711050726577_updatedphotoswithpartners.resx">
-      <DependentUpon>201711050726577_updatedphotoswithpartners.cs</DependentUpon>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201709132056451_AddedMemberTable.resx">
-      <DependentUpon>201709132056451_AddedMemberTable.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201709202032566_AddedPhotoTable.resx">
-      <DependentUpon>201709202032566_AddedPhotoTable.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201711161854039_initial.resx">
+      <DependentUpon>201711161854039_initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
