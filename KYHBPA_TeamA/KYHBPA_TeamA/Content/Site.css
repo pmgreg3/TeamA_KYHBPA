@@ -513,6 +513,8 @@
 .instagramIcon {
     height: 5.5em;
     width: 5.5em;
+    position: relative;
+    top: -14px;
 }
 
 .twitterIcon {
