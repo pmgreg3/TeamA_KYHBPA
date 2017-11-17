@@ -5,12 +5,21 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Delete</h2>
+<h2 class="common-Uppercase">Delete Photo</h2>
 
-<h3>Are you sure you want to delete this?</h3>
-<div>
-    <h4>Photo</h4>
-    <hr />
+<h3 class="common-LargerBodyText">Are you sure you want to delete the photo, @Html.DisplayTextFor(model => model.Title), below?</h3>
+<hr />
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> or
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+<br />
+<div class="common-BodyText">
     @if (Model.Data != null)
     {
         <div style="max-width=200px; max-height=200px">
@@ -19,19 +28,19 @@
     }
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.Description)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Description)
-        </dd>
-
-        <dt>
             @Html.DisplayNameFor(model => model.Title)
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.Title)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Description)
         </dd>
 
         <dt>
@@ -43,13 +52,4 @@
         </dd>
 
     </dl>
-
-    @using (Html.BeginForm()) {
-        @Html.AntiForgeryToken()
-
-        <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
-        </div>
-    }
 </div>
