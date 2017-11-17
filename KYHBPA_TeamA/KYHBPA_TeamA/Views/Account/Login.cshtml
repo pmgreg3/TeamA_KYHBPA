@@ -6,7 +6,7 @@
 
 <center>
     <h1 class="common-Uppercase">Log in</h1>
-        <section id="loginForm">
+        <section id="loginForm" class="common-BodyText">
             @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
             {
                 @Html.AntiForgeryToken()
