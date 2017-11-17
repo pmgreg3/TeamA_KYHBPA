@@ -486,6 +486,7 @@
     <Content Include="Content\imgs_glossy\top-separator.gif" />
     <Content Include="Content\imgs_glossy\white_tab.png" />
     <Content Include="Content\imgs_glossy\white_tab_wide.png" />
+    <Content Include="Content\KYHBPA_About.jpg" />
     <Content Include="Content\locale\locale_ar.js" />
     <Content Include="Content\locale\locale_be.js" />
     <Content Include="Content\locale\locale_ca.js" />
