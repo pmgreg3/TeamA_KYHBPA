@@ -34,7 +34,7 @@
                             About Us
                             <span class="caret"></span>
                         </a>
-                        <ul class="dropdown-menu"> 
+                        <ul class="dropdown-menu">
                             <li>@Html.ActionLink("Learn More", "About", "Home")</li>
                             <li>@Html.ActionLink("Our Board", "Index", "BoardOfDirectors")</li>
                         </ul>
@@ -64,6 +64,27 @@
                     </li>
                     <li>@Html.ActionLink("Photo Gallery", "Index", "Photo")</li>
                     <li>@Html.ActionLink("Contact Us", "Contact", "Home")</li>
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        if (User.IsInRole("Admin"))
+                        {
+                            @:
+                            <li class="dropdown">
+                                <a class="dropdown-toggle" data-toggle="dropdown" href="/Admin/Index">
+                                    Admin
+                                    <span class="caret"></span>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li>@Html.ActionLink("News & Blog", "Manage", "Blog")</li>
+                                    <li>@Html.ActionLink("Board", "Admin", "BoardOfDirectors")</li>
+                                    <li>@Html.ActionLink("Events", "Index", "Event")</li>
+                                    @*<li>@Html.ActionLink("Accounts", "ManageLogins", "Manage")</li>*@
+                                    <li>@Html.ActionLink("Documents", "Admin", "Document")</li>
+                                    <li>@Html.ActionLink("Photos", "Admin", "Photo")</li>
+                                </ul>
+                            </li>
+                        }
+                    }
                 </ul>
 
                 @Html.Partial("_LoginPartial")
