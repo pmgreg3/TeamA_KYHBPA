@@ -141,7 +141,7 @@
             @foreach (var items in Model.Events)
             {
                 <br />
-                <div class="DescrSquare"><p class="col-lg-12" id="EventDescription">@items.EventDescription</p></div>
+                <div class="DescrSquare" onclick="window.open('http://www.kentuckyhbpa.org/event')"><p class="col-lg-12" id="EventDescription">@items.EventDescription</p></div>
                 <div class="TimeSquare">
                     <p class="col-md-6" id="EventStart"><b>Start Time:</b>@items.EventDate</p>
                     <p class="col-md-6" id="EventEnd"><b>End Time:</b>@items.EventTime</p>
