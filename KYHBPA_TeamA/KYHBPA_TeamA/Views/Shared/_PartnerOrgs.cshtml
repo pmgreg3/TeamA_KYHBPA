@@ -15,8 +15,6 @@
                         <div class="item active">
                             @for (int iterator = 0; iterator < Model.Slides.ElementAt(i).PartnerPhotos.Count; iterator++)
                             {
-
-                                // @Model.Slides.ElementAt(i).PartnerPhotos.ElementAt(iterator).Link
                                 <div class="col-md-3" id="partnerPhotoBox">
                                     <a href="@Model.Slides.ElementAt(i).PartnerPhotos.ElementAt(iterator).Link" target="_blank" >
                                         <img src="@Url.Action("GetPhoto", "Photo", new { Model.Slides.ElementAt(i).PartnerPhotos.ElementAt(iterator).Id })" />
