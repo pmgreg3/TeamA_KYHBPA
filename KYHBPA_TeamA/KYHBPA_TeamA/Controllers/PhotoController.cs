@@ -231,6 +231,7 @@ namespace KYHBPA_TeamA.Controllers
                         photoToUpdate.InPhotoGallery = photoVM.InPhotoGallery;
                         photoToUpdate.IsPartnerOrg = photoVM.IsPartnerOrg;
                         photoToUpdate.PhotoTitle = photoVM.Title;
+                        photoToUpdate.Link = photoVM.Link;
                     }
 
                     db.Entry(photoToUpdate).State = System.Data.Entity.EntityState.Modified;
