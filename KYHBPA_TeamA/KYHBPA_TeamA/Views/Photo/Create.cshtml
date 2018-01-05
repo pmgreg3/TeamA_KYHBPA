@@ -34,7 +34,25 @@
             </div>
         </div>
 
-        @* Clickable Link *@
+        @* InPhotoGallery *@
+        <div class="form-group">
+            @Html.LabelFor(model => model.InPhotoGallery, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.InPhotoGallery, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.InPhotoGallery, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        @* IsPartnerOrg *@
+        <div class="form-group">
+            @Html.LabelFor(model => model.IsPartnerOrg, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.IsPartnerOrg, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.IsPartnerOrg, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        @* Link *@
         <div class="form-group">
             @Html.LabelFor(model => model.Link, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">

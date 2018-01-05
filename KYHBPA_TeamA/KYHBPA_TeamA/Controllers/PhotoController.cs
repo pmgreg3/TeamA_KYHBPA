@@ -174,6 +174,8 @@ namespace KYHBPA_TeamA.Controllers
                     PhotoData = new byte[image.ContentLength],
                     PhotoTitle = addViewModel.Title,
                     Link = addViewModel.Link,
+                    InPhotoGallery = addViewModel.InPhotoGallery,
+                    IsPartnerOrg = addViewModel.IsPartnerOrg,
                     MimeType = image.ContentType                    
                 };
                 image.InputStream.Read(photo.PhotoData, 0, image.ContentLength);

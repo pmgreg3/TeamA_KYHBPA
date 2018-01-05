@@ -24,6 +24,7 @@
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.Id)
 
+        @* Title *@
         <div class="form-group common-BodyText">
             @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -32,6 +33,7 @@
             </div>
         </div>
 
+        @* Description *@
         <div class="form-group common-BodyText">
             @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -40,6 +42,7 @@
             </div>
         </div>
 
+        @* InPhotoGallery *@
         <div class="form-group common-BodyText">
             @Html.LabelFor(model => model.InPhotoGallery, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -48,6 +51,7 @@
             </div>
         </div>
 
+        @* IsPartnerOrg *@
         <div class="form-group common-BodyText">
             @Html.LabelFor(model => model.IsPartnerOrg, htmlAttributes: new { @class = "control-label col-md-2"})
             <div class="col-md-10">
