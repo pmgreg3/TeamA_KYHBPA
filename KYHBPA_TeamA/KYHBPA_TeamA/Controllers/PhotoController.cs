@@ -48,8 +48,8 @@ namespace KYHBPA_TeamA.Controllers
                 Title = p.PhotoTitle,
                 Date = p.TimeStamp,
                 InPhotoGallery = p.InPhotoGallery,
-                IsPartnerOrg = p.IsPartnerOrg
-
+                IsPartnerOrg = p.IsPartnerOrg,
+                Link = p.Link
             });
 
             if (!String.IsNullOrEmpty(searchString))
@@ -206,7 +206,8 @@ namespace KYHBPA_TeamA.Controllers
                 Title = photo.PhotoTitle,
                 Data = photo.PhotoData,
                 InPhotoGallery = photo.InPhotoGallery,
-                IsPartnerOrg = photo.IsPartnerOrg
+                IsPartnerOrg = photo.IsPartnerOrg,
+                Link = photo.Link
             };
 
             if (photo == null)
@@ -358,7 +359,8 @@ namespace KYHBPA_TeamA.Controllers
                         Id = photo.PhotoID,
                         Data = photo.PhotoData,
                         Description = photo.PhotoDesc,
-                        Title = photo.PhotoTitle
+                        Title = photo.PhotoTitle,
+                        Link = photo.Link
                     };
                     slide.PartnerPhotos.Add(partnerToAdd);
                 }
