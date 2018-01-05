@@ -173,6 +173,7 @@ namespace KYHBPA_TeamA.Controllers
                     PhotoDesc = addViewModel.Description,
                     PhotoData = new byte[image.ContentLength],
                     PhotoTitle = addViewModel.Title,
+                    Link = addViewModel.Link,
                     MimeType = image.ContentType                    
                 };
                 image.InputStream.Read(photo.PhotoData, 0, image.ContentLength);

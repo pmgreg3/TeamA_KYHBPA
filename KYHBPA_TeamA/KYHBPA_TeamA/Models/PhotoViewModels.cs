@@ -9,6 +9,7 @@ namespace KYHBPA_TeamA.Models
     {
         public string Description { get; set; }
         public string Title { get; set; }
+        public string Link { get; set; }
         public HttpPostedFileBase Image { get; set; } = null;
     }
 
@@ -21,6 +22,7 @@ namespace KYHBPA_TeamA.Models
         public DateTime Date { get; set; }
         public bool InPhotoGallery { get; set; }
         public bool IsPartnerOrg { get; set; }
+        public string Link { get; set; }
     }
 
     public class EditPhotosViewModel : DisplayPhotosViewModel
