@@ -9,16 +9,18 @@
         <div class="carousel slide multi-item-carousel" data-interval="3000" id="partnerCarousel">
             <div class="carousel-inner">
                 @for (int i = 0; i < Model.Slides.Count; i++)
-            {
-                if (i == 0)
                 {
+                    if (i == 0)
+                    {
                         <div class="item active">
                             @for (int iterator = 0; iterator < Model.Slides.ElementAt(i).PartnerPhotos.Count; iterator++)
-                    {
+                            {
                                 <div class="col-md-3" id="partnerPhotoBox">
-                                    <img src="@Url.Action("GetPhoto", "Photo", new { Model.Slides.ElementAt(i).PartnerPhotos.ElementAt(iterator).Id })" />
+                                    <a href="@Model.Slides.ElementAt(i).PartnerPhotos.ElementAt(iterator).Link" target="_blank" >
+                                        <img src="@Url.Action("GetPhoto", "Photo", new { Model.Slides.ElementAt(i).PartnerPhotos.ElementAt(iterator).Id })" />
+                                    </a>                                    
                                 </div>
-                            }
+                             }
                         </div>
                     }
 
@@ -28,7 +30,9 @@
                             @for (int iterator = 0; iterator < Model.Slides.ElementAt(i).PartnerPhotos.Count; iterator++)
                             {
                                 <div class="col-md-3" id="partnerPhotoBox">
-                                    <img src="@Url.Action("GetPhoto", "Photo", new { Model.Slides.ElementAt(i).PartnerPhotos.ElementAt(iterator).Id })" />
+                                    <a href="@Model.Slides.ElementAt(i).PartnerPhotos.ElementAt(iterator).Link" target="_blank">
+                                        <img src="@Url.Action("GetPhoto", "Photo", new { Model.Slides.ElementAt(i).PartnerPhotos.ElementAt(iterator).Id })" />
+                                    </a>                                       
                                 </div>
                             }
                         </div>

@@ -48,8 +48,8 @@ namespace KYHBPA_TeamA.Controllers
                 Title = p.PhotoTitle,
                 Date = p.TimeStamp,
                 InPhotoGallery = p.InPhotoGallery,
-                IsPartnerOrg = p.IsPartnerOrg
-
+                IsPartnerOrg = p.IsPartnerOrg,
+                Link = p.Link
             });
 
             if (!String.IsNullOrEmpty(searchString))
@@ -173,6 +173,9 @@ namespace KYHBPA_TeamA.Controllers
                     PhotoDesc = addViewModel.Description,
                     PhotoData = new byte[image.ContentLength],
                     PhotoTitle = addViewModel.Title,
+                    Link = addViewModel.Link,
+                    InPhotoGallery = addViewModel.InPhotoGallery,
+                    IsPartnerOrg = addViewModel.IsPartnerOrg,
                     MimeType = image.ContentType                    
                 };
                 image.InputStream.Read(photo.PhotoData, 0, image.ContentLength);
@@ -203,7 +206,8 @@ namespace KYHBPA_TeamA.Controllers
                 Title = photo.PhotoTitle,
                 Data = photo.PhotoData,
                 InPhotoGallery = photo.InPhotoGallery,
-                IsPartnerOrg = photo.IsPartnerOrg
+                IsPartnerOrg = photo.IsPartnerOrg,
+                Link = photo.Link
             };
 
             if (photo == null)
@@ -228,6 +232,7 @@ namespace KYHBPA_TeamA.Controllers
                         photoToUpdate.InPhotoGallery = photoVM.InPhotoGallery;
                         photoToUpdate.IsPartnerOrg = photoVM.IsPartnerOrg;
                         photoToUpdate.PhotoTitle = photoVM.Title;
+                        photoToUpdate.Link = photoVM.Link;
                     }
 
                     db.Entry(photoToUpdate).State = System.Data.Entity.EntityState.Modified;
@@ -354,7 +359,8 @@ namespace KYHBPA_TeamA.Controllers
                         Id = photo.PhotoID,
                         Data = photo.PhotoData,
                         Description = photo.PhotoDesc,
-                        Title = photo.PhotoTitle
+                        Title = photo.PhotoTitle,
+                        Link = photo.Link
                     };
                     slide.PartnerPhotos.Add(partnerToAdd);
                 }

@@ -542,19 +542,21 @@
 #partnerControlLeft {
     color: black;
     position: absolute;
-    left: 1%;
+    left: 0;
     top: 50%;
 }
 
 #partnerControlRight {
     color: black;
     position: absolute;
-    right: -30%;
+    right: 0;
     top: 50%;
+    left:unset;
 }
 
 #partnerCarouselControlContainer {
     background-image:unset;
+    width:5%;
 }
 
 #partnerCarouselContainer {
