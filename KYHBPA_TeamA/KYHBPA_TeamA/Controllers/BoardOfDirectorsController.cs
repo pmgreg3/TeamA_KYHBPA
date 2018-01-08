@@ -85,7 +85,7 @@ namespace KYHBPA_TeamA.Controllers
             {
                 byte[] uploadedFile = new byte[file.InputStream.Length];
                 addViewModel.File.InputStream.Read(uploadedFile, 0, file.ContentLength);
-                var boardOfDirectors = new BoardOfDirectors()
+                var boardOfDirector = new BoardOfDirectors()
                 {
                     Title = addViewModel.Title,
                     FirstName = addViewModel.FirstName,
@@ -95,7 +95,7 @@ namespace KYHBPA_TeamA.Controllers
                     Description = addViewModel.Description
                 };
                 
-                db.BoardOfDirectors.Add(boardOfDirectors);
+                db.BoardOfDirectors.Add(boardOfDirector);
                 db.SaveChanges();
 
                 return RedirectToAction("Index");
@@ -138,7 +138,7 @@ namespace KYHBPA_TeamA.Controllers
         [Authorize(Roles = "Admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(EditBODMemberViewModel BODVM, FormCollection collection)
+        public ActionResult Edit(EditBODMemberViewModel BODVM, FormCollection collection, HttpPostedFileBase file = null)
         {
             try
             {
@@ -147,13 +147,20 @@ namespace KYHBPA_TeamA.Controllers
                     var BODToUpdate = db.BoardOfDirectors.FirstOrDefault(x => x.Id == BODVM.ID);
                     if (BODToUpdate != null)
                     {
-                        
                         BODToUpdate.FirstName = BODVM.FirstName;
                         BODToUpdate.LastName = BODVM.LastName;
                         BODToUpdate.Title = BODVM.Title;
                         BODToUpdate.Description = BODVM.Description;
                         BODToUpdate.Email = BODVM.Email;
+
+                        if(file != null)
+                        {
+                            byte[] uploadedFile = new byte[file.InputStream.Length];
+                            BODVM.File.InputStream.Read(uploadedFile, 0, file.ContentLength);
+                            BODToUpdate.PhotoContent = uploadedFile;
+                        }
                     }
+                                        
 
                     db.Entry(BODToUpdate).State = System.Data.Entity.EntityState.Modified;
                     db.SaveChanges();
