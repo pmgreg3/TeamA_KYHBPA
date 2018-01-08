@@ -7,9 +7,17 @@
 <div id="carousel" class="carousel slide" data-ride="carousel">
     <!-- Menu -->
     <ol class="carousel-indicators">
-        <li data-target="#carousel" data-slide-to="0" class="active"></li>
-        <li data-target="#carousel" data-slide-to="1"></li>
-        <li data-target="#carousel" data-slide-to="2"></li>
+        @for (int i = 0; i < Model.Photos.Count; i++)
+        {
+            if (i == 0)
+            {
+                <li data-target="#carousel" data-slide-to="0" class="active"></li>
+            }
+            else
+            {
+                <li data-target="#carousel" data-slide-to="@i"></li>
+            }
+        }
     </ol>
 
     <!-- Items -->

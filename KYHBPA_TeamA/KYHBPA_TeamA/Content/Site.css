@@ -211,8 +211,12 @@
     margin: auto;
 }
 
+.carousel-inner > .item {
+    max-height: 700px;
+}
+
 .carousel {
-    max-height: 800px;
+    max-height: 700px;
     box-shadow: 1px -12px 20px 14px black
 }
 
