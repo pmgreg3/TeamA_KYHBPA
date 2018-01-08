@@ -8,7 +8,7 @@
 <h2 class="common-Uppercase">Edit Photo</h2>
 <h4 class="common-LargerBodyText">@Html.DisplayTextFor(model => model.Title)</h4>
 
-@using (Html.BeginForm())
+@using (Html.BeginForm("Edit", "Photo", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
     
@@ -68,6 +68,19 @@
                 @Html.ValidationMessageFor(model => model.Link, "", new { @class = "text-danger" })
             </div>
         </div>
+
+        @* Image Upload*@
+        <div class="form-group common-BodyText">
+            @Html.LabelFor(model => model.Image, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="Col-md-10">
+                <a class='btn' href="javascript:;">
+                    Choose File...
+                    <input type="file" accept="image/*" name="image" size="40"
+                           onchange='$("#upload-file-info").html($(this).val());' />
+                </a>
+            </div>
+        </div>
+
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">

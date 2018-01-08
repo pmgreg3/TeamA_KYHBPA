@@ -29,6 +29,8 @@ namespace KYHBPA_TeamA.Models
 
     public class EditPhotosViewModel : DisplayPhotosViewModel
     {
+        public HttpPostedFileBase Image { get; set; } = null;
+
     }
 
     public class DisplayPartnerOrgViewModel: DisplayPhotosViewModel

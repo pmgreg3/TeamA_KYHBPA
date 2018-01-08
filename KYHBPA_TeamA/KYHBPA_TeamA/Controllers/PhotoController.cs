@@ -219,7 +219,7 @@ namespace KYHBPA_TeamA.Controllers
         // POST: Photo/Edit/5
         [Authorize(Roles = "Admin,Employee,Member,User")]
         [HttpPost]
-        public ActionResult Edit(EditPhotosViewModel photoVM, FormCollection collection)
+        public ActionResult Edit(EditPhotosViewModel photoVM, FormCollection collection, HttpPostedFileBase image = null)
         {
             try
             {
@@ -233,6 +233,14 @@ namespace KYHBPA_TeamA.Controllers
                         photoToUpdate.IsPartnerOrg = photoVM.IsPartnerOrg;
                         photoToUpdate.PhotoTitle = photoVM.Title;
                         photoToUpdate.Link = photoVM.Link;
+                    }
+
+                    if(image != null)
+                    {
+                        byte[] uploadedImage = new byte[image.InputStream.Length];
+                        image.InputStream.Read(uploadedImage, 0, image.ContentLength);
+                        photoToUpdate.PhotoData = uploadedImage;
+                        photoToUpdate.MimeType = image.ContentType;
                     }
 
                     db.Entry(photoToUpdate).State = System.Data.Entity.EntityState.Modified;
