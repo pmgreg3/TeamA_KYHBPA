@@ -568,3 +568,16 @@
     top: 50%;
     width: 100%;
 }
+
+/*Board of Directors*/
+.featurete-divider{
+    margin: 6rem 0;
+}
+
+.boardOfDirectorsImage{
+    width:100%;
+}
+
+.boardOfDirectorsImageSpace {
+    text-align: center;
+}
