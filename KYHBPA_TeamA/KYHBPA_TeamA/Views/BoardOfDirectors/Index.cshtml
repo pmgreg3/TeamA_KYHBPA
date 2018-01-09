@@ -6,32 +6,35 @@
 }
 
 <h2 class="common-Uppercase text-center">Board of Directors</h2>
-<hr class="featurete-divider"/>
+<hr class="featurete-divider" />
 
 
-    @foreach (var director in Model)
-    {
-        <div class="col-lg-4 boardOfDirectorsImageSpace">
+@foreach (var director in Model)
+{
+    <div class="row">
+
+        <div class="col-md-5 boardOfDirectorsImageSpace">
             <img class="boardOfDirectorsImage" src="@(string.Format("data:image/gif;base64,{0}", Convert.ToBase64String(director.PhotoContent)))" />
         </div>
-        
-        <h2 class="common-Uppercase">
-            @Html.DisplayFor(modelItem => director.FirstName) @Html.DisplayFor(modelItem => director.LastName)
-        </h2>
-        
-        <h2 class="common-UppercaseTitle">
-            @Html.DisplayFor(modelItem => director.Title)
-        </h2>
-        
-        <h3>
-            @Html.DisplayFor(modelItem => director.Email)
-        </h3>
-        
-        <p class="common-LargerBodyText">
-            @Html.DisplayFor(modelItem => director.Description)
-        </p>
 
+        <div class=" col-md-7">
+            <h2 class="common-Uppercase">
+                @Html.DisplayFor(modelItem => director.FirstName) @Html.DisplayFor(modelItem => director.LastName)
+            </h2>
 
+            <h2 class="common-UppercaseTitle">
+                @Html.DisplayFor(modelItem => director.Title)
+            </h2>
+
+            <h4>
+                @Html.DisplayFor(modelItem => director.Email)
+            </h4>
+
+            <p class="boardOfDirectorsDescText">
+                @Html.DisplayFor(modelItem => director.Description)
+            </p>
+        </div>
+    </div>
         <hr class="featurete-divider" />
-    }
 
+}

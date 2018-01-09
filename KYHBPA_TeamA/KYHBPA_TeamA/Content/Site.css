@@ -570,14 +570,21 @@
 }
 
 /*Board of Directors*/
-.featurete-divider{
+.featurete-divider {
     margin: 6rem 0;
 }
 
-.boardOfDirectorsImage{
-    width:100%;
+.boardOfDirectorsImage {
+    width: 100%;
 }
 
 .boardOfDirectorsImageSpace {
     text-align: center;
+}
+
+.boardOfDirectorsDescText {
+    font-weight: 300;
+    font-size: 1.5rem;
+    line-height: 26px;
+    color: #072419;
 }
