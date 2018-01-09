@@ -6,50 +6,32 @@
 }
 
 <h2 class="common-Uppercase text-center">Board of Directors</h2>
+<hr class="featurete-divider"/>
 
-<table class="table">
-    <tr>
 
-        <th class=" common-BodyText">
-            @Html.DisplayNameFor(model => model.Title)
-        </th>
-        <th class=" common-BodyText">
-            Picture 
-        </th>
-        <th class=" common-BodyText">
-            Contact Information
-        </th>
-        <th class=" common-BodyText">
-            About Me
-        </th>
-        <th></th>
-    </tr>
-
-    @foreach (var item in Model)
+    @foreach (var director in Model)
     {
-        <tr>
-            
-            <td>
-                @Html.DisplayFor(modelItem => item.Title)
-            </td>
-            <td>
-                <img class="img-thumbnail" width="100" height="100" src="@(string.Format("data:image/gif;base64,{0}", Convert.ToBase64String(item.PhotoContent)))" />
-            </td>
+        <div class="col-lg-4 boardOfDirectorsImageSpace">
+            <img class="boardOfDirectorsImage" src="@(string.Format("data:image/gif;base64,{0}", Convert.ToBase64String(director.PhotoContent)))" />
+        </div>
+        
+        <h2 class="common-Uppercase">
+            @Html.DisplayFor(modelItem => director.FirstName) @Html.DisplayFor(modelItem => director.LastName)
+        </h2>
+        
+        <h2 class="common-UppercaseTitle">
+            @Html.DisplayFor(modelItem => director.Title)
+        </h2>
+        
+        <h3>
+            @Html.DisplayFor(modelItem => director.Email)
+        </h3>
+        
+        <p class="common-LargerBodyText">
+            @Html.DisplayFor(modelItem => director.Description)
+        </p>
 
-            <td>
-                <div>
-                    @Html.DisplayFor(modelItem => item.FirstName) @Html.DisplayFor(modelItem => item.LastName)
-                </div>
-               
-                <div>
-                    @Html.DisplayFor(modelItem => item.Email)
-                </div>
-            
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Description)
-            </td>
-        </tr>
+
+        <hr class="featurete-divider" />
     }
 
-</table>
