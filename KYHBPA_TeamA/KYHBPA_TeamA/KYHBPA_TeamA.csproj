@@ -255,6 +255,10 @@
     <Compile Include="Migrations\201801101309125_AddingMimeTypeToBoardOfDirector.Designer.cs">
       <DependentUpon>201801101309125_AddingMimeTypeToBoardOfDirector.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201801101726565_AddingMimeTypeAndPhotoAndPhotoContent.cs" />
+    <Compile Include="Migrations\201801101726565_AddingMimeTypeAndPhotoAndPhotoContent.Designer.cs">
+      <DependentUpon>201801101726565_AddingMimeTypeAndPhotoAndPhotoContent.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Blog.cs" />
@@ -649,7 +653,6 @@
     <Content Include="Views\Shared\_ImageGallery.cshtml" />
     <Content Include="Views\Home\Benefits.cshtml" />
     <Content Include="Views\BoardOfDirectors\Create.cshtml" />
-    <Content Include="Views\BoardOfDirectors\Delete.cshtml" />
     <Content Include="Views\BoardOfDirectors\Details.cshtml" />
     <Content Include="Views\BoardOfDirectors\Edit.cshtml" />
     <Content Include="Views\BoardOfDirectors\Index.cshtml" />
@@ -681,6 +684,9 @@
     <Content Include="Views\BoardOfDirectors\Admin.cshtml" />
     <Content Include="Views\Photo\Admin.cshtml" />
     <Content Include="Views\Shared\_PartnerOrgs.cshtml" />
+    <Content Include="Views\Blog\Index.cshtml" />
+    <Content Include="Views\BoardOfDirectors\Delete.cshtml" />
+    <Content Include="Views\Blog\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -711,6 +717,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201801101309125_AddingMimeTypeToBoardOfDirector.resx">
       <DependentUpon>201801101309125_AddingMimeTypeToBoardOfDirector.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201801101726565_AddingMimeTypeAndPhotoAndPhotoContent.resx">
+      <DependentUpon>201801101726565_AddingMimeTypeAndPhotoAndPhotoContent.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
