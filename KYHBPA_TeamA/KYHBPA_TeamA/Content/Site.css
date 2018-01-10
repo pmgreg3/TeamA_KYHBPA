@@ -208,6 +208,7 @@
 }
 
 .carousel-inner > .item > img {
+    width: -webkit-fill-available;
     margin: auto;
 }
 
