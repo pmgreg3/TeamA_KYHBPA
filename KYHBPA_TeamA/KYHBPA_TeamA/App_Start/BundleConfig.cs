@@ -14,6 +14,9 @@ namespace KYHBPA_TeamA
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
                         "~/Scripts/jquery.validate*"));
 
+            bundles.Add(new ScriptBundle("~/bundles/BoardOfDirectorsReadMore").Include(
+                        "~/Scripts/BoardOfDirectorsReadMore.js"));
+
             bundles.Add(new ScriptBundle("~/Content/fontawesome").Include(
                     "~/Content/fontawesome.js",
                     "~/Content/solid.js",
