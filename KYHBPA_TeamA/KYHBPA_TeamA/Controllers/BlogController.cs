@@ -17,32 +17,46 @@ namespace KYHBPA_TeamA.Controllers
         private ApplicationDbContext _db = new ApplicationDbContext();
         private BlogRepository _blogRepository = new BlogRepository();
 
-        public ViewResult Index(int p = 1)
-        {
-            // pick latest 10 posts
-            var posts = _blogRepository.Posts(p - 1, 10);
-
-            var totalPosts = _blogRepository.TotalPosts();
-
-            var listViewModel = new BlogListViewModel()
-            {
-                Posts = posts,
-                TotalPosts = totalPosts
-            };
-
-            ViewBag.Title = "Latest Posts";
-
-            return View("List", listViewModel);
-        }
-
-        //// GET: Blog
-        //public ActionResult Index()
+        //public ViewResult Index(int p = 1)
         //{
-        //    //Grab 10 blog posts.
-        //    var blogPosts = _db.Posts.Take(10);
+        //    // pick latest 10 posts
+        //    var posts = _blogRepository.Posts(p - 1, 10);
 
-        //    return View(blogPosts);
+        //    var totalPosts = _blogRepository.TotalPosts();
+
+        //    var listViewModel = new BlogListViewModel()
+        //    {
+        //        Posts = posts,
+        //        TotalPosts = totalPosts
+        //    };
+
+        //    ViewBag.Title = "Latest Posts";
+
+        //    return View("List", listViewModel);
         //}
+
+        // GET: Blog
+        public ActionResult Index()
+        {
+            var allPosts = _db.Posts.Select(post => new DisplayPostsViewModel()
+            {
+                Id = post.Id,
+                Title = post.Title,
+                ShortDescription = post.ShortDescription,
+                Description = post.Description,
+                Published = post.Published,
+                PostedOn = post.PostedOn,
+                Category = post.Category,
+                Comments = post.Comments,
+                PhotoContent = post.PhotoContent
+            });
+
+
+            // When it is time to build a visitor-facing view,
+            // you will pass this view all posts that have been published!
+            return View(allPosts); 
+
+        }
 
         // GET: Blog/Manage
         [Authorize(Roles = "Admin")]
@@ -62,7 +76,7 @@ namespace KYHBPA_TeamA.Controllers
         // GET: Blog/Create
         [Authorize(Roles = "Admin,Employee,Member,User")]
         [HttpPost]
-        public ActionResult Create(CreateBlogPostViewModel viewModel)
+        public ActionResult Create(CreateBlogPostViewModel viewModel, HttpPostedFileBase file)
         {
 
             if (ModelState.IsValid)
@@ -103,9 +117,14 @@ namespace KYHBPA_TeamA.Controllers
             }
         }
 
-
-        /*public ActionResult Edit(int id)
+        [Authorize(Roles = "Admin")]
+        public ActionResult Edit(int? id)
         {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
             var post = _db.Posts.FirstOrDefault(p => p.Id == id);
 
             var viewModel = new CreateBlogPostViewModel()
@@ -118,12 +137,100 @@ namespace KYHBPA_TeamA.Controllers
                 PostedOn = post.PostedOn,
                 Published = post.Published,
                 Title = post.Title,
-                //Could lead to possible bug if seed order doesn't stay the same.
                 SelectedCategoryId = post.Category.Id
             };
 
             return View(viewModel);
-        }*/
+        }
+
+
+        [Authorize(Roles = "Admin")]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(CreateBlogPostViewModel editedPost, FormCollection collection, HttpPostedFileBase file = null)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    var postToUpdate = _db.Posts.FirstOrDefault(x => x.Id == editedPost.Id);
+                    if (postToUpdate != null)
+                    {
+                        postToUpdate.Title = editedPost.Title;
+                        postToUpdate.ShortDescription = editedPost.ShortDescription;
+                        postToUpdate.Description = editedPost.Description;
+                        postToUpdate.Published = editedPost.Published;
+                        postToUpdate.Modified = DateTime.Today.Date;
+                        postToUpdate.Category = editedPost.Category;
+
+                        if (file != null)
+                        {
+                            byte[] uploadedFile = new byte[file.InputStream.Length];
+                            editedPost.File.InputStream.Read(uploadedFile, 0, file.ContentLength);
+                            postToUpdate.PhotoContent = uploadedFile;
+                            postToUpdate.MimeType = file.ContentType;
+                        }
+                    }
+
+
+                    _db.Entry(postToUpdate).State = System.Data.Entity.EntityState.Modified;
+                    _db.SaveChanges();
+                    TempData["message"] = string.Format($"Article with title: {editedPost.Title} has been updated!");
+                    return RedirectToAction("Index");
+                }
+
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
+        // GET: Blog/Delete/5
+        [Authorize(Roles = "Admin")]
+        public ActionResult Delete(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            var post = _db.Posts.Find(id);
+            var vm = new DisplayPostsViewModel()
+            {
+                Id = post.Id,
+                Description = post.Description,
+                ShortDescription = post.ShortDescription,
+                Category = post.Category,
+                PostedOn = post.PostedOn,
+                Published = post.Published,
+                Title = post.Title
+            };
+
+            if (post == null)
+                return HttpNotFound();
+
+            return View(vm);
+        }
+        // POST: Blog/Delete/5
+        [Authorize(Roles = "Admin")]
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult Delete(int id, FormCollection collection)
+        {
+            try
+            {
+                var post = _db.Posts.Find(id);
+                _db.Posts.Remove(post);
+                _db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+                return View();
+            }
+        }
 
 
         public ActionResult Details(int id)

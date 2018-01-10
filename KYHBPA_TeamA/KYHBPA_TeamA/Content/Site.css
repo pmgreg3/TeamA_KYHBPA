@@ -598,3 +598,10 @@
 .morelink {
     display: block;
 }
+
+
+/* Form Text Areas */
+textarea {
+    width: 100%;
+    height: 323px;
+}

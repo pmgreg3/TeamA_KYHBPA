@@ -31,6 +31,7 @@ namespace KYHBPA_TeamA.Models
 
         public virtual IList<Tag> Tags { get; set; }
         public virtual List<Comment> Comments { get; set; }
-
+        public byte[] PhotoContent { get; set; }
+        public string MimeType { get; set; }
     }
 }
