@@ -16,7 +16,8 @@
     <div class="row">
 
         <div class="col-md-5 boardOfDirectorsImageSpace">
-            <img class="boardOfDirectorsImage" src="@(string.Format("data:image/gif;base64,{0}", Convert.ToBase64String(director.PhotoContent)))" />
+            @*<img class="boardOfDirectorsImage" src="@(string.Format("data:image/gif;base64,{0}", Convert.ToBase64String(director.PhotoContent)))" />*@
+            <img class="boardOfDirectorsImage" src="@Url.Action("GetBoDImage", "BoardOfDirectors", new { director.Id })" />
         </div>
 
         <div class=" col-md-7">

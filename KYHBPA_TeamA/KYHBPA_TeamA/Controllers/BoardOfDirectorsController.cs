@@ -7,6 +7,9 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using KYHBPA_TeamA.Models;
+using System.Drawing;
+using System.Drawing.Drawing2D;
+using System.Drawing.Imaging;
 
 namespace KYHBPA_TeamA.Controllers
 {
@@ -83,18 +86,26 @@ namespace KYHBPA_TeamA.Controllers
         {
             if (ModelState.IsValid)
             {
-                byte[] uploadedFile = new byte[file.InputStream.Length];
-                addViewModel.File.InputStream.Read(uploadedFile, 0, file.ContentLength);
+                //byte[] uploadedFile = new byte[file.InputStream.Length];
+                //addViewModel.File.InputStream.Read(uploadedFile, 0, file.ContentLength);
+
+                var imageBeforeResize = Image.FromStream(file.InputStream);
+                var imageAfterResize = ResizeImage(imageBeforeResize, 400, 500);
+
+                var resizedByteArray = ImageToByte(imageAfterResize);
+
                 var boardOfDirector = new BoardOfDirectors()
                 {
                     Title = addViewModel.Title,
                     FirstName = addViewModel.FirstName,
                     LastName = addViewModel.LastName,
                     Email = addViewModel.Email, 
-                    PhotoContent = uploadedFile,
-                    Description = addViewModel.Description
+                    PhotoContent = resizedByteArray,
+                    Description = addViewModel.Description,
+                    MimeType = file.ContentType
                 };
-                
+
+
                 db.BoardOfDirectors.Add(boardOfDirector);
                 db.SaveChanges();
 
@@ -155,9 +166,16 @@ namespace KYHBPA_TeamA.Controllers
 
                         if(file != null)
                         {
-                            byte[] uploadedFile = new byte[file.InputStream.Length];
-                            BODVM.File.InputStream.Read(uploadedFile, 0, file.ContentLength);
-                            BODToUpdate.PhotoContent = uploadedFile;
+                            var imageBeforeResize = Image.FromStream(file.InputStream);
+                            var imageAfterResize = ResizeImage(imageBeforeResize, 400, 500);
+
+                            var resizedByteArray = ImageToByte(imageAfterResize);
+
+
+                            //byte[] uploadedFile = new byte[file.InputStream.Length];
+                            //BODVM.File.InputStream.Read(uploadedFile, 0, file.ContentLength);
+                            BODToUpdate.PhotoContent = resizedByteArray;
+                            BODToUpdate.MimeType = file.ContentType;
                         }
                     }
                                         
@@ -236,5 +254,103 @@ namespace KYHBPA_TeamA.Controllers
                 return null;
         }
 
+        public FileContentResult GetBoDImage(int id)
+        {
+            var photoToGet = db.BoardOfDirectors.Find(id);
+
+            if (photoToGet != null)
+                return File(photoToGet.PhotoContent, photoToGet.MimeType);
+            else
+                return null;
+        }
+
+
+        public static Bitmap ResizeImage(Image image, int width, int height)
+        {
+            var destRect = new Rectangle(0, 0, width, height);
+            var destImage = new Bitmap(width, height);
+
+            destImage.SetResolution(image.HorizontalResolution, image.VerticalResolution);
+
+            using (var graphics = Graphics.FromImage(destImage))
+            {
+                graphics.CompositingMode = CompositingMode.SourceCopy;
+                graphics.CompositingQuality = CompositingQuality.HighQuality;
+                graphics.InterpolationMode = InterpolationMode.HighQualityBicubic;
+                graphics.SmoothingMode = SmoothingMode.HighQuality;
+                graphics.PixelOffsetMode = PixelOffsetMode.HighQuality;
+
+                using (var wrapMode = new ImageAttributes())
+                {
+                    wrapMode.SetWrapMode(WrapMode.TileFlipXY);
+                    graphics.DrawImage(image, destRect, 0, 0, image.Width, image.Height, GraphicsUnit.Pixel, wrapMode);
+                }
+            }
+
+            return destImage;
+        }
+
+        public static byte[] ImageToByte(Image img)
+        {
+            ImageConverter converter = new ImageConverter();
+            return (byte[])converter.ConvertTo(img, typeof(byte[]));
+        }
+
+        /// <summary>
+        /// Will try this next. Maintains aspect ratio
+        /// </summary>
+        /// <param name="imgPhoto"></param>
+        /// <param name="Width"></param>
+        /// <param name="Height"></param>
+        /// <returns></returns>
+        static Image FixedSize(Image imgPhoto, int Width, int Height)
+        {
+            int sourceWidth = imgPhoto.Width;
+            int sourceHeight = imgPhoto.Height;
+            int sourceX = 0;
+            int sourceY = 0;
+            int destX = 0;
+            int destY = 0;
+
+            float nPercent = 0;
+            float nPercentW = 0;
+            float nPercentH = 0;
+
+            nPercentW = ((float)Width / (float)sourceWidth);
+            nPercentH = ((float)Height / (float)sourceHeight);
+            if (nPercentH < nPercentW)
+            {
+                nPercent = nPercentH;
+                destX = System.Convert.ToInt16((Width -
+                              (sourceWidth * nPercent)) / 2);
+            }
+            else
+            {
+                nPercent = nPercentW;
+                destY = System.Convert.ToInt16((Height -
+                              (sourceHeight * nPercent)) / 2);
+            }
+
+            int destWidth = (int)(sourceWidth * nPercent);
+            int destHeight = (int)(sourceHeight * nPercent);
+
+            Bitmap bmPhoto = new Bitmap(Width, Height,
+                              PixelFormat.Format24bppRgb);
+            bmPhoto.SetResolution(imgPhoto.HorizontalResolution,
+                             imgPhoto.VerticalResolution);
+
+            Graphics grPhoto = Graphics.FromImage(bmPhoto);
+            grPhoto.Clear(Color.Red);
+            grPhoto.InterpolationMode =
+                    InterpolationMode.HighQualityBicubic;
+
+            grPhoto.DrawImage(imgPhoto,
+                new Rectangle(destX, destY, destWidth, destHeight),
+                new Rectangle(sourceX, sourceY, sourceWidth, sourceHeight),
+                GraphicsUnit.Pixel);
+
+            grPhoto.Dispose();
+            return bmPhoto;
+        }
     }
 }

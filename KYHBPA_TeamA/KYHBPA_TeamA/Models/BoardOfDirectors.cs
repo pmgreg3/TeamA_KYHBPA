@@ -15,5 +15,6 @@ namespace KYHBPA_TeamA.Models
         public string Email { get; set; }
         public string Description { get; set; }
         public byte[] PhotoContent { get; set; }
+        public string MimeType { get; set; }
     }
 }
