@@ -588,3 +588,12 @@
     line-height: 26px;
     color: #072419;
 }
+
+/* Used for BoD description's "read more" */
+.morecontent span {
+    display: none;
+}
+
+.morelink {
+    display: block;
+}
