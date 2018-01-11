@@ -113,10 +113,6 @@ namespace KYHBPA_TeamA.Controllers
                     db.SaveChanges();
 
                     // Send email after creating membership.
-
-
-
-
                     MailDefinition md = new MailDefinition()
                     {
                         IsBodyHtml = true,
@@ -146,7 +142,7 @@ namespace KYHBPA_TeamA.Controllers
                     MailMessage email = md.CreateMailMessage("pmgreg3@gmail.com", replacements, new System.Web.UI.Control());
 
 
-                    using (SmtpClient emailClient = new SmtpClient("relay-hosting.secureserver.net", 25)
+                    using (SmtpClient emailClient = new SmtpClient("relay-hosting.secureserver.net",25)
                     {
                         UseDefaultCredentials = false,
                         // Apparently godaddy doesn't need authentication when sending from host account
