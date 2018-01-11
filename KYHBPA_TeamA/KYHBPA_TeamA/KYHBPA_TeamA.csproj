@@ -349,6 +349,7 @@
     <Content Include="Content\dhtmlxscheduler_contrast_white.css" />
     <Content Include="Content\dhtmlxscheduler_flat.css" />
     <Content Include="Content\dhtmlxscheduler_glossy.css" />
+    <Content Include="Content\EmailTemplates\AdminNotificationOfMembership.html" />
     <Content Include="Content\ext\dhtmlxscheduler_active_links.js" />
     <Content Include="Content\ext\dhtmlxscheduler_agenda_view.js" />
     <Content Include="Content\ext\dhtmlxscheduler_all_timed.js" />
