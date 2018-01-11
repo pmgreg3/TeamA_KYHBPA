@@ -5,55 +5,161 @@
     <title></title>
 </head>
 <body>
-    <h3>Hello,</h3>
-    <h4>{firstName} {lastName} has just created a membership profile through our website.</h4>
-    <hr>
-    <p>
-        <h2>
-          Submission is as follows:
-        </h2>
-        Date of Birth: {dateOfBirth}
-        <br />
-        Phone Number: {phoneNumber}
-        <br />
-        Address: {address}
-        <br />
-        City: {city}
-        <br />
-        State: {state}
-        <br />
-        Zip Code: {zipCode}
-        <br />
-        License Number: {licenseNumber}
-        <br />
-        Are you an owner?: {owner}
-        <br />
-        Are you a trainer: {trainer}
-        <br />
-        Affiliation: {affiliation}
-        <br />
-        Managing Partner: {managingParter}
-        <br />
-        Agreed to the terms? {agreedToTerms}
-        <br />
-        Signature: {signature}
-        <br />
-    </p>
+  <div id="submission">
+    <div class="banner">
+      <h3>
+        Hello,
+      </h3>
+      <h4>
+        {firstName} {lastName} has just created a membership profile through our website!
+      </h4>
+    </div>
 
-    Thank you,
-    <br />
-    KentuckyHbpa.Org
+
+<div class="submissionBody">
+  <p>
+      <h2>
+        Their profile is as follows:
+      </h2>
+
+      <div class="membershipProperty">
+        Date of Birth:
+      </div> 
+      {dateOfBirth}
+
+      <br />
+
+      <div class="membershipProperty">
+        Phone Number:
+      </div>
+      {phoneNumber}
+
+      <br />
+
+      <div class=membershipProperty>
+        Address:
+      </div>
+       {address}
+
+      <br />
+
+      <div class="membershipProperty">
+        City:
+      </div>
+       {city}
+
+      <br />
+
+      <div class="membershipProperty">
+        State:
+      </div>
+       state}
+
+      <br />
+
+      <div class="membershipProperty">
+        Zip Code:
+      </div>
+       {zipCode}
+
+      <br />
+
+      <div class="membershipProperty">
+        License Number:
+      </div>
+       {licenseNumber}
+
+      <br />
+
+      <div class="membershipProperty">
+        Are you an owner?:
+      </div>
+       {owner}
+
+      <br />
+
+      <div class="membershipProperty">
+        Are you a trainer:
+      </div>
+       {trainer}
+
+      <br />
+
+      <div class="membershipProperty">
+        Affiliation:
+      </div>
+       {affiliation}
+
+      <br />
+
+      <div class="membershipProperty">
+        Managing Partner:
+      </div>
+       {managingParter}
+
+      <br />
+
+      <div class="membershipProperty">
+        Agreed to the terms?
+      </div>
+       {agreedToTerms}
+
+      <br />
+
+      <div class="membershipProperty">
+        Signature:
+    </div>
+    {signature}
+
+      <br />
+  </p>
+</div>
+
+
+    <div class="banner">
+      <h3>
+        Thank you,
+      </h3>
+
+      KentuckyHbpa.Org
+    </div>
+</div>
 </body>
 </html>
 <style>
-body{
-  background:#f6f9fc;
-  font-family:Camphor,Open Sans,Segoe UI,sans-serif;
-  padding:3rem;
-  line-height:2rem;
-}
+    body{
+      background:#f6f9fc;
+      font-family:Camphor,Open Sans,Segoe UI,sans-serif;
+      padding:10rem;
+      line-height:2rem;
+    }
 
-h3{
-  color:#333;
-}
+    h3{
+      color:#333;
+    }
+
+    #submission{
+      background:;
+    }
+
+    .banner{
+      color:white;
+      background-color:#072419;
+      padding:3rem
+    }
+
+    .banner > h3{
+      color:white;
+    }
+
+    .submissionBody{
+      border: #072419 solid 2px ;
+      padding:3rem;
+    }
+
+    .membershipProperty{
+      display:inline;
+      font-weight: bold;
+    }
+
 </style>
