@@ -5,28 +5,55 @@
     <title></title>
 </head>
 <body>
-    <h2>Hello,</h2>
-    <h3>{firstName} {lastName} has just created a membership profile through our website.</h3>
+    <h3>Hello,</h3>
+    <h4>{firstName} {lastName} has just created a membership profile through our website.</h4>
     <hr>
     <p>
-        Submission is as follows:
-
+        <h2>
+          Submission is as follows:
+        </h2>
         Date of Birth: {dateOfBirth}
+        <br />
         Phone Number: {phoneNumber}
+        <br />
         Address: {address}
+        <br />
         City: {city}
+        <br />
         State: {state}
+        <br />
         Zip Code: {zipCode}
+        <br />
         License Number: {licenseNumber}
+        <br />
         Are you an owner?: {owner}
+        <br />
         Are you a trainer: {trainer}
+        <br />
         Affiliation: {affiliation}
+        <br />
         Managing Partner: {managingParter}
+        <br />
         Agreed to the terms? {agreedToTerms}
+        <br />
         Signature: {signature}
+        <br />
     </p>
 
     Thank you,
+    <br />
     KentuckyHbpa.Org
 </body>
 </html>
+<style>
+body{
+  background:#f6f9fc;
+  font-family:Camphor,Open Sans,Segoe UI,sans-serif;
+  padding:3rem;
+  line-height:2rem;
+}
+
+h3{
+  color:#333;
+}
+</style>
