@@ -8,6 +8,10 @@ using System.Web;
 using System.Web.Mvc;
 using KYHBPA_TeamA.Models;
 using Microsoft.AspNet.Identity;
+using System.Net.Mail;
+using System.Web.UI.WebControls;
+using System.Collections.Specialized;
+using System.Threading.Tasks;
 
 namespace KYHBPA_TeamA.Controllers
 {
@@ -52,7 +56,7 @@ namespace KYHBPA_TeamA.Controllers
         [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(MembershipsViewModels.CreateMembershipViewModel viewModel)
+        public async Task<ActionResult> Create(MembershipsViewModels.CreateMembershipViewModel viewModel)
         {
             //db.Users.Find(User.Identity.GetUserId()).Membership.ID == null
             //if (ModelState.IsValid)
@@ -74,8 +78,12 @@ namespace KYHBPA_TeamA.Controllers
 
             if (ModelState.IsValid)
             {
-                if (db.Users.Find(User.Identity.GetUserId()).AppliedForMembership == false)
+                // retreives user 
+                var user = db.Users.Find(User.Identity.GetUserId());
+
+                if (user.AppliedForMembership == false)
                 {
+
                     var membership = new Membership()
                     {
                         DateofBirth = viewModel.DateofBirth,
@@ -99,10 +107,53 @@ namespace KYHBPA_TeamA.Controllers
                         membership.IsOwnerAndTrainer = true;
                     }
 
-                    db.Users.Find(User.Identity.GetUserId()).AppliedForMembership = true;
-                    db.Users.Find(User.Identity.GetUserId()).Membership = membership;
+                    user.AppliedForMembership = true;
+                    user.Membership = membership;
                     db.Memberships.Add(membership);
                     db.SaveChanges();
+
+                    // Send email after creating membership.
+                    MailDefinition md = new MailDefinition()
+                    {
+                        IsBodyHtml = true,
+                        Subject = "User created Membership at KentuckyHbpa.org",
+                        BodyFileName = "~/Content/EmailTemplates/AdminNotificationOfMembership.html",
+                        From = "no-reply@KentuckyHbpa.org"
+                    };
+
+                    ListDictionary replacements = new ListDictionary();
+                    replacements.Add("{firstName}", user.FirstName);
+                    replacements.Add("{lastName}", user.LastName);
+                    replacements.Add("{dateOfBirth}", membership.DateofBirth.ToString());
+                    replacements.Add("{phoneNumber}", membership.PhoneNumber);
+                    replacements.Add("{address}", membership.Address);
+                    replacements.Add("{city}", membership.City);
+                    replacements.Add("{state}", membership.State);
+                    replacements.Add("{zipCode}", membership.ZipCode);
+                    replacements.Add("{licenseNumber}", membership.LicenseNumber);
+                    replacements.Add("{owner}", membership.IsOwner.ToString());
+                    replacements.Add("{trainer}", membership.IsTrainer.ToString());
+                    replacements.Add("{affiliation}", membership.Affiliation);
+                    replacements.Add("{managingParter}", membership.ManagingPartner);
+                    replacements.Add("{agreedToTerms}", membership.AgreedToTerms.ToString());
+                    replacements.Add("{signature}", membership.Signature);
+
+                    // Test using personal email
+                    MailMessage email = md.CreateMailMessage("pmgreg3@gmail.com", replacements, new System.Web.UI.Control());
+
+
+                    using (SmtpClient emailClient = new SmtpClient("relay-hosting.secureserver.net",25)
+                    {
+                        UseDefaultCredentials = false,
+                        // Apparently godaddy doesn't need authentication when sending from host account
+                        // Credentials = new System.Net.NetworkCredential("kentuckyhbpa@gmail.com", "Horsemen2"),
+                        DeliveryMethod = SmtpDeliveryMethod.Network,
+                        EnableSsl = false
+                    })
+                    {
+                        await emailClient.SendMailAsync(email);
+                    }
+
                     return RedirectToAction("Index");
 
                 }
