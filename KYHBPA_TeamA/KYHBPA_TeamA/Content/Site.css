@@ -466,13 +466,17 @@
     border: 1px solid #f6f9fc;
 }
 
-/*About Me page*/
+/*About Us page*/
 #About {
     padding-left: 50px;
     padding-right: 50px;
     padding-bottom: 30px;
 }
 
+.aboutUsImage {
+    height:500px;
+
+}
 
 #hrfooter {
     border-top: 1px solid #fefefe;
