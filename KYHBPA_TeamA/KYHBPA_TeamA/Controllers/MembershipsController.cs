@@ -12,17 +12,51 @@ using System.Net.Mail;
 using System.Web.UI.WebControls;
 using System.Collections.Specialized;
 using System.Threading.Tasks;
+using Microsoft.AspNet.Identity.Owin;
 
 namespace KYHBPA_TeamA.Controllers
 {
     public class MembershipsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
+        private ApplicationUserManager _userManager;
+
+        public ApplicationUserManager UserManager
+        {
+            get
+            {
+                return _userManager ?? HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
+            }
+            private set
+            {
+                _userManager = value;
+            }
+        }
 
 
         // GET: Memberships
         [Authorize]
-        public ActionResult Index()
+        public async Task<ActionResult> Index()
+        {
+            var user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
+
+            if (user.AppliedForMembership)
+            {
+
+                var membership = user.Membership;
+
+
+                return View(membership);
+            }
+            else
+            {
+                return View("Create");
+            }
+
+        }
+
+        [Authorize(Roles = "Admin")]
+        public ActionResult Admin()
         {
             return View(db.Memberships.ToList());
         }
@@ -149,7 +183,7 @@ namespace KYHBPA_TeamA.Controllers
                         EnableSsl = false
                     })
                     {
-                        await emailClient.SendMailAsync(email);
+                        //await emailClient.SendMailAsync(email);
                     }
 
                     return RedirectToAction("Index");

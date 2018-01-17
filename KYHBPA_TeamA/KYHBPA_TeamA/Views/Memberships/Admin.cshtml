@@ -1,0 +1,28 @@
+﻿@model IEnumerable<KYHBPA_TeamA.Models.Membership>
+
+@{
+    ViewBag.Title = "Admin";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Admin</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new {  id= item.ID }) |
+            @Html.ActionLink("Details", "Details", new {  id=item.ID }) |
+            @Html.ActionLink("Delete", "Delete", new {  id=item.ID })
+        </td>
+    </tr>
+}
+
+</table>

@@ -11,7 +11,7 @@ namespace KYHBPA_TeamA.Models
     public class KYHBPAUser : IdentityUser
     {
         
-        public Membership Membership { get; set; }
+        public virtual Membership Membership { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public bool AppliedForMembership { get; set; }

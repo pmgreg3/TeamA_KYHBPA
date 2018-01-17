@@ -1,4 +1,4 @@
-﻿@model IEnumerable<KYHBPA_TeamA.Models.Membership>
+﻿@model KYHBPA_TeamA.Models.Membership
 
 @{
     ViewBag.Title = "Index";
@@ -59,59 +59,59 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
+    
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.DateofBirth)
+            @Html.DisplayFor(modelItem => Model.DateofBirth)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.MembershipEnrollment)
+            @Html.DisplayFor(modelItem => Model.MembershipEnrollment)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.PhoneNumber)
+            @Html.DisplayFor(modelItem => Model.PhoneNumber)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Address)
+            @Html.DisplayFor(modelItem => Model.Address)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.City)
+            @Html.DisplayFor(modelItem => Model.City)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.State)
+            @Html.DisplayFor(modelItem => Model.State)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.ZipCode)
+            @Html.DisplayFor(modelItem => Model.ZipCode)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.LicenseNumber)
+            @Html.DisplayFor(modelItem => Model.LicenseNumber)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.IsOwner)
+            @Html.DisplayFor(modelItem => Model.IsOwner)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.IsTrainer)
+            @Html.DisplayFor(modelItem => Model.IsTrainer)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.IsOwnerAndTrainer)
+            @Html.DisplayFor(modelItem => Model.IsOwnerAndTrainer)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.AgreedToTerms)
+            @Html.DisplayFor(modelItem => Model.AgreedToTerms)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Signature)
+            @Html.DisplayFor(modelItem => Model.Signature)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Affiliation)
+            @Html.DisplayFor(modelItem => Model.Affiliation)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.ManagingPartner)
+            @Html.DisplayFor(modelItem => Model.ManagingPartner)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+            @Html.ActionLink("Edit", "Edit", new { @*id= Model.ID*@ }) |
+            @Html.ActionLink("Details", "Details", new { @*id= Model.ID*@ }) |
+            @Html.ActionLink("Delete", "Delete", new { @*id= Model.ID*@ })
         </td>
     </tr>
-}
+
 
 </table>
