@@ -242,7 +242,15 @@ namespace KYHBPA_TeamA.Controllers
             {
                 db.Entry(membership).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+
+                if (User.IsInRole("Admin"))
+                {
+                    return RedirectToAction("Admin");
+                }
+                else
+                {
+                    return RedirectToAction("Index");
+                }         
             }
             return View(membership);
         }
