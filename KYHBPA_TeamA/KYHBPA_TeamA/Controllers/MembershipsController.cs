@@ -81,7 +81,17 @@ namespace KYHBPA_TeamA.Controllers
         [Authorize]
         public ActionResult Create()
         {
-            return View();
+            var user = db.Users.Find(User.Identity.GetUserId());
+
+            if (user.AppliedForMembership)
+            {
+                return View("Index",user.Membership);
+            }
+            else
+            {
+                return View();
+            }
+                
         }
 
         // POST: Memberships/Create
@@ -260,6 +270,16 @@ namespace KYHBPA_TeamA.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             Membership membership = db.Memberships.Find(id);
+
+            // gets user that the membership is associated with
+            var user = db.Users
+                .Include(x => x.Membership)
+                .SingleOrDefault(x => x.Membership.ID == membership.ID);
+
+            // nulls the membership and resets the flag
+            user.Membership = null;
+            user.AppliedForMembership = false;
+            
             db.Memberships.Remove(membership);
             db.SaveChanges();
             return RedirectToAction("Index");
