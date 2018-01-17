@@ -193,7 +193,7 @@ namespace KYHBPA_TeamA.Controllers
                         EnableSsl = false
                     })
                     {
-                        //await emailClient.SendMailAsync(email);
+                        await emailClient.SendMailAsync(email);
                     }
 
                     return RedirectToAction("Index");
