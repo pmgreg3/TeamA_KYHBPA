@@ -690,6 +690,7 @@
     <Content Include="Views\Blog\Index.cshtml" />
     <Content Include="Views\BoardOfDirectors\Delete.cshtml" />
     <Content Include="Views\Blog\Delete.cshtml" />
+    <Content Include="Views\Memberships\Admin.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
