@@ -3,6 +3,7 @@
 @{
     ViewBag.Title = "Our Board";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    const int COL_NUM = 3;
 }
 
 @Scripts.Render("~/bundles/BoardOfDirectorsReadMore")
@@ -10,35 +11,61 @@
 <h2 class="common-Uppercase text-center">Board of Directors</h2>
 <hr class="featurete-divider" />
 
-
-@foreach (var director in Model)
+@for (int i = 0; i <= Model.Count() / 3; i++)
 {
-    <div class="row">
+    <div class="row boardOfDirectorsRow"> 
 
-        <div class="col-md-5 boardOfDirectorsImageSpace">
-            @*<img class="boardOfDirectorsImage" src="@(string.Format("data:image/gif;base64,{0}", Convert.ToBase64String(director.PhotoContent)))" />*@
-            <img class="boardOfDirectorsImage" src="@Url.Action("GetBoDImage", "BoardOfDirectors", new { director.Id })" />
-        </div>
+        @foreach (var director in Model.Skip(i * 3).Take(3))
+        {
+            @*<div class="row">
 
-        <div class=" col-md-7">
-            <h2 class="common-Uppercase">
-                @Html.DisplayFor(modelItem => director.FirstName) @Html.DisplayFor(modelItem => director.LastName)
-            </h2>
+                <div class="col-md-5 boardOfDirectorsImageSpace">
+                    <img class="boardOfDirectorsImage" src="@Url.Action("GetBoDImage", "BoardOfDirectors", new { director.Id })" />
+                </div>
 
-            <h2 class="common-UppercaseTitle">
-                @Html.DisplayFor(modelItem => director.Title)
-            </h2>
+                <div class=" col-md-7">
+                    <h2 class="common-Uppercase">
+                        @Html.DisplayFor(modelItem => director.FirstName) @Html.DisplayFor(modelItem => director.LastName)
+                    </h2>
 
-            <h4>
-                @Html.DisplayFor(modelItem => director.Email)
-            </h4>
+                    <h2 class="common-UppercaseTitle">
+                        @Html.DisplayFor(modelItem => director.Title)
+                    </h2>
 
-            <p class="boardOfDirectorsDescText">
-                @Html.DisplayFor(modelItem => director.Description)
-            </p>
-        </div>
+                    <h4>
+                        @Html.DisplayFor(modelItem => director.Email)
+                    </h4>
+
+                    <p class="boardOfDirectorsDescText">
+                        @Html.DisplayFor(modelItem => director.Description)
+                    </p>
+                </div>
+            </div>
+            <hr class="featurete-divider" />*@
+
+            <div class="col-md-4 boardOfDirectorsProfileImage">
+
+                <img class="boardOfDirectorsImage" src="@Url.Action("GetBoDImage", "BoardOfDirectors", new { director.Id })" />
+                
+                <h2 class="bodImageHeader">
+                    @director.FirstName @director.LastName
+                </h2>
+                <h5>
+                    @director.Title
+                </h5>
+            </div>
+        }
+
     </div>
-        <hr class="featurete-divider" />
-
-
 }
+
+<script type="text/javascript">
+    $('a').on('click', function () {
+        $('.wrap, a').toggleClass('active');
+
+        return false;
+    });
+</script>
+
+
+
