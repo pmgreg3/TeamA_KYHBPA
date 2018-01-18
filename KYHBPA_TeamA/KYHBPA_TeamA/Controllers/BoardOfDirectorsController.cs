@@ -29,7 +29,6 @@ namespace KYHBPA_TeamA.Controllers
                 Title = p.Title,
                 Email = p.Email,
                 Description = p.Description,
-                PhotoContent = p.PhotoContent
             });
 
             return View(BoardOfDirectors);
@@ -47,7 +46,6 @@ namespace KYHBPA_TeamA.Controllers
                 Title = boardOfDirectors.Title,
                 Email = boardOfDirectors.Email,
                 Description = boardOfDirectors.Description,
-                PhotoContent = boardOfDirectors.PhotoContent
             };
 
             return View(newBoardOfDirectors);
@@ -64,7 +62,6 @@ namespace KYHBPA_TeamA.Controllers
                 Title = p.Title,
                 Email = p.Email,
                 Description = p.Description,
-                PhotoContent = p.PhotoContent
             });
 
             return View(BoardOfDirectors);
@@ -87,30 +84,40 @@ namespace KYHBPA_TeamA.Controllers
         {
             if (ModelState.IsValid)
             {
-                //byte[] uploadedFile = new byte[file.InputStream.Length];
-                //addViewModel.File.InputStream.Read(uploadedFile, 0, file.ContentLength);
-
-                var imageBeforeResize = Image.FromStream(file.InputStream);
-                var imageAfterResize = ResizeImage(imageBeforeResize, 400, 500);
-
-                var resizedByteArray = ImageToByte(imageAfterResize);
-
                 var boardOfDirector = new BoardOfDirectors()
                 {
                     Title = addViewModel.Title,
                     FirstName = addViewModel.FirstName,
                     LastName = addViewModel.LastName,
-                    Email = addViewModel.Email, 
-                    PhotoContent = resizedByteArray,
+                    Email = addViewModel.Email,
                     Description = addViewModel.Description,
-                    MimeType = file.ContentType
                 };
 
+                //byte[] uploadedFile = new byte[file.InputStream.Length];
+                //addViewModel.File.InputStream.Read(uploadedFile, 0, file.ContentLength);
+                if (file != null)
+                {
+                    var imageBeforeResize = Image.FromStream(file.InputStream);
+                    var imageAfterResize = ResizeImage(imageBeforeResize, 400, 500);
 
-                db.BoardOfDirectors.Add(boardOfDirector);
-                db.SaveChanges();
+                    var resizedByteArray = ImageToByte(imageAfterResize);
 
-                return RedirectToAction("Index");
+                    boardOfDirector.PhotoContent = resizedByteArray;
+                    boardOfDirector.MimeType = file.ContentType;
+
+                    db.BoardOfDirectors.Add(boardOfDirector);
+                    db.SaveChanges();
+
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    db.BoardOfDirectors.Add(boardOfDirector);
+                    db.SaveChanges();
+
+                    return RedirectToAction("Index");
+                }
+
             }
             else
             {
@@ -245,7 +252,7 @@ namespace KYHBPA_TeamA.Controllers
         /// </summary>
         /// <param name="id">ID of BOD member to get</param>
         /// <returns>File of BOD member to render</returns>
-        public FileContentResult GetBODMember(int id)
+        public FileResult GetBODMember(int id)
         {
             BoardOfDirectors BODToGet = db.BoardOfDirectors.Find(id);
 
@@ -257,14 +264,16 @@ namespace KYHBPA_TeamA.Controllers
 
 
         [OutputCache(Duration = 86400, Location = OutputCacheLocation.ServerAndClient)]
-        public FileContentResult GetBoDImage(int id)
+        public FileResult GetBoDImage(int id)
         {
-            var photoToGet = db.BoardOfDirectors.Find(id);
+            var boardOfDirector = db.BoardOfDirectors.Find(id);
 
-            if (photoToGet != null)
-                return File(photoToGet.PhotoContent, photoToGet.MimeType);
+            if (boardOfDirector.MimeType != null || boardOfDirector.PhotoContent != null)
+                return File(boardOfDirector.PhotoContent, boardOfDirector.MimeType);
             else
-                return null;
+            {
+                return new FilePathResult(HttpContext.Server.MapPath("~/Content/blankProfileImage.jpeg"), "image/jpeg");
+            }
         }
 
 
