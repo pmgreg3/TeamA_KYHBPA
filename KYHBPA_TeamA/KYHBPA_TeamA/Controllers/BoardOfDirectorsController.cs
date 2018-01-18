@@ -10,6 +10,7 @@ using KYHBPA_TeamA.Models;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
+using System.Web.UI;
 
 namespace KYHBPA_TeamA.Controllers
 {
@@ -254,6 +255,8 @@ namespace KYHBPA_TeamA.Controllers
                 return null;
         }
 
+
+        [OutputCache(Duration = 86400, Location = OutputCacheLocation.ServerAndClient)]
         public FileContentResult GetBoDImage(int id)
         {
             var photoToGet = db.BoardOfDirectors.Find(id);
