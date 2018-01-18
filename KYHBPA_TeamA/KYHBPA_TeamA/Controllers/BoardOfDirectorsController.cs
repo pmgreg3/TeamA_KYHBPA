@@ -268,7 +268,7 @@ namespace KYHBPA_TeamA.Controllers
         {
             var boardOfDirector = db.BoardOfDirectors.Find(id);
 
-            if (boardOfDirector.MimeType != null | boardOfDirector.PhotoContent != null)
+            if (boardOfDirector.MimeType != null && boardOfDirector.PhotoContent != null)
                 return File(boardOfDirector.PhotoContent, boardOfDirector.MimeType);
             else
             {
