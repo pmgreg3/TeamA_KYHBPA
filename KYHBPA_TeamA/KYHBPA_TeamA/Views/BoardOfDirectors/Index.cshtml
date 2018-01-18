@@ -27,6 +27,9 @@
 
                 <a href="#ex@(director.Id)" rel="modal:open">
                     <img class="boardOfDirectorsImage" 
+                         data-toggle="tooltip"
+                         data-placement="top"
+                         title="Click to read bio."
                          alt="@director.FirstName @director.LastName"
                          src="@Url.Action("GetBoDImage", "BoardOfDirectors", new { director.Id })" />
                 </a>               
@@ -56,6 +59,16 @@
 
     </div>
 }
+
+<script>
+    $(document).ready(function () {
+        $('[data-toggle="tooltip"]').tooltip({
+            animated: 'fade',
+            placement: 'top',
+            html: true
+        });
+    });
+</script>
 
 
 
