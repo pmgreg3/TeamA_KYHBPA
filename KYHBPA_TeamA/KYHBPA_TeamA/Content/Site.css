@@ -615,6 +615,7 @@
 .modal{
     overflow: hidden;
     padding:4rem !important;
+    margin-top:3rem;
 }
 
 .modal a.close-modal{

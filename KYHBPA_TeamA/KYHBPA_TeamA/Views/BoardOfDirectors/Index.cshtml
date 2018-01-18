@@ -42,7 +42,13 @@
                 </h5>
 
                 <div id="ex@(director.Id)" class="modal">
-                    <p>@director.Description</p>
+                    <img src="@Url.Action("GetBoDImage", "BoardOfDirectors", new { director.Id })" />
+                    <h1>
+                        @director.FirstName @director.LastName
+                    </h1>
+                    <p>
+                        @director.Description
+                    </p>
                     <a href="#" rel="modal:close">Close</a>
                 </div>
             </div>
