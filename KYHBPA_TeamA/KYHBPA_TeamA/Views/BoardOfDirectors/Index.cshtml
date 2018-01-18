@@ -23,36 +23,12 @@
 
         @foreach (var director in Model.Skip(i * 3).Take(3))
         {
-            @*<div class="row">
-
-                <div class="col-md-5 boardOfDirectorsImageSpace">
-                    <img class="boardOfDirectorsImage" src="@Url.Action("GetBoDImage", "BoardOfDirectors", new { director.Id })" />
-                </div>
-
-                <div class=" col-md-7">
-                    <h2 class="common-Uppercase">
-                        @Html.DisplayFor(modelItem => director.FirstName) @Html.DisplayFor(modelItem => director.LastName)
-                    </h2>
-
-                    <h2 class="common-UppercaseTitle">
-                        @Html.DisplayFor(modelItem => director.Title)
-                    </h2>
-
-                    <h4>
-                        @Html.DisplayFor(modelItem => director.Email)
-                    </h4>
-
-                    <p class="boardOfDirectorsDescText">
-                        @Html.DisplayFor(modelItem => director.Description)
-                    </p>
-                </div>
-            </div>
-            <hr class="featurete-divider" />*@
-
             <div class="col-md-4 boardOfDirectorsProfileImage">
 
                 <a href="#ex@(director.Id)" rel="modal:open">
-                    <img class="boardOfDirectorsImage" src="@Url.Action("GetBoDImage", "BoardOfDirectors", new { director.Id })" />
+                    <img class="boardOfDirectorsImage" 
+                         alt="@director.FirstName @director.LastName"
+                         src="@Url.Action("GetBoDImage", "BoardOfDirectors", new { director.Id })" />
                 </a>               
 
                 <h2 class="bodImageHeader">

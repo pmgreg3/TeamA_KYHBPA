@@ -611,15 +611,17 @@
 }
 
 
-/* Used for BoD description's "read more" */
-.morecontent span {
-    display: none;
+/* Used for BoD description's modal boxes */
+.modal{
+    overflow: hidden;
+    padding:4rem !important;
 }
 
-.morelink {
-    display: block;
-}
+.modal a.close-modal{
+    top:9.5px !important;
+    right:8.5px !important;
 
+}
 
 /* Form Text Areas */
 textarea {
