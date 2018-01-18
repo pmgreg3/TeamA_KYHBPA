@@ -263,7 +263,7 @@ namespace KYHBPA_TeamA.Controllers
         }
 
 
-        [OutputCache(Duration = 86400, Location = OutputCacheLocation.ServerAndClient)]
+        [OutputCache(Duration = 1800, Location = OutputCacheLocation.ServerAndClient)]
         public FileResult GetBoDImage(int id)
         {
             var boardOfDirector = db.BoardOfDirectors.Find(id);
