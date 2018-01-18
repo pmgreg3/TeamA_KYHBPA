@@ -7,38 +7,68 @@
 
 @Scripts.Render("~/bundles/BoardOfDirectorsReadMore")
 
+@*
+    Scripts for modal library    
+*@ 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
+
 <h2 class="common-Uppercase text-center">Board of Directors</h2>
 <hr class="featurete-divider" />
 
-
-@foreach (var director in Model)
+@for (int i = 0; i <= Model.Count() / 3; i++)
 {
-    <div class="row">
+    <div class="row boardOfDirectorsRow"> 
 
-        <div class="col-md-5 boardOfDirectorsImageSpace">
-            @*<img class="boardOfDirectorsImage" src="@(string.Format("data:image/gif;base64,{0}", Convert.ToBase64String(director.PhotoContent)))" />*@
-            <img class="boardOfDirectorsImage" src="@Url.Action("GetBoDImage", "BoardOfDirectors", new { director.Id })" />
-        </div>
+        @foreach (var director in Model.Skip(i * 3).Take(3))
+        {
+            <div class="col-md-4 boardOfDirectorsProfileImage">
 
-        <div class=" col-md-7">
-            <h2 class="common-Uppercase">
-                @Html.DisplayFor(modelItem => director.FirstName) @Html.DisplayFor(modelItem => director.LastName)
-            </h2>
+                <a href="#ex@(director.Id)" rel="modal:open">
+                    <img class="boardOfDirectorsImage" 
+                         data-toggle="tooltip"
+                         data-placement="top"
+                         title="Click to read bio."
+                         alt="@director.FirstName @director.LastName"
+                         src="@Url.Action("GetBoDImage", "BoardOfDirectors", new { director.Id })" />
+                </a>               
 
-            <h2 class="common-UppercaseTitle">
-                @Html.DisplayFor(modelItem => director.Title)
-            </h2>
+                <h2 class="bodImageHeader">
+                    @director.FirstName @director.LastName
+                </h2>
+                <h5 class="pull-left">
+                    @director.Title
+                </h5>
+                <h5 class="pull-right">
+                    @director.Email
+                </h5>
 
-            <h4>
-                @Html.DisplayFor(modelItem => director.Email)
-            </h4>
+                <div id="ex@(director.Id)" class="modal">
+                    <img src="@Url.Action("GetBoDImage", "BoardOfDirectors", new { director.Id })" />
+                    <h1>
+                        @director.FirstName @director.LastName
+                    </h1>
+                    <p>
+                        @director.Description
+                    </p>
+                    <a href="#" rel="modal:close">Close</a>
+                </div>
+            </div>
+        }
 
-            <p class="boardOfDirectorsDescText">
-                @Html.DisplayFor(modelItem => director.Description)
-            </p>
-        </div>
     </div>
-        <hr class="featurete-divider" />
-
-
 }
+
+<script>
+    $(document).ready(function () {
+        $('[data-toggle="tooltip"]').tooltip({
+            animated: 'fade',
+            placement: 'top',
+            html: true
+        });
+    });
+</script>
+
+
+

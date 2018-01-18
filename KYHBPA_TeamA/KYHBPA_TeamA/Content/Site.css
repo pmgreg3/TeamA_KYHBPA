@@ -581,6 +581,9 @@
 
 .boardOfDirectorsImage {
     width: 100%;
+    border: 4px solid #072419;
+    box-shadow: 8px 8px 20px 0px #0000006b;
+    border-radius:2px;
 }
 
 .boardOfDirectorsImageSpace {
@@ -594,15 +597,32 @@
     color: #072419;
 }
 
-/* Used for BoD description's "read more" */
-.morecontent span {
-    display: none;
+.boardOfDirectorsProfileImage {
+
+
 }
 
-.morelink {
-    display: block;
+.bodImageHeader {
+
 }
 
+.boardOfDirectorsRow {
+    padding-bottom: 3rem;
+}
+
+
+/* Used for BoD description's modal boxes */
+.modal{
+    overflow: hidden;
+    padding:4rem !important;
+    margin-top:3rem;
+}
+
+.modal a.close-modal{
+    top:9.5px !important;
+    right:8.5px !important;
+
+}
 
 /* Form Text Areas */
 textarea {
