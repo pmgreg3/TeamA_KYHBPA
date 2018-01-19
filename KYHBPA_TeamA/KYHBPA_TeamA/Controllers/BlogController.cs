@@ -343,7 +343,7 @@ namespace KYHBPA_TeamA.Controllers
 
 
         [OutputCache(Duration = 1800, Location = OutputCacheLocation.ServerAndClient)]
-        public FileResult GetBlogOrNewsImage(int id)
+        public ActionResult GetBlogOrNewsImage(int id)
         {
             var post = _db.Posts.Find(id);
 
@@ -353,6 +353,7 @@ namespace KYHBPA_TeamA.Controllers
             {
                 // if there is no image, is returning null best practice?
                 // makes server handle error for 500 status code...
+                HttpContext.Response.StatusCode = (int)HttpStatusCode.OK;
                 return null; 
             }
         }
