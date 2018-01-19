@@ -7,8 +7,8 @@ using System.Data;
 using System.Web;
 using System.Web.Mvc;
 using System.Net;
-
-
+using System.Web.UI;
+using System.Drawing;
 
 namespace KYHBPA_TeamA.Controllers
 {
@@ -49,8 +49,9 @@ namespace KYHBPA_TeamA.Controllers
                 Category = post.Category,
                 Comments = post.Comments,
                 PhotoContent = post.PhotoContent
-            });
+            }).Where(x => x.Published == true);
 
+            
 
             // When it is time to build a visitor-facing view,
             // you will pass this view all posts that have been published!
@@ -60,13 +61,26 @@ namespace KYHBPA_TeamA.Controllers
 
         // GET: Blog/Manage
         [Authorize(Roles = "Admin")]
-        public ActionResult Manage()
+        public ActionResult Admin()
         {
-            return View();
+            var allPosts = _db.Posts.Select(post => new CreateBlogPostViewModel()
+            {
+                Id = post.Id,
+                Title = post.Title,
+                ShortDescription = post.ShortDescription,
+                Description = post.Description,
+                Published = post.Published,
+                PostedOn = post.PostedOn,
+                Category = post.Category,
+                Comments = post.Comments,
+                PhotoContent = post.PhotoContent
+            });
+
+            return View(allPosts);
         }
 
         // GET: Blog/Create
-        [Authorize(Roles = "Admin,Employee,Member,User")]
+        [Authorize(Roles = "Admin")]
         [HttpGet]
         public ActionResult Create()
         {
@@ -74,9 +88,9 @@ namespace KYHBPA_TeamA.Controllers
         }
 
         // GET: Blog/Create
-        [Authorize(Roles = "Admin,Employee,Member,User")]
+        [Authorize(Roles = "Admin")]
         [HttpPost]
-        public ActionResult Create(CreateBlogPostViewModel viewModel, HttpPostedFileBase file)
+        public ActionResult Create(CreateBlogPostViewModel viewModel, HttpPostedFileBase image = null)
         {
 
             if (ModelState.IsValid)
@@ -98,6 +112,15 @@ namespace KYHBPA_TeamA.Controllers
                     post.Category = categoryRecord;
                 }
 
+                // if user uploaded image, process it
+                if(image != null)
+                {
+                    post.MimeType = image.ContentType;
+                    post.PhotoContent = new byte[image.ContentLength];
+
+                    image.InputStream.Read(post.PhotoContent, 0, image.ContentLength);
+                }
+
 
                 post.Description = viewModel.Description;
                 post.ShortDescription = viewModel.ShortDescription;
@@ -109,7 +132,7 @@ namespace KYHBPA_TeamA.Controllers
 
                 _db.Posts.Add(post);
                 _db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Admin");
             }
             else
             {
@@ -137,7 +160,7 @@ namespace KYHBPA_TeamA.Controllers
                 PostedOn = post.PostedOn,
                 Published = post.Published,
                 Title = post.Title,
-                SelectedCategoryId = post.Category.Id
+                SelectedCategoryId = post.Category.Id,
             };
 
             return View(viewModel);
@@ -147,7 +170,7 @@ namespace KYHBPA_TeamA.Controllers
         [Authorize(Roles = "Admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(CreateBlogPostViewModel editedPost, FormCollection collection, HttpPostedFileBase file = null)
+        public ActionResult Edit(CreateBlogPostViewModel editedPost, FormCollection collection, HttpPostedFileBase image = null)
         {
             try
             {
@@ -161,14 +184,20 @@ namespace KYHBPA_TeamA.Controllers
                         postToUpdate.Description = editedPost.Description;
                         postToUpdate.Published = editedPost.Published;
                         postToUpdate.Modified = DateTime.Today.Date;
-                        postToUpdate.Category = editedPost.Category;
 
-                        if (file != null)
+                        var newCategory = _db.Categories.FirstOrDefault(c => c.Id == editedPost.SelectedCategoryId);
+
+                        if (postToUpdate.Category != newCategory)
                         {
-                            byte[] uploadedFile = new byte[file.InputStream.Length];
-                            editedPost.File.InputStream.Read(uploadedFile, 0, file.ContentLength);
-                            postToUpdate.PhotoContent = uploadedFile;
-                            postToUpdate.MimeType = file.ContentType;
+                            postToUpdate.Category = newCategory;
+                        }               
+
+                        if (image != null)
+                        {
+                            postToUpdate.PhotoContent = new byte[image.ContentLength];
+                            image.InputStream.Read(postToUpdate.PhotoContent, 0, image.ContentLength);
+
+                            postToUpdate.MimeType = image.ContentType;
                         }
                     }
 
@@ -176,10 +205,10 @@ namespace KYHBPA_TeamA.Controllers
                     _db.Entry(postToUpdate).State = System.Data.Entity.EntityState.Modified;
                     _db.SaveChanges();
                     TempData["message"] = string.Format($"Article with title: {editedPost.Title} has been updated!");
-                    return RedirectToAction("Index");
+                    return RedirectToAction("Admin");
                 }
 
-                return RedirectToAction("Index");
+                return RedirectToAction("Admin");
             }
             catch
             {
@@ -224,7 +253,7 @@ namespace KYHBPA_TeamA.Controllers
                 var post = _db.Posts.Find(id);
                 _db.Posts.Remove(post);
                 _db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Admin");
             }
             catch
             {
@@ -310,6 +339,23 @@ namespace KYHBPA_TeamA.Controllers
             }
 
             return RedirectToAction("Index");
+        }
+
+
+        [OutputCache(Duration = 1800, Location = OutputCacheLocation.ServerAndClient)]
+        public ActionResult GetBlogOrNewsImage(int id)
+        {
+            var post = _db.Posts.Find(id);
+
+            if (post.MimeType != null && post.PhotoContent != null)
+                return File(post.PhotoContent, post.MimeType);
+            else
+            {
+                // if there is no image, is returning null best practice?
+                // makes server handle error for 500 status code...
+                HttpContext.Response.StatusCode = (int)HttpStatusCode.OK;
+                return null; 
+            }
         }
     }
 }
