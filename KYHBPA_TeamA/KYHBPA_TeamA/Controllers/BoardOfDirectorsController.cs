@@ -263,6 +263,11 @@ namespace KYHBPA_TeamA.Controllers
         }
 
 
+        /// <summary>
+        /// Gets an image associated with BoD member
+        /// </summary>
+        /// <param name="id">Id of the board member</param>
+        /// <returns>File Result of Image</returns>
         [OutputCache(Duration = 1800, Location = OutputCacheLocation.ServerAndClient)]
         public FileResult GetBoDImage(int id)
         {

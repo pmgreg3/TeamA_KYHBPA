@@ -57,7 +57,7 @@
             @Html.DisplayFor(modelItem => item.Modified)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.SelectedCategoryId)
+            @Html.DisplayFor(modelItem => item.Category.Name)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |

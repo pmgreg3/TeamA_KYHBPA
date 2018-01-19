@@ -10,6 +10,8 @@
 <div>
 
     <hr />
+    <img src="@Url.Action("GetBlogOrNewsImage", "Blog", new { Model.Id })"/>
+
     <dl class="dl-horizontal">
         <dt>
             @Html.DisplayNameFor(model => model.Title)

@@ -7,8 +7,8 @@ using System.Data;
 using System.Web;
 using System.Web.Mvc;
 using System.Net;
-
-
+using System.Web.UI;
+using System.Drawing;
 
 namespace KYHBPA_TeamA.Controllers
 {
@@ -80,7 +80,7 @@ namespace KYHBPA_TeamA.Controllers
         }
 
         // GET: Blog/Create
-        [Authorize(Roles = "Admin,Employee,Member,User")]
+        [Authorize(Roles = "Admin")]
         [HttpGet]
         public ActionResult Create()
         {
@@ -88,9 +88,9 @@ namespace KYHBPA_TeamA.Controllers
         }
 
         // GET: Blog/Create
-        [Authorize(Roles = "Admin,Employee,Member,User")]
+        [Authorize(Roles = "Admin")]
         [HttpPost]
-        public ActionResult Create(CreateBlogPostViewModel viewModel, HttpPostedFileBase file)
+        public ActionResult Create(CreateBlogPostViewModel viewModel, HttpPostedFileBase image = null)
         {
 
             if (ModelState.IsValid)
@@ -112,6 +112,15 @@ namespace KYHBPA_TeamA.Controllers
                     post.Category = categoryRecord;
                 }
 
+                // if user uploaded image, process it
+                if(image != null)
+                {
+                    post.MimeType = image.ContentType;
+                    post.PhotoContent = new byte[image.ContentLength];
+
+                    image.InputStream.Read(post.PhotoContent, 0, image.ContentLength);
+                }
+
 
                 post.Description = viewModel.Description;
                 post.ShortDescription = viewModel.ShortDescription;
@@ -123,7 +132,7 @@ namespace KYHBPA_TeamA.Controllers
 
                 _db.Posts.Add(post);
                 _db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Admin");
             }
             else
             {
@@ -161,7 +170,7 @@ namespace KYHBPA_TeamA.Controllers
         [Authorize(Roles = "Admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(CreateBlogPostViewModel editedPost, FormCollection collection, HttpPostedFileBase file = null)
+        public ActionResult Edit(CreateBlogPostViewModel editedPost, FormCollection collection, HttpPostedFileBase image = null)
         {
             try
             {
@@ -183,12 +192,12 @@ namespace KYHBPA_TeamA.Controllers
                             postToUpdate.Category = newCategory;
                         }               
 
-                        if (file != null)
+                        if (image != null)
                         {
-                            byte[] uploadedFile = new byte[file.InputStream.Length];
-                            editedPost.File.InputStream.Read(uploadedFile, 0, file.ContentLength);
-                            postToUpdate.PhotoContent = uploadedFile;
-                            postToUpdate.MimeType = file.ContentType;
+                            postToUpdate.PhotoContent = new byte[image.ContentLength];
+                            image.InputStream.Read(postToUpdate.PhotoContent, 0, image.ContentLength);
+
+                            postToUpdate.MimeType = image.ContentType;
                         }
                     }
 
@@ -330,6 +339,22 @@ namespace KYHBPA_TeamA.Controllers
             }
 
             return RedirectToAction("Index");
+        }
+
+
+        [OutputCache(Duration = 1800, Location = OutputCacheLocation.ServerAndClient)]
+        public FileResult GetBlogOrNewsImage(int id)
+        {
+            var post = _db.Posts.Find(id);
+
+            if (post.MimeType != null && post.PhotoContent != null)
+                return File(post.PhotoContent, post.MimeType);
+            else
+            {
+                // if there is no image, is returning null best practice?
+                // makes server handle error for 500 status code...
+                return null; 
+            }
         }
     }
 }
