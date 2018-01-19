@@ -137,7 +137,7 @@ namespace KYHBPA_TeamA.Controllers
                 PostedOn = post.PostedOn,
                 Published = post.Published,
                 Title = post.Title,
-                SelectedCategoryId = post.Category.Id
+                SelectedCategoryId = post.Category.Id,
             };
 
             return View(viewModel);
@@ -161,7 +161,13 @@ namespace KYHBPA_TeamA.Controllers
                         postToUpdate.Description = editedPost.Description;
                         postToUpdate.Published = editedPost.Published;
                         postToUpdate.Modified = DateTime.Today.Date;
-                        postToUpdate.Category = editedPost.Category;
+
+                        var newCategory = _db.Categories.FirstOrDefault(c => c.Id == editedPost.SelectedCategoryId);
+
+                        if (postToUpdate.Category != newCategory)
+                        {
+                            postToUpdate.Category = newCategory;
+                        }               
 
                         if (file != null)
                         {
