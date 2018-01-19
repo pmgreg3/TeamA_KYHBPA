@@ -678,7 +678,6 @@
     <Content Include="Views\Blog\Details.cshtml" />
     <Content Include="Views\Blog\Edit.cshtml" />
     <Content Include="Views\Blog\List.cshtml" />
-    <Content Include="Views\Blog\Manage.cshtml" />
     <Content Include="Views\Shared\_PagerPartial.cshtml" />
     <Content Include="Views\Shared\_PostTemplatePartial.cshtml" />
     <Content Include="Views\User\Index.cshtml" />
@@ -692,6 +691,7 @@
     <Content Include="Views\BoardOfDirectors\Delete.cshtml" />
     <Content Include="Views\Blog\Delete.cshtml" />
     <Content Include="Views\Memberships\Admin.cshtml" />
+    <Content Include="Views\Blog\Admin.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

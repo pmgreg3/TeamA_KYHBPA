@@ -49,8 +49,9 @@ namespace KYHBPA_TeamA.Controllers
                 Category = post.Category,
                 Comments = post.Comments,
                 PhotoContent = post.PhotoContent
-            });
+            }).Where(x => x.Published == true);
 
+            
 
             // When it is time to build a visitor-facing view,
             // you will pass this view all posts that have been published!
@@ -60,9 +61,22 @@ namespace KYHBPA_TeamA.Controllers
 
         // GET: Blog/Manage
         [Authorize(Roles = "Admin")]
-        public ActionResult Manage()
+        public ActionResult Admin()
         {
-            return View();
+            var allPosts = _db.Posts.Select(post => new CreateBlogPostViewModel()
+            {
+                Id = post.Id,
+                Title = post.Title,
+                ShortDescription = post.ShortDescription,
+                Description = post.Description,
+                Published = post.Published,
+                PostedOn = post.PostedOn,
+                Category = post.Category,
+                Comments = post.Comments,
+                PhotoContent = post.PhotoContent
+            });
+
+            return View(allPosts);
         }
 
         // GET: Blog/Create
@@ -182,10 +196,10 @@ namespace KYHBPA_TeamA.Controllers
                     _db.Entry(postToUpdate).State = System.Data.Entity.EntityState.Modified;
                     _db.SaveChanges();
                     TempData["message"] = string.Format($"Article with title: {editedPost.Title} has been updated!");
-                    return RedirectToAction("Index");
+                    return RedirectToAction("Admin");
                 }
 
-                return RedirectToAction("Index");
+                return RedirectToAction("Admin");
             }
             catch
             {
@@ -230,7 +244,7 @@ namespace KYHBPA_TeamA.Controllers
                 var post = _db.Posts.Find(id);
                 _db.Posts.Remove(post);
                 _db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Admin");
             }
             catch
             {
