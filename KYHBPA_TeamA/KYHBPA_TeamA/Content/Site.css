@@ -490,8 +490,27 @@
 }
 
 .aboutUsImage {
-    height:500px;
+    width: 100%;
+    border-radius: 4px;
+}
 
+.aboutUsDescription {
+    padding:3rem;
+}
+
+.aboutUsFeatureHeading {
+    font-size: 50px;
+    letter-spacing: -.05rem;
+    line-height: 1;
+    color: #072419;
+}
+
+.aboutUsFeature {
+
+}
+
+.text-muted{
+    color:
 }
 
 #hrfooter {
