@@ -251,7 +251,18 @@ namespace KYHBPA_TeamA.Controllers
             try
             {
                 var post = _db.Posts.Find(id);
+
+                // remove comment dependency by getting all comments associated
+                // with the post, nulling the post Id, and then deleting them
+                var comments = _db.Comments.Where(x => x.Post.Id == post.Id);
+
+                foreach(var comment in comments)
+                {
+                    comment.Post = null;
+                }
+
                 _db.Posts.Remove(post);
+                _db.Comments.RemoveRange(comments);
                 _db.SaveChanges();
                 return RedirectToAction("Admin");
             }
