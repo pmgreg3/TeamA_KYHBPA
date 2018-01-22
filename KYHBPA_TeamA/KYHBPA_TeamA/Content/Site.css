@@ -684,6 +684,8 @@ textarea {
     font-size: 25px;
     letter-spacing: .025em;
     font-family: Camphor,Open Sans,Segoe UI,sans-serif;
+    margin-bottom:30px;
+    margin-top:30px;
 }
 
 .postTitle {
@@ -694,10 +696,25 @@ textarea {
     font-family: Camphor,Open Sans,Segoe UI,sans-serif;
 }
 
+.comment-DisplayArea {
+    background: #fff;
+    padding: 3rem;
+    border-radius: 10px;
+    box-shadow: 4px 4px 20px 0px #00000014;
+    margin-top: 3px;
+}
+
+.comment-Name {
+    
+}
+
+.comment-Text{
+
+}
+
 .comment-Button {
     background: #072419;
     color: #f6f9fc;
-
 }
 
     .comment-Button:hover {
@@ -711,4 +728,11 @@ textarea {
 
 .comment-NameTextBox{
     width:30%;
+}
+
+.comment-Section {
+    background: #e1e1e1;
+    padding: 3rem;
+    border-radius: 10px;
+    box-shadow: 4px 4px 20px 0px #00000014;
 }
