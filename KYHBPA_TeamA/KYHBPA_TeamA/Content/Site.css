@@ -721,9 +721,11 @@ textarea {
         color: #f6f9fc;
     }
 
-.comment-CommentTextBox{
+.comment-CommentTextBox {
     width: 80%;
-    height:100px;
+    height: 100px;
+    max-width: 850px;
+    max-height:250px;
 }
 
 .comment-NameTextBox{
@@ -733,6 +735,7 @@ textarea {
 .comment-Section {
     background: #e1e1e1;
     padding: 3rem;
+    padding-top:1px;
     border-radius: 10px;
     box-shadow: 4px 4px 20px 0px #00000014;
 }

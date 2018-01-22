@@ -349,7 +349,7 @@ namespace KYHBPA_TeamA.Controllers
                 _db.SaveChanges();
             }
 
-            return RedirectToAction("Index");
+            return RedirectToAction("Read",new { postId = viewModel.PostNumber});
         }
 
 

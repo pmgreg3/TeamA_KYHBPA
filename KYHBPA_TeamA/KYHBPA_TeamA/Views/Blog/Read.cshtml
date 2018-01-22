@@ -19,7 +19,6 @@
 
 <p>
     @Html.ActionLink("Back to List", "Index")
-    @Html.ActionLink("Comment", "CreateComment", "Blog", new { Id = Model.Id }, new { @class = "common-Button comment-Button pull-right" })
 </p>
 
 <hr class="featurete-divider"/>
@@ -28,7 +27,9 @@
 <div class="comment-Section">
     <h3 class="common-UppercaseTitle">
         Comments
+        @Html.ActionLink("Comment", "CreateComment", "Blog", new { Id = Model.Id }, new { @class = "common-Button comment-Button pull-right" })
     </h3>
+
 
     @foreach (var comment in Model.Comments)
     {
