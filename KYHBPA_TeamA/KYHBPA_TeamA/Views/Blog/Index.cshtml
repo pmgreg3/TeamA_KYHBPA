@@ -5,7 +5,9 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Our latest news and Blogs</h2>
+<h2>
+    Our latest news and Blogs
+</h2>
 
 @*<table class="table">
     <tr>
@@ -65,7 +67,7 @@
             <h6>
                 @post.PostedOn.ToShortDateString()
             </h6>
+            @Html.ActionLink("Read", "Read", "Blog", new { postId = post.Id }, new { @class = "common-ButtonVariant" })
         </div>
-        @Html.ActionLink("Read more", "Read", "Blog",new { postId = post.Id }, new { @class = "common-ButtonVariant" })
     </div>
 }
