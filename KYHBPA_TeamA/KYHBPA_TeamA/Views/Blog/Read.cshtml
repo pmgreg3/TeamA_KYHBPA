@@ -1,0 +1,51 @@
+﻿@model KYHBPA_TeamA.Models.DisplayPostsViewModel
+
+@{
+    ViewBag.Title = "Read";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="postReadMoreTitle">
+    @Model.Title
+</h2>
+
+<div class="postReadMoreImageArea">
+    <img class="postReadMoreImage" src="@Url.Action("GetBlogOrNewsImage", "Blog", new { Model.Id })" />
+</div>
+
+<div class="postReadMoreDescription">
+    @Html.DisplayFor(model => model.Description)
+</div>
+
+<p>
+    @Html.ActionLink("Back to List", "Index")
+</p>
+
+<hr class="featurete-divider"/>
+
+
+<div class="comment-Section">
+    <h3 class="common-UppercaseTitle">
+        Comments
+        @Html.ActionLink("Comment", "CreateComment", "Blog", new { Id = Model.Id }, new { @class = "common-Button comment-Button pull-right" })
+    </h3>
+
+
+    @foreach (var comment in Model.Comments)
+    {
+        <div class="row comment-DisplayArea">
+            <div class="col-md-4">
+                <h4 class="comment-Name">
+                    @comment.Name
+                </h4>
+            </div>
+            <div class="col-md-8">
+                <p class="comment-Text">
+                    @comment.Text
+                </p>
+            </div>
+        </div>
+    }
+</div>
+
+<hr class="featurete-divider" />

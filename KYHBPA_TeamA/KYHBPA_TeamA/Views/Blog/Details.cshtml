@@ -10,7 +10,9 @@
 <div>
 
     <hr />
-    <img src="@Url.Action("GetBlogOrNewsImage", "Blog", new { Model.Id })"/>
+    <div class="postReadMoreImageArea">
+        <img class="postReadMoreImage" src="@Url.Action("GetBlogOrNewsImage", "Blog", new { Model.Id })" />
+    </div>
 
     <dl class="dl-horizontal">
         <dt>
@@ -66,7 +68,7 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.SelectedCategoryId)
+            @Html.DisplayFor(model => model.Category.Name)
         </dd>
     </dl>
 
@@ -74,7 +76,7 @@
     <hr />
     @foreach (var comment in Model.Comments)
     {
-        <p style="color:dodgerblue;font-weight:600;font-size:20px;">@comment.Name</p>
+        <p style="color:darkslategray;font-weight:600;font-size:20px;">@comment.Name</p>
             <p>@comment.Text</p>
 
     }

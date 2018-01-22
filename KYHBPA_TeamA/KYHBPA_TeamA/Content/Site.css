@@ -203,9 +203,25 @@
 
 .common-ButtonVariant {
     color: #fff !important;
-    background: #0266a7 !important;
-    margin: 5px;
+    background: #1cba7e !important;
+    height: 33px;
+    line-height: 33px;
+    font-size: 15px;
+    text-decoration: none;
+    text-transform: uppercase;
+    display: inline-block;
+    padding: 0 14px;
+    border-radius: 4px;
+    box-shadow: 0 4px 6px rgba(50,50,93,.11), 0 1px 3px rgba(0,0,0,.08);
+    transition: all .15s ease;
 }
+
+    .common-ButtonVariant:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 7px 14px rgba(50,50,93,.1), 0 3px 6px rgba(0,0,0,.08);
+        text-decoration: none;
+        letter-spacing: .06em;
+    }
 
 .carousel-inner > .item > img {
     width: -webkit-fill-available;
@@ -628,4 +644,98 @@
 textarea {
     width: 100%;
     height: 323px;
+}
+
+/*News And Blogs*/
+.postRow {
+    margin: 3rem;
+    background: #fff;
+    border: 1px solid #e7eef6;
+    border-radius: .3rem;
+    box-shadow: 2px 2px 20px 0px #f0ecec;
+}
+
+.postShortDescription{
+
+}
+
+.postImgArea{
+    padding-left:unset !important;
+}
+
+.postReadMoreImageArea {
+    margin-bottom: 32px;
+    text-align: -webkit-center;
+}
+
+.postReadMoreImage {
+    max-height: 600px;
+}
+
+.postReadMoreDescription {
+    line-height: 30px;
+    font-size: 16px;
+    margin-bottom:32px;
+}
+
+.postReadMoreTitle {
+    color: #072419;
+    font-weight: 600;
+    font-size: 25px;
+    letter-spacing: .025em;
+    font-family: Camphor,Open Sans,Segoe UI,sans-serif;
+    margin-bottom:30px;
+    margin-top:30px;
+}
+
+.postTitle {
+    color: #072419;
+    font-weight: 600;
+    font-size: 25px;
+    letter-spacing: .025em;
+    font-family: Camphor,Open Sans,Segoe UI,sans-serif;
+}
+
+.comment-DisplayArea {
+    background: #fff;
+    padding: 3rem;
+    border-radius: 10px;
+    box-shadow: 4px 4px 20px 0px #00000014;
+    margin-top: 3px;
+}
+
+.comment-Name {
+    
+}
+
+.comment-Text{
+
+}
+
+.comment-Button {
+    background: #072419;
+    color: #f6f9fc;
+}
+
+    .comment-Button:hover {
+        color: #f6f9fc;
+    }
+
+.comment-CommentTextBox {
+    width: 80%;
+    height: 100px;
+    max-width: 850px;
+    max-height:250px;
+}
+
+.comment-NameTextBox{
+    width:30%;
+}
+
+.comment-Section {
+    background: #e1e1e1;
+    padding: 3rem;
+    padding-top:1px;
+    border-radius: 10px;
+    box-shadow: 4px 4px 20px 0px #00000014;
 }

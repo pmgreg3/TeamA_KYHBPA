@@ -349,7 +349,7 @@ namespace KYHBPA_TeamA.Controllers
                 _db.SaveChanges();
             }
 
-            return RedirectToAction("Index");
+            return RedirectToAction("Read",new { postId = viewModel.PostNumber});
         }
 
 
@@ -366,6 +366,31 @@ namespace KYHBPA_TeamA.Controllers
                 // makes server handle error for 500 status code...
                 HttpContext.Response.StatusCode = (int)HttpStatusCode.OK;
                 return null; 
+            }
+        }
+
+        public ActionResult Read(int? postId)
+        {
+            var postToRead = _db.Posts.Find(postId);
+
+            if (postId != null && postToRead != null)
+            {
+                var postViewModel = new DisplayPostsViewModel()
+                {
+                    Id = postToRead.Id,
+                    Title = postToRead.Title,
+                    ShortDescription = postToRead.ShortDescription,
+                    Description = postToRead.Description,
+                    PostedOn = postToRead.PostedOn,
+                    Category = postToRead.Category,
+                    Comments = postToRead.Comments
+                };
+
+                return View(postViewModel);
+            }
+            else
+            {
+                return HttpNotFound();
             }
         }
     }

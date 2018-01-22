@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using PagedList;
+using System.Web.UI;
 
 namespace KYHBPA_TeamA.Controllers
 {
@@ -303,6 +304,7 @@ namespace KYHBPA_TeamA.Controllers
         /// </summary>
         /// <param name="id">ID of photo to get</param>
         /// <returns>File of image to render</returns>
+        [OutputCache(Duration = 1800, Location = OutputCacheLocation.ServerAndClient)]
         public FileContentResult GetPhoto(int id)
         {
             Photo photoToGet = db.Photos.Find(id);
