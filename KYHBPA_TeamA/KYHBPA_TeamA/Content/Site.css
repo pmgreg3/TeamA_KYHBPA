@@ -693,3 +693,22 @@ textarea {
     letter-spacing: .025em;
     font-family: Camphor,Open Sans,Segoe UI,sans-serif;
 }
+
+.comment-Button {
+    background: #072419;
+    color: #f6f9fc;
+
+}
+
+    .comment-Button:hover {
+        color: #f6f9fc;
+    }
+
+.comment-CommentTextBox{
+    width: 80%;
+    height:100px;
+}
+
+.comment-NameTextBox{
+    width:30%;
+}

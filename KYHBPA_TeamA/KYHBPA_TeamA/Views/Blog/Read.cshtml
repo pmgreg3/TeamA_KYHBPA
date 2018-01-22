@@ -19,5 +19,5 @@
 
 <p>
     @Html.ActionLink("Back to List", "Index")
-    Comment here
+    @Html.ActionLink("Comment", "CreateComment", "Blog", new { Id = Model.Id }, new { @class = "common-Button comment-Button pull-right" })
 </p>
