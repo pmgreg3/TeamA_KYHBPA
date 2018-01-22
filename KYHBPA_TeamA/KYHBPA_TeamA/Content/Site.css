@@ -203,9 +203,26 @@
 
 .common-ButtonVariant {
     color: #fff !important;
-    background: #0266a7 !important;
+    background: #1cba7e !important;
     margin: 5px;
+    height: 33px;
+    line-height: 33px;
+    font-size: 15px;
+    text-decoration: none;
+    text-transform: uppercase;
+    display: inline-block;
+    padding: 0 14px;
+    border-radius: 4px;
+    box-shadow: 0 4px 6px rgba(50,50,93,.11), 0 1px 3px rgba(0,0,0,.08);
+    transition: all .15s ease;
 }
+
+    .common-ButtonVariant:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 7px 14px rgba(50,50,93,.1), 0 3px 6px rgba(0,0,0,.08);
+        text-decoration: none;
+        letter-spacing: .06em;
+    }
 
 .carousel-inner > .item > img {
     width: -webkit-fill-available;
