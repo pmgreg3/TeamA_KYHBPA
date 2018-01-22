@@ -368,5 +368,30 @@ namespace KYHBPA_TeamA.Controllers
                 return null; 
             }
         }
+
+        public ActionResult Read(int? postId)
+        {
+            var postToRead = _db.Posts.Find(postId);
+
+            if (postId != null && postToRead != null)
+            {
+                var postViewModel = new DisplayPostsViewModel()
+                {
+                    Id = postToRead.Id,
+                    Title = postToRead.Title,
+                    ShortDescription = postToRead.ShortDescription,
+                    Description = postToRead.Description,
+                    PostedOn = postToRead.PostedOn,
+                    Category = postToRead.Category,
+                    Comments = postToRead.Comments
+                };
+
+                return View(postViewModel);
+            }
+            else
+            {
+                return HttpNotFound();
+            }
+        }
     }
 }

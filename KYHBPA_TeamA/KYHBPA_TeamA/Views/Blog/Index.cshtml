@@ -5,9 +5,9 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Our News Articles and Blogs</h2>
+<h2>Our latest news and Blogs</h2>
 
-<table class="table">
+@*<table class="table">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.Title)
@@ -28,7 +28,7 @@
 
 @foreach (var item in Model) {
     <tr>
-        <td>
+        <td >
             @Html.DisplayFor(modelItem => item.Title)
         </td>
         <td>
@@ -45,5 +45,27 @@
         </td>
     </tr>
 }
+</table>*@
 
-</table>
+@foreach(var post in Model)
+{
+    <div class="row postRow">
+        <div class="col-md-4 postImgArea">
+            <img class="img-thumbnail" src="@Url.Action("GetBlogOrNewsImage", "Blog", new { post.Id })" />
+        </div>
+        <div class="col-md-7">
+            <h4 class="postTitle">
+                @post.Title
+            </h4>
+            <p class="postShortDescription">
+                @post.ShortDescription
+            </p>
+        </div>
+        <div class="col-md-1">
+            <h6>
+                @post.PostedOn.ToShortDateString()
+            </h6>
+        </div>
+        @Html.ActionLink("Read more", "Read", "Blog",new { postId = post.Id }, new { @class = "common-ButtonVariant" })
+    </div>
+}
