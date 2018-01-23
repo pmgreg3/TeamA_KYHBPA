@@ -172,6 +172,8 @@
         display: none;
     }
 
+
+
     #spacerBar {
         display: none;
     }
@@ -757,4 +759,9 @@ textarea {
     padding-top:1px;
     border-radius: 10px;
     box-shadow: 4px 4px 20px 0px #00000014;
+}
+
+/* Login page */
+.logInArea {
+
 }
