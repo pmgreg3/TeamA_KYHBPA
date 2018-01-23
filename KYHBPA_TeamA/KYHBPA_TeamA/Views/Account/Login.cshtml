@@ -6,50 +6,62 @@
 
 <center>
     <h1 class="common-Uppercase">Log in</h1>
-        <section id="loginForm" class="common-BodyText">
-            @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+    <section id="loginForm" class="common-BodyText">
+        @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
             {
-                @Html.AntiForgeryToken()
-                <h4 class="common-LargerBodyText">Log in with your KY HBPA account below:</h4>
-                    <hr />
-                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                    <div class="form-group">
-                        @Html.LabelFor(m => m.UserName, new { @class = "col-md-2 control-label" })
-                        <div class="col-md-10">
-                            @Html.TextBoxFor(m => m.UserName, new { @class = "form-control" })
-                            @Html.ValidationMessageFor(m => m.UserName, "", new { @class = "text-danger" })
+            @Html.AntiForgeryToken()
+            <h4 class="common-LargerBodyText">Log in with your KY HBPA account below:</h4>
+            <hr />
+            <div class="logInArea">
+
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    <div class="col-md-3 col-xs-3">
+
+                    </div>
+                    @Html.LabelFor(m => m.UserName, new { @class = "col-md-2 col-xs-2 control-label" })
+                    <div class="col-md-3 col-xs-3">
+                        @Html.TextBoxFor(m => m.UserName, new { @class = "form-control loginTextBox" })
+                        @Html.ValidationMessageFor(m => m.UserName, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-3 col-xs-3">
+
+                    </div>
+                    @Html.LabelFor(m => m.Password, new { @class = "col-md-2 col-xs-2 control-label" })
+                    <div class="col-md-3 col-xs-3">
+                        @Html.PasswordFor(m => m.Password, new { @class = "form-control loginTextBox" })
+                        @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="common-BodyText">
+                        <div class="checkbox">
+                            @Html.CheckBoxFor(m => m.RememberMe)
+                            @Html.LabelFor(m => m.RememberMe)
                         </div>
                     </div>
-                    <div class="form-group">
-                        @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
-                        <div class="col-md-10">
-                            @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
-                            @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
-                        </div>
+                </div>
+                <div class="form-group">
+                    <div class="common-BodyText">
+                        <input type="submit" value="Log in" class="btn btn-default" />
                     </div>
-                    <div class="form-group">
-                        <div class="common-BodyText">
-                            <div class="checkbox">
-                                @Html.CheckBoxFor(m => m.RememberMe)
-                                @Html.LabelFor(m => m.RememberMe)
-                            </div>
-                        </div>
-                    </div>             
-                    <div class="form-group">
-                        <div class="common-BodyText">
-                            <input type="submit" value="Log in" class="btn btn-default" />
-                        </div>
-                    </div>
-                    <p>
-                        @Html.ActionLink("Register as a new user", "Register")
-                    </p>
-                // Enable this once you have account confirmation enabled for password reset functionality
+                </div>
+                <p>
+                    @Html.ActionLink("Register as a new user", "Register")
+                </p>
+                @*Enable this once you have account confirmation enabled for password reset functionality*@
                 <p>
                     @Html.ActionLink("Forgot your password?", "ForgotPassword")
                 </p>
-            }
-        </section>
+
+            </div>
+        }
+    </section>
 </center>
+
+
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

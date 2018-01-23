@@ -61,7 +61,7 @@
 
 /*Social media span*/
 #socialMediaSpan {
-    border-bottom: 1px solid #cccdce;
+    border-radius:4px;
     padding-top: 20px;
     background-image: url(hypnotize.png);
     text-align: center;
@@ -172,8 +172,25 @@
         display: none;
     }
 
+    #upcomingEvents {
+        display: none;
+    }
+
     #spacerBar {
         display: none;
+    }
+
+    .cols {
+        display: unset;
+    }
+
+    .container-fluid{
+        padding-left:unset;
+        padding-right:unset;
+    }
+
+    .boardOfDirectorsImagePopUp {
+        width: 100%;
     }
 }
 
@@ -490,8 +507,28 @@
 }
 
 .aboutUsImage {
-    height:500px;
+    width: 100%;
+    border-radius: 4px;
+    box-shadow:3px 6px 20px #99999991;
+}
 
+.aboutUsDescription {
+    padding:3rem;
+}
+
+.aboutUsFeatureHeading {
+    font-size: 50px;
+    letter-spacing: -.05rem;
+    line-height: 1;
+    color: #072419;
+}
+
+.aboutUsFeature {
+
+}
+
+.text-muted{
+    color:
 }
 
 #hrfooter {
@@ -738,4 +775,9 @@ textarea {
     padding-top:1px;
     border-radius: 10px;
     box-shadow: 4px 4px 20px 0px #00000014;
+}
+
+/* Login page */
+.logInArea {
+
 }
