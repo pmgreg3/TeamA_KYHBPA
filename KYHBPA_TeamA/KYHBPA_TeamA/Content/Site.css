@@ -509,6 +509,7 @@
 .aboutUsImage {
     width: 100%;
     border-radius: 4px;
+    box-shadow:3px 6px 20px #99999991;
 }
 
 .aboutUsDescription {
