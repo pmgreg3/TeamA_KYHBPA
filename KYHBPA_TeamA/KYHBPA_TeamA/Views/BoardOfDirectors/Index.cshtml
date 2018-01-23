@@ -46,7 +46,7 @@
                 </h5>
 
                 <div id="ex@(director.Id)" class="modal">
-                    <img src="@Url.Action("GetBoDImage", "BoardOfDirectors", new { director.Id })" />
+                    <img class="boardOfDirectorsImagePopUp" src="@Url.Action("GetBoDImage", "BoardOfDirectors", new { director.Id })" />
                     <h1>
                         @director.FirstName @director.LastName
                     </h1>

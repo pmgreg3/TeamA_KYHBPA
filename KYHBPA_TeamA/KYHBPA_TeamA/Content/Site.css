@@ -61,7 +61,7 @@
 
 /*Social media span*/
 #socialMediaSpan {
-    border-bottom: 1px solid #cccdce;
+    border-radius:4px;
     padding-top: 20px;
     background-image: url(hypnotize.png);
     text-align: center;
@@ -178,6 +178,19 @@
 
     #spacerBar {
         display: none;
+    }
+
+    .cols {
+        display: unset;
+    }
+
+    .container-fluid{
+        padding-left:unset;
+        padding-right:unset;
+    }
+
+    .boardOfDirectorsImagePopUp {
+        width: 100%;
     }
 }
 
