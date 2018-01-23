@@ -29,7 +29,7 @@ namespace KYHBPA_TeamA.Models
 
             set
             {
-                _Title = value;
+                _Title = value.Trim();
             }
         }
         public string Email { get; set; }
