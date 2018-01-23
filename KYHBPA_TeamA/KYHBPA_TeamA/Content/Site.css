@@ -172,7 +172,9 @@
         display: none;
     }
 
-
+    #upcomingEvents {
+        display: none;
+    }
 
     #spacerBar {
         display: none;
