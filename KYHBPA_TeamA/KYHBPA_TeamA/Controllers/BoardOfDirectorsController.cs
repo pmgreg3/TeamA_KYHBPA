@@ -29,9 +29,12 @@ namespace KYHBPA_TeamA.Controllers
                 Title = p.Title,
                 Email = p.Email,
                 Description = p.Description,
-            });
+                Rank = 1
+            }).ToList();
 
-            return View(BoardOfDirectors);
+            var newOrderedList = BoardOfDirectors.OrderBy(x => x.Rank);
+
+            return View(newOrderedList);
         }
 
         // GET: BoardOfDirectors/Details/5
@@ -108,14 +111,14 @@ namespace KYHBPA_TeamA.Controllers
                     db.BoardOfDirectors.Add(boardOfDirector);
                     db.SaveChanges();
 
-                    return RedirectToAction("Index");
+                    return RedirectToAction("Admin");
                 }
                 else
                 {
                     db.BoardOfDirectors.Add(boardOfDirector);
                     db.SaveChanges();
 
-                    return RedirectToAction("Index");
+                    return RedirectToAction("Admin");
                 }
 
             }
@@ -191,10 +194,10 @@ namespace KYHBPA_TeamA.Controllers
                     db.Entry(BODToUpdate).State = System.Data.Entity.EntityState.Modified;
                     db.SaveChanges();
                     TempData["message"] = string.Format($"{BODVM.FirstName} {BODVM.LastName} has been updated!");
-                    return RedirectToAction("Index");
+                    return RedirectToAction("Admin");
                 }
 
-                return RedirectToAction("Index");
+                return RedirectToAction("Admin");
             }
             catch
             {
@@ -239,7 +242,7 @@ namespace KYHBPA_TeamA.Controllers
                 var boardOfDirectors = db.BoardOfDirectors.Find(id);
                 db.BoardOfDirectors.Remove(boardOfDirectors);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Admin");
             }
             catch
             {
