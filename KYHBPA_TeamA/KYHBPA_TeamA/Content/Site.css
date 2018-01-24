@@ -479,13 +479,6 @@
     color: #072419;
 }
 
-.aboutUsFeature {
-
-}
-
-.text-muted{
-    color:
-}
 
 #hrfooter {
     border-top: 1px solid #fefefe;
@@ -606,15 +599,6 @@
     color: #072419;
 }
 
-.boardOfDirectorsProfileImage {
-
-
-}
-
-.bodImageHeader {
-
-}
-
 .boardOfDirectorsRow {
     padding-bottom: 3rem;
 }
@@ -649,10 +633,6 @@ textarea {
     border: 1px solid #e7eef6;
     border-radius: .3rem;
     box-shadow: 2px 2px 20px 0px #f0ecec;
-}
-
-.postShortDescription{
-
 }
 
 .postImgArea{
@@ -700,14 +680,6 @@ textarea {
     margin-top: 3px;
 }
 
-.comment-Name {
-    
-}
-
-.comment-Text{
-
-}
-
 .comment-Button {
     background: #072419;
     color: #f6f9fc;
@@ -734,21 +706,6 @@ textarea {
     padding-top:1px;
     border-radius: 10px;
     box-shadow: 4px 4px 20px 0px #00000014;
-}
-
-/* Login page */
-.logInArea {
-
-}
-
-
-/* Photo Gallery Page */
-.photoRow{
-
-}
-
-.photoCard{
-
 }
 
 .photoCardImage {
