@@ -14,18 +14,9 @@
 
 
 @using (Html.BeginForm("Index", "Photo", FormMethod.Get))
-{
-    @*<div class="row">
-        <div class="col-md-6">
-                @Html.TextBox("SearchString", ViewBag.CurrentFilter as string, new { placeholder = "Title to search", @class = "form-control col-md-10" })
-                <input type="submit" value="Search" class="btn btn-primary d-inline col-md-2 pull-right"/>
-        </div>
-    </div>*@
-        <div class="row" id="SearchArea">
+
+{        <div class="row" id="SearchArea">
                 <div id="custom-search-input">
-                    <p>
-                        @Html.ActionLink("Create New", "Create", "", new { @class = "common-Button" })
-                    </p>
                     <div class="input-group col-md-12">                        
                         @Html.TextBox("SearchString", ViewBag.CurrentFilter as string, new { placeholder = "Search by title or description", @class = "form-control  input-lg" })
                         <span class="input-group-btn">
@@ -36,62 +27,23 @@
         </div>
 }
 
-<table class="table">
-    <tr>
-        <th>
-            Image
-        </th>
-        <th>
-            @Html.ActionLink("Title", "Index", new { sortOrder = ViewBag.Title, currentFilter = ViewBag.CurrentFilter })
-        </th>
-        <th>
-            Description
-        </th>
-        <th>
-            @Html.ActionLink("Date", "Index", new { sortOrder = ViewBag.DateSortParm, currentFilter = ViewBag.CurrentFilter })
-        </th>
-        <th>
-            Photo Gallery
-        </th>
-        <th>
-            Partner Organization
-        </th>
-    </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @if (item.Data != null)
-            {
-                <div class="pull-left" style="margin-right: 10px">
-                    <img class="img-thumbnail" width="100" height="100" src="@Url.Action("GetPhoto","Photo",new { item.Id })" />
-                </div>
-            }
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Title)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Description)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Date)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.InPhotoGallery)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.IsPartnerOrg)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { item.Id }) |
-            @Html.ActionLink("Details", "Details", new { item.Id })
-        </td>
-    </tr>
+
+@for(int i = 0; i <= Model.Count() / 3; i++)
+{
+    <div class="row">
+
+        @foreach(var photo in Model.Skip(i * 3).Take(3))
+        {
+            <div class="col-md-4 photoCard">
+                <img class="photoCardImage" src="@Url.Action("GetPhoto","Photo",new { photo.Id })"/>
+
+            </div>
+        }
+
+    </div>
 }
 
-</table>
-    
 <br />
 <div class="text-center">
     Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount

@@ -742,6 +742,15 @@ textarea {
 }
 
 
+/* Photo Gallery Page */
+.photoCard{
+
+}
+
+.photoCardImage{
+    width:100%;
+}
+
 /* Mobile Response */
 @media (max-width:670px) {
     #becomeAMember {
