@@ -12,14 +12,8 @@
 <h2 class="common-Uppercase text-center">Photos - Administrator View</h2>
 
 
-@using (Html.BeginForm("Index", "Photo", FormMethod.Get))
+@using (Html.BeginForm("Admin", "Photo", FormMethod.Get))
 {
-    @*<div class="row">
-            <div class="col-md-6">
-                    @Html.TextBox("SearchString", ViewBag.CurrentFilter as string, new { placeholder = "Title to search", @class = "form-control col-md-10" })
-                    <input type="submit" value="Search" class="btn btn-primary d-inline col-md-2 pull-right"/>
-            </div>
-        </div>*@
     <div class="row" id="SearchArea">
         <div id="custom-search-input">
             <p>
@@ -41,13 +35,13 @@
             Image
         </th>
         <th>
-            @Html.ActionLink("Title", "Index", new { sortOrder = ViewBag.Title, currentFilter = ViewBag.CurrentFilter })
+            @Html.ActionLink("Title", "Admin", new { sortOrder = ViewBag.Title, currentFilter = ViewBag.CurrentFilter })
         </th>
         <th>
             Description
         </th>
         <th>
-            @Html.ActionLink("Date", "Index", new { sortOrder = ViewBag.DateSortParm, currentFilter = ViewBag.CurrentFilter })
+            @Html.ActionLink("Date", "Admin", new { sortOrder = ViewBag.DateSortParm, currentFilter = ViewBag.CurrentFilter })
         </th>
         <th>
             Photo Gallery
@@ -97,7 +91,7 @@
 <div class="text-center">
     Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
 
-    @Html.PagedListPager(Model, page => Url.Action("Index",
+    @Html.PagedListPager(Model, page => Url.Action("Admin",
     new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
 </div>
 

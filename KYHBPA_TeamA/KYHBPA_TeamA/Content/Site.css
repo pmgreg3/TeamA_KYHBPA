@@ -146,54 +146,6 @@
     }
 }
 
-@media (max-width:670px) {
-    #becomeAMember {
-        border-width: 0 1px 0 0;
-        flex: 1;
-    }
-
-    #learnMore {
-        border-width: 0 0 0 1px;
-        flex: 1;
-    }
-
-    #upcomingEvents {
-        border-width: 0 0 0 1px;
-        flex: 1;
-    }
-
-    #raceTracks {
-        border-width: 0 1px 0 0;
-        flex: 1;
-    }
-
-
-    #facebookEmbed {
-        display: none;
-    }
-
-    #upcomingEvents {
-        display: none;
-    }
-
-    #spacerBar {
-        display: none;
-    }
-
-    .cols {
-        display: unset;
-    }
-
-    .container-fluid{
-        padding-left:unset;
-        padding-right:unset;
-    }
-
-    .boardOfDirectorsImagePopUp {
-        width: 100%;
-    }
-}
-
 
 .common-Button {
     white-space: nowrap;
@@ -240,6 +192,9 @@
         letter-spacing: .06em;
     }
 
+
+
+/* Landing Page Carousel */
 .carousel-inner > .item > img {
     width: -webkit-fill-available;
     margin: auto;
@@ -251,7 +206,8 @@
 
 .carousel {
     max-height: 700px;
-    box-shadow: 1px -12px 20px 14px black
+    box-shadow: 1px -12px 20px 14px black;
+    /*box-shadow: 0px 8px 20px 0px #00000082;*/
 }
 
 .carousel-caption {
@@ -663,12 +619,15 @@
     padding-bottom: 3rem;
 }
 
+.boardOfDirectorsImagePopUp {
+    box-shadow: 8px 8px 20px 0px #0000006b;
+}
 
 /* Used for BoD description's modal boxes */
-.modal{
+.modal {
     overflow: hidden;
-    padding:4rem !important;
-    margin-top:3rem;
+    padding: 4rem !important;
+    margin-top: 3rem;
 }
 
 .modal a.close-modal{
@@ -780,4 +739,94 @@ textarea {
 /* Login page */
 .logInArea {
 
+}
+
+
+/* Photo Gallery Page */
+.photoRow{
+
+}
+
+.photoCard{
+
+}
+
+.photoCardImage {
+    width: 100%;
+    border-radius:4px;
+    box-shadow: 8px 8px 20px 0px #0000006b;
+}
+
+/* Mobile Response */
+@media (max-width:670px) {
+    #becomeAMember {
+        border-width: 0 1px 0 0;
+        flex: 1;
+    }
+
+    #learnMore {
+        border-width: 0 0 0 1px;
+        flex: 1;
+    }
+
+    #upcomingEvents {
+        border-width: 0 0 0 1px;
+        flex: 1;
+    }
+
+    #raceTracks {
+        border-width: 0 1px 0 0;
+        flex: 1;
+    }
+
+
+    #facebookEmbed {
+        display: none;
+    }
+
+    #upcomingEvents {
+        display: none;
+    }
+
+    #spacerBar {
+        display: none;
+    }
+
+    .cols {
+        display: unset;
+    }
+
+    .container-fluid {
+        padding-left: unset;
+        padding-right: unset;
+    }
+
+
+    /*Bod Page*/
+    .boardOfDirectorsImagePopUp {
+        width: 100%;
+    }
+
+    .boardOfDirectorsProfileImage {
+        margin-bottom: 4rem;
+        padding-bottom: 5rem;
+        background: #fff;
+        border-radius: 4px;
+        padding-left: unset;
+        padding-right: unset;
+        margin-left: 1rem;
+        margin-right: 1rem;
+    }
+
+    /* Landing Page carousel */
+    .carousel-caption {
+        font-size: 3rem;
+    }
+
+    /* News and blogs */
+    .common-ButtonVariant {
+        margin: 1rem;
+        display: block !important;
+        text-align: center;
+    }
 }

@@ -47,11 +47,11 @@ namespace KYHBPA_TeamA.Controllers
                 Data = p.PhotoData,
                 Description = p.PhotoDesc,
                 Title = p.PhotoTitle,
-                Date = p.TimeStamp,
                 InPhotoGallery = p.InPhotoGallery,
                 IsPartnerOrg = p.IsPartnerOrg,
+                Date = p.TimeStamp,
                 Link = p.Link
-            });
+            }).Where(x => x.InPhotoGallery == false && x.IsPartnerOrg == false);
 
             if (!String.IsNullOrEmpty(searchString))
             {
@@ -75,7 +75,7 @@ namespace KYHBPA_TeamA.Controllers
             }
 
 
-            int pageSize = 5;
+            int pageSize = 9;
             int pageNumber = (page ?? 1);
             return View(photoViewModels.ToPagedList(pageNumber, pageSize));
         }
@@ -122,8 +122,8 @@ namespace KYHBPA_TeamA.Controllers
                 Description = p.PhotoDesc,
                 Title = p.PhotoTitle,
                 Date = p.TimeStamp,
-                InPhotoGallery = p.InPhotoGallery
-
+                InPhotoGallery = p.InPhotoGallery,
+                IsPartnerOrg = p.IsPartnerOrg
             });
 
             if (!String.IsNullOrEmpty(searchString))
@@ -148,42 +148,49 @@ namespace KYHBPA_TeamA.Controllers
             }
 
 
-            int pageSize = 5;
+            int pageSize = 10;
             int pageNumber = (page ?? 1);
             return View(photoViewModels.ToPagedList(pageNumber, pageSize));
         }
 
 
         // GET
-        [Authorize(Roles = "Admin,Employee,Member,User")]
+        [Authorize(Roles = "Admin")]
         public ActionResult Create()
         {
             return View();
         }
 
         // POST: Photo/Create
-        [Authorize(Roles = "Admin,Employee,Member,User")]
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public ActionResult Create(AddPhotoViewModel addViewModel, HttpPostedFileBase image = null)
         {
             if (ModelState.IsValid)
             {
-                var photo = new Photo()
+                if(image != null)
                 {
-                    TimeStamp = DateTime.Now,
-                    PhotoDesc = addViewModel.Description,
-                    PhotoData = new byte[image.ContentLength],
-                    PhotoTitle = addViewModel.Title,
-                    Link = addViewModel.Link,
-                    InPhotoGallery = addViewModel.InPhotoGallery,
-                    IsPartnerOrg = addViewModel.IsPartnerOrg,
-                    MimeType = image.ContentType                    
-                };
-                image.InputStream.Read(photo.PhotoData, 0, image.ContentLength);
-                db.Photos.Add(photo);
-                db.SaveChanges();
+                    var photo = new Photo()
+                    {
+                        TimeStamp = DateTime.Now,
+                        PhotoDesc = addViewModel.Description,
+                        PhotoData = new byte[image.ContentLength],
+                        PhotoTitle = addViewModel.Title,
+                        Link = addViewModel.Link,
+                        InPhotoGallery = addViewModel.InPhotoGallery,
+                        IsPartnerOrg = addViewModel.IsPartnerOrg,
+                        MimeType = image.ContentType
+                    };
+                    image.InputStream.Read(photo.PhotoData, 0, image.ContentLength);
+                    db.Photos.Add(photo);
+                    db.SaveChanges();
 
-                return RedirectToAction("Index");
+                    return RedirectToAction("Admin");
+                }
+                else
+                {
+                    return View();
+                }
             }
             else
             {
@@ -192,7 +199,7 @@ namespace KYHBPA_TeamA.Controllers
         }
 
         // GET: Photo/Edit/5
-        [Authorize(Roles = "Admin,Employee,Member,User")]
+        [Authorize(Roles = "Admin")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -218,7 +225,7 @@ namespace KYHBPA_TeamA.Controllers
         }
 
         // POST: Photo/Edit/5
-        [Authorize(Roles = "Admin,Employee,Member,User")]
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public ActionResult Edit(EditPhotosViewModel photoVM, FormCollection collection, HttpPostedFileBase image = null)
         {
@@ -247,10 +254,10 @@ namespace KYHBPA_TeamA.Controllers
                     db.Entry(photoToUpdate).State = System.Data.Entity.EntityState.Modified;
                     db.SaveChanges();
                     TempData["message"] = string.Format($"{photoVM.Title} photo has been updated!");
-                    return RedirectToAction("Index");
+                    return RedirectToAction("Admin");
                 }
 
-                return RedirectToAction("Index");
+                return RedirectToAction("Admin");
             }
             catch
             {
@@ -259,7 +266,7 @@ namespace KYHBPA_TeamA.Controllers
         }
 
         // GET: Photo/Delete/5
-        [Authorize(Roles = "Admin,Employee")]
+        [Authorize(Roles = "Admin")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -282,7 +289,7 @@ namespace KYHBPA_TeamA.Controllers
         }
 
         // POST: Photo/Delete/5
-        [Authorize(Roles = "Admin,Employee")]
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public ActionResult Delete(int id, FormCollection collection)
         {
@@ -291,7 +298,7 @@ namespace KYHBPA_TeamA.Controllers
                 var photo = db.Photos.Find(id);
                 db.Photos.Remove(photo);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Admin");
             }
             catch
             {
@@ -304,7 +311,7 @@ namespace KYHBPA_TeamA.Controllers
         /// </summary>
         /// <param name="id">ID of photo to get</param>
         /// <returns>File of image to render</returns>
-        [OutputCache(Duration = 1800, Location = OutputCacheLocation.ServerAndClient)]
+        [OutputCache(Duration = 1800, Location = OutputCacheLocation.Client)]
         public FileContentResult GetPhoto(int id)
         {
             Photo photoToGet = db.Photos.Find(id);
