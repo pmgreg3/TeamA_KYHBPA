@@ -311,7 +311,7 @@ namespace KYHBPA_TeamA.Controllers
         /// </summary>
         /// <param name="id">ID of photo to get</param>
         /// <returns>File of image to render</returns>
-        [OutputCache(Duration = 1800, Location = OutputCacheLocation.ServerAndClient)]
+        [OutputCache(Duration = 1800, Location = OutputCacheLocation.Client)]
         public FileContentResult GetPhoto(int id)
         {
             Photo photoToGet = db.Photos.Find(id);
