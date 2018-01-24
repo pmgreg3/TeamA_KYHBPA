@@ -183,7 +183,7 @@ namespace KYHBPA_TeamA.Controllers
                 db.Photos.Add(photo);
                 db.SaveChanges();
 
-                return RedirectToAction("Index");
+                return RedirectToAction("Admin");
             }
             else
             {
@@ -247,10 +247,10 @@ namespace KYHBPA_TeamA.Controllers
                     db.Entry(photoToUpdate).State = System.Data.Entity.EntityState.Modified;
                     db.SaveChanges();
                     TempData["message"] = string.Format($"{photoVM.Title} photo has been updated!");
-                    return RedirectToAction("Index");
+                    return RedirectToAction("Admin");
                 }
 
-                return RedirectToAction("Index");
+                return RedirectToAction("Admin");
             }
             catch
             {
@@ -291,7 +291,7 @@ namespace KYHBPA_TeamA.Controllers
                 var photo = db.Photos.Find(id);
                 db.Photos.Remove(photo);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Admin");
             }
             catch
             {
