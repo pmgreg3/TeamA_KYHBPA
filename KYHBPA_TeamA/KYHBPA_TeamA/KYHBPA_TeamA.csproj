@@ -392,7 +392,6 @@
     <Content Include="Content\ext\dhtmlxscheduler_week_agenda.js" />
     <Content Include="Content\ext\dhtmlxscheduler_wp.js" />
     <Content Include="Content\ext\dhtmlxscheduler_year_view.js" />
-    <Content Include="Content\fontawesome-pro-brands.css" />
     <Content Include="Content\fontawesome-pro-brands\index.es.js" />
     <Content Include="Content\fontawesome-pro-brands\index.js" />
     <Content Include="Content\fontawesome.js" />
