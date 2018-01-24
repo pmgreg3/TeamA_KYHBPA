@@ -47,6 +47,8 @@ namespace KYHBPA_TeamA.Controllers
                 Data = p.PhotoData,
                 Description = p.PhotoDesc,
                 Title = p.PhotoTitle,
+                InPhotoGallery = p.InPhotoGallery,
+                IsPartnerOrg = p.IsPartnerOrg,
                 Date = p.TimeStamp,
                 Link = p.Link
             }).Where(x => x.InPhotoGallery == false && x.IsPartnerOrg == false);
@@ -73,7 +75,7 @@ namespace KYHBPA_TeamA.Controllers
             }
 
 
-            int pageSize = 5;
+            int pageSize = 9;
             int pageNumber = (page ?? 1);
             return View(photoViewModels.ToPagedList(pageNumber, pageSize));
         }
@@ -166,22 +168,29 @@ namespace KYHBPA_TeamA.Controllers
         {
             if (ModelState.IsValid)
             {
-                var photo = new Photo()
+                if(image != null)
                 {
-                    TimeStamp = DateTime.Now,
-                    PhotoDesc = addViewModel.Description,
-                    PhotoData = new byte[image.ContentLength],
-                    PhotoTitle = addViewModel.Title,
-                    Link = addViewModel.Link,
-                    InPhotoGallery = addViewModel.InPhotoGallery,
-                    IsPartnerOrg = addViewModel.IsPartnerOrg,
-                    MimeType = image.ContentType                    
-                };
-                image.InputStream.Read(photo.PhotoData, 0, image.ContentLength);
-                db.Photos.Add(photo);
-                db.SaveChanges();
+                    var photo = new Photo()
+                    {
+                        TimeStamp = DateTime.Now,
+                        PhotoDesc = addViewModel.Description,
+                        PhotoData = new byte[image.ContentLength],
+                        PhotoTitle = addViewModel.Title,
+                        Link = addViewModel.Link,
+                        InPhotoGallery = addViewModel.InPhotoGallery,
+                        IsPartnerOrg = addViewModel.IsPartnerOrg,
+                        MimeType = image.ContentType
+                    };
+                    image.InputStream.Read(photo.PhotoData, 0, image.ContentLength);
+                    db.Photos.Add(photo);
+                    db.SaveChanges();
 
-                return RedirectToAction("Admin");
+                    return RedirectToAction("Admin");
+                }
+                else
+                {
+                    return View();
+                }
             }
             else
             {
