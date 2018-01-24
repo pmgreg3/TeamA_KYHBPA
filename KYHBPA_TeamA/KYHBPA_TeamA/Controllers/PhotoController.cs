@@ -155,14 +155,14 @@ namespace KYHBPA_TeamA.Controllers
 
 
         // GET
-        [Authorize(Roles = "Admin,Employee,Member,User")]
+        [Authorize(Roles = "Admin")]
         public ActionResult Create()
         {
             return View();
         }
 
         // POST: Photo/Create
-        [Authorize(Roles = "Admin,Employee,Member,User")]
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public ActionResult Create(AddPhotoViewModel addViewModel, HttpPostedFileBase image = null)
         {
@@ -199,7 +199,7 @@ namespace KYHBPA_TeamA.Controllers
         }
 
         // GET: Photo/Edit/5
-        [Authorize(Roles = "Admin,Employee,Member,User")]
+        [Authorize(Roles = "Admin")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -225,7 +225,7 @@ namespace KYHBPA_TeamA.Controllers
         }
 
         // POST: Photo/Edit/5
-        [Authorize(Roles = "Admin,Employee,Member,User")]
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public ActionResult Edit(EditPhotosViewModel photoVM, FormCollection collection, HttpPostedFileBase image = null)
         {
@@ -266,7 +266,7 @@ namespace KYHBPA_TeamA.Controllers
         }
 
         // GET: Photo/Delete/5
-        [Authorize(Roles = "Admin,Employee")]
+        [Authorize(Roles = "Admin")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -289,7 +289,7 @@ namespace KYHBPA_TeamA.Controllers
         }
 
         // POST: Photo/Delete/5
-        [Authorize(Roles = "Admin,Employee")]
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public ActionResult Delete(int id, FormCollection collection)
         {
