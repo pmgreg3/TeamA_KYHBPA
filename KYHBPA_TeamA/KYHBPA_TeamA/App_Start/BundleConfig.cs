@@ -36,8 +36,8 @@ namespace KYHBPA_TeamA
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
-                      "~/Content/fontawesome-pro-brands.css",
-                      "~/Content/Site.css"));
+                      "~/Content/Site.css"
+                      ));
         }
     }
 }
