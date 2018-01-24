@@ -743,12 +743,18 @@ textarea {
 
 
 /* Photo Gallery Page */
+.photoRow{
+
+}
+
 .photoCard{
 
 }
 
-.photoCardImage{
-    width:100%;
+.photoCardImage {
+    width: 100%;
+    border-radius:4px;
+    box-shadow: 8px 8px 20px 0px #0000006b;
 }
 
 /* Mobile Response */
