@@ -48,8 +48,6 @@ namespace KYHBPA_TeamA.Controllers
                 Description = p.PhotoDesc,
                 Title = p.PhotoTitle,
                 Date = p.TimeStamp,
-                InPhotoGallery = p.InPhotoGallery,
-                IsPartnerOrg = p.IsPartnerOrg,
                 Link = p.Link
             }).Where(x => x.InPhotoGallery == false && x.IsPartnerOrg == false);
 
@@ -122,8 +120,8 @@ namespace KYHBPA_TeamA.Controllers
                 Description = p.PhotoDesc,
                 Title = p.PhotoTitle,
                 Date = p.TimeStamp,
-                InPhotoGallery = p.InPhotoGallery
-
+                InPhotoGallery = p.InPhotoGallery,
+                IsPartnerOrg = p.IsPartnerOrg
             });
 
             if (!String.IsNullOrEmpty(searchString))
