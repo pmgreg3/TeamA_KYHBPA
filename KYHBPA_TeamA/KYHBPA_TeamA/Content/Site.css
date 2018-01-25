@@ -792,3 +792,8 @@ textarea {
     margin-left:10px;
     margin-right:10px;
 }
+
+.editImageArea{
+    text-align:center;
+    margin-bottom:1rem;
+}
