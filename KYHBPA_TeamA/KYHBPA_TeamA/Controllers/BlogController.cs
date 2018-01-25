@@ -47,8 +47,7 @@ namespace KYHBPA_TeamA.Controllers
                 Published = post.Published,
                 PostedOn = post.PostedOn,
                 Category = post.Category,
-                Comments = post.Comments,
-                PhotoContent = post.PhotoContent
+                Comments = post.Comments
             }).Where(x => x.Published == true);
 
             

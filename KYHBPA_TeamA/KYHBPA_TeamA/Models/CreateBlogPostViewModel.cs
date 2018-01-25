@@ -85,8 +85,5 @@ namespace KYHBPA_TeamA.Models
         public Category Category { get; set; }
 
         public List<Comment> Comments { get; set; }
-
-        public byte[] PhotoContent { get; set; }
-
     }
 }
