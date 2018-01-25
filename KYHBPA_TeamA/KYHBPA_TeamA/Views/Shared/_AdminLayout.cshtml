@@ -5,10 +5,96 @@
     <meta name="viewport" content="width=device-width" />
     <link href="~/Content/bootstrap.css" rel="stylesheet"/>
     <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
 </head>
 <body>
+    <div class="container" id="fluid">
+        <div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <div id="brandArea" style="height:50px; width:80px;">
+                    <img class="hideMe" src="~/Content/logoForKyhbpa3.png" id="brandLogo" />
+                    @Html.ActionLink("KYHBPA", "Index", "Home", new { area = "" }, new { @class = "showMe brandText" })
+                </div>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="/Home/About">
+                            About Us
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>@Html.ActionLink("Learn More", "About", "Home")</li>
+                            <li>@Html.ActionLink("Our Board", "Index", "BoardOfDirectors")</li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="/Home/About">
+                            Membership
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>@Html.ActionLink("Become a Member", "Membership", "Home")</li>
+                            <li>@Html.ActionLink("Benefits", "Benefits", "Home")</li>
+                            <li>@Html.ActionLink("Polls", "Polls", "Home")</li>
+                            <li>@Html.ActionLink("Documents", "Index", "Document")</li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="/Blog">
+                            News
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>@Html.ActionLink("Events", "Index", "Event")</li>
+                            <li>@Html.ActionLink("News & Blog", "Index", "Blog")</li>
+                            <li>@Html.ActionLink("Racing Education", "RacingEducation", "Home")</li>
+                        </ul>
+                    </li>
+                    <li>@Html.ActionLink("Photo Gallery", "Index", "Photo")</li>
+                    <li>@Html.ActionLink("Contact Us", "Contact", "Home")</li>
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        if (User.IsInRole("Admin"))
+                        {
+                            @:
+                            <li class="dropdown">
+                                <a class="dropdown-toggle" data-toggle="dropdown" href="">
+                                    Admin
+                                    <span class="caret"></span>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li>@Html.ActionLink("News & Blog", "Admin", "Blog")</li>
+                                    <li>@Html.ActionLink("Board", "Admin", "BoardOfDirectors")</li>
+                                    <li>@Html.ActionLink("Events", "Index", "Event")</li>
+                                    @*<li>@Html.ActionLink("Accounts", "ManageLogins", "Manage")</li>*@
+                                    <li>@Html.ActionLink("Documents", "Admin", "Document")</li>
+                                    <li>@Html.ActionLink("Photos", "Admin", "Photo")</li>
+                                    <li>@Html.ActionLink("Memberships", "Admin", "Memberships")</li>
+                                </ul>
+                            </li>
+                        }
+                    }
+                </ul>
+
+                @Html.Partial("_LoginPartial")
+
+            </div>
+        </div>
+    </div>
     <div>
         @RenderBody()
     </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/Content/fontawesome")
 </body>
 </html>
