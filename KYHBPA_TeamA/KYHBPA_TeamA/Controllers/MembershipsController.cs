@@ -117,24 +117,6 @@ namespace KYHBPA_TeamA.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Create(MembershipsViewModels.CreateMembershipViewModel viewModel)
         {
-            //db.Users.Find(User.Identity.GetUserId()).Membership.ID == null
-            //if (ModelState.IsValid)
-
-            //{
-            //    if(db.Users.Find(User.Identity.GetUserId()).Membership == null)
-            //    {
-            //        db.Users.Find(User.Identity.GetUserId()).Membership = membership;
-            //        db.Memberships.Add(membership);
-            //        db.SaveChanges();
-            //        return RedirectToAction("Index");
-            //    }
-            //    else
-            //    {
-            //        return RedirectToAction("MembershipError");
-            //    }
-            //}
-            //return View(membership);
-
             if (ModelState.IsValid)
             {
                 // retreives user 
@@ -198,7 +180,7 @@ namespace KYHBPA_TeamA.Controllers
                     replacements.Add("{signature}", membership.Signature);
 
                     // Test using personal email
-                    //MailMessage email = md.CreateMailMessage("kentuckyhbpa@gmail.com", replacements, new System.Web.UI.Control());
+                    MailMessage email = md.CreateMailMessage("kentuckyhbpa@gmail.com", replacements, new System.Web.UI.Control());
                     //MailMessage email = md.CreateMailMessage("pmgreg3@gmail.com", replacements, new System.Web.UI.Control());
 
 
@@ -209,7 +191,7 @@ namespace KYHBPA_TeamA.Controllers
                         EnableSsl = false
                     })
                     {
-                        //await emailClient.SendMailAsync(email);
+                        await emailClient.SendMailAsync(email);
                     }
 
                     return RedirectToAction("Index");
