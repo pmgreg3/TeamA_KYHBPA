@@ -154,7 +154,14 @@
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @if (User.IsInRole("Admin"))
+    {
+        @Html.ActionLink("Back to List", "Admin")
+    }
+    else
+    {
+        @Html.ActionLink("Back", "Create")
+    }
 </div>
 
 @section Scripts {

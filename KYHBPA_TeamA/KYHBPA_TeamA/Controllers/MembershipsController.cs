@@ -65,16 +65,31 @@ namespace KYHBPA_TeamA.Controllers
         [Authorize]
         public ActionResult Details(int? id)
         {
+            Membership membership = new Membership();
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Membership membership = db.Memberships.Find(id);
+
+            if (User.IsInRole("Admin"))
+            {
+                membership = db.Memberships.Find(id);
+            }
+            else
+            {
+                var user = db.Users.Find(User.Identity.GetUserId());
+                membership = db.Memberships.Find(user.Membership.ID);
+            }
+
             if (membership == null)
             {
                 return HttpNotFound();
             }
-            return View(membership);
+            else
+            {
+               return View(membership);
+            }
         }
 
         // GET: Memberships/Create
@@ -183,7 +198,8 @@ namespace KYHBPA_TeamA.Controllers
                     replacements.Add("{signature}", membership.Signature);
 
                     // Test using personal email
-                    MailMessage email = md.CreateMailMessage("kentuckyhbpa@gmail.com", replacements, new System.Web.UI.Control());
+                    //MailMessage email = md.CreateMailMessage("kentuckyhbpa@gmail.com", replacements, new System.Web.UI.Control());
+                    //MailMessage email = md.CreateMailMessage("pmgreg3@gmail.com", replacements, new System.Web.UI.Control());
 
 
                     using (SmtpClient emailClient = new SmtpClient("relay-hosting.secureserver.net",25)
@@ -193,7 +209,7 @@ namespace KYHBPA_TeamA.Controllers
                         EnableSsl = false
                     })
                     {
-                        await emailClient.SendMailAsync(email);
+                        //await emailClient.SendMailAsync(email);
                     }
 
                     return RedirectToAction("Index");
@@ -222,12 +238,37 @@ namespace KYHBPA_TeamA.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+
             Membership membership = db.Memberships.Find(id);
-            if (membership == null)
+
+            if (User.IsInRole("Admin"))
             {
-                return HttpNotFound();
+                if (membership == null)
+                {
+                    return HttpNotFound();
+                }
+                return View(membership);
             }
-            return View(membership);
+            else
+            {
+                var currentUser = db.Users.Find(User.Identity.GetUserId());
+
+                // is the requested membership not their own?
+                if(currentUser.Membership.ID != id)
+                {
+                    TempData["bad-message"] = "Access Denied.";
+                    return RedirectToAction("Index");
+                }
+                else //this is their membership
+                {
+                    if (membership == null)
+                    {
+                        return HttpNotFound();
+                    }
+                    return View(membership);
+                }
+            }
+
         }
 
         // POST: Memberships/Edit/5
@@ -259,15 +300,35 @@ namespace KYHBPA_TeamA.Controllers
         [Authorize]
         public ActionResult Delete(int? id)
         {
+            Membership membership = new Membership();
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Membership membership = db.Memberships.Find(id);
+
+            if (User.IsInRole("Admin"))
+            {
+                membership = db.Memberships.Find(id);
+            }
+            else
+            {
+                var user = db.Users.Find(User.Identity.GetUserId());
+                membership = user.Membership;
+
+                if(membership.ID != id)
+                {
+                    // if the membership id doesn't match the original request
+                    // and the member isn't an admin, tell them they tried to access something they shouldn't have
+                    TempData["message"] = "Access to requested membership information has been denied.";
+                }
+            }
+            
             if (membership == null)
             {
                 return HttpNotFound();
             }
+
             return View(membership);
         }
 
@@ -278,19 +339,51 @@ namespace KYHBPA_TeamA.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             Membership membership = db.Memberships.Find(id);
+            if (ModelState.IsValid)
+            {
+                if (User.IsInRole("Admin"))
+                {
+                    // gets user that the membership is associated with
+                    var user = db.Users
+                        .Include(x => x.Membership)
+                        .SingleOrDefault(x => x.Membership.ID == membership.ID);
 
-            // gets user that the membership is associated with
-            var user = db.Users
-                .Include(x => x.Membership)
-                .SingleOrDefault(x => x.Membership.ID == membership.ID);
+                    // nulls the membership and resets the flag
+                    user.Membership = null;
+                    user.AppliedForMembership = false;
 
-            // nulls the membership and resets the flag
-            user.Membership = null;
-            user.AppliedForMembership = false;
-            
-            db.Memberships.Remove(membership);
-            db.SaveChanges();
-            return RedirectToAction("Index");
+                    db.Memberships.Remove(membership);
+                    db.SaveChanges();
+                    return RedirectToAction("Admin");
+                }
+                else
+                {
+                    var currentUser = db.Users.Find(User.Identity.GetUserId());
+
+                    if (currentUser.Membership.ID != id)
+                    {
+                        TempData["bad-message"] = "Access Denied.";
+                        return RedirectToAction("Index");
+                    }
+                    else
+                    {
+                        // nulls the membership and resets the flag
+                        currentUser.Membership = null;
+                        currentUser.AppliedForMembership = false;
+
+                        db.Memberships.Remove(membership);
+                        db.SaveChanges();
+
+                        TempData["success-message"] = "Membership has been successfully deleted";
+                        return RedirectToAction("Index");
+                    }
+                }
+            }
+            else
+            {
+                return HttpNotFound();
+            }
+
         }
 
         protected override void Dispose(bool disposing)

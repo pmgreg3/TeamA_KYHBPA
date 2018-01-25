@@ -16,7 +16,8 @@
         <hr />
         @if (Model.Data != null)
         {
-            <div style="max-width:200px; min-width:200px">
+            @* This is where a thumbnail call would go*@
+            <div class="editImageArea">
                 <img class="img-thumbnail"; src="@Url.Action("GetPhoto", "Photo", new { Model.Id })" />
             </div>
         }
@@ -37,7 +38,7 @@
         <div class="form-group common-BodyText">
             @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.TextAreaFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -45,7 +46,7 @@
         @* InPhotoGallery *@
         <div class="form-group common-BodyText">
             @Html.LabelFor(model => model.InPhotoGallery, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
+            <div class="col-md-1">
                 @Html.EditorFor(model => model.InPhotoGallery, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.InPhotoGallery, "", new { @class = "text-danger" })
             </div>
@@ -54,7 +55,7 @@
         @* IsPartnerOrg *@
         <div class="form-group common-BodyText">
             @Html.LabelFor(model => model.IsPartnerOrg, htmlAttributes: new { @class = "control-label col-md-2"})
-            <div class="col-md-10">
+            <div class="col-md-1">
                 @Html.EditorFor(model => model.IsPartnerOrg, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.IsPartnerOrg, "", new { @class = "text-danger" })
             </div>
@@ -63,7 +64,7 @@
         @* Link *@
         <div class="form-group common-BodyText">
             @Html.LabelFor(model => model.Link, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
+            <div class="col-md-5">
                 @Html.EditorFor(model => model.Link, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Link, "", new { @class = "text-danger" })
             </div>
@@ -73,14 +74,9 @@
         <div class="form-group common-BodyText">
             @Html.LabelFor(model => model.Image, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="Col-md-10">
-                <a class='btn' href="javascript:;">
-                    Choose File...
-                    <input type="file" accept="image/*" name="image" size="40"
-                           onchange='$("#upload-file-info").html($(this).val());' />
-                </a>
+                <input type="file" accept="image/*" name="image" id="file" />
             </div>
         </div>
-
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">

@@ -120,6 +120,7 @@ namespace KYHBPA_TeamA.Controllers
                 Id = p.PhotoID,
                 Data = p.PhotoData,
                 Description = p.PhotoDesc,
+                ShorterDescription = p.PhotoDesc.Substring(0,150) + "...",
                 Title = p.PhotoTitle,
                 Date = p.TimeStamp,
                 InPhotoGallery = p.InPhotoGallery,

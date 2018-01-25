@@ -3,7 +3,7 @@
 
 @{
     ViewBag.Title = "Photos-Admin";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 @if (TempData["message"] != null)
 {
@@ -66,7 +66,7 @@
                 @Html.DisplayFor(modelItem => item.Title)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Description)
+                @Html.DisplayFor(modelItem => item.ShorterDescription)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Date)
