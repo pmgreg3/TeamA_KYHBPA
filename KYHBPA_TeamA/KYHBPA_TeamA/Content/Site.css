@@ -327,7 +327,7 @@
 .common-Uppercase {
     color: #072419;
     font-weight: 600;
-    font-size: 2.5625em;
+    font-size: 41px;
     text-transform: uppercase;
     letter-spacing: .025em;
     font-family: Camphor,Open Sans,Segoe UI,sans-serif;
@@ -358,7 +358,7 @@
 .common-UppercaseTitle {
     color: #072419;
     text-transform: uppercase;
-    font-size: 1.375rem;
+    font-size: 22px;
     line-height: 33px;
 }
 
