@@ -314,44 +314,51 @@ namespace KYHBPA_TeamA.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             Membership membership = db.Memberships.Find(id);
-
-            if (User.IsInRole("Admin"))
+            if (ModelState.IsValid)
             {
-                // gets user that the membership is associated with
-                var user = db.Users
-                    .Include(x => x.Membership)
-                    .SingleOrDefault(x => x.Membership.ID == membership.ID);
-
-                // nulls the membership and resets the flag
-                user.Membership = null;
-                user.AppliedForMembership = false;
-
-                db.Memberships.Remove(membership);
-                db.SaveChanges();
-                return RedirectToAction("Admin");
-            }
-            else
-            {
-                var currentUser = db.Users.Find(User.Identity.GetUserId());
-
-                if(currentUser.Membership.ID != id)
+                if (User.IsInRole("Admin"))
                 {
-                    TempData["bad-message"] = "Access Denied.";
-                    return RedirectToAction("Index");
-                }
-                else
-                {
+                    // gets user that the membership is associated with
+                    var user = db.Users
+                        .Include(x => x.Membership)
+                        .SingleOrDefault(x => x.Membership.ID == membership.ID);
+
                     // nulls the membership and resets the flag
-                    currentUser.Membership = null;
-                    currentUser.AppliedForMembership = false;
+                    user.Membership = null;
+                    user.AppliedForMembership = false;
 
                     db.Memberships.Remove(membership);
                     db.SaveChanges();
+                    return RedirectToAction("Admin");
+                }
+                else
+                {
+                    var currentUser = db.Users.Find(User.Identity.GetUserId());
 
-                    TempData["success-message"] = "Membership has been successfully deleted";
-                    return RedirectToAction("Index");
+                    if (currentUser.Membership.ID != id)
+                    {
+                        TempData["bad-message"] = "Access Denied.";
+                        return RedirectToAction("Index");
+                    }
+                    else
+                    {
+                        // nulls the membership and resets the flag
+                        currentUser.Membership = null;
+                        currentUser.AppliedForMembership = false;
+
+                        db.Memberships.Remove(membership);
+                        db.SaveChanges();
+
+                        TempData["success-message"] = "Membership has been successfully deleted";
+                        return RedirectToAction("Index");
+                    }
                 }
             }
+            else
+            {
+                return HttpNotFound();
+            }
+
         }
 
         protected override void Dispose(bool disposing)
