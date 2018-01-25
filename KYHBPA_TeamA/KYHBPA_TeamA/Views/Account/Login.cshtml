@@ -16,21 +16,21 @@
 
                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                 <div class="form-group">
-                    <div class="col-md-3 col-xs-0">
+                    <div class="col-lg-3 col-md-3 col-xs-0">
 
                     </div>
-                    @Html.LabelFor(m => m.UserName, new { @class = "col-md-2 col-xs-4 control-label" })
-                    <div class="col-md-3 col-xs-8">
+                    @Html.LabelFor(m => m.UserName, new { @class = "col-lg-2 col-md-2 col-xs-4 control-label" })
+                    <div class="col-lg-3 col-md-3 col-xs-8">
                         @Html.TextBoxFor(m => m.UserName, new { @class = "form-control loginTextBox" })
                         @Html.ValidationMessageFor(m => m.UserName, "", new { @class = "text-danger" })
                     </div>
                 </div>
                 <div class="form-group">
-                    <div class="col-md-3 col-xs-0">
+                    <div class="col-lg-3 col-md-3 col-xs-0">
 
                     </div>
-                    @Html.LabelFor(m => m.Password, new { @class = "col-md-2 col-xs-4 control-label" })
-                    <div class="col-md-3 col-xs-8">
+                    @Html.LabelFor(m => m.Password, new { @class = "col-lg-2 col-md-2 col-xs-4 control-label" })
+                    <div class="col-lg-3 col-md-3 col-xs-8">
                         @Html.PasswordFor(m => m.Password, new { @class = "form-control loginTextBox" })
                         @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
                     </div>
