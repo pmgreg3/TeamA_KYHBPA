@@ -6,6 +6,10 @@
 
 <h2 class="common-Uppercase">Kentucky HBPA Membership</h2>
 
+@if (TempData["success-message"] != null)
+{
+    <div class="alert alert-success">@TempData["success-message"]</div>
+}
 
 @using (Html.BeginForm()) 
 {

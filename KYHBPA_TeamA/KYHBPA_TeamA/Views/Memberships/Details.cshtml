@@ -134,5 +134,12 @@
 </div>
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
-    @Html.ActionLink("Back to List", "Index")
+    @if (User.IsInRole("Admin"))
+    {
+        @Html.ActionLink("Back to List", "Admin")
+    }
+    else
+    {
+        @Html.ActionLink("Back", "Create")
+    }
 </p>
