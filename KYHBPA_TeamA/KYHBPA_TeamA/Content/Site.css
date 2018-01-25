@@ -2,6 +2,7 @@
     padding-top: 50px;
     background: #f6f9fc;
     font-family: Camphor,Open Sans,Segoe UI,sans-serif;
+    height:100%;
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -489,6 +490,12 @@
 
 #hrfooter {
     border-top: 1px solid #fefefe;
+}
+
+.footer {
+    position: absolute;
+
+    width: -webkit-fill-available;
 }
 
 #EventDescription {
