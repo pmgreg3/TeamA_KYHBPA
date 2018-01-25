@@ -238,12 +238,37 @@ namespace KYHBPA_TeamA.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+
             Membership membership = db.Memberships.Find(id);
-            if (membership == null)
+
+            if (User.IsInRole("Admin"))
             {
-                return HttpNotFound();
+                if (membership == null)
+                {
+                    return HttpNotFound();
+                }
+                return View(membership);
             }
-            return View(membership);
+            else
+            {
+                var currentUser = db.Users.Find(User.Identity.GetUserId());
+
+                // is the requested membership not their own?
+                if(currentUser.Membership.ID != id)
+                {
+                    TempData["bad-message"] = "Access Denied.";
+                    return RedirectToAction("Index");
+                }
+                else //this is their membership
+                {
+                    if (membership == null)
+                    {
+                        return HttpNotFound();
+                    }
+                    return View(membership);
+                }
+            }
+
         }
 
         // POST: Memberships/Edit/5
