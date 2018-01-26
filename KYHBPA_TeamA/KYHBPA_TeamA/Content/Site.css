@@ -811,3 +811,41 @@ textarea {
     text-align:center;
     margin-bottom:1rem;
 }
+
+
+/* Document Page */
+.documentCard {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    text-align: center;
+    background: #fff;
+    border-radius: 4px;
+    margin: 1rem;
+}
+
+.documentTitle {
+    color: white;
+    font-size: 18px;
+    border-top-left-radius:4px;
+    border-top-right-radius:4px;
+    background: #072419;
+    padding: 10px;
+}
+
+.documentDownloadButton {
+    border: 1px solid #072419 !important;
+    margin: 4px;
+    color: #072419 !important;
+}
+
+    .documentDownloadButton:hover {
+        color:white !important;
+        background:#072419;
+    }
+
+.documentRow {
+    padding:1rem;
+}
+
+.documentCardHolder{
+    padding:1rem;
+}
