@@ -119,7 +119,7 @@ namespace KYHBPA_TeamA.Controllers
         // POST: Document/Edit/5
         [Authorize(Roles = "Admin")]
         [HttpPost]
-        public ActionResult Edit(DisplayDocumentsViewModel documentVM, FormCollection collection)
+        public ActionResult Edit(DisplayDocumentsViewModel documentVM, FormCollection collection, HttpPostedFileBase file)
         {
             try
             {
@@ -130,6 +130,13 @@ namespace KYHBPA_TeamA.Controllers
                     {
                         documentToUpdate.DocumentDescription = documentVM.Description;
                         documentToUpdate.DocumentName = documentVM.Title;
+
+                        if(file != null)
+                        {
+                            byte[] uploadedFile = new byte[file.InputStream.Length];
+                            file.InputStream.Read(uploadedFile, 0, file.ContentLength);
+                            documentToUpdate.DocumentContent = uploadedFile;
+                        }
                     }
 
                     db.Entry(documentToUpdate).State = System.Data.Entity.EntityState.Modified;
@@ -153,20 +160,27 @@ namespace KYHBPA_TeamA.Controllers
             if (id == null)
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
 
+            
             var document = db.Documents.Find(id);
-            var vm = new DisplayDocumentsViewModel()
+            
+            if(document == null)
             {
-                Id = document.DocumentId,
-                Content = document.DocumentContent,
-                Date = document.DocumentUploadDateTime,
-                Title = document.DocumentName,
-                Description = document.DocumentDescription
-            };
-
-            if (document == null)
                 return HttpNotFound();
+            }
+            else
+            {
+                var vm = new DisplayDocumentsViewModel()
+                {
+                    Id = document.DocumentId,
+                    Content = document.DocumentContent,
+                    Date = document.DocumentUploadDateTime,
+                    Title = document.DocumentName,
+                    Description = document.DocumentDescription
+                };
 
-            return View(vm);
+                return View(vm);
+            }
+
         }
 
         // POST: Document/Delete/5
@@ -179,11 +193,12 @@ namespace KYHBPA_TeamA.Controllers
                 var document = db.Documents.Find(id);
                 db.Documents.Remove(document);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Admin");
+
             }
             catch
             {
-                return View();
+                return RedirectToAction("Admin");
             }
         }
 
@@ -197,7 +212,7 @@ namespace KYHBPA_TeamA.Controllers
             Document docToGet = db.Documents.Find(id);
 
             if (docToGet != null)
-                return File(docToGet.DocumentContent, docToGet.DocumentDescription);
+                return File(docToGet.DocumentContent, "application/pdf");
             else
                 return null;
         }
