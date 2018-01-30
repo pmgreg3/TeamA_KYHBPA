@@ -1,5 +1,8 @@
 ﻿@model IEnumerable<KYHBPA_TeamA.Models.EventDisplayViewModel>
 
+@{ 
+    Layout = null;
+}
 
 <section id="primary">
     <div class="cols container-lg">
@@ -39,13 +42,19 @@
 
                 foreach (var item in Model)
                 {
-
-                    @Html.DisplayFor(modelItem => item.Title)
-                    @Html.DisplayFor(modelItem => item.Description)
-                    @Html.DisplayFor(modelItem => item.StartDate)
-                    @Html.DisplayFor(modelItem => item.StartTime)
-                    @Html.DisplayFor(modelItem => item.EndDate)
-                    @Html.DisplayFor(modelItem => item.EndTime)
+                    <div class="eventCard">
+                        <div class="eventHeader">
+                            <div class="eventTitle">
+                                @item.Title
+                            </div>
+                            <div class="eventDate">
+                                @item.StartDate
+                            </div>
+                        </div>
+                        <div class="eventBody">
+                            @item.Description
+                        </div>
+                    </div>
                 }
             }
         </section>
