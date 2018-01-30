@@ -2,8 +2,15 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web.Mvc;
 using System.Xml.Linq;
+using Google.Apis.Auth.OAuth2;
+using Google.Apis.Calendar.v3;
+using Google.Apis.Calendar.v3.Data;
+using Google.Apis.Services;
+using Google.Apis.Util.Store;
+using GoogleCalendarAPI;
 
 
 namespace KYHBPA_TeamA.Controllers
@@ -151,5 +158,13 @@ namespace KYHBPA_TeamA.Controllers
         //    return (new AjaxSaveResponse(action));
         //}
         // GET: Event
+    }
+
+
+    public Task<ActionResult> _GoogleEvents()
+    {
+
+
+        return ActionResult();
     }
 }
