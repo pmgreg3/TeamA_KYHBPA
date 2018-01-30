@@ -39,37 +39,45 @@
             }
             else
             {
-                foreach (var item in Model)
+                for (int i = 0; i <= Model.Count() / 2; i++)
                 {
-                    <div class="eventCard common-BodyText">
-                        <div class="eventHeader">
-                                 <div class="eventTitle">
-                                     @item.Title
-                                 </div>
-                            <div class="eventDate">
-                                @if (item.StartDate != null)
-                                {
-                                    @item.StartDate
-                                }
-                                else if(item.StartTime != null)
-                                {
-                                    @item.StartTime
-                                }
-                            </div>
-                            <div class="eventLocation">
-                                @if (item.Location != null)
-                                {
-                                    <i class="fa fa-map-marker-alt fa-1x" style="color:#072419"></i>
+                    <div class="row">
 
-                                    @item.Location
-                                }
+                        @foreach (var item in Model.Skip(i * 2).Take(2))
+                        {
+                            <div class="eventCard common-BodyText col-md-6">
+                                <div class="eventHeader">
+                                    <div class="eventTitle">
+                                        @item.Title
+                                    </div>
+                                    <div class="eventDate">
+                                        @if (item.StartDate != null)
+                                        {
+                                            @item.StartDate
+                                        }
+                                        else if (item.StartTime != null)
+                                        {
+                                            @item.StartTime
+                                        }
+                                    </div>
+                                    <div class="eventLocation">
+                                        @if (item.Location != null)
+                                        {
+                                            <i class="fa fa-map-marker-alt fa-1x" style="color:#072419"></i>
+
+                                            @item.Location
+                                        }
+                                    </div>
+                                </div>
+                                <div class="eventBody">
+                                    @item.Description
+                                </div>
                             </div>
-                        </div>
-                        <div class="eventBody">
-                            @item.Description
-                        </div>
+                        }
+
                     </div>
                 }
+
             }
         </section>
 </div>
