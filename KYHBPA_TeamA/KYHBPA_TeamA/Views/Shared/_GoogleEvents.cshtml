@@ -43,11 +43,9 @@
                 {
                     <div class="eventCard common-BodyText">
                         <div class="eventHeader">
-                            <a href="@item.Link" target="_blank">
                                  <div class="eventTitle">
                                      @item.Title
                                  </div>
-                            </a>
                             <div class="eventDate">
                                 @if (item.StartDate != null)
                                 {
@@ -56,6 +54,14 @@
                                 else if(item.StartTime != null)
                                 {
                                     @item.StartTime
+                                }
+                            </div>
+                            <div class="eventLocation">
+                                @if (item.Location != null)
+                                {
+                                    <i class="fa fa-map-marker-alt fa-1x" style="color:#072419"></i>
+
+                                    @item.Location
                                 }
                             </div>
                         </div>

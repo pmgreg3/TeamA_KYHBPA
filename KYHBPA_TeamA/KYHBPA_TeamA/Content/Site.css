@@ -858,16 +858,15 @@ textarea {
 .eventCard {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     border-radius: 4px;
-    border: 1px solid #f6f9fc;
     margin:13px;
 }
 
 .eventTitle {
     font-size: 22px;
-    color: #fff;
-    background: #072419;
+    color: #5a95cd;
     border-top-left-radius: 4px;
     border-top-right-radius: 4px;
+    font-weight: 600;
 }
 
 .eventBody{
@@ -875,4 +874,7 @@ textarea {
     text-align:left
 }
 
+.eventHeader {
+    background: #0000001f;
+}
 
