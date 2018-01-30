@@ -626,6 +626,7 @@
       <DependentUpon>KYHBPA.edmx</DependentUpon>
     </Content>
     <Content Include="Content\fontawesome-pro-brands\package.json" />
+    <Content Include="Content\GoogleCalendar\Kentucky HBPA Website Calendar-5072c6abaf14.json" />
     <None Include="Properties\PublishProfiles\kentuckyhbpa.org - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\spike.cis420.net - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
@@ -726,7 +727,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Content\GoogleCalendar\" />
     <Folder Include="Views\Calendar\" />
   </ItemGroup>
   <ItemGroup>
