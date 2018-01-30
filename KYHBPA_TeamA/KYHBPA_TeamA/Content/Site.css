@@ -863,7 +863,7 @@ textarea {
 }
 
 .eventTitle {
-    font-size: 22px;
+    font-size: 1em;
     color: #5a95cd;
     border-top-left-radius: 4px;
     border-top-right-radius: 4px;

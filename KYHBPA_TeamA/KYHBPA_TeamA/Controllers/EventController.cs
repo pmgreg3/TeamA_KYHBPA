@@ -195,7 +195,7 @@ namespace KYHBPA_TeamA.Controllers
             request.TimeMin = DateTime.Now;
             request.ShowDeleted = false;
             request.SingleEvents = true;
-            request.MaxResults = 6;
+            request.MaxResults = 4;
             request.OrderBy = EventsResource.ListRequest.OrderByEnum.StartTime;
 
             var events = request.Execute();
