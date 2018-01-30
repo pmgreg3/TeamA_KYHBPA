@@ -114,51 +114,11 @@
 </div>
 
 
-<section id="primary">
-    <div class="cols container-lg">
-        <section id="raceTracks">
-            <h2 class="text-center common-UppercaseTitle">CHECK OUT OUR TRACK PARTNERS</h2>
-            <p class="common-BodyText">
-                Click on the links below to keep up with news and events at Kentucky’s Thoroughbred racetracks. We are the only organization representing horsemen at all five tracks.
-            </p>
-            <ul list-style="none">
-                <li>
-                    <a href="https://www.churchilldowns.com/" class="common-Button" target="_blank">Churchill Downs &raquo;</a>
-                </li>
-                <li>
-                    <a href="http://www.ellisparkracing.com/" class="common-Button" target="_blank">Ellis Park &raquo;</a>
-                </li>
-                <li>
-                    <a href="http://www.turfway.com/home" class="common-Button" target="_blank">Turfway Park &raquo;</a>
-                </li>
-                <li>
-                    <a href="https://www.kentuckydowns.com/Racing" class="common-Button" target="_blank">Kentucky Downs &raquo;</a>
-                </li>
-                <li>
-                    <a href="https://www.Keeneland.com/" class="common-Button" target="_blank">Keeneland &raquo;</a>
-                </li>
-            </ul>
-        </section>
-        <section id="upcomingEvents">
-            <h2 class="common-UppercaseTitle">Stay Current</h2>
-            @*@foreach (var items in Model.Events)
-            {
-                <br />
-                <div class="DescrSquare"><p class="col-lg-12" id="EventDescription">@items.EventDescription</p></div>
-                <div class="TimeSquare">
-                    <p class="col-md-6" id="EventStart"><b>Start Time:</b>@items.EventDate</p>
-                    <p class="col-md-6" id="EventEnd"><b>End Time:</b>@items.EventTime</p>
-                </div>
-                <br />
 
-            }*@
+@section GoogleEvents{
+    @Html.Partial("_GoogleEvents")
+}
 
-            @section GoogleEvents{
-                @Html.Action("_GoogleEvents","Event")
-                }
-        </section>
-    </div>
-</section>
 
 <section id="spacerBar">
     <h2 class="text-center common-UppercaseTitle">Looking for more organizations like us?</h2>

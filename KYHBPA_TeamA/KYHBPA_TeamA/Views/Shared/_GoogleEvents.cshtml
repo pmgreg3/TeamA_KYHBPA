@@ -1,0 +1,55 @@
+﻿@model IEnumerable<KYHBPA_TeamA.Models.EventDisplayViewModel>
+
+
+<section id="primary">
+    <div class="cols container-lg">
+        <section id="raceTracks">
+            <h2 class="text-center common-UppercaseTitle">CHECK OUT OUR TRACK PARTNERS</h2>
+            <p class="common-BodyText">
+                Click on the links below to keep up with news and events at Kentucky’s Thoroughbred racetracks. We are the only organization representing horsemen at all five tracks.
+            </p>
+            <ul list-style="none">
+                <li>
+                    <a href="https://www.churchilldowns.com/" class="common-Button" target="_blank">Churchill Downs &raquo;</a>
+                </li>
+                <li>
+                    <a href="http://www.ellisparkracing.com/" class="common-Button" target="_blank">Ellis Park &raquo;</a>
+                </li>
+                <li>
+                    <a href="http://www.turfway.com/home" class="common-Button" target="_blank">Turfway Park &raquo;</a>
+                </li>
+                <li>
+                    <a href="https://www.kentuckydowns.com/Racing" class="common-Button" target="_blank">Kentucky Downs &raquo;</a>
+                </li>
+                <li>
+                    <a href="https://www.Keeneland.com/" class="common-Button" target="_blank">Keeneland &raquo;</a>
+                </li>
+            </ul>
+        </section>
+        <section id="upcomingEvents">
+            <h2 class="common-UppercaseTitle">Stay Current</h2>
+            @if (Model == null || Model.Count() == 0)
+            {
+                <p>
+                    There are no upcoming events.
+                </p>
+            }
+            else
+            {
+
+                foreach (var item in Model)
+                {
+
+                    @Html.DisplayFor(modelItem => item.Title)
+                    @Html.DisplayFor(modelItem => item.Description)
+                    @Html.DisplayFor(modelItem => item.StartDate)
+                    @Html.DisplayFor(modelItem => item.StartTime)
+                    @Html.DisplayFor(modelItem => item.EndDate)
+                    @Html.DisplayFor(modelItem => item.EndTime)
+                }
+            }
+        </section>
+</div>
+</section>
+
+

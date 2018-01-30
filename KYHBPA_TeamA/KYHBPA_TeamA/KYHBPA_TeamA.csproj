@@ -726,7 +726,7 @@
     <Content Include="Views\Memberships\Admin.cshtml" />
     <Content Include="Views\Blog\Admin.cshtml" />
     <Content Include="Views\Blog\Read.cshtml" />
-    <Content Include="Views\Event\_GoogleEvents.cshtml" />
+    <Content Include="Views\Shared\_GoogleEvents.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
