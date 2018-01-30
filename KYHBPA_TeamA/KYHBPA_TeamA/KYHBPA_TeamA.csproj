@@ -726,6 +726,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\GoogleCalendar\" />
     <Folder Include="Views\Calendar\" />
   </ItemGroup>
   <ItemGroup>

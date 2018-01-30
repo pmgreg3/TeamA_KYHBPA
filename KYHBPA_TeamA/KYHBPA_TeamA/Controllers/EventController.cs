@@ -11,7 +11,7 @@ using Google.Apis.Calendar.v3.Data;
 using Google.Apis.Services;
 using Google.Apis.Util.Store;
 using GoogleCalendarAPI;
-
+using System.IO;
 
 namespace KYHBPA_TeamA.Controllers
 {
@@ -163,7 +163,16 @@ namespace KYHBPA_TeamA.Controllers
 
     public Task<ActionResult> _GoogleEvents()
     {
+        ServiceAccountCredential credential;
 
+        using (var stream =
+            new FileStream("client_secret.json", FileMode.Open, FileAccess.Read))
+        {
+
+            string credPath = stream.Name;
+
+
+        }
 
         return ActionResult();
     }
