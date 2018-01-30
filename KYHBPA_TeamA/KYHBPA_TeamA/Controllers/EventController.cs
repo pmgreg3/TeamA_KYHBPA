@@ -209,7 +209,8 @@ namespace KYHBPA_TeamA.Controllers
                         Title = eventItem.Summary,
                         Description = eventItem.Description,
                         StartDate = eventItem.Start.Date,
-                        StartTime = eventItem.Start.DateTime.ToString()
+                        StartTime = eventItem.Start.DateTime.ToString(),
+                        Link = eventItem.HtmlLink
                     };
 
                     if (eventItem.EndTimeUnspecified != null && eventItem.EndTimeUnspecified != false)
