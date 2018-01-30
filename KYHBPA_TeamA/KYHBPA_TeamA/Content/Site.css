@@ -877,6 +877,8 @@ textarea {
 
 .eventHeader {
     background: #0000001f;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
 }
 
 
