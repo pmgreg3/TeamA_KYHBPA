@@ -120,13 +120,10 @@
 }
 
 
-<section id="spacerBar">
-    <h2 class="text-center common-UppercaseTitle">Looking for more organizations like us?</h2>
-    <div class="container-lg">
-        @section PartnerOrg{
-            <!--Image Gallery-->
-            @Html.Action("_PartnerOrgs", "Photo")
-        }
-    </div>
-</section>
+
+@section PartnerOrg{
+    <!--Image Gallery-->
+    @Html.Action("_PartnerOrgs", "Photo")
+}
+
 

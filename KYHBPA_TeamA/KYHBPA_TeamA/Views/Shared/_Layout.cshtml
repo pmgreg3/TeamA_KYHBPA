@@ -91,15 +91,9 @@
 
     <div class="container body-content">
         @RenderBody()
-        <section id="primary">
             @RenderSection("GoogleEvents", required: false)
-        </section>
-
-
-
-
             @RenderSection("PartnerOrg", required: false)
-</div>
+    </div>
 
     <hr id="hrfooter" />
     <footer class="footer">
