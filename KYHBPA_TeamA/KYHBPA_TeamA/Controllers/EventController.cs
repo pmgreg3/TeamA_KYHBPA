@@ -210,7 +210,8 @@ namespace KYHBPA_TeamA.Controllers
                         Description = eventItem.Description,
                         StartDate = eventItem.Start.Date,
                         StartTime = eventItem.Start.DateTime.ToString(),
-                        Link = eventItem.HtmlLink
+                        Link = eventItem.HtmlLink,
+                        Location = eventItem.Location
                     };
 
                     if (eventItem.EndTimeUnspecified != null && eventItem.EndTimeUnspecified != false)

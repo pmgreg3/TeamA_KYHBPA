@@ -39,16 +39,24 @@
             }
             else
             {
-
                 foreach (var item in Model)
                 {
                     <div class="eventCard common-BodyText">
                         <div class="eventHeader">
-                            <div class="eventTitle">                               
-                                    @item.Title                               
-                            </div>
+                            <a href="@item.Link" target="_blank">
+                                 <div class="eventTitle">
+                                     @item.Title
+                                 </div>
+                            </a>
                             <div class="eventDate">
-                                @item.StartDate
+                                @if (item.StartDate != null)
+                                {
+                                    @item.StartDate
+                                }
+                                else if(item.StartTime != null)
+                                {
+                                    @item.StartTime
+                                }
                             </div>
                         </div>
                         <div class="eventBody">
