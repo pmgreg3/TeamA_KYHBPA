@@ -5,7 +5,6 @@
     <title>@ViewBag.Title - Kentucky HBPA</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-    @Scripts.Render("~/bundles/jquery")
 </head>
 <body>
     <div class="container" id="fluid">
@@ -92,7 +91,8 @@
 
     <div class="container body-content">
         @RenderBody()
-        @RenderSection("PartnerOrg", required: false)
+            @RenderSection("GoogleEvents", required: false)
+            @RenderSection("PartnerOrg", required: false)
     </div>
 
     <hr id="hrfooter" />
@@ -144,7 +144,6 @@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @Scripts.Render("~/Content/fontawesome")
-    @RenderSection("scripts", required: false)
 </body>
 </html>
 
