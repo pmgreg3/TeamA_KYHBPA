@@ -92,6 +92,7 @@
 
     <div class="container body-content">
         @RenderBody()
+        @RenderSection("GoogleEvents", required: false)
         @RenderSection("PartnerOrg", required: false)
     </div>
 

@@ -141,7 +141,7 @@
         </section>
         <section id="upcomingEvents">
             <h2 class="common-UppercaseTitle">Stay Current</h2>
-            @foreach (var items in Model.Events)
+            @*@foreach (var items in Model.Events)
             {
                 <br />
                 <div class="DescrSquare"><p class="col-lg-12" id="EventDescription">@items.EventDescription</p></div>
@@ -151,7 +151,11 @@
                 </div>
                 <br />
 
-            }
+            }*@
+
+            @section GoogleEvents{
+                @Html.Action("_GoogleEvents","Event")
+                }
         </section>
     </div>
 </section>

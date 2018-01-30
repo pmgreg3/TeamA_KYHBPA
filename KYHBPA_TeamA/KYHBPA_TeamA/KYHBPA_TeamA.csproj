@@ -306,6 +306,8 @@
     <Compile Include="Models\Document.cs" />
     <Compile Include="Models\EditBODMemberViewModel.cs" />
     <Compile Include="Models\Event.cs" />
+    <Compile Include="Models\EventDisplayViewModel.cs" />
+    <Compile Include="Models\GoogleCalendarServiceAccount.cs" />
     <Compile Include="Models\HomepageEvent.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -724,6 +726,7 @@
     <Content Include="Views\Memberships\Admin.cshtml" />
     <Content Include="Views\Blog\Admin.cshtml" />
     <Content Include="Views\Blog\Read.cshtml" />
+    <Content Include="Views\Event\_GoogleEvents.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -10,7 +10,7 @@ using Google.Apis.Calendar.v3;
 using Google.Apis.Calendar.v3.Data;
 using Google.Apis.Services;
 using Google.Apis.Util.Store;
-using GoogleCalendarAPI;
+using Newtonsoft.Json;
 using System.IO;
 
 namespace KYHBPA_TeamA.Controllers
@@ -93,7 +93,7 @@ namespace KYHBPA_TeamA.Controllers
             else
             {
 
-                var newEvent = new Event()
+                var newEvent = new Models.Event()
                 {
                     EventDate = newDate,
                     EventTime = newTime,
@@ -158,22 +158,72 @@ namespace KYHBPA_TeamA.Controllers
         //    return (new AjaxSaveResponse(action));
         //}
         // GET: Event
-    }
 
 
-    public Task<ActionResult> _GoogleEvents()
-    {
-        ServiceAccountCredential credential;
-
-        using (var stream =
-            new FileStream("client_secret.json", FileMode.Open, FileAccess.Read))
+        public ActionResult _GoogleEvents()
         {
+            string[] SCOPES = { CalendarService.Scope.CalendarReadonly };
+            const string CALENDAR_ID = "4uesds7cl60f2g9grtq376q67k@group.calendar.google.com";
+            var eventsViewModelList = new List<EventDisplayViewModel>();
+            var path = Server.MapPath(@"~/Content/GoogleCalendar/Kentucky HBPA Website Calendar-5072c6abaf14.json");
+            ServiceAccountCredential credential;
 
-            string credPath = stream.Name;
 
+            using (var stream =
+                new FileStream(path, FileMode.Open, FileAccess.Read))
+            {
 
+                var credPath = stream.Name;
+                var json = System.IO.File.ReadAllText(credPath);
+                var serviceAccount = JsonConvert.DeserializeObject<GoogleCalendarServiceAccount>(json);
+
+                credential = new ServiceAccountCredential
+                    (
+                        new ServiceAccountCredential.Initializer(serviceAccount.Client_email)
+                        {
+                            Scopes = SCOPES
+                        }.FromPrivateKey(serviceAccount.Private_key)
+                    );
+            }
+
+            var calendarService = new CalendarService(new BaseClientService.Initializer()
+            {
+                HttpClientInitializer = credential
+            });
+
+            EventsResource.ListRequest request = calendarService.Events.List(CALENDAR_ID);
+            request.TimeMin = DateTime.Now;
+            request.ShowDeleted = false;
+            request.SingleEvents = true;
+            request.MaxResults = 6;
+            request.OrderBy = EventsResource.ListRequest.OrderByEnum.StartTime;
+
+            var events = request.Execute();
+
+            if (events.Items != null && events.Items.Count > 0)
+            {
+                foreach (var eventItem in events.Items)
+                {
+                    var eventVM = new EventDisplayViewModel()
+                    {
+                        Title = eventItem.Summary,
+                        Description = eventItem.Description,
+                        StartDate = eventItem.Start.Date,
+                        StartTime = eventItem.Start.DateTime.ToString()
+                    };
+
+                    if (eventItem.EndTimeUnspecified != null && eventItem.EndTimeUnspecified != false)
+                    {
+                        eventVM.EndDate = eventItem.End.Date;
+                        eventVM.EndTime = eventItem.End.DateTime.ToString();
+                    }
+
+                    eventsViewModelList.Add(eventVM);
+                }
+            }
+
+            return View(eventsViewModelList);
         }
 
-        return ActionResult();
     }
 }
