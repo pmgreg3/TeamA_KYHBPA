@@ -772,6 +772,10 @@ textarea {
         padding-right: unset;
     }
 
+    .row{
+        margin-right:unset;
+    }
+
 
     /*Bod Page*/
     .boardOfDirectorsImagePopUp {
