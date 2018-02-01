@@ -8,8 +8,8 @@ namespace KYHBPA_TeamA.Models
 {
     public class AddPhotoViewModel
     {
-        public string Description { get; set; }
         public string Title { get; set; }
+        public string Description { get; set; }
         public string Link { get; set; }
 
         [DisplayName("Landing Page Carousel")]
@@ -21,6 +21,7 @@ namespace KYHBPA_TeamA.Models
         [DisplayName("Photo Gallery")]
         public bool InPhotoGallery { get; set; }
         public HttpPostedFileBase Image { get; set; } = null;
+        public string Credit { get; set; }
     }
 
     public class DisplayPhotosViewModel
