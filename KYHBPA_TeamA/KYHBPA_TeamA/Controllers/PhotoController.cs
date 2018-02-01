@@ -187,6 +187,7 @@ namespace KYHBPA_TeamA.Controllers
                         InLandingPageCarousel = addViewModel.InLandingPageCarousel,
                         InPartnerOrgCarousel = addViewModel.InPartnerOrgCarousel,
                         InPhotoGallery = addViewModel.InPhotoGallery,
+                        Credit = addViewModel.Credit,
                         MimeType = image.ContentType
                     };
                     image.InputStream.Read(photo.PhotoData, 0, image.ContentLength);
