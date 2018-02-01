@@ -44,15 +44,11 @@ namespace KYHBPA_TeamA.Controllers
             var photoViewModels = db.Photos.Select(p => new DisplayPhotosViewModel()
             {
                 Id = p.PhotoID,
-                Data = p.PhotoData,
                 Description = p.PhotoDesc,
                 Title = p.PhotoTitle,
-                InLandingPageCarousel = p.InLandingPageCarousel,
-                InPartnerOrgCarousel = p.InPartnerOrgCarousel,
-                InPhotoGallery = p.InPhotoGallery,
                 Date = p.TimeStamp,
                 Link = p.Link
-            }).Where(x => x.InLandingPageCarousel == false && x.InPartnerOrgCarousel == false);
+            }).Where(x => x.InPhotoGallery == true);
 
             if (!String.IsNullOrEmpty(searchString))
             {
@@ -88,7 +84,6 @@ namespace KYHBPA_TeamA.Controllers
             var newPhoto = new DisplayPhotosViewModel()
             {
                 Id = photo.PhotoID,
-                Data = photo.PhotoData,
                 Description = photo.PhotoDesc,
                 Title = photo.PhotoTitle,
                 Date = photo.TimeStamp
@@ -119,7 +114,6 @@ namespace KYHBPA_TeamA.Controllers
             var photoViewModels = db.Photos.Select(p => new DisplayPhotosViewModel()
             {
                 Id = p.PhotoID,
-                Data = p.PhotoData,
                 Description = p.PhotoDesc,
                 ShorterDescription = p.PhotoDesc.Substring(0,150) + "...",
                 Title = p.PhotoTitle,
