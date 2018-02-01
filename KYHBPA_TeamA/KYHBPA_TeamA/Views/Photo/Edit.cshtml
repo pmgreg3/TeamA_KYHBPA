@@ -43,7 +43,25 @@
             </div>
         </div>
 
-        @* InPhotoGallery *@
+        @* InLandingPageCarousel *@
+        <div class="form-group common-BodyText">
+            @Html.LabelFor(model => model.InLandingPageCarousel, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-1">
+                @Html.EditorFor(model => model.InLandingPageCarousel, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.InLandingPageCarousel, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        @* IsPartnerOrg *@
+        <div class="form-group common-BodyText">
+            @Html.LabelFor(model => model.InPartnerOrgCarousel, htmlAttributes: new { @class = "control-label col-md-2"})
+            <div class="col-md-1">
+                @Html.EditorFor(model => model.InPartnerOrgCarousel, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.InPartnerOrgCarousel, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        @* Photo Gallery *@
         <div class="form-group common-BodyText">
             @Html.LabelFor(model => model.InPhotoGallery, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-1">
@@ -52,14 +70,6 @@
             </div>
         </div>
 
-        @* IsPartnerOrg *@
-        <div class="form-group common-BodyText">
-            @Html.LabelFor(model => model.IsPartnerOrg, htmlAttributes: new { @class = "control-label col-md-2"})
-            <div class="col-md-1">
-                @Html.EditorFor(model => model.IsPartnerOrg, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.IsPartnerOrg, "", new { @class = "text-danger" })
-            </div>
-        </div>
 
         @* Link *@
         <div class="form-group common-BodyText">
