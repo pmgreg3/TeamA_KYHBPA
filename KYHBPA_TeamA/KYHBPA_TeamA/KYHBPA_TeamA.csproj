@@ -298,6 +298,10 @@
     <Compile Include="Migrations\201802011000358_AddingInPhotoGalleryPropertyToPhotoDomainModel.Designer.cs">
       <DependentUpon>201802011000358_AddingInPhotoGalleryPropertyToPhotoDomainModel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201802011122229_AddingCreditToPhotoDomainModel.cs" />
+    <Compile Include="Migrations\201802011122229_AddingCreditToPhotoDomainModel.Designer.cs">
+      <DependentUpon>201802011122229_AddingCreditToPhotoDomainModel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Blog.cs" />
@@ -774,6 +778,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201802011000358_AddingInPhotoGalleryPropertyToPhotoDomainModel.resx">
       <DependentUpon>201802011000358_AddingInPhotoGalleryPropertyToPhotoDomainModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201802011122229_AddingCreditToPhotoDomainModel.resx">
+      <DependentUpon>201802011122229_AddingCreditToPhotoDomainModel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
