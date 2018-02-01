@@ -6,6 +6,38 @@
 }
 
 <h2 class="common-Uppercase">Create Photo</h2>
+<div class="jumbotron common-BodyText"> 
+    <h4>
+        Follow these guidelines when uploading images to the website.
+    </h4>
+    <p>
+        If the image is for the Landing Page Carousel:
+        <ul>
+            <li>
+                Dimension is 1920 x 800
+            </li>
+            <li>
+                The description is what is displayed on the banner of the carousel image;
+                so ensure that it isn't too long.
+            </li>
+        </ul>
+
+        If the image is a Partner Organization:
+        <ul>
+            <li>
+                Dimension is 125 x 125
+            </li>
+            <li>
+                If using a link, the link must begin with "http://www." and end with ".com".
+            </li>
+        </ul>
+
+
+        All images uploaded to the website should be compressed beforehand
+        so it is optimized for web use.
+    </p>
+</div>
+
 
 
 @using (Html.BeginForm("Create","Photo",FormMethod.Post, new { enctype = "multipart/form-data"}))
@@ -13,7 +45,6 @@
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal common-BodyText">
-        <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
         @* Title *@

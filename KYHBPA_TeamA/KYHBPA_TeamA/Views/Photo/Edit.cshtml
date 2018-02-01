@@ -6,15 +6,46 @@
 }
 
 <h2 class="common-Uppercase">Edit Photo</h2>
-<h4 class="common-LargerBodyText">@Html.DisplayTextFor(model => model.Title)</h4>
+
+<div class="jumbotron common-BodyText">
+    <h3>
+        Follow these guidelines when uploading images to the website.
+    </h3>
+    <p>
+        If the image is for the Landing Page Carousel:
+        <ul>
+            <li>
+                Dimension is 1920 x 800
+            </li>
+            <li>
+                The description is what is displayed on the banner of the carousel image;
+                so ensure that it isn't too long.
+            </li>
+        </ul>
+
+        If the image is a Partner Organization:
+        <ul>
+            <li>
+                Dimension is 125 x 125
+            </li>
+            <li>
+                If using a link, the link must begin with "http://www." and end with ".com".
+            </li>
+        </ul>
+
+
+        All images uploaded to the website should be compressed beforehand
+        so it is optimized for web use.
+    </p>
+</div>
+
 
 @using (Html.BeginForm("Edit", "Photo", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <hr />
-            @* This is where a thumbnail call would go*@
+        @* This is where a thumbnail call would go*@
             <div class="editImageArea">
                 <img class="img-thumbnail"; src="@Url.Action("GetPhoto", "Photo", new { Model.Id })" />
             </div>
