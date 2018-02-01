@@ -805,7 +805,11 @@ textarea {
 
     /* Landing Page carousel */
     .carousel-caption {
-        font-size: 3rem;
+        font-size: 2.5rem;
+    }
+
+    .carousel-credit{
+        display:none;
     }
 
     /* News and blogs */
