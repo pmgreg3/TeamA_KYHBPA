@@ -180,8 +180,8 @@ namespace KYHBPA_TeamA.Controllers
                         PhotoData = new byte[image.ContentLength],
                         PhotoTitle = addViewModel.Title,
                         Link = addViewModel.Link,
-                        InLandingPageCarousel = addViewModel.InPhotoGallery,
-                        InPartnerOrgCarousel = addViewModel.IsPartnerOrg,
+                        InLandingPageCarousel = addViewModel.InLandingPageCarousel,
+                        InPartnerOrgCarousel = addViewModel.InPartnerOrgCarousel,
                         MimeType = image.ContentType
                     };
                     image.InputStream.Read(photo.PhotoData, 0, image.ContentLength);

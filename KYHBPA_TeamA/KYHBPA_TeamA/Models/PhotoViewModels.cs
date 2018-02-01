@@ -10,8 +10,9 @@ namespace KYHBPA_TeamA.Models
         public string Description { get; set; }
         public string Title { get; set; }
         public string Link { get; set; }
+        public bool InLandingPageCarousel { get; set; }
+        public bool InPartnerOrgCarousel { get; set; }
         public bool InPhotoGallery { get; set; }
-        public bool IsPartnerOrg { get; set; }
         public HttpPostedFileBase Image { get; set; } = null;
     }
 
