@@ -53,6 +53,9 @@
             Description
         </th>
         <th>
+            Credit
+        </th>
+        <th>
             @Html.ActionLink("Date", "Admin", new { sortOrder = ViewBag.DateSortParm, currentFilter = ViewBag.CurrentFilter })
         </th>
         <th>
@@ -73,13 +76,15 @@
                 <div class="pull-left" style="margin-right: 10px">
                     <img class="img-thumbnail" width="100" height="100" src="@Url.Action("GetPhoto","Photo",new { item.Id })" />
                 </div>
-
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Title)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.ShorterDescription)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Credit)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Date)
