@@ -9,7 +9,19 @@
 {
     <div class="alert alert-success">@TempData["message"]</div>
 }
-<h2 class="common-Uppercase text-center">Photos - Administrator View</h2>
+
+
+<section class="jumbotron text-center">
+    <div class="container">
+        <h2 class="common-Uppercase text-center">
+            Photos - Administrator View
+        </h2>
+        <p class="text-muted">
+            Administrators can view, edit, and delete photos in the landing page carousel, photo gallery,
+            and the partner organization carousel. 
+        </p>
+    </div>
+</section>
 
 
 @using (Html.BeginForm("Admin", "Photo", FormMethod.Get))
@@ -41,13 +53,19 @@
             Description
         </th>
         <th>
+            Credit
+        </th>
+        <th>
             @Html.ActionLink("Date", "Admin", new { sortOrder = ViewBag.DateSortParm, currentFilter = ViewBag.CurrentFilter })
         </th>
         <th>
-            Photo Gallery
+            Landing Page Carousel
         </th>
         <th>
-            Partner Organization
+            Partner Organization Carousel
+        </th>
+        <th>
+            Photo Gallery
         </th>
     </tr>
 
@@ -55,12 +73,9 @@
     {
         <tr>
             <td>
-                @if (item.Data != null)
-                {
-                    <div class="pull-left" style="margin-right: 10px">
-                        <img class="img-thumbnail" width="100" height="100" src="@Url.Action("GetPhoto","Photo",new { item.Id })" />
-                    </div>
-                }
+                <div class="pull-left" style="margin-right: 10px">
+                    <img class="img-thumbnail" width="100" height="100" src="@Url.Action("GetPhoto","Photo",new { item.Id })" />
+                </div>
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Title)
@@ -69,13 +84,19 @@
                 @Html.DisplayFor(modelItem => item.ShorterDescription)
             </td>
             <td>
+                @Html.DisplayFor(modelItem => item.Credit)
+            </td>
+            <td>
                 @Html.DisplayFor(modelItem => item.Date)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.InPhotoGallery)
+                @Html.DisplayFor(modelItem => item.InLandingPageCarousel)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.IsPartnerOrg)
+                @Html.DisplayFor(modelItem => item.InPartnerOrgCarousel)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.InPhotoGallery)
             </td>
             <td>
                 @Html.ActionLink("Edit", "Edit", new { item.Id }) |

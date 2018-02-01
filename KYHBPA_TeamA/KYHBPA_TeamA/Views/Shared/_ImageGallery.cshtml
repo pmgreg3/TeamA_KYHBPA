@@ -28,17 +28,22 @@
             if (i == 0)
             {
                 <div class="item active">
-                    <h1 class="carousel-caption">@Model.Photos.ElementAt(i).Description
+                    <h1 class="carousel-caption">
+                        @Model.Photos.ElementAt(i).Description
                     </h1>
                     <img src="@Url.Action("GetPhoto", "Photo", new { Model.Photos.ElementAt(i).Id })" />
+                    <p class="carousel-credit">@Model.Photos.ElementAt(i).Credit</p>
                 </div>
             }
             if (i != 0)
             {
                 <div class="item ">
-                    <h1 class="carousel-caption">@Model.Photos.ElementAt(i).Description
+                    <h1 class="carousel-caption">
+                        @Model.Photos.ElementAt(i).Description
                     </h1>
                     <img src="@Url.Action("GetPhoto", "Photo", new { Model.Photos.ElementAt(i).Id })"  />
+                    <p class="carousel-credit">@Model.Photos.ElementAt(i).Credit</p>
+
                 </div>
             }
          }

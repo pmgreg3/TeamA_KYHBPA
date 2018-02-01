@@ -220,6 +220,16 @@
     font-weight: 300;
 }
 
+.carousel-credit {
+    background: rgba(0,0,0,0.4);
+    font-family: Camphor,Open Sans,Segoe UI,sans-serif;
+    font-weight: 300;
+    z-index: 10;
+    position: absolute;
+    bottom: 0;
+    color: #ffffffba;
+}
+
 .input {
     max-width: none !important;
 }
@@ -728,6 +738,10 @@ textarea {
     box-shadow: 8px 8px 20px 0px #0000006b;
 }
 
+.photoRow{
+    margin-bottom:15px;
+}
+
 /* Mobile Response */
 @media (max-width:670px) {
     #becomeAMember {
@@ -795,7 +809,11 @@ textarea {
 
     /* Landing Page carousel */
     .carousel-caption {
-        font-size: 3rem;
+        font-size: 2.5rem;
+    }
+
+    .carousel-credit{
+        display:none;
     }
 
     /* News and blogs */

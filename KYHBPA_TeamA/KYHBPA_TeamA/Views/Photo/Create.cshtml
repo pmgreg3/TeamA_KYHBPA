@@ -6,6 +6,38 @@
 }
 
 <h2 class="common-Uppercase">Create Photo</h2>
+<div class="jumbotron common-BodyText"> 
+    <h4>
+        Follow these guidelines when uploading images to the website.
+    </h4>
+    <p>
+        If the image is for the Landing Page Carousel:
+        <ul>
+            <li>
+                Dimension is 1920 x 800
+            </li>
+            <li>
+                The description is what is displayed on the banner of the carousel image;
+                so ensure that it isn't too long.
+            </li>
+        </ul>
+
+        If the image is a Partner Organization:
+        <ul>
+            <li>
+                Dimension is 125 x 125
+            </li>
+            <li>
+                If using a link, the link must begin with "http://www." and end with ".com".
+            </li>
+        </ul>
+
+
+        All images uploaded to the website should be compressed beforehand
+        so it is optimized for web use.
+    </p>
+</div>
+
 
 
 @using (Html.BeginForm("Create","Photo",FormMethod.Post, new { enctype = "multipart/form-data"}))
@@ -13,7 +45,6 @@
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal common-BodyText">
-        <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
         @* Title *@
@@ -34,6 +65,24 @@
             </div>
         </div>
 
+        @* InLandingPageCarousel *@
+        <div class="form-group common-BodyText">
+            @Html.LabelFor(model => model.InLandingPageCarousel, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-1">
+                @Html.EditorFor(model => model.InLandingPageCarousel, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.InLandingPageCarousel, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        @* IsPartnerOrg *@
+        <div class="form-group common-BodyText">
+            @Html.LabelFor(model => model.InPartnerOrgCarousel, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-1">
+                @Html.EditorFor(model => model.InPartnerOrgCarousel, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.InPartnerOrgCarousel, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
         @* InPhotoGallery *@
         <div class="form-group common-BodyText">
             @Html.LabelFor(model => model.InPhotoGallery, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -43,21 +92,21 @@
             </div>
         </div>
 
-        @* IsPartnerOrg *@
-        <div class="form-group common-BodyText">
-            @Html.LabelFor(model => model.IsPartnerOrg, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-1">
-                @Html.EditorFor(model => model.IsPartnerOrg, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.IsPartnerOrg, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
         @* Link *@
         <div class="form-group common-BodyText">
             @Html.LabelFor(model => model.Link, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Link, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Link, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        @* Credit *@
+        <div class="form-group common-BodyText">
+            @Html.LabelFor(model => model.Credit, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Credit, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Credit, "", new { @class = "text-danger" })
             </div>
         </div>
 

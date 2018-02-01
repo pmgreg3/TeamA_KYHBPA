@@ -1,4 +1,4 @@
-﻿@model KYHBPA_TeamA.Models.EditPhotosViewModel
+﻿@model KYHBPA_TeamA.Models.EditPhotoViewModel
 
 @{
     ViewBag.Title = "Edit";
@@ -6,21 +6,58 @@
 }
 
 <h2 class="common-Uppercase">Edit Photo</h2>
-<h4 class="common-LargerBodyText">@Html.DisplayTextFor(model => model.Title)</h4>
+
+<div class="jumbotron common-BodyText">
+    <h3>
+        Follow these guidelines when uploading images to the website.
+    </h3>
+    <p>
+        If the image is for the Landing Page Carousel:
+        <ul>
+            <li>
+                Dimension is 1920 x 800
+            </li>
+            <li>
+                The description is what is displayed on the banner of the carousel image;
+                so ensure that it isn't too long.
+            </li>
+        </ul>
+
+        If the image is a Partner Organization:
+        <ul>
+            <li>
+                Dimension is 125 x 125
+            </li>
+            <li>
+                If using a link, the link must begin with "http://www." and end with ".com".
+            </li>
+        </ul>
+
+        All images:
+        <ul>
+            <li>
+                All images uploaded to the website should be compressed beforehand
+                so it is optimized for web use.  
+            </li>
+            <li>
+                After editing an image by changing the file uploaded, it may take up to 30 minutes
+                to reflect the change. 
+            </li>
+        </ul>
+
+    </p>
+</div>
+
 
 @using (Html.BeginForm("Edit", "Photo", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <hr />
-        @if (Model.Data != null)
-        {
-            @* This is where a thumbnail call would go*@
+        @* This is where a thumbnail call would go*@
             <div class="editImageArea">
                 <img class="img-thumbnail"; src="@Url.Action("GetPhoto", "Photo", new { Model.Id })" />
             </div>
-        }
 
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.Id)
@@ -43,7 +80,25 @@
             </div>
         </div>
 
-        @* InPhotoGallery *@
+        @* InLandingPageCarousel *@
+        <div class="form-group common-BodyText">
+            @Html.LabelFor(model => model.InLandingPageCarousel, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-1">
+                @Html.EditorFor(model => model.InLandingPageCarousel, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.InLandingPageCarousel, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        @* IsPartnerOrg *@
+        <div class="form-group common-BodyText">
+            @Html.LabelFor(model => model.InPartnerOrgCarousel, htmlAttributes: new { @class = "control-label col-md-2"})
+            <div class="col-md-1">
+                @Html.EditorFor(model => model.InPartnerOrgCarousel, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.InPartnerOrgCarousel, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        @* Photo Gallery *@
         <div class="form-group common-BodyText">
             @Html.LabelFor(model => model.InPhotoGallery, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-1">
@@ -52,14 +107,6 @@
             </div>
         </div>
 
-        @* IsPartnerOrg *@
-        <div class="form-group common-BodyText">
-            @Html.LabelFor(model => model.IsPartnerOrg, htmlAttributes: new { @class = "control-label col-md-2"})
-            <div class="col-md-1">
-                @Html.EditorFor(model => model.IsPartnerOrg, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.IsPartnerOrg, "", new { @class = "text-danger" })
-            </div>
-        </div>
 
         @* Link *@
         <div class="form-group common-BodyText">
@@ -67,6 +114,15 @@
             <div class="col-md-5">
                 @Html.EditorFor(model => model.Link, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Link, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        @* Credit *@
+        <div class="form-group common-BodyText">
+            @Html.LabelFor(model => model.Credit, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-5">
+                @Html.EditorFor(model => model.Credit, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Credit, "", new { @class = "text-danger" })
             </div>
         </div>
 
