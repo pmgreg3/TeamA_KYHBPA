@@ -353,7 +353,8 @@ namespace KYHBPA_TeamA.Controllers
                     Id = i.PhotoID,
                     Data = i.PhotoData,
                     Description = i.PhotoDesc,
-                    Title = i.PhotoTitle
+                    Title = i.PhotoTitle,
+                    Credit = i.Credit
                 };
                 vm.Photos.Add(photoToAdd);
             }
