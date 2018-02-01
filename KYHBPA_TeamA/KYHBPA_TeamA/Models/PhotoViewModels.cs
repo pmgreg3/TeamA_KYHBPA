@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Web;
 
@@ -10,8 +11,14 @@ namespace KYHBPA_TeamA.Models
         public string Description { get; set; }
         public string Title { get; set; }
         public string Link { get; set; }
+
+        [DisplayName("Landing Page Carousel")]
         public bool InLandingPageCarousel { get; set; }
+
+        [DisplayName("Partner Org Carousel")]
         public bool InPartnerOrgCarousel { get; set; }
+
+        [DisplayName("Photo Gallery")]
         public bool InPhotoGallery { get; set; }
         public HttpPostedFileBase Image { get; set; } = null;
     }
@@ -30,10 +37,10 @@ namespace KYHBPA_TeamA.Models
         public string Link { get; set; }
     }
 
-    public class EditPhotosViewModel : DisplayPhotosViewModel
+    public class EditPhotoViewModel : AddPhotoViewModel
     {
-        public HttpPostedFileBase Image { get; set; } = null;
-
+        public int Id { get; set; }
+        public DateTime Date { get; set; }
     }
 
     public class DisplayPartnerOrgViewModel: DisplayPhotosViewModel

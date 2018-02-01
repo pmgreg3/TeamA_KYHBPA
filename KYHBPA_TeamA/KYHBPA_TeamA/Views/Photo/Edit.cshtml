@@ -1,4 +1,4 @@
-﻿@model KYHBPA_TeamA.Models.EditPhotosViewModel
+﻿@model KYHBPA_TeamA.Models.EditPhotoViewModel
 
 @{
     ViewBag.Title = "Edit";
@@ -14,13 +14,10 @@
     
     <div class="form-horizontal">
         <hr />
-        @if (Model.Data != null)
-        {
             @* This is where a thumbnail call would go*@
             <div class="editImageArea">
                 <img class="img-thumbnail"; src="@Url.Action("GetPhoto", "Photo", new { Model.Id })" />
             </div>
-        }
 
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.Id)

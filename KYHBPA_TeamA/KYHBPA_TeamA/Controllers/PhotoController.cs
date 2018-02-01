@@ -186,6 +186,7 @@ namespace KYHBPA_TeamA.Controllers
                         Link = addViewModel.Link,
                         InLandingPageCarousel = addViewModel.InLandingPageCarousel,
                         InPartnerOrgCarousel = addViewModel.InPartnerOrgCarousel,
+                        InPhotoGallery = addViewModel.InPhotoGallery,
                         MimeType = image.ContentType
                     };
                     image.InputStream.Read(photo.PhotoData, 0, image.ContentLength);
@@ -213,13 +214,12 @@ namespace KYHBPA_TeamA.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
 
             var photo = db.Photos.Find(id);
-            var vm = new EditPhotosViewModel()
+            var vm = new EditPhotoViewModel()
             {
                 Id = photo.PhotoID,
                 Date = photo.TimeStamp,
                 Description = photo.PhotoDesc,
                 Title = photo.PhotoTitle,
-                Data = photo.PhotoData,
                 InLandingPageCarousel = photo.InLandingPageCarousel,
                 InPartnerOrgCarousel = photo.InPartnerOrgCarousel,
                 InPhotoGallery = photo.InPhotoGallery,
@@ -235,7 +235,7 @@ namespace KYHBPA_TeamA.Controllers
         // POST: Photo/Edit/5
         [Authorize(Roles = "Admin")]
         [HttpPost]
-        public ActionResult Edit(EditPhotosViewModel photoVM, FormCollection collection, HttpPostedFileBase image = null)
+        public ActionResult Edit(EditPhotoViewModel photoVM, FormCollection collection, HttpPostedFileBase image = null)
         {
             try
             {
