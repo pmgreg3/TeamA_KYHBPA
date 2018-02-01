@@ -47,8 +47,8 @@ namespace KYHBPA_TeamA.Controllers
                 Data = p.PhotoData,
                 Description = p.PhotoDesc,
                 Title = p.PhotoTitle,
-                InPhotoGallery = p.InPhotoGallery,
-                IsPartnerOrg = p.IsPartnerOrg,
+                InPhotoGallery = p.InLandingPageCarousel,
+                IsPartnerOrg = p.InPartnerOrgCarousel,
                 Date = p.TimeStamp,
                 Link = p.Link
             }).Where(x => x.InPhotoGallery == false && x.IsPartnerOrg == false);
@@ -123,8 +123,8 @@ namespace KYHBPA_TeamA.Controllers
                 ShorterDescription = p.PhotoDesc.Substring(0,150) + "...",
                 Title = p.PhotoTitle,
                 Date = p.TimeStamp,
-                InPhotoGallery = p.InPhotoGallery,
-                IsPartnerOrg = p.IsPartnerOrg
+                InPhotoGallery = p.InLandingPageCarousel,
+                IsPartnerOrg = p.InPartnerOrgCarousel
             });
 
             if (!String.IsNullOrEmpty(searchString))
@@ -178,8 +178,8 @@ namespace KYHBPA_TeamA.Controllers
                         PhotoData = new byte[image.ContentLength],
                         PhotoTitle = addViewModel.Title,
                         Link = addViewModel.Link,
-                        InPhotoGallery = addViewModel.InPhotoGallery,
-                        IsPartnerOrg = addViewModel.IsPartnerOrg,
+                        InLandingPageCarousel = addViewModel.InPhotoGallery,
+                        InPartnerOrgCarousel = addViewModel.IsPartnerOrg,
                         MimeType = image.ContentType
                     };
                     image.InputStream.Read(photo.PhotoData, 0, image.ContentLength);
@@ -214,8 +214,8 @@ namespace KYHBPA_TeamA.Controllers
                 Description = photo.PhotoDesc,
                 Title = photo.PhotoTitle,
                 Data = photo.PhotoData,
-                InPhotoGallery = photo.InPhotoGallery,
-                IsPartnerOrg = photo.IsPartnerOrg,
+                InPhotoGallery = photo.InLandingPageCarousel,
+                IsPartnerOrg = photo.InPartnerOrgCarousel,
                 Link = photo.Link
             };
 
@@ -238,8 +238,8 @@ namespace KYHBPA_TeamA.Controllers
                     if (photoToUpdate != null)
                     {
                         photoToUpdate.PhotoDesc = photoVM.Description;
-                        photoToUpdate.InPhotoGallery = photoVM.InPhotoGallery;
-                        photoToUpdate.IsPartnerOrg = photoVM.IsPartnerOrg;
+                        photoToUpdate.InLandingPageCarousel = photoVM.InPhotoGallery;
+                        photoToUpdate.InPartnerOrgCarousel = photoVM.IsPartnerOrg;
                         photoToUpdate.PhotoTitle = photoVM.Title;
                         photoToUpdate.Link = photoVM.Link;
                     }
@@ -333,7 +333,7 @@ namespace KYHBPA_TeamA.Controllers
             {
                 Photos = new List<DisplayPhotosViewModel>()
             };
-            var photos = db.Photos.Where(x => x.InPhotoGallery == true);
+            var photos = db.Photos.Where(x => x.InLandingPageCarousel == true);
 
             foreach (var i in photos)
             {
@@ -360,8 +360,8 @@ namespace KYHBPA_TeamA.Controllers
             };
 
 
-            var photos = db.Photos.Where(x => x.IsPartnerOrg == true).OrderBy(x => x.TimeStamp);
-            var totalNumOfPartners = db.Photos.Where(x => x.IsPartnerOrg == true).Count();
+            var photos = db.Photos.Where(x => x.InPartnerOrgCarousel == true).OrderBy(x => x.TimeStamp);
+            var totalNumOfPartners = db.Photos.Where(x => x.InPartnerOrgCarousel == true).Count();
             var numOfSlides = Math.Ceiling((double)totalNumOfPartners / NUM_ITEMS_IN_SLIDE);
 
             for(int i = 0; i < numOfSlides; i++)
