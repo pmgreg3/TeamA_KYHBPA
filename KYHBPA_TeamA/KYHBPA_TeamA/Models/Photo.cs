@@ -17,5 +17,6 @@ namespace KYHBPA_TeamA.Models
         public bool InPartnerOrgCarousel { get; set; }
         public bool InPhotoGallery { get; set; }
         public string Link { get; set; }
+        public string Credit { get; set; }
     }
 }
