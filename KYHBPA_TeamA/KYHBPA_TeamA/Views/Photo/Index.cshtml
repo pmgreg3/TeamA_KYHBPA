@@ -28,35 +28,44 @@
 }
 
 
-
-@for(int i = 0; i <= Model.Count() / 3; i++)
+@if (Model != null)
 {
-    <div class="row photoRow">
+    for (int i = 0; i <= Model.Count() / 3; i++)
+    {
+        <div class="row photoRow">
 
-        @foreach(var photo in Model.Skip(i * 3).Take(3))
-        {
-            <div class="col-md-4 photoCard">
-                <div class="thumbnail">
-                    <img class="photoCardImage" src="@Url.Action("GetPhoto","Photo",new { photo.Id })" />
-                    <h4>
-                        @photo.Title
-                    </h4>
-                    <div class="caption">
-                        @photo.Description
+            @foreach (var photo in Model.Skip(i * 3).Take(3))
+            {
+                <div class="col-md-4 photoCard">
+                    <div class="thumbnail">
+                        <img class="photoCardImage" src="@Url.Action("GetPhoto","Photo",new { photo.Id })" />
+                        <h4>
+                            @photo.Title
+                        </h4>
+                        <div class="caption">
+                            @photo.Description
+                        </div>
+
                     </div>
-
                 </div>
-            </div>
-        }
+            }
+        </div>
+        <br />
+        <div class="text-center">
+            Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
 
-    </div>
+            @Html.PagedListPager(Model, page => Url.Action("Index",
+    new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+        </div>
+    }
+}
+else
+{
+    <p>
+        There are no photos at this time.
+    </p>
 }
 
-<br />
-<div class="text-center">
-    Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
 
-    @Html.PagedListPager(Model, page => Url.Action("Index",
-    new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
-</div>
+
 

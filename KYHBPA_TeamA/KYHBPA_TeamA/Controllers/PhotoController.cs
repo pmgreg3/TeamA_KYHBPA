@@ -47,34 +47,44 @@ namespace KYHBPA_TeamA.Controllers
                 Description = p.PhotoDesc,
                 Title = p.PhotoTitle,
                 Date = p.TimeStamp,
+                InPhotoGallery = p.InPhotoGallery,
                 Link = p.Link
-            }).Where(x => x.InPhotoGallery == true);
+            }).Where(x => x.InPhotoGallery);
 
             if (!String.IsNullOrEmpty(searchString))
             {
                 photoViewModels = photoViewModels.Where(p => p.Title.Contains(searchString)
                                        || p.Description.Contains(searchString));
             }
-            switch (sortOrder)
+
+            if (photoViewModels.Count() > 0)
             {
-                case "title_desc":
-                    photoViewModels = photoViewModels.OrderByDescending(s => s.Title);
-                    break;
-                case "Date":
-                    photoViewModels = photoViewModels.OrderBy(s => s.Date);
-                    break;
-                case "date_desc":
-                    photoViewModels = photoViewModels.OrderByDescending(s => s.Date);
-                    break;
-                default:  // Title ascending 
-                    photoViewModels = photoViewModels.OrderBy(s => s.Title);
-                    break;
+                switch (sortOrder)
+                {
+                    case "title_desc":
+                        photoViewModels = photoViewModels.OrderByDescending(s => s.Title);
+                        break;
+                    case "Date":
+                        photoViewModels = photoViewModels.OrderBy(s => s.Date);
+                        break;
+                    case "date_desc":
+                        photoViewModels = photoViewModels.OrderByDescending(s => s.Date);
+                        break;
+                    default:  // Title ascending 
+                        photoViewModels = photoViewModels.OrderBy(s => s.Title);
+                        break;
+                }
+
+
+                int pageSize = 9;
+                int pageNumber = (page ?? 1);
+                return View(photoViewModels.ToPagedList(pageNumber, pageSize));
+            }
+            else
+            {
+                return View();
             }
 
-
-            int pageSize = 9;
-            int pageNumber = (page ?? 1);
-            return View(photoViewModels.ToPagedList(pageNumber, pageSize));
         }
 
         // GET: Photo/Details/5
