@@ -15,6 +15,7 @@ namespace KYHBPA_TeamA.Models
         public string MimeType { get; set; }
         public bool InLandingPageCarousel { get; set; }
         public bool InPartnerOrgCarousel { get; set; }
+        public bool InPhotoGallery { get; set; }
         public string Link { get; set; }
     }
 }
