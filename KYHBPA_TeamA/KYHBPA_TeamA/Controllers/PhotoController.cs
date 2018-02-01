@@ -224,7 +224,8 @@ namespace KYHBPA_TeamA.Controllers
                 InLandingPageCarousel = photo.InLandingPageCarousel,
                 InPartnerOrgCarousel = photo.InPartnerOrgCarousel,
                 InPhotoGallery = photo.InPhotoGallery,
-                Link = photo.Link
+                Link = photo.Link,
+                Credit = photo.Credit
             };
 
             if (photo == null)
@@ -251,6 +252,7 @@ namespace KYHBPA_TeamA.Controllers
                         photoToUpdate.InPhotoGallery = photoVM.InPhotoGallery;
                         photoToUpdate.PhotoTitle = photoVM.Title;
                         photoToUpdate.Link = photoVM.Link;
+                        photoToUpdate.Credit = photoVM.Credit;
                     }
 
                     if(image != null)
