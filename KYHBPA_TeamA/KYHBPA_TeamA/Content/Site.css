@@ -221,7 +221,7 @@
 }
 
 .carousel-credit {
-    background: #22232085;
+    background: rgba(0,0,0,0.4);
     font-family: Camphor,Open Sans,Segoe UI,sans-serif;
     font-weight: 300;
     z-index: 10;
