@@ -738,6 +738,10 @@ textarea {
     box-shadow: 8px 8px 20px 0px #0000006b;
 }
 
+.photoRow{
+    margin-bottom:15px;
+}
+
 /* Mobile Response */
 @media (max-width:670px) {
     #becomeAMember {
