@@ -13,9 +13,9 @@
     <img class="postReadMoreImage" src="@Url.Action("GetBlogOrNewsImage", "Blog", new { Model.Id })" />
 </div>
 
-<div class="postReadMoreDescription">
+<pre class="postReadMoreDescription">
     @Html.DisplayFor(model => model.Description)
-</div>
+</pre>
 
 <p>
     @Html.ActionLink("Back to List", "Index")
