@@ -220,6 +220,16 @@
     font-weight: 300;
 }
 
+.carousel-credit {
+    background: #22232085;
+    font-family: Camphor,Open Sans,Segoe UI,sans-serif;
+    font-weight: 300;
+    z-index: 10;
+    position: absolute;
+    bottom: 0;
+    color: #ffffffba;
+}
+
 .input {
     max-width: none !important;
 }

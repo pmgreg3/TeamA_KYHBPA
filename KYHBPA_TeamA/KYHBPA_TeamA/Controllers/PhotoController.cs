@@ -130,7 +130,8 @@ namespace KYHBPA_TeamA.Controllers
                 Date = p.TimeStamp,
                 InLandingPageCarousel = p.InLandingPageCarousel,
                 InPartnerOrgCarousel = p.InPartnerOrgCarousel,
-                InPhotoGallery = p.InPhotoGallery
+                InPhotoGallery = p.InPhotoGallery,
+                Credit = p.Credit
             });
 
             if (!String.IsNullOrEmpty(searchString))
