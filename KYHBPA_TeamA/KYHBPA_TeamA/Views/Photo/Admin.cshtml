@@ -9,7 +9,18 @@
 {
     <div class="alert alert-success">@TempData["message"]</div>
 }
-<h2 class="common-Uppercase text-center">Photos - Administrator View</h2>
+
+
+<section class="jumbotron text-center">
+    <div class="container">
+        <h2 class="common-Uppercase text-center">
+            Photos - Administrator View
+        </h2>
+        <p class="text-muted">
+            
+        </p>
+    </div>
+</section>
 
 
 @using (Html.BeginForm("Admin", "Photo", FormMethod.Get))
@@ -44,7 +55,7 @@
             @Html.ActionLink("Date", "Admin", new { sortOrder = ViewBag.DateSortParm, currentFilter = ViewBag.CurrentFilter })
         </th>
         <th>
-            Photo Gallery
+            Landing Page Carousel
         </th>
         <th>
             Partner Organization
