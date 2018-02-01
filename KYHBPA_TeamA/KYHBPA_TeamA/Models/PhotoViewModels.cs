@@ -23,8 +23,9 @@ namespace KYHBPA_TeamA.Models
         public string ShorterDescription { get; set; }
         public string Title { get; set; }
         public DateTime Date { get; set; }
+        public bool InLandingPageCarousel { get; set; }
+        public bool InPartnerOrgCarousel { get; set; }
         public bool InPhotoGallery { get; set; }
-        public bool IsPartnerOrg { get; set; }
         public string Link { get; set; }
     }
 

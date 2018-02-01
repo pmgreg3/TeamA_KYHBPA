@@ -47,11 +47,12 @@ namespace KYHBPA_TeamA.Controllers
                 Data = p.PhotoData,
                 Description = p.PhotoDesc,
                 Title = p.PhotoTitle,
-                InPhotoGallery = p.InLandingPageCarousel,
-                IsPartnerOrg = p.InPartnerOrgCarousel,
+                InLandingPageCarousel = p.InLandingPageCarousel,
+                InPartnerOrgCarousel = p.InPartnerOrgCarousel,
+                InPhotoGallery = p.InPhotoGallery,
                 Date = p.TimeStamp,
                 Link = p.Link
-            }).Where(x => x.InPhotoGallery == false && x.IsPartnerOrg == false);
+            }).Where(x => x.InLandingPageCarousel == false && x.InPartnerOrgCarousel == false);
 
             if (!String.IsNullOrEmpty(searchString))
             {
@@ -123,8 +124,9 @@ namespace KYHBPA_TeamA.Controllers
                 ShorterDescription = p.PhotoDesc.Substring(0,150) + "...",
                 Title = p.PhotoTitle,
                 Date = p.TimeStamp,
-                InPhotoGallery = p.InLandingPageCarousel,
-                IsPartnerOrg = p.InPartnerOrgCarousel
+                InLandingPageCarousel = p.InLandingPageCarousel,
+                InPartnerOrgCarousel = p.InPartnerOrgCarousel,
+                InPhotoGallery = p.InPhotoGallery
             });
 
             if (!String.IsNullOrEmpty(searchString))
@@ -214,8 +216,9 @@ namespace KYHBPA_TeamA.Controllers
                 Description = photo.PhotoDesc,
                 Title = photo.PhotoTitle,
                 Data = photo.PhotoData,
-                InPhotoGallery = photo.InLandingPageCarousel,
-                IsPartnerOrg = photo.InPartnerOrgCarousel,
+                InLandingPageCarousel = photo.InLandingPageCarousel,
+                InPartnerOrgCarousel = photo.InPartnerOrgCarousel,
+                InPhotoGallery = photo.InPhotoGallery,
                 Link = photo.Link
             };
 
@@ -238,8 +241,9 @@ namespace KYHBPA_TeamA.Controllers
                     if (photoToUpdate != null)
                     {
                         photoToUpdate.PhotoDesc = photoVM.Description;
-                        photoToUpdate.InLandingPageCarousel = photoVM.InPhotoGallery;
-                        photoToUpdate.InPartnerOrgCarousel = photoVM.IsPartnerOrg;
+                        photoToUpdate.InLandingPageCarousel = photoVM.InLandingPageCarousel;
+                        photoToUpdate.InPartnerOrgCarousel = photoVM.InPartnerOrgCarousel;
+                        photoToUpdate.InPhotoGallery = photoVM.InPhotoGallery;
                         photoToUpdate.PhotoTitle = photoVM.Title;
                         photoToUpdate.Link = photoVM.Link;
                     }
