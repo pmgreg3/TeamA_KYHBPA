@@ -17,7 +17,8 @@
             Photos - Administrator View
         </h2>
         <p class="text-muted">
-            
+            Administrators can view, edit, and delete photos in the landing page carousel, photo galler,
+            and the partner organization carousel. 
         </p>
     </div>
 </section>
@@ -58,7 +59,10 @@
             Landing Page Carousel
         </th>
         <th>
-            Partner Organization
+            Partner Organization Carousel
+        </th>
+        <th>
+            Photo Gallery
         </th>
     </tr>
 
@@ -87,6 +91,9 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.IsPartnerOrg)
+            </td>
+            <td>
+                @*displayfor item in photogallery*@
             </td>
             <td>
                 @Html.ActionLink("Edit", "Edit", new { item.Id }) |
