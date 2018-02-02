@@ -373,7 +373,7 @@ namespace KYHBPA_TeamA.Controllers
             };
 
 
-            var photos = db.Photos.Where(x => x.InPartnerOrgCarousel == true).OrderBy(x => x.TimeStamp);
+            var photos = db.Photos.Where(x => x.InPartnerOrgCarousel == true).OrderBy(x => x.PhotoTitle);
             var totalNumOfPartners = db.Photos.Where(x => x.InPartnerOrgCarousel == true).Count();
             var numOfSlides = Math.Ceiling((double)totalNumOfPartners / NUM_ITEMS_IN_SLIDE);
 
