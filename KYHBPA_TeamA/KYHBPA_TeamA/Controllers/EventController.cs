@@ -12,6 +12,8 @@ using Google.Apis.Services;
 using Google.Apis.Util.Store;
 using Newtonsoft.Json;
 using System.IO;
+using System.Text.RegularExpressions;
+using System.Globalization;
 
 namespace KYHBPA_TeamA.Controllers
 {
@@ -209,7 +211,7 @@ namespace KYHBPA_TeamA.Controllers
                         Title = eventItem.Summary,
                         Description = eventItem.Description,
                         StartDate = eventItem.Start.Date,
-                        StartTime = eventItem.Start.DateTime.ToString(),
+                        StartTime = ExtractDateTimeFromDateTimeRaw(eventItem.Start.DateTimeRaw),
                         Link = eventItem.HtmlLink,
                         Location = eventItem.Location
                     };
@@ -225,6 +227,18 @@ namespace KYHBPA_TeamA.Controllers
             }
 
             return View(eventsViewModelList);
+        }
+
+
+        public string ExtractDateTimeFromDateTimeRaw(string dateTimeRaw)
+        {
+            TimeZoneInfo timezone = TimeZoneInfo.FindSystemTimeZoneById("Eastern Standard Time");
+
+            var dateTime = Convert.ToDateTime(dateTimeRaw);
+            var dateTimeUTC = dateTime.ToUniversalTime();
+
+            var EST = TimeZoneInfo.ConvertTimeFromUtc(dateTimeUTC, timezone);
+            return EST.ToString();
         }
 
     }
