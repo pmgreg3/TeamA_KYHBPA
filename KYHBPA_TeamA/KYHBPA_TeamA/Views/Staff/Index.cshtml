@@ -27,7 +27,7 @@
                          data-placement="top"
                          title="Click to read bio."
                          alt="@member.FirstName @member.LastName"
-                         src="@Url.Action("GetBoDImage", "BoardOfDirectors", new { member.Id })" />
+                         src="@Url.Action("GetStaffMemberImage", "Staff", new { member.Id })" />
                 </a>
 
                 <h2 class="bodImageHeader">
@@ -41,7 +41,7 @@
                 </h5>
 
                 <div id="ex@(member.Id)" class="modal">
-                    <img class="boardOfDirectorsImagePopUp" src="@Url.Action("GetBoDImage", "BoardOfDirectors", new { member.Id })" />
+                    <img class="boardOfDirectorsImagePopUp" src="@Url.Action("GetStaffMemberImage", "Staff", new { member.Id })" />
                     <h1>
                         @member.FirstName @member.LastName
                     </h1>

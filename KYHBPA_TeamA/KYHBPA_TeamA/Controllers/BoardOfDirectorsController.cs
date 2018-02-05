@@ -269,7 +269,9 @@ namespace KYHBPA_TeamA.Controllers
         [OutputCache(Duration = 1800, Location = OutputCacheLocation.ServerAndClient)]
         public FileResult GetBoDImage(int id)
         {
-            var boardOfDirector = db.BoardOfDirectors.Find(id);
+            var boardOfDirector = new BoardOfDirectors();
+
+            boardOfDirector = db.BoardOfDirectors.Find(id);
 
             if (boardOfDirector.MimeType != null && boardOfDirector.PhotoContent != null)
                 return File(boardOfDirector.PhotoContent, boardOfDirector.MimeType);
