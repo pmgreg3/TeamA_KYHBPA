@@ -142,6 +142,7 @@ namespace KYHBPA_TeamA.Controllers
             }
         }
 
+        // TODO: Can improve code reduce.  Same methods found in BoD Controller
         public static Bitmap ResizeImage(Image image, int width, int height)
         {
             var destRect = new Rectangle(0, 0, width, height);
@@ -171,6 +172,19 @@ namespace KYHBPA_TeamA.Controllers
         {
             ImageConverter converter = new ImageConverter();
             return (byte[])converter.ConvertTo(img, typeof(byte[]));
+        }
+
+        [OutputCache(Duration = 1800, Location = OutputCacheLocation.ServerAndClient)]
+        public FileResult GetStaffMemberImage(int id)
+        {
+            var staffMember = _db.Staff.Find(id);
+
+            if (staffMember.MimeType != null && staffMember.PhotoContent != null)
+                return File(staffMember.PhotoContent, staffMember.MimeType);
+            else
+            {
+                return new FilePathResult(HttpContext.Server.MapPath("~/Content/blankProfileImage.jpeg"), "image/jpeg");
+            }
         }
     }
 }
