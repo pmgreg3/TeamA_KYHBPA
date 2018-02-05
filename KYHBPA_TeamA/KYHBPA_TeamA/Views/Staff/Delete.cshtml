@@ -1,20 +1,29 @@
-﻿@model KYHBPA_TeamA.Models.DisplayDocumentsViewModel
+﻿@model KYHBPA_TeamA.Models.StaffViewModels
 
 @{
-    ViewBag.Controller = "Documents";
-    ViewBag.Title = "Delete your document.";
+    ViewBag.Controller = "Staff";
+    ViewBag.Title = "Delete a staff member.";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
+
 
 <h3>Are you sure you want to delete this?</h3>
 <div>
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.Description)
+            @Html.DisplayNameFor(model => model.FirstName)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Description)
+            @Html.DisplayFor(model => model.FirstName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LastName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LastName)
         </dd>
 
         <dt>
@@ -26,11 +35,19 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Date)
+            @Html.DisplayNameFor(model => model.Email)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Date)
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Description)
         </dd>
 
     </dl>

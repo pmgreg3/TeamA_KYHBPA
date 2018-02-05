@@ -37,7 +37,7 @@ namespace KYHBPA_TeamA.Models
             return new ApplicationDbContext();
         }
 
-
+        public DbSet<Staff> Staff { get; set; }
         public DbSet<BoardOfDirectors> BoardOfDirectors { get; set; }
         public DbSet<Photo> Photos { get; set; }
         public DbSet<Event> Events { get; set; }

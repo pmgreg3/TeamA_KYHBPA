@@ -240,6 +240,7 @@
     <Compile Include="Controllers\MembershipsController.cs" />
     <Compile Include="Controllers\PhotoController.cs" />
     <Compile Include="Controllers\RoleController.cs" />
+    <Compile Include="Controllers\StaffController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Entity\AspNetRole.cs">
       <DependentUpon>KYHBPA.tt</DependentUpon>
@@ -302,6 +303,10 @@
     <Compile Include="Migrations\201802011122229_AddingCreditToPhotoDomainModel.Designer.cs">
       <DependentUpon>201802011122229_AddingCreditToPhotoDomainModel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201802051126544_AddingStaffMember.cs" />
+    <Compile Include="Migrations\201802051126544_AddingStaffMember.Designer.cs">
+      <DependentUpon>201802051126544_AddingStaffMember.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Blog.cs" />
@@ -328,6 +333,8 @@
     <Compile Include="Models\Photo.cs" />
     <Compile Include="Models\DocumentViewModels.cs" />
     <Compile Include="Models\PhotoViewModels.cs" />
+    <Compile Include="Models\Staff.cs" />
+    <Compile Include="Models\StaffViewModels.cs" />
     <Compile Include="Models\Tag.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\BlogRepository.cs" />
@@ -612,6 +619,7 @@
     <Content Include="Content\slider3.jpg" />
     <Content Include="Content\solid.js" />
     <Content Include="Content\solid.svg" />
+    <Content Include="Content\titleLogo.png" />
     <Content Include="Entity\KYHBPA.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>KYHBPA.edmx</DependentUpon>
@@ -739,6 +747,11 @@
     <Content Include="Views\Blog\Admin.cshtml" />
     <Content Include="Views\Blog\Read.cshtml" />
     <Content Include="Views\Shared\_GoogleEvents.cshtml" />
+    <Content Include="Views\Staff\Index.cshtml" />
+    <Content Include="Views\Staff\Create.cshtml" />
+    <Content Include="Views\Staff\Edit.cshtml" />
+    <Content Include="Views\Staff\Delete.cshtml" />
+    <Content Include="Views\Staff\Admin.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -781,6 +794,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201802011122229_AddingCreditToPhotoDomainModel.resx">
       <DependentUpon>201802011122229_AddingCreditToPhotoDomainModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201802051126544_AddingStaffMember.resx">
+      <DependentUpon>201802051126544_AddingStaffMember.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -1,11 +1,11 @@
 ﻿@model KYHBPA_TeamA.Models.AddPhotoViewModel
 
 @{
+    ViewBag.Controller = "Photos";
     ViewBag.Title = "Create";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h2 class="common-Uppercase">Create Photo</h2>
 <div class="jumbotron common-BodyText"> 
     <h4>
         Follow these guidelines when uploading images to the website.
@@ -131,6 +131,3 @@
     @Html.ActionLink("Back to List", "Admin")
 </div>
 
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}

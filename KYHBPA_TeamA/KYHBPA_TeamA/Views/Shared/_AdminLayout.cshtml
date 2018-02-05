@@ -4,6 +4,7 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <link href="~/Content/bootstrap.css" rel="stylesheet"/>
+    <link rel="icon" href="~/Content/titleLogo.png" />
     <title>@ViewBag.Title</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
@@ -33,6 +34,7 @@
                         <ul class="dropdown-menu">
                             <li>@Html.ActionLink("Learn More", "About", "Home")</li>
                             <li>@Html.ActionLink("Our Board", "Index", "BoardOfDirectors")</li>
+                            <li>@Html.ActionLink("Our Staff", "Index", "Staff")</li>                            
                         </ul>
                     </li>
                     <li class="dropdown">
@@ -73,6 +75,7 @@
                                 <ul class="dropdown-menu">
                                     <li>@Html.ActionLink("News & Blog", "Admin", "Blog")</li>
                                     <li>@Html.ActionLink("Board", "Admin", "BoardOfDirectors")</li>
+                                    <li>@Html.ActionLink("Staff","Admin","Staff")</li>
                                     <li>@Html.ActionLink("Events", "Index", "Event")</li>
                                     @*<li>@Html.ActionLink("Accounts", "ManageLogins", "Manage")</li>*@
                                     <li>@Html.ActionLink("Documents", "Admin", "Document")</li>
@@ -89,6 +92,16 @@
             </div>
         </div>
     </div>
+    <section class="jumbotron text-center">
+        <div class="container">
+            <h2 class="common-Uppercase text-center">
+                @ViewBag.Controller - Administrator View
+            </h2>
+            <p class="text-muted">
+                @ViewBag.Title
+            </p>
+        </div>
+    </section>
     <div id="adminBody" class="common-BodyTextSmall">
         @RenderBody()
     </div>

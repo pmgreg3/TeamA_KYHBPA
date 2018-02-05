@@ -2,27 +2,15 @@
 @using PagedList.Mvc
 
 @{
-    ViewBag.Title = "Photos-Admin";
+    ViewBag.Controller = "Photos";
+    ViewBag.Title = "Administrators can view, edit, and delete photos in the landing page carousel, photo gallery," +
+                "and the partner organization carousel.";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 @if (TempData["message"] != null)
 {
     <div class="alert alert-success">@TempData["message"]</div>
 }
-
-
-<section class="jumbotron text-center">
-    <div class="container">
-        <h2 class="common-Uppercase text-center">
-            Photos - Administrator View
-        </h2>
-        <p class="text-muted">
-            Administrators can view, edit, and delete photos in the landing page carousel, photo gallery,
-            and the partner organization carousel. 
-        </p>
-    </div>
-</section>
-
 
 @using (Html.BeginForm("Admin", "Photo", FormMethod.Get))
 {

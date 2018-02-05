@@ -3,6 +3,7 @@
 <head>
     <meta name="viewport" content="initial-scale=1">
     <title>@ViewBag.Title - Kentucky HBPA</title>
+    <link rel="icon" href="~/Content/titleLogo.png" />
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
@@ -30,6 +31,7 @@
                         <ul class="dropdown-menu">
                             <li>@Html.ActionLink("Learn More", "About", "Home")</li>
                             <li>@Html.ActionLink("Our Board", "Index", "BoardOfDirectors")</li>
+                            <li>@Html.ActionLink("Our Staff", "Index","Staff")</li>
                         </ul>
                     </li>
                     <li class="dropdown">
@@ -70,6 +72,7 @@
                                 <ul class="dropdown-menu">
                                     <li>@Html.ActionLink("News & Blog", "Admin", "Blog")</li>
                                     <li>@Html.ActionLink("Board", "Admin", "BoardOfDirectors")</li>
+                                    <li>@Html.ActionLink("Staff","Admin","Staff")</li>
                                     <li>@Html.ActionLink("Events", "Index", "Event")</li>
                                     @*<li>@Html.ActionLink("Accounts", "ManageLogins", "Manage")</li>*@
                                     <li>@Html.ActionLink("Documents", "Admin", "Document")</li>

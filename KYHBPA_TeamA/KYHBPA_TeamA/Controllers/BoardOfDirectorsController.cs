@@ -182,9 +182,6 @@ namespace KYHBPA_TeamA.Controllers
 
                             var resizedByteArray = ImageToByte(imageAfterResize);
 
-
-                            //byte[] uploadedFile = new byte[file.InputStream.Length];
-                            //BODVM.File.InputStream.Read(uploadedFile, 0, file.ContentLength);
                             BODToUpdate.PhotoContent = resizedByteArray;
                             BODToUpdate.MimeType = file.ContentType;
                         }
@@ -194,9 +191,7 @@ namespace KYHBPA_TeamA.Controllers
                     db.Entry(BODToUpdate).State = System.Data.Entity.EntityState.Modified;
                     db.SaveChanges();
                     TempData["message"] = string.Format($"{BODVM.FirstName} {BODVM.LastName} has been updated!");
-                    return RedirectToAction("Admin");
                 }
-
                 return RedirectToAction("Admin");
             }
             catch
@@ -274,7 +269,9 @@ namespace KYHBPA_TeamA.Controllers
         [OutputCache(Duration = 1800, Location = OutputCacheLocation.ServerAndClient)]
         public FileResult GetBoDImage(int id)
         {
-            var boardOfDirector = db.BoardOfDirectors.Find(id);
+            var boardOfDirector = new BoardOfDirectors();
+
+            boardOfDirector = db.BoardOfDirectors.Find(id);
 
             if (boardOfDirector.MimeType != null && boardOfDirector.PhotoContent != null)
                 return File(boardOfDirector.PhotoContent, boardOfDirector.MimeType);
@@ -318,7 +315,7 @@ namespace KYHBPA_TeamA.Controllers
 
         /// <summary>
         /// Will try this next. Maintains aspect ratio
-        /// </summary>
+        /// </summary>e
         /// <param name="imgPhoto"></param>
         /// <param name="Width"></param>
         /// <param name="Height"></param>

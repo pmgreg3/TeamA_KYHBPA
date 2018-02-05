@@ -1,24 +1,11 @@
 ﻿@model KYHBPA_TeamA.Models.DisplayPhotosViewModel
 
 @{
-    ViewBag.Title = "Delete";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Controller = "Photos";
+    ViewBag.Title = "Are you sure you want to delete this photo?";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h2 class="common-Uppercase">Delete Photo</h2>
-
-<h3 class="common-LargerBodyText">Are you sure you want to delete the photo, @Html.DisplayTextFor(model => model.Title), below?</h3>
-<hr />
-    @using (Html.BeginForm())
-    {
-        @Html.AntiForgeryToken()
-
-        <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> or
-            @Html.ActionLink("Back to List", "Admin")
-        </div>
-    }
-<br />
 <div class="common-BodyText">
     @if (Model.Data != null)
     {
@@ -53,3 +40,13 @@
 
     </dl>
 </div>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-actions no-color">
+        <input type="submit" value="Delete" class="btn btn-default" /> or
+        @Html.ActionLink("Back to List", "Admin")
+    </div>
+}
+<br />

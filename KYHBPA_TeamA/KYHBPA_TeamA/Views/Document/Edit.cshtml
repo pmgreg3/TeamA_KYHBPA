@@ -1,20 +1,16 @@
 ﻿@model KYHBPA_TeamA.Models.DisplayDocumentsViewModel
 
 @{
-    ViewBag.Title = "Edit";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Controller = "Documents";
+    ViewBag.Title = "Edit your uploaded document.  File uploads are restricted to PDF file types. ";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
-
-<h2>Edit</h2>
-
 
 @using (Html.BeginForm("Edit", "Document", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-
-        <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.Id)
 
@@ -53,9 +49,5 @@
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Back to List", "Admin")
 </div>
-
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}
