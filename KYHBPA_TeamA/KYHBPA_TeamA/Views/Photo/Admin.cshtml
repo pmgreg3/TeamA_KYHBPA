@@ -19,9 +19,6 @@
             <p>
                 @Html.ActionLink("Create New", "Create", "", new { @class = "common-Button" })
             </p>
-            <p>
-                @Html.ActionLink("Update Thumbnails", "UpdateAllImagesWithoutThumbnails","",new { @class = "common-Button"})
-            </p>
             <div class="input-group col-md-12">
                 @Html.TextBox("SearchString", ViewBag.CurrentFilter as string, new { placeholder = "Search by title or description", @class = "form-control  input-lg" })
                 <span class="input-group-btn">
