@@ -7,10 +7,14 @@ namespace KYHBPA_TeamA.Models
 {
     public class StaffViewModels
     {
-
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string Title { get; set; }
+        public string Email { get; set; }
+        public string Description { get; set; }
     }
 
-    public class CreateStaffViewModel
+    public class CreateStaffViewModel : StaffViewModels
     {
 
     }
