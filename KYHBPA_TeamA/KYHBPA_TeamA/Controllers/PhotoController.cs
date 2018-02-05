@@ -10,6 +10,8 @@ using PagedList;
 using System.Web.UI;
 using System.Drawing;
 using System.Drawing.Drawing2D;
+using System.IO;
+using System.Drawing.Imaging;
 
 namespace KYHBPA_TeamA.Controllers
 {
@@ -195,10 +197,9 @@ namespace KYHBPA_TeamA.Controllers
                     };
                     image.InputStream.Read(photo.PhotoData, 0, image.ContentLength);
 
-                    var thumbnail = GetImageThumbnail(image);
-                    var thumbnailByteArray = ImageToByte(thumbnail);
+                    var imageToResize = Image.FromStream(image.InputStream);
 
-                    photo.ThumbnailPhotoContent = thumbnailByteArray; 
+                    photo.ThumbnailPhotoContent = GetImageThumbnail(imageToResize); 
 
                     db.Photos.Add(photo);
                     db.SaveChanges();
@@ -270,6 +271,10 @@ namespace KYHBPA_TeamA.Controllers
                         image.InputStream.Read(uploadedImage, 0, image.ContentLength);
                         photoToUpdate.PhotoData = uploadedImage;
                         photoToUpdate.MimeType = image.ContentType;
+
+                        var imageToResize = Image.FromStream(image.InputStream);
+
+                        photoToUpdate.ThumbnailPhotoContent = GetImageThumbnail(imageToResize);
                     }
 
                     db.Entry(photoToUpdate).State = System.Data.Entity.EntityState.Modified;
@@ -425,17 +430,18 @@ namespace KYHBPA_TeamA.Controllers
             return View(vm);
         }
          
-        public Image GetImageThumbnail(HttpPostedFileBase image)
+        public byte[] GetImageThumbnail(Image image)
         {
-            var imageToResize = Image.FromStream(image.InputStream);
+            byte[] returnArray;
+            
             var thumbSize = new Size()
             {
-                Width = 300,
-                Height = 300
+                Width = 500,
+                Height = 500
             };
 
-            int sourceWidth = imageToResize.Width;
-            int sourceHeight = imageToResize.Height;
+            int sourceWidth = image.Width;
+            int sourceHeight = image.Height;
 
             float nPercent = 0;
             float nPercentW = 0;
@@ -455,17 +461,67 @@ namespace KYHBPA_TeamA.Controllers
             Bitmap b = new Bitmap(destWidth, destHeight);
             Graphics g = Graphics.FromImage((Image)b);
             g.InterpolationMode = InterpolationMode.HighQualityBicubic;
+            g.SmoothingMode = SmoothingMode.HighQuality;
+            g.PixelOffsetMode = PixelOffsetMode.HighQuality;
+            g.CompositingQuality = CompositingQuality.HighQuality;
+            g.CompositingMode = CompositingMode.SourceCopy;
 
-            g.DrawImage(imageToResize, 0, 0, destWidth, destHeight);
+            g.DrawImage(image, 0, 0, destWidth, destHeight);
             g.Dispose();
 
-            return b;
+            using (MemoryStream ms = new MemoryStream())
+            {
+                EncoderParameters encoderParameters = new EncoderParameters(1);
+                encoderParameters.Param[0] = new EncoderParameter(Encoder.Quality, 80L);
+                b.Save(ms, getEncoderInfo("image/jpeg"), encoderParameters);
+
+                //save the stream as byte array
+                returnArray = ms.ToArray();
+            }
+
+
+            return returnArray;
+        }
+
+        private static ImageCodecInfo getEncoderInfo(string mimeType)
+        {
+            ImageCodecInfo[] encoders = ImageCodecInfo.GetImageEncoders();
+            for (int j = 0; j < encoders.Length; ++j)
+            {
+                if (encoders[j].MimeType.ToLower() == mimeType.ToLower())
+                    return encoders[j];
+            }
+            return null;
         }
 
         public static byte[] ImageToByte(Image img)
         {
             ImageConverter converter = new ImageConverter();
             return (byte[])converter.ConvertTo(img, typeof(byte[]));
+        }
+
+        public ActionResult UpdateAllImagesWithoutThumbnails()
+        {
+            var imagesToUpdate = db.Photos.Where(x => x.ThumbnailPhotoContent == null && x.InPartnerOrgCarousel == false);
+
+            foreach(var image in imagesToUpdate)
+            {
+                if(image.PhotoData != null)
+                {
+                    Image newImage = (Image)new ImageConverter().ConvertFrom(image.PhotoData);
+                    var resizedImage = GetImageThumbnail(newImage);
+                    image.ThumbnailPhotoContent = resizedImage;
+                }
+            }
+
+            if(imagesToUpdate != null)
+            {
+                db.SaveChanges();
+
+            }
+
+            TempData["message"] = "Thumbnails successfully updated";
+            return RedirectToAction("Admin");
         }
     }
 }

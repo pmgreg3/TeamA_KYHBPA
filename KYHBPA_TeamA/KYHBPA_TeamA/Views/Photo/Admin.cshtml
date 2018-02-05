@@ -19,6 +19,9 @@
             <p>
                 @Html.ActionLink("Create New", "Create", "", new { @class = "common-Button" })
             </p>
+            <p>
+                @Html.ActionLink("Update Thumbnails", "UpdateAllImagesWithoutThumbnails","",new { @class = "common-Button"})
+            </p>
             <div class="input-group col-md-12">
                 @Html.TextBox("SearchString", ViewBag.CurrentFilter as string, new { placeholder = "Search by title or description", @class = "form-control  input-lg" })
                 <span class="input-group-btn">
@@ -62,7 +65,7 @@
         <tr>
             <td>
                 <div class="pull-left" style="margin-right: 10px">
-                    <img class="img-thumbnail" width="100" height="100" src="@Url.Action("GetPhoto","Photo",new { item.Id })" />
+                    <img class="img-thumbnail" width="100" height="100" src="@Url.Action("GetThumbnail","Photo",new { item.Id })" />
                 </div>
             </td>
             <td>
