@@ -167,7 +167,25 @@ namespace KYHBPA_TeamA.Controllers
         [Authorize(Roles = "Admin")]
         public ActionResult Delete(int id)
         {
-            return View();
+            var memberToDelete = _db.Staff.Find(id);
+
+            if (memberToDelete != null)
+            {
+                var vm = new StaffViewModels()
+                {
+                    Id = memberToDelete.Id,
+                    FirstName = memberToDelete.FirstName,
+                    LastName = memberToDelete.LastName,
+                    Title = memberToDelete.Title,
+                    Email = memberToDelete.Email
+                };
+
+                return View(vm);
+            }
+            else
+            {
+                return HttpNotFound();
+            }
         }
 
         // POST: Staff/Delete/5
@@ -177,9 +195,19 @@ namespace KYHBPA_TeamA.Controllers
         {
             try
             {
-                // TODO: Add delete logic here
+                var memberToDelete = _db.Staff.Find(id);
 
-                return RedirectToAction("Index");
+                if (memberToDelete != null)
+                {
+                    _db.Staff.Remove(memberToDelete);
+                    _db.SaveChanges();
+                }
+                else
+                {
+                    return HttpNotFound();
+                }
+
+                return RedirectToAction("Admin");
             }
             catch
             {
