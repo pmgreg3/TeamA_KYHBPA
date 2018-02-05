@@ -2,19 +2,9 @@
 
 @{
     ViewBag.Title = "Create";
+    ViewBag.Controller = "Staff";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
-
-<section class="jumbotron text-center">
-    <div class="container">
-        <h2 class="common-Uppercase text-center">
-            Staff - Administrator View
-        </h2>
-        <h3>
-            @ViewBag.Title
-        </h3>
-    </div>
-</section>
 
 @using (Html.BeginForm("Create", "Staff", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
