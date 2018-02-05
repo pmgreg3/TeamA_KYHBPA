@@ -64,9 +64,18 @@
     {
         <tr>
             <td>
-                <div class="pull-left" style="margin-right: 10px">
-                    <img class="img-thumbnail" width="100" height="100" src="@Url.Action("GetThumbnail","Photo",new { item.Id })" />
-                </div>
+                @if (item.InPartnerOrgCarousel)
+                {
+                    <div class="pull-left" style="margin-right: 10px">
+                        <img class="img-thumbnail" width="100" height="100" src="@Url.Action("GetPhoto","Photo",new { item.Id })" />
+                    </div>
+                }
+                else
+                {
+                    <div class="pull-left" style="margin-right: 10px">
+                        <img class="img-thumbnail" width="100" height="100" src="@Url.Action("GetThumbnail","Photo",new { item.Id })" />
+                    </div>
+                }
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Title)
