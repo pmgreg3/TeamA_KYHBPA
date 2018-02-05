@@ -15,6 +15,8 @@ namespace KYHBPA_TeamA.Controllers
         [Authorize(Roles = "Admin")]
         public ActionResult Admin()
         {
+
+
             return View();
         }
 
