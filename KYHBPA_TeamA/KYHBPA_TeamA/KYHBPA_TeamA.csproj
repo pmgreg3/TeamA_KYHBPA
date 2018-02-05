@@ -619,6 +619,7 @@
     <Content Include="Content\slider3.jpg" />
     <Content Include="Content\solid.js" />
     <Content Include="Content\solid.svg" />
+    <Content Include="Content\titleLogo.png" />
     <Content Include="Entity\KYHBPA.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>KYHBPA.edmx</DependentUpon>
