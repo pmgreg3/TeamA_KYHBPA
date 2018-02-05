@@ -12,6 +12,7 @@ namespace KYHBPA_TeamA.Controllers
         private ApplicationDbContext _db = new ApplicationDbContext();
 
         // Admin of Staff
+        [Authorize(Roles = "Admin")]
         public ActionResult Admin()
         {
             return View();
@@ -30,6 +31,7 @@ namespace KYHBPA_TeamA.Controllers
         }
 
         // GET: Staff/Create
+        [Authorize(Roles ="Admin")]
         public ActionResult Create()
         {
             return View();
@@ -37,6 +39,7 @@ namespace KYHBPA_TeamA.Controllers
 
         // POST: Staff/Create
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         public ActionResult Create(FormCollection collection)
         {
             try
@@ -52,6 +55,7 @@ namespace KYHBPA_TeamA.Controllers
         }
 
         // GET: Staff/Edit/5
+        [Authorize(Roles = "Admin")]
         public ActionResult Edit(int id)
         {
             return View();
@@ -59,6 +63,7 @@ namespace KYHBPA_TeamA.Controllers
 
         // POST: Staff/Edit/5
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         public ActionResult Edit(int id, FormCollection collection)
         {
             try
@@ -74,6 +79,7 @@ namespace KYHBPA_TeamA.Controllers
         }
 
         // GET: Staff/Delete/5
+        [Authorize(Roles = "Admin")]
         public ActionResult Delete(int id)
         {
             return View();
@@ -81,6 +87,7 @@ namespace KYHBPA_TeamA.Controllers
 
         // POST: Staff/Delete/5
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         public ActionResult Delete(int id, FormCollection collection)
         {
             try
