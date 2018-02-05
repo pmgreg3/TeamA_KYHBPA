@@ -240,6 +240,7 @@
     <Compile Include="Controllers\MembershipsController.cs" />
     <Compile Include="Controllers\PhotoController.cs" />
     <Compile Include="Controllers\RoleController.cs" />
+    <Compile Include="Controllers\StaffController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Entity\AspNetRole.cs">
       <DependentUpon>KYHBPA.tt</DependentUpon>
@@ -743,6 +744,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\Calendar\" />
+    <Folder Include="Views\Staff\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
