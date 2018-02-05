@@ -742,11 +742,11 @@
     <Content Include="Views\Blog\Admin.cshtml" />
     <Content Include="Views\Blog\Read.cshtml" />
     <Content Include="Views\Shared\_GoogleEvents.cshtml" />
+    <Content Include="Views\Staff\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\Calendar\" />
-    <Folder Include="Views\Staff\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
