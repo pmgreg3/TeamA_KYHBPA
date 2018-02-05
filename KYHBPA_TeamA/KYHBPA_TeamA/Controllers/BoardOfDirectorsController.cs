@@ -318,7 +318,7 @@ namespace KYHBPA_TeamA.Controllers
 
         /// <summary>
         /// Will try this next. Maintains aspect ratio
-        /// </summary>
+        /// </summary>e
         /// <param name="imgPhoto"></param>
         /// <param name="Width"></param>
         /// <param name="Height"></param>
