@@ -1,20 +1,16 @@
 ﻿@model IEnumerable<KYHBPA_TeamA.Models.DisplayDocumentsViewModel>
 
 @{
-    ViewBag.Title = "Documents-Admin";
+    ViewBag.Controller = "Documents";
+    ViewBag.Title = "Create, edit, or delete documents.  Documents will available for download. ";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
-
-<h2 class="common-Uppercase text-center">Documents Library - Administrator View</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create", "", new { @class = "common-Button" })
 </p>
 <table class="table">
     <tr>
-        <th>
-            Documents
-        </th>
         <th>
             @Html.DisplayNameFor(model => model.Title)
         </th>
@@ -30,14 +26,6 @@
     @foreach (var item in Model)
     {
         <tr>
-            <td>
-                @if (item.Content != null)
-                {
-                    <div class="pull-left" style="margin-right: 10px">
-                        <img class="img-thumbnail" width="100" height="100" src="@Url.Action("GetDocument","Document",new { item.Id })" />
-                    </div>
-                }
-            </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Title)
             </td>
