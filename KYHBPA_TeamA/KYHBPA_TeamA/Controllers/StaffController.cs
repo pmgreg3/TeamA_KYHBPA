@@ -15,15 +15,33 @@ namespace KYHBPA_TeamA.Controllers
         [Authorize(Roles = "Admin")]
         public ActionResult Admin()
         {
+            var staffMembers = _db.Staff.Select(m => new StaffViewModels()
+            {
+                Id = m.Id,
+                FirstName = m.FirstName,
+                LastName = m.LastName,
+                Title = m.Title,
+                Email = m.Email,
+                Description = m.Description
+            });
 
-
-            return View();
+            return View(staffMembers);
         }
 
         // GET: Staff
         public ActionResult Index()
         {
-            return View();
+            var staffMembers = _db.Staff.Select(m => new StaffViewModels()
+            {
+                Id = m.Id,
+                FirstName = m.FirstName,
+                LastName = m.LastName,
+                Title = m.Title,
+                Email = m.Email,
+                Description = m.Description
+            });
+
+            return View(staffMembers);
         }
 
         // GET: Staff/Details/5
