@@ -191,9 +191,7 @@ namespace KYHBPA_TeamA.Controllers
                     db.Entry(BODToUpdate).State = System.Data.Entity.EntityState.Modified;
                     db.SaveChanges();
                     TempData["message"] = string.Format($"{BODVM.FirstName} {BODVM.LastName} has been updated!");
-                    return RedirectToAction("Admin");
                 }
-
                 return RedirectToAction("Admin");
             }
             catch
