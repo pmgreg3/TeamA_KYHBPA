@@ -86,7 +86,7 @@ namespace KYHBPA_TeamA.Controllers
                 db.Documents.Add(doc);
                 db.SaveChanges();
 
-                return RedirectToAction("Index");
+                return RedirectToAction("Admin");
             }
             else
             {
@@ -142,10 +142,10 @@ namespace KYHBPA_TeamA.Controllers
                     db.Entry(documentToUpdate).State = System.Data.Entity.EntityState.Modified;
                     db.SaveChanges();
                     TempData["message"] = string.Format($"{documentVM.Title} document has been updated!");
-                    return RedirectToAction("Index");
+                    return RedirectToAction("Admin");
                 }
 
-                return RedirectToAction("Index");
+                return RedirectToAction("Admin");
             }
             catch
             {
