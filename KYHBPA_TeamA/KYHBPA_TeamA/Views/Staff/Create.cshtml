@@ -5,15 +5,22 @@
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h2>Create</h2>
+<section class="jumbotron text-center">
+    <div class="container">
+        <h2 class="common-Uppercase text-center">
+            Staff - Administrator View
+        </h2>
+        <h3>
+            @ViewBag.Title
+        </h3>
+    </div>
+</section>
 
 @using (Html.BeginForm("Create", "Staff", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>CreateStaffViewModel</h4>
-        <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
             @Html.LabelFor(model => model.FirstName, htmlAttributes: new { @class = "control-label col-md-2" })

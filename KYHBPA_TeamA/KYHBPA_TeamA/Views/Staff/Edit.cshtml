@@ -5,15 +5,22 @@
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h2>Edit</h2>
+<section class="jumbotron text-center">
+    <div class="container">
+        <h2 class="common-Uppercase text-center">
+            Staff - Administrator View
+        </h2>
+        <h3>
+            @ViewBag.Title
+        </h3>
+    </div>
+</section>
 
 @using (Html.BeginForm("Edit", "Staff", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>StaffViewModels</h4>
-        <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.Id)
 
@@ -75,5 +82,5 @@
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Back to List", "Admin")
 </div>
