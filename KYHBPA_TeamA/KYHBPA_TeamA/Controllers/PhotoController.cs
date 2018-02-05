@@ -352,7 +352,7 @@ namespace KYHBPA_TeamA.Controllers
         {
             Photo photoToGet = db.Photos.Find(id);
 
-            if (photoToGet != null)
+            if (photoToGet != null && photoToGet.ThumbnailPhotoContent != null) 
                 return File(photoToGet.ThumbnailPhotoContent, photoToGet.MimeType);
             else
                 return new HttpNotFoundResult();
