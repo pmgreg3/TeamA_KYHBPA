@@ -307,6 +307,10 @@
     <Compile Include="Migrations\201802051126544_AddingStaffMember.Designer.cs">
       <DependentUpon>201802051126544_AddingStaffMember.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201802051607178_AddingThumbnailToPhotoDomainModel.cs" />
+    <Compile Include="Migrations\201802051607178_AddingThumbnailToPhotoDomainModel.Designer.cs">
+      <DependentUpon>201802051607178_AddingThumbnailToPhotoDomainModel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Blog.cs" />
@@ -797,6 +801,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201802051126544_AddingStaffMember.resx">
       <DependentUpon>201802051126544_AddingStaffMember.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201802051607178_AddingThumbnailToPhotoDomainModel.resx">
+      <DependentUpon>201802051607178_AddingThumbnailToPhotoDomainModel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
