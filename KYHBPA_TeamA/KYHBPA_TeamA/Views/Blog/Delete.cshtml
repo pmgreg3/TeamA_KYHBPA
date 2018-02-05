@@ -1,8 +1,10 @@
 ﻿@model KYHBPA_TeamA.Models.DisplayPostsViewModel
 
 @{
-    ViewBag.Title = "Delete";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Controller = "News and Blog";
+    ViewBag.Title = "Delete a news article or blog post.  All comments associated with the post" +
+                "will also be deleted.";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
 <h2>Delete</h2>
@@ -59,7 +61,7 @@
 
         <div class="form-actions no-color">
             <input type="submit" value="Delete" class="btn common-button" /> |
-            @Html.ActionLink("Back to List", "Index", new { @class = "common-button"})
+            @Html.ActionLink("Back to List", "Admin", new { @class = "common-button"})
         </div>
     }
 </div>

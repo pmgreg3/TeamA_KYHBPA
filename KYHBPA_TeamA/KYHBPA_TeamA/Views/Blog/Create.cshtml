@@ -1,19 +1,18 @@
 ﻿@model KYHBPA_TeamA.Models.CreateBlogPostViewModel
 
 @{
-    ViewBag.Title = "Create";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Controller = "News and Blog";
+    ViewBag.Title = "Create a news article or a blog post.  Compressed images are better for web use so " +
+                "ensure that images are resized and compressed before uploading. Text structure will be displayed" +
+                 "as uploaded (enters, spaces, indents)";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
-
-<h2>Create</h2>
 
 @using (Html.BeginForm("Create", "Blog", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
 
     <div class="form-horizontal">
-        <h4>Post</h4>
-        <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
             @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -81,5 +80,5 @@
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Back to List", "Admin")
 </div>
