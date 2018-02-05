@@ -182,9 +182,6 @@ namespace KYHBPA_TeamA.Controllers
 
                             var resizedByteArray = ImageToByte(imageAfterResize);
 
-
-                            //byte[] uploadedFile = new byte[file.InputStream.Length];
-                            //BODVM.File.InputStream.Read(uploadedFile, 0, file.ContentLength);
                             BODToUpdate.PhotoContent = resizedByteArray;
                             BODToUpdate.MimeType = file.ContentType;
                         }

@@ -99,19 +99,63 @@ namespace KYHBPA_TeamA.Controllers
         [Authorize(Roles = "Admin")]
         public ActionResult Edit(int id)
         {
-            return View();
+            var memberToEdit = _db.Staff.Find(id);
+
+            if (memberToEdit != null)
+            {
+                var vm = new StaffViewModels()
+                {
+                    Id = memberToEdit.Id,
+                    FirstName = memberToEdit.FirstName,
+                    LastName = memberToEdit.LastName,
+                    Title = memberToEdit.Title,
+                    Email = memberToEdit.Email
+                };
+
+                return View(vm);
+            }
+            else
+            {
+                return HttpNotFound();
+            }
         }
 
         // POST: Staff/Edit/5
         [HttpPost]
         [Authorize(Roles = "Admin")]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(StaffViewModels staffMemberToEdit, HttpPostedFileBase file)
         {
             try
             {
-                // TODO: Add update logic here
+                if (ModelState.IsValid)
+                {
+                    var oldStaffMember = _db.Staff.Find(staffMemberToEdit.Id);
 
-                return RedirectToAction("Index");
+                    if (oldStaffMember != null)
+                    {
+                        oldStaffMember.Title = staffMemberToEdit.Title;
+                        oldStaffMember.FirstName = staffMemberToEdit.FirstName;
+                        oldStaffMember.LastName = staffMemberToEdit.LastName;
+                        oldStaffMember.Description = staffMemberToEdit.Description;
+                        oldStaffMember.Email = staffMemberToEdit.Email;
+                        
+                        if(file != null)
+                        {
+                            var imageBeforeResize = Image.FromStream(file.InputStream);
+                            var imageAfterResize = ResizeImage(imageBeforeResize, 400, 500);
+
+                            var resizedByteArray = ImageToByte(imageAfterResize);
+
+                            oldStaffMember.PhotoContent = resizedByteArray;
+                            oldStaffMember.MimeType = file.ContentType;
+                        }
+
+                        _db.Entry(oldStaffMember).State = System.Data.Entity.EntityState.Modified;
+                        _db.SaveChanges();
+                        TempData["message"] = string.Format($"{staffMemberToEdit.FirstName} {staffMemberToEdit.FirstName} has been updated!");
+                    }
+                }
+                return RedirectToAction("Admin");
             }
             catch
             {
