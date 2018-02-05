@@ -2,10 +2,9 @@
 
 @{
     ViewBag.Title = "Create Board Member";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Controller = "Board of Directors";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
-
-<h2 class="common-Uppercase">Create</h2>
 
 
 @using (Html.BeginForm("Create", "BoardOfDirectors", FormMethod.Post, new { enctype = "multipart/form-data" })) 
@@ -13,8 +12,6 @@
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4 class="common-UppercaseTitle">Create a Board Of Director profile below:</h4>
-        <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
             @Html.LabelFor(model => model.FirstName, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -72,9 +69,6 @@
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index", "", new { @class = "common-Button" })
+    @Html.ActionLink("Back to List", "Admin", "", new { @class = "common-Button" })
 </div>
 
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}

@@ -1,18 +1,16 @@
 ﻿@model IEnumerable<KYHBPA_TeamA.Models.DisplayBoardOfDirectorsViewModel>
 
 @{
-    ViewBag.Title = "Our Board-Admin";
+    ViewBag.Title = "Manage board of director members by creating, editing, or deleting them here.";
+    ViewBag.Controller = "Board of Directors";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
-
-<h2 class="common-Uppercase text-center">Board of Directors - Administrator View</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create", "", new { @class = "common-Button" })
 </p>
 <table class="table">
     <tr>
-
         <th class=" common-BodyText">
             @Html.DisplayNameFor(model => model.Title)
         </th>
