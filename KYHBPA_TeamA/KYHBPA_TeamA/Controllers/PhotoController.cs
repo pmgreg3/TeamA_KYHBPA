@@ -8,6 +8,10 @@ using System.Web;
 using System.Web.Mvc;
 using PagedList;
 using System.Web.UI;
+using System.Drawing;
+using System.Drawing.Drawing2D;
+using System.IO;
+using System.Drawing.Imaging;
 
 namespace KYHBPA_TeamA.Controllers
 {
@@ -192,6 +196,11 @@ namespace KYHBPA_TeamA.Controllers
                         MimeType = image.ContentType
                     };
                     image.InputStream.Read(photo.PhotoData, 0, image.ContentLength);
+
+                    var imageToResize = Image.FromStream(image.InputStream);
+
+                    photo.ThumbnailPhotoContent = GetImageThumbnail(imageToResize); 
+
                     db.Photos.Add(photo);
                     db.SaveChanges();
 
@@ -262,6 +271,10 @@ namespace KYHBPA_TeamA.Controllers
                         image.InputStream.Read(uploadedImage, 0, image.ContentLength);
                         photoToUpdate.PhotoData = uploadedImage;
                         photoToUpdate.MimeType = image.ContentType;
+
+                        var imageToResize = Image.FromStream(image.InputStream);
+
+                        photoToUpdate.ThumbnailPhotoContent = GetImageThumbnail(imageToResize);
                     }
 
                     db.Entry(photoToUpdate).State = System.Data.Entity.EntityState.Modified;
@@ -325,14 +338,30 @@ namespace KYHBPA_TeamA.Controllers
         /// <param name="id">ID of photo to get</param>
         /// <returns>File of image to render</returns>
         [OutputCache(Duration = 1800, Location = OutputCacheLocation.Client)]
-        public FileContentResult GetPhoto(int id)
+        public ActionResult GetPhoto(int id)
         {
             Photo photoToGet = db.Photos.Find(id);
 
             if (photoToGet != null)
                 return File(photoToGet.PhotoData, photoToGet.MimeType);
             else
-                return null;
+                return new HttpNotFoundResult();
+        }
+
+        /// <summary>
+        /// Returns thumbnail of photo
+        /// </summary>
+        /// <param name="id">Id of the photo</param>
+        /// <returns>Returns file</returns>
+        public ActionResult GetThumbnail(int id)
+        {
+            Photo photoToGet = db.Photos.Find(id);
+
+            if (photoToGet != null && photoToGet.ThumbnailPhotoContent != null) 
+                return File(photoToGet.ThumbnailPhotoContent, photoToGet.MimeType);
+            else
+                return new HttpNotFoundResult();
+
         }
 
         /// <summary>
@@ -399,6 +428,100 @@ namespace KYHBPA_TeamA.Controllers
             }
           
             return View(vm);
+        }
+         
+        public byte[] GetImageThumbnail(Image image)
+        {
+            byte[] returnArray;
+            
+            var thumbSize = new Size()
+            {
+                Width = 500,
+                Height = 500
+            };
+
+            int sourceWidth = image.Width;
+            int sourceHeight = image.Height;
+
+            float nPercent = 0;
+            float nPercentW = 0;
+            float nPercentH = 0;
+
+            nPercentW = ((float)thumbSize.Width / (float)sourceWidth);
+            nPercentH = ((float)thumbSize.Height / (float)sourceHeight);
+
+            if (nPercentH < nPercentW)
+                nPercent = nPercentH;
+            else
+                nPercent = nPercentW;
+
+            int destWidth = (int)(sourceWidth * nPercent);
+            int destHeight = (int)(sourceHeight * nPercent);
+
+            Bitmap b = new Bitmap(destWidth, destHeight);
+            Graphics g = Graphics.FromImage((Image)b);
+            g.InterpolationMode = InterpolationMode.HighQualityBicubic;
+            g.SmoothingMode = SmoothingMode.HighQuality;
+            g.PixelOffsetMode = PixelOffsetMode.HighQuality;
+            g.CompositingQuality = CompositingQuality.HighQuality;
+            g.CompositingMode = CompositingMode.SourceCopy;
+
+            g.DrawImage(image, 0, 0, destWidth, destHeight);
+            g.Dispose();
+
+            using (MemoryStream ms = new MemoryStream())
+            {
+                EncoderParameters encoderParameters = new EncoderParameters(1);
+                encoderParameters.Param[0] = new EncoderParameter(Encoder.Quality, 80L);
+                b.Save(ms, getEncoderInfo("image/jpeg"), encoderParameters);
+
+                //save the stream as byte array
+                returnArray = ms.ToArray();
+            }
+
+
+            return returnArray;
+        }
+
+        private static ImageCodecInfo getEncoderInfo(string mimeType)
+        {
+            ImageCodecInfo[] encoders = ImageCodecInfo.GetImageEncoders();
+            for (int j = 0; j < encoders.Length; ++j)
+            {
+                if (encoders[j].MimeType.ToLower() == mimeType.ToLower())
+                    return encoders[j];
+            }
+            return null;
+        }
+
+        public static byte[] ImageToByte(Image img)
+        {
+            ImageConverter converter = new ImageConverter();
+            return (byte[])converter.ConvertTo(img, typeof(byte[]));
+        }
+
+        public ActionResult UpdateAllImagesWithoutThumbnails()
+        {
+            var imagesToUpdate = db.Photos.Where(x => x.ThumbnailPhotoContent == null && x.InPartnerOrgCarousel == false);
+
+            foreach(var image in imagesToUpdate)
+            {
+                if(image.PhotoData != null)
+                {
+                    Image newImage = (Image)new ImageConverter().ConvertFrom(image.PhotoData);
+                    var resizedImage = GetImageThumbnail(newImage);
+                    image.ThumbnailPhotoContent = resizedImage;
+                }
+            }
+
+            if(imagesToUpdate != null)
+            {
+                db.SaveChanges();
+
+            }
+
+            TempData["message"] = "Thumbnails successfully updated";
+            return RedirectToAction("Admin");
         }
     }
 }
