@@ -311,6 +311,6 @@ namespace KYHBPA_TeamA.Controllers
         {
             ImageConverter converter = new ImageConverter();
             return (byte[])converter.ConvertTo(img, typeof(byte[]));
-        }s
+        }
     }
 }
