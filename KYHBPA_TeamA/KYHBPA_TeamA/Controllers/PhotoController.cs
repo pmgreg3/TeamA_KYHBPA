@@ -8,6 +8,8 @@ using System.Web;
 using System.Web.Mvc;
 using PagedList;
 using System.Web.UI;
+using System.Drawing;
+using System.Drawing.Drawing2D;
 
 namespace KYHBPA_TeamA.Controllers
 {
@@ -192,6 +194,12 @@ namespace KYHBPA_TeamA.Controllers
                         MimeType = image.ContentType
                     };
                     image.InputStream.Read(photo.PhotoData, 0, image.ContentLength);
+
+                    var thumbnail = GetImageThumbnail(image);
+                    var thumbnailByteArray = ImageToByte(thumbnail);
+
+                    photo.ThumbnailPhotoContent = thumbnailByteArray; 
+
                     db.Photos.Add(photo);
                     db.SaveChanges();
 
@@ -399,6 +407,49 @@ namespace KYHBPA_TeamA.Controllers
             }
           
             return View(vm);
+        }
+         
+        public Image GetImageThumbnail(HttpPostedFileBase image)
+        {
+            var imageToResize = Image.FromStream(image.InputStream);
+            var thumbSize = new Size()
+            {
+                Width = 300,
+                Height = 300
+            };
+
+            int sourceWidth = imageToResize.Width;
+            int sourceHeight = imageToResize.Height;
+
+            float nPercent = 0;
+            float nPercentW = 0;
+            float nPercentH = 0;
+
+            nPercentW = ((float)thumbSize.Width / (float)sourceWidth);
+            nPercentH = ((float)thumbSize.Height / (float)sourceHeight);
+
+            if (nPercentH < nPercentW)
+                nPercent = nPercentH;
+            else
+                nPercent = nPercentW;
+
+            int destWidth = (int)(sourceWidth * nPercent);
+            int destHeight = (int)(sourceHeight * nPercent);
+
+            Bitmap b = new Bitmap(destWidth, destHeight);
+            Graphics g = Graphics.FromImage((Image)b);
+            g.InterpolationMode = InterpolationMode.HighQualityBicubic;
+
+            g.DrawImage(imageToResize, 0, 0, destWidth, destHeight);
+            g.Dispose();
+
+            return b;
+        }
+
+        public static byte[] ImageToByte(Image img)
+        {
+            ImageConverter converter = new ImageConverter();
+            return (byte[])converter.ConvertTo(img, typeof(byte[]));
         }
     }
 }
