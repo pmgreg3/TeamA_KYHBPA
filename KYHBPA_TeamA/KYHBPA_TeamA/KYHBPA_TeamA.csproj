@@ -303,6 +303,10 @@
     <Compile Include="Migrations\201802011122229_AddingCreditToPhotoDomainModel.Designer.cs">
       <DependentUpon>201802011122229_AddingCreditToPhotoDomainModel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201802051126544_AddingStaffMember.cs" />
+    <Compile Include="Migrations\201802051126544_AddingStaffMember.Designer.cs">
+      <DependentUpon>201802051126544_AddingStaffMember.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Blog.cs" />
@@ -745,6 +749,7 @@
     <Content Include="Views\Staff\Index.cshtml" />
     <Content Include="Views\Staff\Create.cshtml" />
     <Content Include="Views\Staff\Edit.cshtml" />
+    <Content Include="Views\Staff\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -787,6 +792,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201802011122229_AddingCreditToPhotoDomainModel.resx">
       <DependentUpon>201802011122229_AddingCreditToPhotoDomainModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201802051126544_AddingStaffMember.resx">
+      <DependentUpon>201802051126544_AddingStaffMember.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
