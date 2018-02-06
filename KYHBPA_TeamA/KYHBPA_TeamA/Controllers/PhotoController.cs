@@ -97,8 +97,8 @@ namespace KYHBPA_TeamA.Controllers
 
                     if(photoViewModelsList.Count % 2 != 0)
                     {
-                        var num = photoViewModelsList.Count / 2;
-                        if (i == 0)
+                        var num = (photoViewModelsList.Count / 2) - 1;
+                        if (i == num)
                         {
                             var additionalElement = photoViewModelsList.ElementAt(i + 1);
                             newList.Add(additionalElement);

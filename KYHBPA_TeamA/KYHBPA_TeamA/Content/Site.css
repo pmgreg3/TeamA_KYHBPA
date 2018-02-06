@@ -743,7 +743,7 @@ textarea {
 
 .thumbnail {
     box-shadow: 0px 2px 20px 0 #00000026;
-    padding:unset;
+    padding: unset;
     margin: 1rem;
 }
 
@@ -851,6 +851,11 @@ textarea {
         margin: 1rem;
         display: block !important;
         text-align: center;
+    }
+
+    #photoGalleryContainer {
+        padding-left: unset !important;
+        padding-right: unset !important;
     }
 }
 
