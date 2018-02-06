@@ -79,10 +79,50 @@ namespace KYHBPA_TeamA.Controllers
                         break;
                 }
 
+                // new ordered list for masonry
+                var newList = new List<DisplayPhotosViewModel>();
+
+                // Order for masonry
+                var photoViewModelsList = photoViewModels.OrderBy(x => x.Description.Length).ToList();
+
+                int lastPhotoIterator = photoViewModels.Count() - 1;
+
+                
+                for(int i = 0; i < photoViewModelsList.Count / 2; i++)
+                {
+
+                    var smallerElement = photoViewModelsList.ElementAt(i);
+                    var largerElement = photoViewModelsList.ElementAt(lastPhotoIterator);
+                    lastPhotoIterator--;
+
+                    if(photoViewModelsList.Count % 2 != 0)
+                    {
+                        var num = photoViewModelsList.Count / 2;
+                        if (i == 0)
+                        {
+                            var additionalElement = photoViewModelsList.ElementAt(i + 1);
+                            newList.Add(additionalElement);
+                        }
+                    }
+
+                    newList.Add(smallerElement);
+                    newList.Add(largerElement);
+                }
 
                 int pageSize = 9;
                 int pageNumber = (page ?? 1);
-                return View(photoViewModels.ToPagedList(pageNumber, pageSize));
+
+                if (newList.Count != 0)
+                {
+
+                    return View(newList.ToPagedList(pageNumber, pageSize));
+                }
+                else
+                {
+                    return View(photoViewModelsList.ToPagedList(pageNumber, pageSize));
+                }
+
+
             }
             else
             {
