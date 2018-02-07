@@ -5,6 +5,11 @@
     <title>@ViewBag.Title - Kentucky HBPA</title>
     <meta name="google-site-verification" content="6TD4bGq9EUGbKuhiduXAvQLFyM-u3MJFx82zZYjcOaA" />
     <link rel="icon" href="~/Content/titleLogo.png" />
+    <meta property="og:title" content="@ViewBag.Title" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="Http://www.kentuckyhbpa.org" />
+    <meta property="og:site_name" content="Kentucky HBPA" />
+    <meta property="og:description"  content="Kentucky HBPA" />
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
@@ -160,4 +165,5 @@
         js = d.createElement(s); js.id = id;
         js.src = "//connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.10";
         fjs.parentNode.insertBefore(js, fjs);
-    }(document, 'script', 'facebook-jssdk'));</script>
+    }(document, 'script', 'facebook-jssdk'));
+</script>
