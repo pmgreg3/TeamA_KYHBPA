@@ -267,9 +267,14 @@ namespace KYHBPA_TeamA.Controllers
         /// <param name="id">Id of the board member</param>
         /// <returns>File Result of Image</returns>
         [OutputCache(Duration = 1800, Location = OutputCacheLocation.ServerAndClient)]
-        public FileResult GetBoDImage(int id)
+        public ActionResult GetBoDImage(int? id)
         {
             var boardOfDirector = new BoardOfDirectors();
+
+            if(id == null)
+            {
+                return new HttpNotFoundResult();
+            }
 
             boardOfDirector = db.BoardOfDirectors.Find(id);
 
