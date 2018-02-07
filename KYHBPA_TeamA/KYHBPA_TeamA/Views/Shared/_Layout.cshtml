@@ -7,7 +7,7 @@
     <link rel="icon" href="~/Content/titleLogo.png" />
     <meta property="og:title" content="@ViewBag.Title" />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="Http://www.kentuckyhbpa.org" />
+    <meta property="og:url" content="@Request.RawUrl" />
     <meta property="og:site_name" content="Kentucky HBPA" />
     <meta property="og:description"  content="Kentucky HBPA" />
     <meta name="theme-color" content="#072419" />
@@ -24,7 +24,7 @@
                     <span class="icon-bar"></span>
                 </button>
                 <div id="brandArea" style="height:50px; width:80px;">
-                    <img class="hideMe" src="~/Content/logoForKyhbpa3.png" id="brandLogo" />
+                    <img class="hideMe" alt="kyhbpaLogo" src="~/Content/logoForKyhbpa3.png" id="brandLogo" />
                     @Html.ActionLink("KYHBPA", "Index", "Home", new { area = "" }, new { @class = "showMe brandText" })
                 </div>
             </div>
@@ -122,13 +122,13 @@
                     <br />
                     <div style="line-height: 12px;" align="left">
                         <p class="small" style:"font-weight: bold;">Follow Us</p>
-                        <a href="https://www.facebook.com/kyhbpa" target="_blank">
+                        <a itemprop="sameAs" href="https://www.facebook.com/kyhbpa" target="_blank">
                             <i class="fab fa-facebook-square fa-2x" aria-hidden="true" style="color: #3B5998 !important;"></i>
                         </a>
-                        <a href="https://www.twitter.com/kyhbpa" target="_blank">
+                        <a itemprop="sameAs" href="https://www.twitter.com/kyhbpa" target="_blank">
                             <i class="fab fa-twitter-square fa-2x" aria-hidden="true" style="color: #1DA1F2 !important;"></i>
                         </a>
-                        <a href="https://www.instagram.com/" target="_blank">
+                        <a itemprop="sameAs" href="https://www.instagram.com/" target="_blank">
                             <i class="fab fa-instagram fa-2x" aria-hidden="true" style="color: #fb3958 !important;"></i>
                         </a>
                     </div>
@@ -149,8 +149,6 @@
         </div>
     </footer>
 
-
-
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @Scripts.Render("~/Content/fontawesome")
@@ -158,13 +156,16 @@
 </body>
 </html>
 
-<div id="fb-root"></div>
-<script>
-    (function (d, s, id) {
-        var js, fjs = d.getElementsByTagName(s)[0];
-        if (d.getElementById(id)) return;
-        js = d.createElement(s); js.id = id;
-        js.src = "//connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.10";
-        fjs.parentNode.insertBefore(js, fjs);
-    }(document, 'script', 'facebook-jssdk'));
+<script type="application/ld+json">
+    {
+    "@@context": "http://schema.org",
+    "@@type": "Organization",
+    "name": "Kentucky Horsemen's Benevolence and Protective Association",
+    "url": "http://kentuckyhbpa.org/",
+    "sameAs": [
+    "https://www.facebook.com/KYhbpa/",
+    "https://twitter.com/kyhbpa",
+    "https://www.youtube.com/channel/UC8JBPymcPDRk7Gri4hU-Zlw"
+    ]
+    }
 </script>

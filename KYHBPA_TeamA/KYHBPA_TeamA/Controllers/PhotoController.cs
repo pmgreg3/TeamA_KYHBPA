@@ -378,8 +378,11 @@ namespace KYHBPA_TeamA.Controllers
         /// <param name="id">ID of photo to get</param>
         /// <returns>File of image to render</returns>
         [OutputCache(Duration = 1800, Location = OutputCacheLocation.Client)]
-        public ActionResult GetPhoto(int id)
+        public ActionResult GetPhoto(int? id)
         {
+            if (id == null)
+                return new HttpNotFoundResult();
+
             Photo photoToGet = db.Photos.Find(id);
 
             if (photoToGet != null)
@@ -393,8 +396,12 @@ namespace KYHBPA_TeamA.Controllers
         /// </summary>
         /// <param name="id">Id of the photo</param>
         /// <returns>Returns file</returns>
-        public ActionResult GetThumbnail(int id)
+        [OutputCache(Duration = 1800, Location = OutputCacheLocation.Client)]
+        public ActionResult GetThumbnail(int? id)
         {
+            if (id == null)
+                return new HttpNotFoundResult();
+
             Photo photoToGet = db.Photos.Find(id);
 
             if (photoToGet != null && photoToGet.ThumbnailPhotoContent != null) 
