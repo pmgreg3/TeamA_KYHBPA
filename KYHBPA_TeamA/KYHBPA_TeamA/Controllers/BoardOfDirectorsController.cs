@@ -245,21 +245,6 @@ namespace KYHBPA_TeamA.Controllers
             }
         }
 
-        /// <summary>
-        /// Returns BOD member from database if it is found
-        /// </summary>
-        /// <param name="id">ID of BOD member to get</param>
-        /// <returns>File of BOD member to render</returns>
-        public FileResult GetBODMember(int id)
-        {
-            BoardOfDirectors BODToGet = db.BoardOfDirectors.Find(id);
-
-            if (BODToGet != null)
-                return File(BODToGet.PhotoContent, BODToGet.Description);
-            else
-                return null;
-        }
-
 
         /// <summary>
         /// Gets an image associated with BoD member
