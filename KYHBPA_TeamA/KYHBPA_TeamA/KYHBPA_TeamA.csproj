@@ -328,6 +328,7 @@
     <Compile Include="Models\EditBODMemberViewModel.cs" />
     <Compile Include="Models\Event.cs" />
     <Compile Include="Models\EventDisplayViewModel.cs" />
+    <Compile Include="Models\SchemaRootObject.cs" />
     <Compile Include="Models\GoogleCalendarServiceAccount.cs" />
     <Compile Include="Models\HomepageEvent.cs" />
     <Compile Include="Models\IdentityModels.cs" />

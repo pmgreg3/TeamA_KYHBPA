@@ -1,4 +1,4 @@
-﻿@model IEnumerable<KYHBPA_TeamA.Models.EventDisplayViewModel>
+﻿@model KYHBPA_TeamA.Models.GoogleEventsDisplayModel
 
 @{ 
     Layout = null;
@@ -31,7 +31,7 @@
         </section>
         <section id="upcomingEvents">
             <h2 class="common-UppercaseTitle">Stay Current</h2>
-            @if (Model == null || Model.Count() == 0)
+            @if (Model == null || Model.EventDisplayViewModels.Count() == 0)
             {
                 <p>
                     There are no upcoming events.
@@ -39,11 +39,11 @@
             }
             else
             {
-                for (int i = 0; i <= Model.Count() / 2; i++)
+                for (int i = 0; i <= Model.EventDisplayViewModels.Count() / 2; i++)
                 {
                     <div class="row">                        
 
-                        @foreach (var item in Model.Skip(i * 2).Take(2))
+                        @foreach (var item in Model.EventDisplayViewModels.Skip(i * 2).Take(2))
                         {
                             <div class="col-md-6">
                                 <div class="eventCard common-BodyText">
@@ -85,5 +85,9 @@
         </section>
 </div>
 </section>
+
+<script type="application/ld+json">
+    @Html.Raw(Model.SchemaJson)
+</script>
 
 

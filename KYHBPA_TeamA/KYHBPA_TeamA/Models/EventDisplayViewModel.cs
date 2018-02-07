@@ -5,6 +5,12 @@ using System.Web;
 
 namespace KYHBPA_TeamA.Models
 {
+    public class GoogleEventsDisplayModel
+    {
+        public List<EventDisplayViewModel> EventDisplayViewModels { get; set; }
+        public string SchemaJson { get; set; }
+    }
+
     public class EventDisplayViewModel
     {
         public string Title { get; set; }
@@ -15,6 +21,5 @@ namespace KYHBPA_TeamA.Models
         public string EndTime { get; set; } = null;
         public string Link { get; set; }
         public string Location { get; set; }
-
     }
 }

@@ -14,6 +14,8 @@ using Newtonsoft.Json;
 using System.IO;
 using System.Text.RegularExpressions;
 using System.Globalization;
+using Newtonsoft.Json.Schema;
+using Newtonsoft.Json.Serialization;
 
 namespace KYHBPA_TeamA.Controllers
 {
@@ -164,6 +166,7 @@ namespace KYHBPA_TeamA.Controllers
 
         public ActionResult _GoogleEvents()
         {
+            var googleEventsDisplayModel = new GoogleEventsDisplayModel();
             string[] SCOPES = { CalendarService.Scope.CalendarReadonly };
             const string CALENDAR_ID = "4uesds7cl60f2g9grtq376q67k@group.calendar.google.com";
             var eventsViewModelList = new List<EventDisplayViewModel>();
@@ -201,6 +204,7 @@ namespace KYHBPA_TeamA.Controllers
             request.OrderBy = EventsResource.ListRequest.OrderByEnum.StartTime;
 
             var events = request.Execute();
+            var jsonEvents = CreateJsonFromEventViewModels(events);
 
             if (events.Items != null && events.Items.Count > 0)
             {
@@ -226,10 +230,17 @@ namespace KYHBPA_TeamA.Controllers
                 }
             }
 
-            return View(eventsViewModelList);
+            googleEventsDisplayModel.EventDisplayViewModels = eventsViewModelList;
+            googleEventsDisplayModel.SchemaJson = jsonEvents;
+
+            return View(googleEventsDisplayModel);
         }
 
-
+        /// <summary>
+        /// Retrieves the ACTUAL date time of an event
+        /// </summary>
+        /// <param name="dateTimeRaw">DateTimeRaw string from the event object</param>
+        /// <returns>Returns a string date time</returns>
         public string ExtractDateTimeFromDateTimeRaw(string dateTimeRaw)
         {
             TimeZoneInfo timezone = TimeZoneInfo.FindSystemTimeZoneById("Eastern Standard Time");
@@ -241,5 +252,66 @@ namespace KYHBPA_TeamA.Controllers
             return EST.ToString();
         }
 
+
+        public string CreateJsonFromEventViewModels(Events eventsList)
+        {
+            var jsonEventObjectsList = new List<RootObject>(); 
+            foreach(var eventItem in eventsList.Items)
+            {
+                var jsonEventObject = new RootObject()
+                {
+                    Type = "Event",
+                    Name = eventItem.Summary,
+                    Description = eventItem.Description,
+                    Location = ParseLocationFromString(eventItem.Location),
+                    Organizer = new Organizer(),
+                    EndDate = eventItem.End.DateTimeRaw,
+                    //Image = new string[] { eventItem.Attachments[0].FileUrl },
+                };
+
+                //Handling null start times
+                if (eventItem.Start.DateTimeRaw != null)
+                {
+                    jsonEventObject.StartDate = eventItem.Start.DateTimeRaw;
+                }
+                else
+                {
+                    jsonEventObject.StartDate = eventItem.Start.Date;
+                }
+
+                jsonEventObjectsList.Add(jsonEventObject);
+            }
+            var serializerSettings = new JsonSerializerSettings();
+            serializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
+
+            return JsonConvert.SerializeObject(jsonEventObjectsList,serializerSettings);
+        }
+
+        public Location ParseLocationFromString(string stringAddress)
+        {
+            var location = new Location();
+            location.Address = new Address();
+
+            try
+            {
+                var parsing = stringAddress.Split(',');
+
+                location.Name = parsing[0];
+                location.Address.StreetAddress = parsing[1];
+                location.Address.AddressLocality = parsing[2].Trim();
+
+                var stateZipParse = parsing[3].Trim().Split(' ');
+
+                location.Address.AddressRegion = stateZipParse[0];
+                location.Address.PostalCode = stateZipParse[1];
+                location.Address.AddressCountry = parsing[4];
+
+                return location;
+            }
+            catch
+            {
+                return location;
+            }
+        }
     }
 }
