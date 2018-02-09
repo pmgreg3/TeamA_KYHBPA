@@ -31,7 +31,7 @@ namespace KYHBPA_TeamA
                 ));
 
             bundles.Add(new StyleBundle("~/bundles/summernotestyle", "https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote-lite.css").Include(
-                    "~/Content/Summernote/summernote.css"
+                    "~/Content/Summernote/summernote.css", new CssRewriteUrlTransform()
                 ));
 
             // Use the development version of Modernizr to develop with and learn from. Then, when you're
