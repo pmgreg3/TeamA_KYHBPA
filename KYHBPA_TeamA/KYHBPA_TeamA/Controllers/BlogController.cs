@@ -48,7 +48,7 @@ namespace KYHBPA_TeamA.Controllers
                 PostedOn = post.PostedOn,
                 Category = post.Category,
                 Comments = post.Comments
-            }).Where(x => x.Published == true);
+            }).Where(x => x.Published == true).OrderByDescending(x => x.PostedOn);
 
             
 
