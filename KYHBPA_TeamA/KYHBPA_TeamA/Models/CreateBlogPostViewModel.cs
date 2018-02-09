@@ -65,6 +65,7 @@ namespace KYHBPA_TeamA.Models
 
         }
 
+        [DisplayName("Image to display")]
         public HttpPostedFileBase File { get; set; } = null;
         public byte[] PhotoContent { get; set; }
     }
