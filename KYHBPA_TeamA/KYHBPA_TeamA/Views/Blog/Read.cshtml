@@ -31,10 +31,21 @@
 </p>
 
 <div id="comment-Section" class="comment-Section">
-    <h3 class="common-UppercaseTitle">
-        Comments
-        @Html.ActionLink("Comment", "CreateComment", "Blog", new { Id = Model.Id }, new { @class = "common-Button comment-Button pull-right" })
-    </h3>
+    @if (Model.Comments.Count == 0)
+    {
+        <h3>
+            Be the first to comment
+            @Html.ActionLink("Comment", "CreateComment", "Blog", new { Id = Model.Id }, new { @class = "common-Button comment-Button pull-right" })
+        </h3>
+    }
+    else
+    {
+        <h3>
+            Comments
+            @Html.ActionLink("Comment", "CreateComment", "Blog", new { Id = Model.Id }, new { @class = "common-Button comment-Button pull-right" })
+        </h3>
+    }
+
 
 
     @foreach (var comment in Model.Comments)
