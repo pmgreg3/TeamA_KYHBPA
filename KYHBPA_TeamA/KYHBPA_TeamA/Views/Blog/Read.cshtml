@@ -9,10 +9,7 @@
     @Model.Title
 </h2>
 
-<div class="postReadMoreImageArea">
-    <img class="postReadMoreImage" src="@Url.Action("GetBlogOrNewsImage", "Blog", new { Model.Id })" />
-</div>
-
+<hr class="stylishHr"/>
 
 @Html.Raw(Model.Description)
 
