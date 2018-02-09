@@ -34,7 +34,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.TextAreaFor(model => model.Description, new { rows = "20", style = "resize:none;width:400px;", placeholder = Html.DisplayNameFor(model => model.Description), @class = "form-control input-lg textarea-editor" })
+                @Html.TextAreaFor(model => model.Description, new { rows = "20", placeholder = Html.DisplayNameFor(model => model.Description), @class = "form-control input-lg textarea-editor" })
                 @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
             </div>
         </div>

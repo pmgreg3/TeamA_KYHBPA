@@ -83,7 +83,7 @@ namespace KYHBPA_TeamA.Controllers
         [HttpGet]
         public ActionResult Create()
         {
-            return View(new CreateBlogPostViewModel() { PostedOn = DateTime.Today.Date });
+            return View(new CreateBlogPostViewModel() { PostedOn = DateTime.Now });
         }
 
         // GET: Blog/Create
