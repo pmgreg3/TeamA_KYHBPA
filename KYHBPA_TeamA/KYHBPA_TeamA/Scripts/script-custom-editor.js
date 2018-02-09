@@ -3,7 +3,7 @@
     $('.textarea-editor').summernote(
         {
             height: 300,         // set editor height
-            width: 800,
+            width: 1140,
             minHeight: null,       // set minimum height of editor  
             maxHeight: null,       // set maximum height of editor  
             focus: true,       // set focus to editable area after initializing summernote  
