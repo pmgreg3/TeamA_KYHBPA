@@ -631,10 +631,6 @@
     padding-bottom: 3rem;
 }
 
-.boardOfDirectorsImagePopUp {
-    box-shadow: 8px 8px 20px 0px #0000006b;
-}
-
 /* Used for BoD description's modal boxes */
 .modal {
     overflow: hidden;
