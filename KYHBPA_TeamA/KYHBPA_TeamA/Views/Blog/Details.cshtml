@@ -9,12 +9,18 @@
 
 <div>
 
-    <hr />
-    <div class="postReadMoreImageArea">
-        <img class="postReadMoreImage" src="@Url.Action("GetBlogOrNewsImage", "Blog", new { Model.Id })" />
-    </div>
-
+    <hr class="stylishHr"/>
     <dl class="dl-horizontal">
+        <dt>
+            Image that shows in index
+        </dt>
+
+        <dd>
+            <div class="postReadMoreImageArea">
+                <img class="postReadMoreImage" src="@Url.Action("GetBlogOrNewsImage", "Blog", new { Model.Id })" />
+            </div>
+        </dd>
+
         <dt>
             @Html.DisplayNameFor(model => model.Title)
         </dt>

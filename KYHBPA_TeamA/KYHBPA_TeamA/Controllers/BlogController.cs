@@ -273,26 +273,33 @@ namespace KYHBPA_TeamA.Controllers
         }
 
 
-        public ActionResult Details(int id)
+        public ActionResult Details(int? id)
         {
-            var post = _db.Posts.FirstOrDefault(p => p.Id == id);
-
-            var viewModel = new BlogPostDetailsViewModel()
+            if (id == null)
             {
-                Id = post.Id,
-                Description = post.Description,
-                ShortDescription = post.ShortDescription,
-                Category = post.Category,
-                Modified = post.Modified,
-                PostedOn = post.PostedOn,
-                Published = post.Published,
-                Title = post.Title,
-                Comments = post.Comments,
-                //Could lead to possible bug if seed order doesn't stay the same.
-                SelectedCategoryId = post.Category.Id
-            };
+                return new HttpNotFoundResult();
+            }
+            else
+            {
+                var post = _db.Posts.FirstOrDefault(p => p.Id == id);
 
-            return View(viewModel);
+                var viewModel = new BlogPostDetailsViewModel()
+                {
+                    Id = post.Id,
+                    Description = post.Description,
+                    ShortDescription = post.ShortDescription,
+                    Category = post.Category,
+                    Modified = post.Modified,
+                    PostedOn = post.PostedOn,
+                    Published = post.Published,
+                    Title = post.Title,
+                    Comments = post.Comments,
+                    //Could lead to possible bug if seed order doesn't stay the same.
+                    SelectedCategoryId = post.Category.Id
+                };
+
+                return View(viewModel);
+            }
         }
 
         public ActionResult ViewByCategory(int Id)

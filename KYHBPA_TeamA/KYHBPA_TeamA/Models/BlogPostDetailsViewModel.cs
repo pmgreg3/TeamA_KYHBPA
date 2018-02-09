@@ -17,6 +17,7 @@ namespace KYHBPA_TeamA.Models
         [DisplayName("Short Description")]
         public virtual string ShortDescription { get; set; }
 
+        [DisplayName("Body")]
         public virtual string Description { get; set; }
 
         //public virtual string Meta { get; set; }
