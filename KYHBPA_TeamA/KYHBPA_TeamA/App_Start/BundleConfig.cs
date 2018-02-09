@@ -25,12 +25,12 @@ namespace KYHBPA_TeamA
                     "~/Content/regular.js"
                 ));
 
-            bundles.Add(new ScriptBundle("~/bundles/summernote").Include(
+            bundles.Add(new ScriptBundle("~/bundles/summernote", "https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote-lite.js").Include(
                     "~/Scripts/summernote.min.js",
                     "~/Scripts/script-custom-editor.js"
                 ));
 
-            bundles.Add(new StyleBundle("~/bundles/summernotestyle").Include(
+            bundles.Add(new StyleBundle("~/bundles/summernotestyle", "https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote-lite.css").Include(
                     "~/Content/Summernote/summernote.css"
                 ));
 
