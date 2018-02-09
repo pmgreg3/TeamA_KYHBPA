@@ -168,6 +168,7 @@ namespace KYHBPA_TeamA.Controllers
 
         [Authorize(Roles = "Admin")]
         [HttpPost]
+        [ValidateInput(false)]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(CreateBlogPostViewModel editedPost, FormCollection collection, HttpPostedFileBase image = null)
         {
@@ -352,7 +353,7 @@ namespace KYHBPA_TeamA.Controllers
         }
 
 
-        [OutputCache(Duration = 1800, Location = OutputCacheLocation.ServerAndClient)]
+        [OutputCache(Duration = 1800, Location = OutputCacheLocation.Client)]
         public ActionResult GetBlogOrNewsImage(int id)
         {
             var post = _db.Posts.Find(id);

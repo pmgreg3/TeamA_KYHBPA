@@ -13,15 +13,13 @@
     <img class="postReadMoreImage" src="@Url.Action("GetBlogOrNewsImage", "Blog", new { Model.Id })" />
 </div>
 
-<pre class="postReadMoreDescription">
-    @Html.DisplayFor(model => model.Description)
-</pre>
+
+@Html.Raw(Model.Description)
 
 <p>
     @Html.ActionLink("Back to List", "Index")
 </p>
 
-<hr class="featurete-divider"/>
 
 
 <div class="comment-Section">
@@ -48,4 +46,3 @@
     }
 </div>
 
-<hr class="featurete-divider" />

@@ -1,5 +1,6 @@
 ﻿@model KYHBPA_TeamA.Models.CreateBlogPostViewModel
 
+
 @{
     ViewBag.Controller = "News and Blog";
     ViewBag.Title = "Create a news article or a blog post.  Compressed images are better for web use so " +
@@ -33,7 +34,9 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.TextAreaFor(model => model.Description, new { htmlAttributes = new { @class = "form-control col-md-10" } })
+                <div class="input-group">
+                    @Html.TextAreaFor(model => model.Description, new { rows = "20", style = "resize:none;width:400px;", placeholder = Html.DisplayNameFor(model => model.Description), @class = "form-control input-lg textarea-editor" })
+                </div>
                 @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -82,3 +85,5 @@
 <div>
     @Html.ActionLink("Back to List", "Admin")
 </div>
+
+

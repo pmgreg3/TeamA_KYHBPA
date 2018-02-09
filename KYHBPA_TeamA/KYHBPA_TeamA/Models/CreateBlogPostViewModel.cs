@@ -17,6 +17,7 @@ namespace KYHBPA_TeamA.Models
         [DisplayName("Short Description")]
         public virtual string ShortDescription { get; set; }
 
+        [AllowHtml]
         public virtual string Description { get; set; }
 
         public virtual bool Published { get; set; }
