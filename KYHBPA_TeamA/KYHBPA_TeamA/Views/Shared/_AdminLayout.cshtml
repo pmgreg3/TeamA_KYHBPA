@@ -6,9 +6,11 @@
     <link href="~/Content/bootstrap.css" rel="stylesheet"/>
     <link rel="icon" href="~/Content/titleLogo.png" />
     <title>@ViewBag.Title</title>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
     @Styles.Render("~/Content/css")
+    @Styles.Render("~/bundles/summernotestyle")
+    @Scripts.Render("~/bundles/summernote")
     @Scripts.Render("~/bundles/modernizr")
-    @Scripts.Render("~/bundles/jquery")
 </head>
 <body>
     <div class="container" id="fluid">
@@ -105,8 +107,6 @@
     <div id="adminBody" class="common-BodyTextSmall">
         @RenderBody()
     </div>
-
-    @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @Scripts.Render("~/Content/fontawesome")
 </body>

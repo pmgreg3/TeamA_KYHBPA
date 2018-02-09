@@ -48,7 +48,7 @@ namespace KYHBPA_TeamA.Controllers
                 PostedOn = post.PostedOn,
                 Category = post.Category,
                 Comments = post.Comments
-            }).Where(x => x.Published == true);
+            }).Where(x => x.Published == true).OrderByDescending(x => x.PostedOn);
 
             
 
@@ -83,7 +83,7 @@ namespace KYHBPA_TeamA.Controllers
         [HttpGet]
         public ActionResult Create()
         {
-            return View(new CreateBlogPostViewModel() { PostedOn = DateTime.Today.Date });
+            return View(new CreateBlogPostViewModel() { PostedOn = DateTime.Now });
         }
 
         // GET: Blog/Create
@@ -168,6 +168,7 @@ namespace KYHBPA_TeamA.Controllers
 
         [Authorize(Roles = "Admin")]
         [HttpPost]
+        [ValidateInput(false)]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(CreateBlogPostViewModel editedPost, FormCollection collection, HttpPostedFileBase image = null)
         {
@@ -272,26 +273,33 @@ namespace KYHBPA_TeamA.Controllers
         }
 
 
-        public ActionResult Details(int id)
+        public ActionResult Details(int? id)
         {
-            var post = _db.Posts.FirstOrDefault(p => p.Id == id);
-
-            var viewModel = new BlogPostDetailsViewModel()
+            if (id == null)
             {
-                Id = post.Id,
-                Description = post.Description,
-                ShortDescription = post.ShortDescription,
-                Category = post.Category,
-                Modified = post.Modified,
-                PostedOn = post.PostedOn,
-                Published = post.Published,
-                Title = post.Title,
-                Comments = post.Comments,
-                //Could lead to possible bug if seed order doesn't stay the same.
-                SelectedCategoryId = post.Category.Id
-            };
+                return new HttpNotFoundResult();
+            }
+            else
+            {
+                var post = _db.Posts.FirstOrDefault(p => p.Id == id);
 
-            return View(viewModel);
+                var viewModel = new BlogPostDetailsViewModel()
+                {
+                    Id = post.Id,
+                    Description = post.Description,
+                    ShortDescription = post.ShortDescription,
+                    Category = post.Category,
+                    Modified = post.Modified,
+                    PostedOn = post.PostedOn,
+                    Published = post.Published,
+                    Title = post.Title,
+                    Comments = post.Comments,
+                    //Could lead to possible bug if seed order doesn't stay the same.
+                    SelectedCategoryId = post.Category.Id
+                };
+
+                return View(viewModel);
+            }
         }
 
         public ActionResult ViewByCategory(int Id)
@@ -352,7 +360,7 @@ namespace KYHBPA_TeamA.Controllers
         }
 
 
-        [OutputCache(Duration = 1800, Location = OutputCacheLocation.ServerAndClient)]
+        [OutputCache(Duration = 1800, Location = OutputCacheLocation.Client)]
         public ActionResult GetBlogOrNewsImage(int id)
         {
             var post = _db.Posts.Find(id);

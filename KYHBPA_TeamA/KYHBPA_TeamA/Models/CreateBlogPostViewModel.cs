@@ -17,6 +17,8 @@ namespace KYHBPA_TeamA.Models
         [DisplayName("Short Description")]
         public virtual string ShortDescription { get; set; }
 
+        [AllowHtml]
+        [DisplayName("Body")]
         public virtual string Description { get; set; }
 
         public virtual bool Published { get; set; }
@@ -63,6 +65,7 @@ namespace KYHBPA_TeamA.Models
 
         }
 
+        [DisplayName("Image to display")]
         public HttpPostedFileBase File { get; set; } = null;
         public byte[] PhotoContent { get; set; }
     }

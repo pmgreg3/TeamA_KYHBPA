@@ -15,7 +15,10 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
 
 <h2 class="common-Uppercase text-center">Board of Directors</h2>
-<hr class="featurete-divider" />
+<div class="text-center">
+    <p>Click on a board member to read more.</p>
+</div>
+<hr class="stylishHr" />
 
 
 @for (int i = 0; i <= Model.Count() / 3; i++)
@@ -46,7 +49,7 @@
                 </h5>
 
                 <div id="ex@(director.Id)" class="modal">
-                    <img class="boardOfDirectorsImagePopUp" src="@Url.Action("GetBoDImage", "BoardOfDirectors", new { director.Id })" />
+                    <img class="boardOfDirectorsImage" src="@Url.Action("GetBoDImage", "BoardOfDirectors", new { director.Id })" />
                     <h1>
                         @director.FirstName @director.LastName
                     </h1>

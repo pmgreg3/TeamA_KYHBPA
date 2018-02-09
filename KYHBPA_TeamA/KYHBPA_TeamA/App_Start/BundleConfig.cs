@@ -25,6 +25,15 @@ namespace KYHBPA_TeamA
                     "~/Content/regular.js"
                 ));
 
+            bundles.Add(new ScriptBundle("~/bundles/summernote", "https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote-lite.js").Include(
+                    "~/Scripts/summernote.min.js",
+                    "~/Scripts/script-custom-editor.js"
+                ));
+
+            bundles.Add(new StyleBundle("~/bundles/summernotestyle", "https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote-lite.css").Include(
+                    "~/Content/Summernote/summernote.css"
+                ));
+
             // Use the development version of Modernizr to develop with and learn from. Then, when you're
             // ready for production, use the build tool at https://modernizr.com to pick only the tests you need.
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(

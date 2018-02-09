@@ -12,17 +12,13 @@
     @Html.AntiForgeryToken()
 
     <div class="form-horizontal">
-        <hr />
+        <hr class="stylishHr"/>
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.Id)
         @Html.HiddenFor(model => model.PostNumber)
 
-        <div class="postReadMoreImageArea">
-            <img class="postReadMoreImage" src="@Url.Action("GetBlogOrNewsImage", "Blog", new { Model.Post.Id })" />
-        </div>
-
         <div class="postReadMoreDescription">
-            @Model.Post.Description
+            @Html.Raw(Model.Post.Description)
         </div>
 
         <div class="comment-Section">

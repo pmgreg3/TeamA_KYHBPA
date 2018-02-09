@@ -4,31 +4,39 @@
     ViewBag.Title = "News and Blogs";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<div itemscope itemtype="http://schema.org/Article">
+    <h2>
+        Our latest news and blogs
+    </h2>
 
-<h2>
-    Our latest news and blogs
-</h2>
 
+    @foreach (var post in Model)
+    {
+        <div class="row postRow">
+            <div class="col-md-4 postImgArea">
+                <img itemprop="image" class="img-thumbnail" src="@Url.Action("GetBlogOrNewsImage", "Blog", new { post.Id })" />
+            </div>
+            <div class="col-md-5">
+                <h4 class="postTitle">
+                    @post.Title
+                </h4>
+                <p itemprop="articleSection" class="postShortDescription">
+                    @post.ShortDescription
+                </p>
+            </div>
+            <div class="col-md-3">
+                <div class="postDetails">
+                    <h6>
+                        @post.PostedOn.ToLongDateString()   <span class="seperator"> / </span> @post.Comments.Count Comments
+                    </h6>
+                </div>
+                @Html.ActionLink("Read", "Read", "Blog", new { postId = post.Id }, new { @class = "common-ButtonVariant pull-right", @itemprop = "url" })
+            </div>
+        </div>
+    }
 
-@foreach(var post in Model)
-{
-    <div class="row postRow">
-        <div class="col-md-4 postImgArea">
-            <img class="img-thumbnail" src="@Url.Action("GetBlogOrNewsImage", "Blog", new { post.Id })" />
-        </div>
-        <div class="col-md-7">
-            <h4 class="postTitle">
-                @post.Title
-            </h4>
-            <p class="postShortDescription">
-                @post.ShortDescription
-            </p>
-        </div>
-        <div class="col-md-1">
-            <h6>
-                @post.PostedOn.ToShortDateString()
-            </h6>
-            @Html.ActionLink("Read", "Read", "Blog", new { postId = post.Id }, new { @class = "common-ButtonVariant" })
-        </div>
-    </div>
-}
+    <span itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Kentucky HBPA">
+    </span>
+</div>
+

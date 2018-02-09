@@ -5,47 +5,68 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2 class="postReadMoreTitle">
-    @Model.Title
-</h2>
+<div itemscope itemtype="http://schema.org/Article">
+    <h2 itemprop="name" class="postReadMoreTitle">
+        @Model.Title
+    </h2>
+    <div itemprop="dateCreated" class="postDetails">
+        <h6>
+            @Model.PostedOn.ToLongDateString()   <span class="seperator"> / </span> @Model.Comments.Count <a class="clean-Link" href="#comment-Section">Comments</a>
+        </h6>
+    </div>
 
-<div class="postReadMoreImageArea">
-    <img class="postReadMoreImage" src="@Url.Action("GetBlogOrNewsImage", "Blog", new { Model.Id })" />
+
+    <hr class="stylishHr" />
+
+    <div itemprop="image" class="postReadMoreDescription">
+        @Html.Raw(Model.Description)
+    </div>
+    <meta itemprop="image" content="@Url.Action("GetBlogOrNewsImage", "Blog", new { Model.Id })" />
+    <meta itemprop="articleSection" content="@Model.ShortDescription" />
+    <span itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Kentucky HBPA">
+    </span>
 </div>
 
-<pre class="postReadMoreDescription">
-    @Html.DisplayFor(model => model.Description)
-</pre>
-
-<p>
-    @Html.ActionLink("Back to List", "Index")
-</p>
-
-<hr class="featurete-divider"/>
 
 
-<div class="comment-Section">
-    <h3 class="common-UppercaseTitle">
-        Comments
-        @Html.ActionLink("Comment", "CreateComment", "Blog", new { Id = Model.Id }, new { @class = "common-Button comment-Button pull-right" })
-    </h3>
+    <hr class="stylishHr" />
+
+    <p>
+        @Html.ActionLink("Back to List", "Index", "", new { @class = "clean-Link" })
+    </p>
+
+    <div id="comment-Section" class="comment-Section">
+        <h3>
+            @if (Model.Comments.Count == 0)
+            {
+
+                @:Be the first to comment
+        }
+            else
+            {
+                @:Comments
+        }
+
+            @Html.ActionLink("Comment", "CreateComment", "Blog", new { Id = Model.Id }, new { @class = "common-Button comment-Button pull-right" })
+        </h3>
 
 
-    @foreach (var comment in Model.Comments)
-    {
-        <div class="row comment-DisplayArea">
-            <div class="col-md-4">
-                <h4 class="comment-Name">
-                    @comment.Name
-                </h4>
+
+        @foreach (var comment in Model.Comments)
+        {
+            <div class="row comment-DisplayArea">
+                <div class="col-md-4">
+                    <h4 class="comment-Name">
+                        @comment.Name
+                    </h4>
+                </div>
+                <div class="col-md-8">
+                    <p class="comment-Text">
+                        @comment.Text
+                    </p>
+                </div>
             </div>
-            <div class="col-md-8">
-                <p class="comment-Text">
-                    @comment.Text
-                </p>
-            </div>
-        </div>
-    }
-</div>
+        }
+    </div>
 
-<hr class="featurete-divider" />
