@@ -34,12 +34,12 @@
     <h3>
         @if (Model.Comments.Count == 0)
         {
-            Be the first to comment
+            "Be the first to comment".ToString();
         }
         else
         {
-            Comments
-            }
+            "Comments".ToString();
+        }
 
         @Html.ActionLink("Comment", "CreateComment", "Blog", new { Id = Model.Id }, new { @class = "common-Button comment-Button pull-right" })
     </h3>
