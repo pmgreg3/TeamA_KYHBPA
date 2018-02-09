@@ -7,8 +7,9 @@
     <link rel="icon" href="~/Content/titleLogo.png" />
     <title>@ViewBag.Title</title>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
-    <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote.css" rel="stylesheet">
     @Styles.Render("~/Content/css")
+    @Styles.Render("~/bundles/summernotestyle")
+    @Scripts.Render("~/bundles/summernote")
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
@@ -108,7 +109,5 @@
     </div>
     @Scripts.Render("~/bundles/bootstrap")
     @Scripts.Render("~/Content/fontawesome")
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.8/summernote.js"></script>
 </body>
 </html>
-<script src="~/Scripts/script-custom-editor.js"></script>

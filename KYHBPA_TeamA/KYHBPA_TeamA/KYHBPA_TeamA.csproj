@@ -624,6 +624,7 @@
     <Content Include="Content\slider3.jpg" />
     <Content Include="Content\solid.js" />
     <Content Include="Content\solid.svg" />
+    <Content Include="Content\Summernote\summernote.css" />
     <Content Include="Content\titleLogo.png" />
     <Content Include="Entity\KYHBPA.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -654,6 +655,9 @@
     </Content>
     <Content Include="Content\fontawesome-pro-brands\package.json" />
     <Content Include="Content\GoogleCalendar\Kentucky HBPA Website Calendar-5072c6abaf14.json" />
+    <Content Include="Content\Summernote\font\summernote.eot" />
+    <Content Include="Content\Summernote\font\summernote.ttf" />
+    <Content Include="Content\Summernote\font\summernote.woff" />
     <None Include="Properties\PublishProfiles\kentuckyhbpa.org - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\spike.cis420.net - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
@@ -669,6 +673,7 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\script-custom-editor.js" />
+    <Content Include="Scripts\summernote.min.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
