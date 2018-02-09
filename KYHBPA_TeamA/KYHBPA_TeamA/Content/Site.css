@@ -659,6 +659,10 @@ textarea {
     box-shadow: 0px 2px 4px 0 #00000026;
 }
 
+.note-editor .dropdown-menu {
+    background: #0fa66d;
+}
+
 .clean-Link {
     color: #588b77;
 }
