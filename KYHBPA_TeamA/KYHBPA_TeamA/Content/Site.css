@@ -656,7 +656,7 @@ textarea {
     background: #fff;
     border: 1px solid #e7eef6;
     border-radius: .3rem;
-    box-shadow: 2px 2px 20px 0px #f0ecec;
+    box-shadow: 0px 2px 4px 0 #00000026;
 }
 
 .clean-Link {

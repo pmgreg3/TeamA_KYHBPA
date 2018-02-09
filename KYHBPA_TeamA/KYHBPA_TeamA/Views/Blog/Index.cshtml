@@ -16,7 +16,7 @@
         <div class="col-md-4 postImgArea">
             <img class="img-thumbnail" src="@Url.Action("GetBlogOrNewsImage", "Blog", new { post.Id })" />
         </div>
-        <div class="col-md-7">
+        <div class="col-md-5">
             <h4 class="postTitle">
                 @post.Title
             </h4>
@@ -24,11 +24,13 @@
                 @post.ShortDescription
             </p>
         </div>
-        <div class="col-md-1">
-            <h6>
-                @post.PostedOn.ToShortDateString()
-            </h6>
-            @Html.ActionLink("Read", "Read", "Blog", new { postId = post.Id }, new { @class = "common-ButtonVariant" })
+        <div class="col-md-3">
+            <div class="postDetails">
+                <h6>
+                    @post.PostedOn.ToLongDateString()   <span class="seperator"> / </span> @post.Comments.Count Comments
+                </h6>
+            </div>
+            @Html.ActionLink("Read", "Read", "Blog", new { postId = post.Id }, new { @class = "common-ButtonVariant pull-right" })
         </div>
     </div>
 }
