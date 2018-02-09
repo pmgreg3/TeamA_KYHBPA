@@ -607,9 +607,13 @@
 
 .boardOfDirectorsImage {
     width: 100%;
-    border: 4px solid #072419;
-    box-shadow: 8px 8px 20px 0px #0000006b;
-    border-radius:2px;
+    box-shadow: 3px 3px 5px 0px #00000063;
+    border-radius: 4px;
+}
+
+.bodImageHeader {
+    margin-top: 1rem;
+
 }
 
 .boardOfDirectorsImageSpace {
