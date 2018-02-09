@@ -655,9 +655,9 @@
     </Content>
     <Content Include="Content\fontawesome-pro-brands\package.json" />
     <Content Include="Content\GoogleCalendar\Kentucky HBPA Website Calendar-5072c6abaf14.json" />
-    <Content Include="Content\font\summernote.eot" />
-    <Content Include="Content\font\summernote.ttf" />
-    <Content Include="Content\font\summernote.woff" />
+    <Content Include="Content\Summernote\font\summernote.eot" />
+    <Content Include="Content\Summernote\font\summernote.ttf" />
+    <Content Include="Content\Summernote\font\summernote.woff" />
     <None Include="Properties\PublishProfiles\kentuckyhbpa.org - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\spike.cis420.net - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
