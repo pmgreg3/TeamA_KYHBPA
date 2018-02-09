@@ -659,8 +659,27 @@ textarea {
     box-shadow: 2px 2px 20px 0px #f0ecec;
 }
 
-.postImgArea{
-    padding-left:unset !important;
+.clean-Link {
+    color: #588b77;
+}
+
+    .clean-Link:hover {
+        color: #588b77;
+        text-decoration: none;
+        letter-spacing: .05rem;
+    }
+
+.postDetails {
+    color: #588b77;
+}
+
+.seperator {
+    margin: 0 1rem;
+    color: #072419;
+}
+
+.postImgArea {
+    padding-left: unset !important;
 }
 
 .postReadMoreImageArea {
@@ -687,7 +706,6 @@ textarea {
     font-size: 25px;
     letter-spacing: .025em;
     font-family: Camphor,Open Sans,Segoe UI,sans-serif;
-    margin-bottom:30px;
     margin-top:30px;
 }
 

@@ -5,21 +5,29 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+
+
 <h2 class="postReadMoreTitle">
     @Model.Title
 </h2>
+<div class="postDetails">
+    <h6>
+        @Model.PostedOn.ToLongDateString()   <span class="seperator"> / </span> @Model.Comments.Count <a class="clean-Link" href="#comment-Section">Comments</a>
+    </h6>
+</div>
+
 
 <hr class="stylishHr"/>
 
 @Html.Raw(Model.Description)
 
+<hr class="stylishHr" />
+
 <p>
     @Html.ActionLink("Back to List", "Index")
 </p>
 
-
-
-<div class="comment-Section">
+<div id="comment-Section" class="comment-Section">
     <h3 class="common-UppercaseTitle">
         Comments
         @Html.ActionLink("Comment", "CreateComment", "Blog", new { Id = Model.Id }, new { @class = "common-Button comment-Button pull-right" })
