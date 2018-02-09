@@ -1,19 +1,17 @@
 ﻿@model KYHBPA_TeamA.Models.CreateBlogPostViewModel
 
 @{
+    ViewBag.Controller = "News and Blog";
     ViewBag.Title = "Edit";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
-
-<h2>Edit</h2>
 
 @using (Html.BeginForm("Edit", "Blog", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
 
     <div class="form-horizontal">
-        <h4>Edit Posts</h4>
-        <hr />
+        <hr class="stylishHr"/>
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.Id)
 
