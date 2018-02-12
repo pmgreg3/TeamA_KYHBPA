@@ -1,4 +1,4 @@
-﻿@model KYHBPA_TeamA.Models.PhotoGalleryViewModel
+﻿@model KYHBPA_TeamA.Models.LandingPageViewModel
 
 @{
     ViewBag.Title = "Home: Kentucky Horsemen's Benevolent and Protective Association";
@@ -113,13 +113,36 @@
 
 </div>
 
-
-
 @section GoogleEvents{
     @Html.Action("_GoogleEvents","Event")
 }
 
-
+<section id="primary">
+    <h1 class="common-Uppercase">Latest News</h1>
+    <div class="cols container-lg">
+        <section id="becomeAMember">
+            <p class="common-BodyText">
+                This is the news article.
+            </p>
+            <i class="fa fa-handshake fa-6x" style="color:#072419"></i>
+            <br />
+            <a href="/Memberships/Create" class="common-Button">Member Registration</a>
+        </section>
+        <section id="learnMore">
+            <h3 class="common-UppercaseTitle">Learn more about us!</h3>
+            <p class="common-BodyText">
+                We urge all horsemen to join the HBPA, and urge you to take an
+                active role in the direction and policies of your organization.
+                By doing so, you are affirming your confidence in the goals and future
+                endeavors of the HBPA. Lets bring our community closer together
+                and welcome new members.
+            </p>
+            <i class="fa fa-users fa-6x" style="color:#072419"></i>
+            <br />
+            <a href="/Home/About" class="common-Button">Learn more</a>
+        </section>
+    </div>
+</section>
 
 @section PartnerOrg{
     <!--Image Gallery-->
