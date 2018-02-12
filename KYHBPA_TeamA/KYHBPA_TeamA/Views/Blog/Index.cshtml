@@ -18,7 +18,7 @@
                 <img itemprop="image" class="img-thumbnail" src="@Url.Action("GetBlogOrNewsImage", "Blog", new { post.Id })" />
             </div>
             <div class="col-md-5">
-                <h4 class="postTitle">
+                <h4 itemprop="headline" id="postTitle">
                     @post.Title
                 </h4>
                 <p itemprop="articleSection" class="postShortDescription">
