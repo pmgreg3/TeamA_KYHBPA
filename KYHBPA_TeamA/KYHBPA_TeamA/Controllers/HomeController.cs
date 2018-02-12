@@ -13,27 +13,10 @@ namespace KYHBPA_TeamA.Controllers
 
         public ActionResult Index()
         {
-            //TimeZoneInfo easternZone = TimeZoneInfo.FindSystemTimeZoneById("Eastern Standard Time");
+            var vm = new LandingPageViewModel();
+            vm.LatestArticle = db.Posts.OrderByDescending(x => x.PostedOn).First();
 
-            //var first = new DateTime(DateTime.Today.Year, DateTime.Today.Month, DateTime.Today.Day);
-            //var events = db.Events.OrderBy(e => e.EventDate).ToList().Where(e => e.EventDate >= first && e.EventTime <= first.AddDays(30)).ToList()
-            //    .Select(e => new Event()
-            //    {
-            //        EventDate = TimeZoneInfo.ConvertTimeFromUtc(e.EventDate, easternZone),
-            //        EventDescription = e.EventDescription,
-            //        EventLocation = e.EventLocation,
-            //        EventTime = TimeZoneInfo.ConvertTimeFromUtc(e.EventTime, easternZone),
-            //        EventID = e.EventID,
-            //        EventName = e.EventName
-            //    }).ToList();
-
-            //var viewModel = new PhotoGalleryViewModel
-
-            //{
-            //    Events = events
-            //};
-            //return View(viewModel);
-            return View();
+            return View(vm);
         }
 
         public ActionResult About()

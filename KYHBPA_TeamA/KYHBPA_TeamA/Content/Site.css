@@ -194,6 +194,28 @@
     }
 
 
+/* Landing Page */
+.latestNewsArticle {
+    background: #fff;
+    border-radius: 4px;
+    border: 2px solid whitesmoke;
+    height: 100%;
+}
+
+#latestNews {
+    padding: 15px;
+    width: 100%;
+    border: 1px solid #f6f9fc;
+    border-left: unset;
+    margin-right: unset;
+    margin-left: unset;
+    background: url(hypnotize.png);
+    border-right: unset;
+}
+
+.latestNewsArticleHeading {
+    color: #072419;
+}
 
 /* Landing Page Carousel */
 .carousel-inner > .item > img {
