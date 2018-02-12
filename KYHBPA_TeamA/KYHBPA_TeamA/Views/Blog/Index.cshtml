@@ -33,12 +33,14 @@
                 </div>
                 @Html.ActionLink("Read", "Read", "Blog", new { postId = post.Id }, new { @class = "common-ButtonVariant pull-right", @itemprop = "url" })
             </div>
+            <span itemprop="author" itemscope itemtype="http://schema.org/Person">
+                <meta itemprop="name" content="Kentucky HBPA">
+                <meta itemprop="publisher" content="Kentucky HBPA" />
+            </span>
         </div>
     </div>
 }
 
-    <span itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="Kentucky HBPA">
-    </span>
+
 
 
