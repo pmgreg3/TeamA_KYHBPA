@@ -1,4 +1,4 @@
-﻿@model KYHBPA_TeamA.Models.PhotoGalleryViewModel
+﻿@model KYHBPA_TeamA.Models.LandingPageViewModel
 
 @{
     ViewBag.Title = "Home: Kentucky Horsemen's Benevolent and Protective Association";
@@ -113,13 +113,68 @@
 
 </div>
 
-
-
 @section GoogleEvents{
     @Html.Action("_GoogleEvents","Event")
 }
 
+<section id="primary">
+    <div class="cols">
+        <div class="row" id="latestNews">
+            <div itemscope itemtype="http://schema.org/Article">
 
+                @if (Model.LatestArticle.PhotoContent != null)
+                {
+                    <div class="col-md-3 latestNewsTitle">
+                        <h3 class="common-UppercaseTitle">Latest News</h3>
+                        <i class="fa fa-newspaper fa-6x" style="color:#072419"></i>
+                    </div>
+                    <div class="col-md-9 latestNewsArticle common-BodyText">
+                        <img itemprop="image" class="img-thumbnail pull-left" style="max-height:200px;" src="@Url.Action("GetBlogOrNewsImage", "Blog", new { Model.LatestArticle.Id })" />
+                        <div class="latestNewsArticleHeading">
+                            <h2 itemprop="headline"> 
+                                @Model.LatestArticle.Title
+                            </h2>
+                            <h6 itemprop="datePublished">
+                                @Model.LatestArticle.PostedOn.ToLongDateString()
+                            </h6>
+                        </div>
+                        <div itemprop="description" class="latestNewsArticleBody">
+                            @Model.LatestArticle.ShortDescription
+                        </div>
+                        @Html.ActionLink("Read", "Read", "Blog", new { postId = Model.LatestArticle.Id }, new { @class = "common-ButtonVariant pull-right", @itemprop = "url" })
+                    </div>
+
+                }
+                else
+                {
+                    <div class="col-md-4 latestNewsTitle">
+                        <h3 class="common-UppercaseTitle">Latest News</h3>
+                        <i class="fa fa-newspaper fa-6x" style="color:#072419"></i>
+                    </div>
+                    <div class="col-md-8 latestNewsArticle common-BodyText">
+                        <div class="latestNewsArticleHeading">
+                            <h2 itemprop="headline">
+                                @Model.LatestArticle.Title
+                            </h2>
+                            <h6 itemprop="datePublished">
+                                @Model.LatestArticle.PostedOn.ToLongDateString()
+                            </h6>
+                        </div>
+                        <img itemprop="image" class="img-thumbnail" style="max-height:200px" src="@Url.Action("GetBlogOrNewsImage", "Blog", new { Model.LatestArticle.Id })" />
+                        <div itemprop="description" class="latestNewsArticleBody">
+                            @Model.LatestArticle.ShortDescription
+                        </div>
+                        @Html.ActionLink("Read", "Read", "Blog", new { postId = Model.LatestArticle.Id }, new { @class = "common-ButtonVariant pull-right", @itemprop = "url" })
+                    </div>
+                }
+                <span itemprop="author" itemscope itemtype="http://schema.org/Person">
+                    <meta itemprop="name" content="Kentucky HBPA">
+                    <meta itemprop="publisher" content="Kentucky HBPA" />
+                </span>
+            </div>
+         </div>
+    </div>
+</section>
 
 @section PartnerOrg{
     <!--Image Gallery-->

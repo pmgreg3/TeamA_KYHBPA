@@ -4,20 +4,21 @@
     ViewBag.Title = "News and Blogs";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<div itemscope itemtype="http://schema.org/Article">
+
     <h2>
         Our latest news and blogs
     </h2>
 
 
-    @foreach (var post in Model)
-    {
-        <div class="row postRow">
+@foreach (var post in Model)
+{
+    <div class="row postRow">
+        <div itemscope itemtype="http://schema.org/Article">
             <div class="col-md-4 postImgArea">
                 <img itemprop="image" class="img-thumbnail" src="@Url.Action("GetBlogOrNewsImage", "Blog", new { post.Id })" />
             </div>
             <div class="col-md-5">
-                <h4 class="postTitle">
+                <h4 itemprop="headline" id="postTitle">
                     @post.Title
                 </h4>
                 <p itemprop="articleSection" class="postShortDescription">
@@ -26,17 +27,20 @@
             </div>
             <div class="col-md-3">
                 <div class="postDetails">
-                    <h6>
+                    <h6 itemprop="datePublished">
                         @post.PostedOn.ToLongDateString()   <span class="seperator"> / </span> @post.Comments.Count Comments
                     </h6>
                 </div>
                 @Html.ActionLink("Read", "Read", "Blog", new { postId = post.Id }, new { @class = "common-ButtonVariant pull-right", @itemprop = "url" })
             </div>
+            <span itemprop="author" itemscope itemtype="http://schema.org/Person">
+                <meta itemprop="name" content="Kentucky HBPA">
+                <meta itemprop="publisher" content="Kentucky HBPA" />
+            </span>
         </div>
-    }
+    </div>
+}
 
-    <span itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="Kentucky HBPA">
-    </span>
-</div>
+
+
 
