@@ -60,6 +60,11 @@
                     <h4 class="comment-Name">
                         @comment.Name
                     </h4>
+
+                   @if(User.IsInRole("Admin"))
+                    {
+                        @Html.ActionLink("Delete", "DeleteComment", new { id = comment.Id , postId = Model.Id})
+                    }
                 </div>
                 <div class="col-md-8">
                     <p class="comment-Text">

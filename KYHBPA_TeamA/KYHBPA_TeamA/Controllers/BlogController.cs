@@ -400,5 +400,29 @@ namespace KYHBPA_TeamA.Controllers
                 return HttpNotFound();
             }
         }
+
+        /// <summary>
+        /// Deletes comment
+        /// </summary>
+        /// <param name="id">Comment id</param>
+        /// <returns>View from blog index</returns>
+        public ActionResult DeleteComment(int? id, int postId)
+        {
+            if (id == null)
+                return new HttpNotFoundResult();
+            else
+            {
+                var commentToDelete = _db.Comments.Find(id);
+
+                if (commentToDelete == null)
+                    return new HttpNotFoundResult();
+                else
+                {
+                    _db.Comments.Remove(commentToDelete);
+                    _db.SaveChanges();
+                    return RedirectToAction("Read", new { postId });
+                }
+            }
+        }
     }
 }
