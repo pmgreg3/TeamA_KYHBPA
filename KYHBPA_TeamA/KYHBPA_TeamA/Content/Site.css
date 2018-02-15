@@ -954,13 +954,22 @@ textarea {
 .eventCard {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     border-radius: 4px;
-    margin-bottom: 15px;
+    margin: 6px;
+    position:inherit;
+}
 
+#eventButton {
+    position: absolute;
+    right: 0;
+    top: 0;
+    border-bottom-left-radius: 2rem;
+    background:white !important;
+    border-top-right-radius:0;
 }
 
 .eventTitle {
-    font-size: 1em;
-    color: #5a95cd;
+    font-size: 1.5em;
+    color: #ffffff;
     border-top-left-radius: 4px;
     border-top-right-radius: 4px;
     font-weight: 600;
@@ -972,9 +981,10 @@ textarea {
 }
 
 .eventHeader {
-    background: #0000001f;
-    border-top-left-radius: 4px;
-    border-top-right-radius: 4px;
+    background: linear-gradient(45deg,#62cdf6 51%,#6beded 122%);
+    color: white;
+    padding: 3rem;
+    display:inherit;
 }
 
 
