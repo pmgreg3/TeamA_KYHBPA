@@ -205,11 +205,13 @@ namespace KYHBPA_TeamA.Controllers
 
             var events = request.Execute();
             var jsonEvents = CreateJsonFromEventViewModels(events);
+            var eventId = 0;
 
             if (events.Items != null && events.Items.Count > 0)
             {
                 foreach (var eventItem in events.Items)
                 {
+                    eventId += 1;
                     var eventVM = new EventDisplayViewModel()
                     {
                         Title = eventItem.Summary,
@@ -217,7 +219,8 @@ namespace KYHBPA_TeamA.Controllers
                         StartDate = eventItem.Start.Date,
                         StartTime = ExtractDateTimeFromDateTimeRaw(eventItem.Start.DateTimeRaw),
                         Link = eventItem.HtmlLink,
-                        Location = eventItem.Location
+                        Location = eventItem.Location,
+                        IdForElement = eventId,
                     };
 
                     if (eventItem.EndTimeUnspecified != null && eventItem.EndTimeUnspecified != false)
