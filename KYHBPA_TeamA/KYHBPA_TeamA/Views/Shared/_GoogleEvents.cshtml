@@ -47,6 +47,12 @@
                         {
                             <div class="col-md-6">
                                 <div class="eventCard common-BodyText">
+                                    @if (item.Description != null)
+                                    {
+                                        <button type="button" class="btn common-ButtonVariant" data-toggle="collapse" data-target="#@item.IdForElement">
+                                            <i class="fa fa-angle-down"></i>
+                                        </button>
+                                    }
                                     <div class="eventHeader">
                                         <div class="eventTitle">
                                             @item.Title
@@ -70,15 +76,9 @@
                                             }
                                         </div>
                                     </div>
-                                    @if (item.Description != null)
-                                    {
-                                        <button type="button" class="btn common-ButtonVariant" data-toggle="collapse" data-target="#@item.IdForElement">
-                                            <i class="fa fa-angle-down"></i>
-                                        </button>
-                                        <div id="@item.IdForElement" class="collapse">
-                                            @item.Description
-                                        </div>
-                                    }
+                                    <div id="@item.IdForElement" class="collapse">
+                                        @item.Description
+                                    </div>
                                 </div>
 
                             </div>
