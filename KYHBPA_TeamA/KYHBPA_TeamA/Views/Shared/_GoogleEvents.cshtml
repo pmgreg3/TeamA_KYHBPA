@@ -49,13 +49,13 @@
                                 <div class="eventCard common-BodyText">
                                     @if (item.Description != null)
                                     {
-                                        <button type="button" id="eventButton" class="btn common-ButtonVariant" data-toggle="collapse" data-target="#@item.IdForElement">
-                                            <i style="color:#072419"class="fa fa-angle-down"></i>
-                                        </button>
+                                        <a id="eventButton" class="btn collapsible common-ButtonVariant" data-toggle="collapse" data-target="#@item.IdForElement">
+                                            <i data-toggle="collapse" data-target="#@item.IdForElement" style="color:#072419"class="fa fa-angle-down fa-2x"></i>
+                                        </a>
                                     }
                                     <div class="eventHeader">
                                         <div class="eventTitle">
-                                            @item.Title
+                                            <a class="eventAnchorTags" target="_blank" href="@item.Url">@item.Title</a>
                                         </div>
                                         <div class="eventDate">
                                             @if (item.StartDate != null)
@@ -64,7 +64,11 @@
                                             }
                                             else if (item.StartTime != null)
                                             {
-                                                @item.StartTime
+                                                @item.StartTime.Day 
+                                                <span class="seperator">  </span>
+                                                @item.StartTime.Date.ToString("MMM")
+                                                <span class="seperator">  </span>
+                                                @item.StartTime.TimeOfDay.ToString("h\\:mm")
                                             }
                                         </div>
                                         <div class="eventLocation">
@@ -78,6 +82,9 @@
                                     </div>
                                     <div id="@item.IdForElement" class="collapse">
                                         @item.Description
+                                        <p>
+
+                                        </p>
                                     </div>
                                 </div>
 
@@ -95,5 +102,3 @@
 <script type="application/ld+json">
     @Html.Raw(Model.SchemaJson)
 </script>
-
-

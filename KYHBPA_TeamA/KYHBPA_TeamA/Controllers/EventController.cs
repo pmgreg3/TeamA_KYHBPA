@@ -245,7 +245,7 @@ namespace KYHBPA_TeamA.Controllers
         /// </summary>
         /// <param name="dateTimeRaw">DateTimeRaw string from the event object</param>
         /// <returns>Returns a string date time</returns>
-        public string ExtractDateTimeFromDateTimeRaw(string dateTimeRaw)
+        public DateTime ExtractDateTimeFromDateTimeRaw(string dateTimeRaw)
         {
             TimeZoneInfo timezone = TimeZoneInfo.FindSystemTimeZoneById("Eastern Standard Time");
 
@@ -253,7 +253,7 @@ namespace KYHBPA_TeamA.Controllers
             var dateTimeUTC = dateTime.ToUniversalTime();
 
             var EST = TimeZoneInfo.ConvertTimeFromUtc(dateTimeUTC, timezone);
-            return EST.ToShortDateString();
+            return EST;
         }
 
 
