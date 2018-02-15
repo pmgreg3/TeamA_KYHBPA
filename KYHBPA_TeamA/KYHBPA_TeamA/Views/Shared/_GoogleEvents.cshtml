@@ -70,10 +70,15 @@
                                             }
                                         </div>
                                     </div>
-                                    <button type="button" class="btn common-ButtonVariant" data-toggle="collapse" data-target="#@item.">Read More</button>
-                                    <div id="@item.Title" class="collapse">
-                                        @item.Description
-                                    </div>
+                                    @if (item.Description != null)
+                                    {
+                                        <button type="button" class="btn common-ButtonVariant" data-toggle="collapse" data-target="#@item.IdForElement">
+                                            <i class="fa fa-angle-down"></i>
+                                        </button>
+                                        <div id="@item.IdForElement" class="collapse">
+                                            @item.Description
+                                        </div>
+                                    }
                                 </div>
 
                             </div>
