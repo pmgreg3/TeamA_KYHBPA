@@ -221,6 +221,7 @@ namespace KYHBPA_TeamA.Controllers
                         Link = eventItem.HtmlLink,
                         Location = eventItem.Location,
                         IdForElement = eventId,
+                        Url = eventItem.HtmlLink
                     };
 
                     if (eventItem.EndTimeUnspecified != null && eventItem.EndTimeUnspecified != false)
@@ -252,7 +253,7 @@ namespace KYHBPA_TeamA.Controllers
             var dateTimeUTC = dateTime.ToUniversalTime();
 
             var EST = TimeZoneInfo.ConvertTimeFromUtc(dateTimeUTC, timezone);
-            return EST.ToString();
+            return EST.ToShortDateString();
         }
 
 
@@ -307,7 +308,7 @@ namespace KYHBPA_TeamA.Controllers
 
                 location.Address.AddressRegion = stateZipParse[0];
                 location.Address.PostalCode = stateZipParse[1];
-                location.Address.AddressCountry = parsing[4];
+                //location.Address.AddressCountry = parsing[4];
 
                 return location;
             }

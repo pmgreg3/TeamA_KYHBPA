@@ -958,13 +958,18 @@ textarea {
     position:inherit;
 }
 
+#eventCol {
+    padding-right: unset !important;
+    padding-left: unset !important;
+}
+
 #eventButton {
     position: absolute;
     right: 0;
     top: 0;
     border-bottom-left-radius: 2rem;
-    background:white !important;
-    border-top-right-radius:0;
+    background: white !important;
+    border-top-right-radius: 0;
 }
 
 .eventTitle {
@@ -981,10 +986,10 @@ textarea {
 }
 
 .eventHeader {
-    background: linear-gradient(45deg,#62cdf6 51%,#6beded 122%);
+    background: linear-gradient(45deg,#41cc70 18%,#31a65e);
     color: white;
     padding: 3rem;
-    display:inherit;
+    display: inherit;
 }
 
 

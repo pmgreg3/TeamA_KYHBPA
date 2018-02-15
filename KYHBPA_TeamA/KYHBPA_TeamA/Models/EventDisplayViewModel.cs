@@ -22,5 +22,6 @@ namespace KYHBPA_TeamA.Models
         public string Link { get; set; }
         public string Location { get; set; }
         public int IdForElement { get; set; }
+        public string Url { get; set; }
     }
 }

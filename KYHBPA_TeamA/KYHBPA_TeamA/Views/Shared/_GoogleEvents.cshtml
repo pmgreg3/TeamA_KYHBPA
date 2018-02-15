@@ -45,7 +45,7 @@
 
                         @foreach (var item in Model.EventDisplayViewModels.Skip(i * 2).Take(2))
                         {
-                            <div class="col-md-6">
+                            <div id="eventCol" class="col-md-6">
                                 <div class="eventCard common-BodyText">
                                     @if (item.Description != null)
                                     {
