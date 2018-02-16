@@ -76,7 +76,10 @@
                                             {
                                                 <i class="fa fa-map-marker-alt fa-1x" style="color:#072419"></i>
 
-                                                @item.Location
+                                                @item.Location.Name 
+                                                @item.Location.Address.StreetAddress
+                                                @item.Location.Address.AddressLocality
+                                                @item.Location.Address.AddressRegion
                                             }
                                         </div>
                                     </div>

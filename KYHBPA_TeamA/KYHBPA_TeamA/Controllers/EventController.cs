@@ -219,7 +219,7 @@ namespace KYHBPA_TeamA.Controllers
                         StartDate = eventItem.Start.Date,
                         StartTime = ExtractDateTimeFromDateTimeRaw(eventItem.Start.DateTimeRaw),
                         Link = eventItem.HtmlLink,
-                        Location = eventItem.Location,
+                        Location = ParseLocationFromString(eventItem.Location),
                         IdForElement = eventId,
                         Url = eventItem.HtmlLink
                     };
@@ -255,6 +255,7 @@ namespace KYHBPA_TeamA.Controllers
             var EST = TimeZoneInfo.ConvertTimeFromUtc(dateTimeUTC, timezone);
             return EST;
         }
+
 
 
         public string CreateJsonFromEventViewModels(Events eventsList)
