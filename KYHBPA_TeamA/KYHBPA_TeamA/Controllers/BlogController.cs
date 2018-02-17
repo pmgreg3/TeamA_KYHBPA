@@ -9,6 +9,9 @@ using System.Web.Mvc;
 using System.Net;
 using System.Web.UI;
 using System.Drawing;
+using System.Drawing.Drawing2D;
+using System.IO;
+using System.Drawing.Imaging;
 
 namespace KYHBPA_TeamA.Controllers
 {
@@ -16,24 +19,6 @@ namespace KYHBPA_TeamA.Controllers
     {
         private ApplicationDbContext _db = new ApplicationDbContext();
         private BlogRepository _blogRepository = new BlogRepository();
-
-        //public ViewResult Index(int p = 1)
-        //{
-        //    // pick latest 10 posts
-        //    var posts = _blogRepository.Posts(p - 1, 10);
-
-        //    var totalPosts = _blogRepository.TotalPosts();
-
-        //    var listViewModel = new BlogListViewModel()
-        //    {
-        //        Posts = posts,
-        //        TotalPosts = totalPosts
-        //    };
-
-        //    ViewBag.Title = "Latest Posts";
-
-        //    return View("List", listViewModel);
-        //}
 
         // GET: Blog
         public ActionResult Index()
@@ -424,5 +409,69 @@ namespace KYHBPA_TeamA.Controllers
                 }
             }
         }
+
+        public byte[] GetImageThumbnail(Image image)
+        {
+            byte[] returnArray;
+
+            var thumbSize = new Size()
+            {
+                Width = 500,
+                Height = 500
+            };
+
+            int sourceWidth = image.Width;
+            int sourceHeight = image.Height;
+
+            float nPercent = 0;
+            float nPercentW = 0;
+            float nPercentH = 0;
+
+            nPercentW = ((float)thumbSize.Width / (float)sourceWidth);
+            nPercentH = ((float)thumbSize.Height / (float)sourceHeight);
+
+            if (nPercentH < nPercentW)
+                nPercent = nPercentH;
+            else
+                nPercent = nPercentW;
+
+            int destWidth = (int)(sourceWidth * nPercent);
+            int destHeight = (int)(sourceHeight * nPercent);
+
+            Bitmap b = new Bitmap(destWidth, destHeight);
+            Graphics g = Graphics.FromImage((Image)b);
+            g.InterpolationMode = InterpolationMode.HighQualityBicubic;
+            g.SmoothingMode = SmoothingMode.HighQuality;
+            g.PixelOffsetMode = PixelOffsetMode.HighQuality;
+            g.CompositingQuality = CompositingQuality.HighQuality;
+            g.CompositingMode = CompositingMode.SourceCopy;
+
+            g.DrawImage(image, 0, 0, destWidth, destHeight);
+            g.Dispose();
+
+            using (MemoryStream ms = new MemoryStream())
+            {
+                EncoderParameters encoderParameters = new EncoderParameters(1);
+                encoderParameters.Param[0] = new EncoderParameter(Encoder.Quality, 80L);
+                b.Save(ms, getEncoderInfo("image/jpeg"), encoderParameters);
+
+                //save the stream as byte array
+                returnArray = ms.ToArray();
+            }
+
+            return returnArray;
+        }
+
+        private static ImageCodecInfo getEncoderInfo(string mimeType)
+        {
+            ImageCodecInfo[] encoders = ImageCodecInfo.GetImageEncoders();
+            for (int j = 0; j < encoders.Length; ++j)
+            {
+                if (encoders[j].MimeType.ToLower() == mimeType.ToLower())
+                    return encoders[j];
+            }
+            return null;
+        }
+
     }
 }
