@@ -29,52 +29,54 @@
                 </li>
             </ul>
         </section>
-        <section id="upcomingEvents">
-            <h2 class="common-UppercaseTitle">Stay Current</h2>
-            @if (Model == null || Model.EventDisplayViewModels.Count() == 0)
+</div>
+</section>
+<section id="upcomingEvents">
+    <h2 class="common-UppercaseTitle">Stay Current</h2>
+    @if (Model == null || Model.EventDisplayViewModels.Count() == 0)
             {
-                <p>
-                    There are no upcoming events.
-                </p>
-            }
-            else
-            {
-                for (int i = 0; i <= Model.EventDisplayViewModels.Count() / 2; i++)
-                {
-                    <div class="row">                        
+        <p>
+            There are no upcoming events.
+        </p>
+    }
+    else
+    {
+        for (int i = 0; i <= Model.EventDisplayViewModels.Count() / 2; i++)
+        {
+            <div class="row">
 
-                        @foreach (var item in Model.EventDisplayViewModels.Skip(i * 2).Take(2))
-                        {
-                            <div id="eventCol" class="col-md-6">
-                                <div class="eventCard common-BodyText">
-                                    @if (item.Description != null)
+                @foreach (var item in Model.EventDisplayViewModels.Skip(i * 2).Take(2))
+                {
+                    <div id="eventCol" class="col-md-6">
+                        <div class="eventCard common-BodyText">
+                            @if (item.Description != null)
+                            {
+                                <a id="eventButton" class="btn collapsible common-ButtonVariant" data-toggle="collapse" data-target="#@item.IdForElement">
+                                    <i data-toggle="collapse" data-target="#@item.IdForElement" style="color:#072419" class="fa fa-angle-down fa-2x"></i>
+                                </a>
+                            }
+                            <div class="eventHeader">
+                                <div class="eventTitle">
+                                    <a class="eventAnchorTags" target="_blank" href="@item.Url">@item.Title</a>
+                                </div>
+                                <div class="eventDate">
+                                    @if (item.StartDate != null)
                                     {
-                                        <a id="eventButton" class="btn collapsible common-ButtonVariant" data-toggle="collapse" data-target="#@item.IdForElement">
-                                            <i data-toggle="collapse" data-target="#@item.IdForElement" style="color:#072419"class="fa fa-angle-down fa-2x"></i>
-                                        </a>
+                                        @item.StartDate
                                     }
-                                    <div class="eventHeader">
-                                        <div class="eventTitle">
-                                            <a class="eventAnchorTags" target="_blank" href="@item.Url">@item.Title</a>
-                                        </div>
-                                        <div class="eventDate">
-                                            @if (item.StartDate != null)
-                                            {
-                                                @item.StartDate
-                                            }
-                                            else if (item.StartTime != null)
-                                            {
-                                                @item.StartTime.Day 
-                                                <span class="seperator">  </span>
+                                    else if (item.StartTime != null)
+                                    {
+                                        @item.StartTime.Day
+                                        <span class="seperator">  </span>
                                                 @item.StartTime.Date.ToString("MMM")
                                                 <span class="seperator">  </span>
                                                 @item.StartTime.TimeOfDay.ToString("h\\:mm")
-                                            }
-                                        </div>
-                                        <div class="eventLocation">
-                                            @if (item.Location != null)
-                                            {
-                                                <i class="fa fa-map-marker-alt fa-1x" style="color:#072419"></i>
+                                    }
+                                </div>
+                                <div class="eventLocation">
+                                    @if (item.Location != null)
+                                    {
+                                        <i class="fa fa-map-marker-alt fa-1x" style="color:#072419"></i>
 
                                                 @item.Location.Name
                                                 <span class="seperator">  </span>
@@ -82,28 +84,27 @@
                                                 <span class="seperator">  </span>
                                                 @item.Location.Address.AddressLocality
                                                 <span class="seperator">  </span>
-                                                @item.Location.Address.AddressRegion 
-                                            }
-                                        </div>
-                                    </div>
-                                    <div id="@item.IdForElement" class="collapse">
-                                        @item.Description
-                                        <p>
-
-                                        </p>
-                                    </div>
+                                                @item.Location.Address.AddressRegion
+                                    }
                                 </div>
-
                             </div>
-                        }
+                            <div id="@item.IdForElement" class="collapse">
+                                <div class="eventDescriptionWrapper">
+                                    @Html.Raw(item.Description)
+                                </div>
+                            </div>
+                        </div>
 
                     </div>
                 }
 
-            }
-        </section>
-</div>
+            </div>
+        }
+
+    }
 </section>
+
+
 
 <script type="application/ld+json">
     @Html.Raw(Model.SchemaJson)

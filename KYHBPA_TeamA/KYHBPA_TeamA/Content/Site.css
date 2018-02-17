@@ -479,6 +479,7 @@
 
 #raceTracks {
     flex: 1;
+    padding:3rem;
     border: 1px solid #f6f9fc;
 }
 
@@ -486,6 +487,10 @@
 #upcomingEvents {
     flex: 1;
     border: 1px solid #f6f9fc;
+    text-align: center;
+    background: #fff;
+    border-radius: 4px;
+    padding: 3rem;
 }
 
 #whatYouNeed {
@@ -952,10 +957,10 @@ textarea {
 
 /* Events Partial View */
 .eventCard {
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 0px 8px 0 rgba(0, 0, 0, 0.2);
     border-radius: 4px;
     margin: 6px;
-    position:inherit;
+    position: inherit;
 }
 
 #eventCol {
@@ -963,18 +968,24 @@ textarea {
     padding-left: unset !important;
 }
 
+.eventDescriptionWrapper {
+    text-align: left;
+    padding: 1rem;
+    padding-bottom: 35px;
+}
+
 #eventButton {
     position: absolute;
-    right: 0;
-    top: 0;
+    right: 45%;
+    bottom: 2%;
     background: unset !important;
     box-shadow: unset !important;
-    padding:6px 12px;
+    padding: 6px 12px;
 }
 
 .eventAnchorTags {
-    color:white;
-
+    color: #072419;
+    font-weight: 300;
 }
 
 .collapsible {
@@ -991,10 +1002,9 @@ textarea {
     top: 10px !important;
 }
 
-.eventAnchorTags:hover{
-    color:white;
-    text-decoration:none;
-
+.eventAnchorTags:hover {
+    color: #2bc919;
+    text-decoration: none;
 }
 
 .eventTitle {
@@ -1011,8 +1021,7 @@ textarea {
 }
 
 .eventHeader {
-    background: linear-gradient(45deg,#41cc70 18%,#31a65e);
-    color: white;
+    color: #072419;
     padding: 3rem;
     display: inherit;
 }
