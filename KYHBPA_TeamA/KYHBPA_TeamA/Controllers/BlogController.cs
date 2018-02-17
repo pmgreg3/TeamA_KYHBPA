@@ -473,5 +473,25 @@ namespace KYHBPA_TeamA.Controllers
             return null;
         }
 
+        /// <summary>
+        /// Returns thumbnail of photo
+        /// </summary>
+        /// <param name="id">Id of the photo</param>
+        /// <returns>Returns file</returns>
+        [OutputCache(Duration = 1800, Location = OutputCacheLocation.Client)]
+        public ActionResult GetBlogThumbnail(int? id)
+        {
+            if (id == null)
+                return new HttpNotFoundResult();
+
+            var blogToGet = _db.Posts.Find(id);
+
+            if (blogToGet != null && blogToGet.ThumbnailPhotoContent != null)
+                return File(blogToGet.ThumbnailPhotoContent, blogToGet.MimeType);
+            else
+                return new HttpNotFoundResult();
+
+        }
+
     }
 }
