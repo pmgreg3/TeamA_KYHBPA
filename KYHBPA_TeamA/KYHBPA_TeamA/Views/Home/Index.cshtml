@@ -129,7 +129,7 @@
                         <i class="fa fa-newspaper fa-6x" style="color:#072419"></i>
                     </div>
                     <div class="col-md-9 latestNewsArticle common-BodyText">
-                        <img itemprop="image" class="img-thumbnail pull-left" style="max-height:200px;" src="@Url.Action("GetBlogOrNewsImage", "Blog", new { Model.LatestArticle.Id })" />
+                        <img itemprop="image" class="img-thumbnail pull-left" style="max-height:200px;" src="@Url.Action("GetBlogThumbnail", "Blog", new { Model.LatestArticle.Id })" />
                         <div class="latestNewsArticleHeading">
                             <h2 itemprop="headline"> 
                                 @Model.LatestArticle.Title
@@ -160,7 +160,7 @@
                                 @Model.LatestArticle.PostedOn.ToLongDateString()
                             </h6>
                         </div>
-                        <img itemprop="image" class="img-thumbnail" style="max-height:200px" src="@Url.Action("GetBlogOrNewsImage", "Blog", new { Model.LatestArticle.Id })" />
+                        <img itemprop="image" class="img-thumbnail" style="max-height:200px" src="@Url.Action("GetBlogThumbnail", "Blog", new { Model.LatestArticle.Id })" />
                         <div itemprop="description" class="latestNewsArticleBody">
                             @Model.LatestArticle.ShortDescription
                         </div>

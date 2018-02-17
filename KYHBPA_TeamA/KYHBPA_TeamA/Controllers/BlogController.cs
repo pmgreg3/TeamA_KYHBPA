@@ -190,7 +190,7 @@ namespace KYHBPA_TeamA.Controllers
 
 
                             var imageToResize = Image.FromStream(image.InputStream);
-                            post.ThumbnailPhotoContent = GetImageThumbnail(imageToResize);
+                            postToUpdate.ThumbnailPhotoContent = GetImageThumbnail(imageToResize);
 
                         }
                     }
@@ -500,6 +500,31 @@ namespace KYHBPA_TeamA.Controllers
             else
                 return new HttpNotFoundResult();
 
+        }
+
+        //TODO: DELETE ME
+        public ActionResult UpdateAllImagesWithoutThumbnails()
+        {
+            var blogsToUpdate = _db.Posts.Where(x => x.ThumbnailPhotoContent == null);
+
+            foreach (var blog in blogsToUpdate)
+            {
+                if (blog.PhotoContent != null)
+                {
+                    Image newImage = (Image)new ImageConverter().ConvertFrom(blog.PhotoContent);
+                    var resizedImage = GetImageThumbnail(newImage);
+                    blog.ThumbnailPhotoContent = resizedImage;
+                }
+            }
+
+            if (blogsToUpdate != null)
+            {
+                _db.SaveChanges();
+
+            }
+
+            TempData["message"] = "Thumbnails successfully updated";
+            return RedirectToAction("Admin");
         }
 
     }
