@@ -103,6 +103,10 @@ namespace KYHBPA_TeamA.Controllers
                     post.PhotoContent = new byte[image.ContentLength];
 
                     image.InputStream.Read(post.PhotoContent, 0, image.ContentLength);
+
+                    var imageToResize = Image.FromStream(image.InputStream);
+                    post.ThumbnailPhotoContent = GetImageThumbnail(imageToResize);
+
                 }
 
 
@@ -183,6 +187,11 @@ namespace KYHBPA_TeamA.Controllers
                             image.InputStream.Read(postToUpdate.PhotoContent, 0, image.ContentLength);
 
                             postToUpdate.MimeType = image.ContentType;
+
+
+                            var imageToResize = Image.FromStream(image.InputStream);
+                            post.ThumbnailPhotoContent = GetImageThumbnail(imageToResize);
+
                         }
                     }
 

@@ -408,7 +408,6 @@ namespace KYHBPA_TeamA.Controllers
                 return File(photoToGet.ThumbnailPhotoContent, photoToGet.MimeType);
             else
                 return new HttpNotFoundResult();
-
         }
 
         /// <summary>
