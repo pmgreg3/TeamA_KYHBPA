@@ -35,5 +35,7 @@ namespace KYHBPA_TeamA.Models
         public string MimeType { get; set; }
         public byte[] ThumbnailPhotoContent { get; set; }
 
+        [DisplayName("Front Page Feature")]
+        public bool FrontPageFeature { get; set; }
     }
 }
