@@ -36,6 +36,6 @@ namespace KYHBPA_TeamA.Models
         public byte[] ThumbnailPhotoContent { get; set; }
 
         [DisplayName("Front Page Feature")]
-        public bool FrontPageFeature { get; set; }
+        public bool FrontPageFeature { get; set; } = false;
     }
 }

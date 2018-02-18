@@ -117,6 +117,7 @@ namespace KYHBPA_TeamA.Controllers
                 post.PostedOn = viewModel.PostedOn;
                 post.Tags = viewModel.Tags;
                 post.Title = viewModel.Title;
+                post.FrontPageFeature = viewModel.FrontPageFeature;
 
                 _db.Posts.Add(post);
                 _db.SaveChanges();
