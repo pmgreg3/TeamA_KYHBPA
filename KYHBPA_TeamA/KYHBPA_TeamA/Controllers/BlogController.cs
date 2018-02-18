@@ -150,6 +150,7 @@ namespace KYHBPA_TeamA.Controllers
                 Published = post.Published,
                 Title = post.Title,
                 SelectedCategoryId = post.Category.Id,
+                FrontPageFeature = post.FrontPageFeature
             };
 
             return View(viewModel);
