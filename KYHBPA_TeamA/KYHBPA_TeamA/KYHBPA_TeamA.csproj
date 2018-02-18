@@ -315,6 +315,10 @@
     <Compile Include="Migrations\201802171005280_AddingBlogThumbnail.Designer.cs">
       <DependentUpon>201802171005280_AddingBlogThumbnail.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201802182016160_AddingFeatureArticleAttributeToPosts.cs" />
+    <Compile Include="Migrations\201802182016160_AddingFeatureArticleAttributeToPosts.Designer.cs">
+      <DependentUpon>201802182016160_AddingFeatureArticleAttributeToPosts.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Blog.cs" />
@@ -820,6 +824,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201802171005280_AddingBlogThumbnail.resx">
       <DependentUpon>201802171005280_AddingBlogThumbnail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201802182016160_AddingFeatureArticleAttributeToPosts.resx">
+      <DependentUpon>201802182016160_AddingFeatureArticleAttributeToPosts.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
