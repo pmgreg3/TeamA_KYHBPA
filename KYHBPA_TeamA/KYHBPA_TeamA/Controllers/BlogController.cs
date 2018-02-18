@@ -287,7 +287,7 @@ namespace KYHBPA_TeamA.Controllers
                     ShortDescription = post.ShortDescription,
                     Category = post.Category,
                     Modified = post.Modified,
-                    PostedOn = post.PostedOn,e
+                    PostedOn = post.PostedOn,
                     Published = post.Published,
                     Title = post.Title,
                     Comments = post.Comments,

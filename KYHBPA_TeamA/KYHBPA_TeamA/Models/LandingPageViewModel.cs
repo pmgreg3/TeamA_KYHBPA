@@ -7,6 +7,6 @@ namespace KYHBPA_TeamA.Models
 {
     public class LandingPageViewModel
     {
-        public Post LatestArticle { get; set; }
+        public List<Post> FeaturedArticles { get; set; }
     }
 }

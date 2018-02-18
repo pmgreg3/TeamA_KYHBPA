@@ -14,7 +14,7 @@ namespace KYHBPA_TeamA.Controllers
         public ActionResult Index()
         {
             var vm = new LandingPageViewModel();
-            vm.LatestArticle = db.Posts.OrderByDescending(x => x.PostedOn).First();
+            vm.FeaturedArticles = db.Posts.Where(x => x.FrontPageFeature == true).ToList();
 
             return View(vm);
         }
