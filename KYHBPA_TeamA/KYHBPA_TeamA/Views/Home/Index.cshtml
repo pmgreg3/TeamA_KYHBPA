@@ -121,16 +121,14 @@
     <div class="cols">
         <div class="row" id="latestNews">
             <div itemscope itemtype="http://schema.org/Article">
-
-
+                <div class="col-md-3 latestNewsTitle">
+                    <h3 class="common-UppercaseTitle">Latest News</h3>
+                    <i class="fa fa-newspaper fa-6x" style="color:#072419"></i>
+                </div>
                 @foreach (var article in Model.FeaturedArticles)
                 {
                     if (article.PhotoContent != null)
                     {
-                        <div class="col-md-3 latestNewsTitle">
-                            <h3 class="common-UppercaseTitle">Latest News</h3>
-                            <i class="fa fa-newspaper fa-6x" style="color:#072419"></i>
-                        </div>
                         <div class="col-md-9 latestNewsArticle common-BodyText">
                             <img itemprop="image" class="img-thumbnail pull-left" style="max-height:200px;" src="@Url.Action("GetBlogThumbnail", "Blog", new { article.Id })" />
                             <div class="latestNewsArticleHeading">
