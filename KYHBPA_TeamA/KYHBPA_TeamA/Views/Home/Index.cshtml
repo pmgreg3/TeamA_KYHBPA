@@ -118,17 +118,47 @@
 }
 
 <section id="primary">
-    <div class="cols">
-        <div class="row" id="latestNews">
-            <div itemscope itemtype="http://schema.org/Article">
-                <div class="col-md-3 latestNewsTitle">
-                    <h3 class="common-UppercaseTitle">Latest News</h3>
-                    <i class="fa fa-newspaper fa-6x" style="color:#072419"></i>
-                </div>
-                @foreach (var article in Model.FeaturedArticles)
-                {
-                    if (article.PhotoContent != null)
+    <div id="latestNews" class="cols">
+        <div itemscope itemtype="http://schema.org/Article">
+            <div class="latestNewsTitle">
+                <h3 class="common-UppercaseTitle">
+                    Latest News
+                </h3>
+                <i class="fa fa-newspaper fa-6x" style="color:#072419"></i>
+            </div>
+            
+            @for (int i = 0; i <= Model.FeaturedArticles.Count() / 3; i++)
+            {
+                <div class="row latestNewsArticleRow">
+
+                    @foreach (var article in Model.FeaturedArticles.Skip(i * 3).Take(3))
                     {
+                        <div class="col-md-4 latestNewsArticleCard">
+                            <img itemprop="image" class="latestNewsArticleImage" style="max-height:265px; max-width: 341px;" src="@Url.Action("GetBlogThumbnail", "Blog", new { article.Id })" />
+                            <div class="latestNewsArticledInnerCard">
+                                <h4 itemprop="headline">
+                                    @article.Title
+                                </h4>
+                                <h6 itemprop="datePublished">
+                                    @article.PostedOn.ToLongDateString()
+                                </h6>
+                                <div itemprop="description" class="latestNewsArticleBody text-muted">
+                                    @article.ShortDescription
+                                </div>
+                                @Html.ActionLink("Read", "Read", "Blog", new { postId = article.Id }, new { @class = "common-ButtonVariant", @itemprop = "url" })
+
+
+                            </div>
+                        </div>
+                    }
+                </div>
+            }
+
+            @*@foreach (var article in Model.FeaturedArticles)
+            {
+                if (article.PhotoContent != null)
+                {
+                    <div class="row" id="latestNews">
                         <div class="col-md-9 latestNewsArticle common-BodyText">
                             <img itemprop="image" class="img-thumbnail pull-left" style="max-height:200px;" src="@Url.Action("GetBlogThumbnail", "Blog", new { article.Id })" />
                             <div class="latestNewsArticleHeading">
@@ -144,9 +174,11 @@
                             </div>
                             @Html.ActionLink("Read", "Read", "Blog", new { postId = article.Id }, new { @class = "common-ButtonVariant pull-right", @itemprop = "url" })
                         </div>
-                    }
-                    else
-                    {
+                    </div>
+                }
+                else
+                {
+                    <div class="row" id="latestNews">
                         <div class="col-md-4 latestNewsTitle">
                             <h3 class="common-UppercaseTitle">Latest News</h3>
                             <i class="fa fa-newspaper fa-6x" style="color:#072419"></i>
@@ -166,21 +198,20 @@
                             </div>
                             @Html.ActionLink("Read", "Read", "Blog", new { postId = article.Id }, new { @class = "common-ButtonVariant pull-right", @itemprop = "url" })
                         </div>
-                    }
-
-                }
-
-                <span itemprop="author" itemscope itemtype="http://schema.org/Person">
-                    <meta itemprop="name" content="Kentucky HBPA">
-                </span>
-                <div itemprop="publisher" itemscope itemtype="https://schema.org/Organization">
-                    <div itemprop="logo" itemscope itemtype="https://schema.org/ImageObject">
-                        <meta itemprop="url" content="http://kentuckyhbpa.org/Content/logoForKyhbpa3.png">
-                        <meta itemprop="width" content="400">
-                        <meta itemprop="height" content="60">
                     </div>
-                    <meta itemprop="name" content="Kentucky HBPA">
+                }
+            }*@
+
+            <span itemprop="author" itemscope itemtype="http://schema.org/Person">
+                <meta itemprop="name" content="Kentucky HBPA">
+            </span>
+            <div itemprop="publisher" itemscope itemtype="https://schema.org/Organization">
+                <div itemprop="logo" itemscope itemtype="https://schema.org/ImageObject">
+                    <meta itemprop="url" content="http://kentuckyhbpa.org/Content/logoForKyhbpa3.png">
+                    <meta itemprop="width" content="400">
+                    <meta itemprop="height" content="60">
                 </div>
+                <meta itemprop="name" content="Kentucky HBPA">
             </div>
         </div>
     </div>
