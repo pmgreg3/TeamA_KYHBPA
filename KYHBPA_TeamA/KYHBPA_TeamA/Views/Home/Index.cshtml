@@ -136,10 +136,10 @@
                         <div class="col-md-4 latestNewsArticleCard">
                             <img itemprop="image" class="latestNewsArticleImage" src="@Url.Action("GetBlogThumbnail", "Blog", new { article.Id })" />
                             <div class="latestNewsArticledInnerCard">
-                                <h4 class="articleFont" itemprop="headline">
+                                <h4 itemprop="headline">
                                     @article.Title
                                 </h4>
-                                <h6 class="articleFont" itemprop="datePublished">
+                                <h6 itemprop="datePublished">
                                     @article.PostedOn.ToLongDateString()
                                 </h6>
                                 <div itemprop="description" class="latestNewsArticleBody text-muted">
