@@ -84,38 +84,6 @@
     </div>
 </section>
 
-<div id="socialEmbeds" class="cols container-lg">
-    <section id="twitterEmbed">
-        <h2 class="text-center common-UppercaseTitle" onclick="window.open('https://twitter.com/kyhbpa?lang=en')">
-            <svg class="twitterIcon">
-                <use xlink:href="~/Content/brands.svg#twitter-square"></use>
-            </svg>
-        </h2>
-        <a class="twitter-timeline" data-width="340" data-height="500" href="https://twitter.com/KyHBPA?ref_src=twsrc%5Etfw"></a>
-        <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
-    </section>
-
-    <section id="instagramEmbed">
-        <h2 class="text-center common-UppercaseTitle" onclick="window.open('http://www.instagram.com')">
-            <img src="https://www.seeklogo.net/wp-content/uploads/2016/06/Instagram-logo-400x400.png" alt="instagram logo original" class="instagramIcon" />
-        </h2>
-        <script src="//lightwidget.com/widgets/lightwidget.js"></script><iframe src="//lightwidget.com/widgets/742a05f5e19d5427b44d0313e41d0d52.html" scrolling="no" allowtransparency="true" class="lightwidget-widget" style="width: 100%; border: 0; overflow: hidden;"></iframe>
-    </section>
-
-    <section id="facebookEmbed">
-        <h2 class="text-center common-UppercaseTitle" onclick="window.open('https://www.facebook.com/KYhbpa/')">
-            <svg class="facebookIcon">
-                <use xlink:href="~/Content/brands.svg#facebook-square"></use>
-            </svg>
-        </h2>
-        <div class="fb-page" data-href="https://www.facebook.com/KYhbpa/" data-tabs="timeline" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="false"><blockquote cite="https://www.facebook.com/KYhbpa/" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/KYhbpa/">Kentucky HBPA</a></blockquote></div>
-    </section>
-
-</div>
-
-@section GoogleEvents{
-    @Html.Action("_GoogleEvents", "Event")
-}
 
 <section id="primary">
     <div id="latestNews" class="cols">
@@ -136,7 +104,7 @@
                         <div class="col-md-4 latestNewsArticleCard">
                             <img itemprop="image" class="latestNewsArticleImage" src="@Url.Action("GetBlogThumbnail", "Blog", new { article.Id })" />
                             <div class="latestNewsArticledInnerCard">
-                                <h4 itemprop="headline">
+                                <h4 class="latestNewsArticleHeading" itemprop="headline">
                                     @article.Title
                                 </h4>
                                 <h6 itemprop="datePublished">
@@ -216,6 +184,49 @@
         </div>
     </div>
 </section>
+
+@section GoogleEvents{
+    @Html.Action("_GoogleEvents", "Event")
+}
+
+<div id="socialEmbeds" class="cols container-lg">
+        <section id="twitterEmbed">
+            <h2 class="text-center common-UppercaseTitle" onclick="window.open('https://twitter.com/kyhbpa?lang=en')">
+                <svg class="twitterIcon">
+                    <use xlink:href="~/Content/brands.svg#twitter-square"></use>
+                </svg>
+            </h2>
+            <a class="twitter-timeline" data-width="340" data-height="500" href="https://twitter.com/KyHBPA?ref_src=twsrc%5Etfw"></a>
+            <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+        </section>
+
+        <section id="instagramEmbed">
+            <h2 class="text-center common-UppercaseTitle" onclick="window.open('http://www.instagram.com')">
+                <svg class="instagramIcon">
+                    <use xlink:href="~/Content/brands.svg#instagram"></use>
+                </svg>
+                <svg width="0" height="0">
+                    <radialGradient id="instagramColor" r="150%" cx="30%" cy="107%">
+                        <stop stop-color="#fdf497" offset="0" />
+                        <stop stop-color="#fdf497" offset="0.05" />
+                        <stop stop-color="#fd5949" offset="0.45" />
+                        <stop stop-color="#d6249f" offset="0.6" />
+                        <stop stop-color="#285AEB" offset="0.9" />
+                    </radialGradient>
+                </svg>
+            </h2>
+            <script src="//lightwidget.com/widgets/lightwidget.js"></script><iframe src="//lightwidget.com/widgets/742a05f5e19d5427b44d0313e41d0d52.html" scrolling="no" allowtransparency="true" class="lightwidget-widget" style="width: 100%; border: 0; overflow: hidden;"></iframe>
+        </section>
+
+        <section id="facebookEmbed">
+            <h2 class="text-center common-UppercaseTitle" onclick="window.open('https://www.facebook.com/KYhbpa/')">
+                <svg class="facebookIcon">
+                    <use xlink:href="~/Content/brands.svg#facebook-square"></use>
+                </svg>
+            </h2>
+            <div class="fb-page" data-href="https://www.facebook.com/KYhbpa/" data-tabs="timeline" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="false"><blockquote cite="https://www.facebook.com/KYhbpa/" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/KYhbpa/">Kentucky HBPA</a></blockquote></div>
+        </section>
+    </div>
 
 @section PartnerOrg{
     <!--Image Gallery-->

@@ -205,18 +205,17 @@
 }
 
 #latestNews {
-    padding: 15px;
+    padding: 1rem;
     width: 100%;
     border: 1px solid #f6f9fc;
     border-left: unset;
     margin-right: unset;
     margin-left: unset;
-    background: url(hypnotize.png);
     border-right: unset;
 }
 
 .latestNewsArticleHeading {
-    color: #072419;
+    margin-bottom:1rem;
 }
 
 .latestNewsArticleImage {
@@ -230,8 +229,7 @@
 }
 
 .latestNewsArticleBody {
-    margin: 1rem;
-    padding: 1rem;
+    margin-bottom: 1rem;
     text-align: -webkit-center;
 }
 
@@ -437,23 +435,15 @@
 
 /*Twitter and Facebook Section*/
 #twitterEmbed {
-    background: #fff;
     flex: 1;
     border-width: 0 1px 0 1px;
-    border: 1px solid #f6f9fc;
     text-align: center;
 }
 
 #facebookEmbed {
-    background: #fff;
     flex: 1;
     border-width: 0 1px 0 1px;
-    border: 1px solid #f6f9fc;
     text-align: center;
-}
-
-#socialEmbeds {
-    border-radius: 10px;
 }
 
 
@@ -613,10 +603,11 @@
 }
 
 .instagramIcon {
-    height: 5.5em;
-    width: 5.5em;
+    height: 4.5em;
+    width: 4.5em;
     position: relative;
     top: -14px;
+    fill: url(#instagramColor);
 }
 
 .twitterIcon {
