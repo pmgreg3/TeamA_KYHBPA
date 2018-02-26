@@ -122,9 +122,9 @@
         <div itemscope itemtype="http://schema.org/Article">
             <div class="latestNewsTitle">
                 <h3 class="common-UppercaseTitle">
+                    <i class="fa fa-newspaper fa-1x" style="color:#072419"></i>
                     Latest News
                 </h3>
-                <i class="fa fa-newspaper fa-6x" style="color:#072419"></i>
             </div>
             
             @for (int i = 0; i <= Model.FeaturedArticles.Count() / 3; i++)
@@ -136,10 +136,10 @@
                         <div class="col-md-4 latestNewsArticleCard">
                             <img itemprop="image" class="latestNewsArticleImage" src="@Url.Action("GetBlogThumbnail", "Blog", new { article.Id })" />
                             <div class="latestNewsArticledInnerCard">
-                                <h4 itemprop="headline">
+                                <h4 class="articleFont" itemprop="headline">
                                     @article.Title
                                 </h4>
-                                <h6 itemprop="datePublished">
+                                <h6 class="articleFont" itemprop="datePublished">
                                     @article.PostedOn.ToLongDateString()
                                 </h6>
                                 <div itemprop="description" class="latestNewsArticleBody text-muted">

@@ -1,7 +1,7 @@
 ﻿body {
     padding-top: 50px;
     background: #f6f9fc;
-    font-family: Camphor,Open Sans,Segoe UI,sans-serif;
+    font-family: Camphor,Open Sans,Segoe UI,sans-serif !important;
     height:100%;
 }
 
@@ -432,6 +432,7 @@
     text-transform: uppercase;
     font-size: 1.7em;
     line-height: 33px;
+    font-weight:400;
 }
 
 /*Twitter and Facebook Section*/
