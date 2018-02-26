@@ -33,7 +33,7 @@
 </section>
 <section id="upcomingEvents">
     <h2 class="common-UppercaseTitle">Stay Current</h2>
-    @if (Model == null || Model.EventDisplayViewModels.Count() == 0)
+    @if (Model == null || Model.EventDisplayViewModels == null || Model.EventDisplayViewModels.Count() == 0)
             {
         <p>
             There are no upcoming events.

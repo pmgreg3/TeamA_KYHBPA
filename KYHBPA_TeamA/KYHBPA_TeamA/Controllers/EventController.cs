@@ -203,41 +203,53 @@ namespace KYHBPA_TeamA.Controllers
             request.MaxResults = 4;
             request.OrderBy = EventsResource.ListRequest.OrderByEnum.StartTime;
 
-            var events = request.Execute();
-            var jsonEvents = CreateJsonFromEventViewModels(events);
-            var eventId = 0;
-
-            if (events.Items != null && events.Items.Count > 0)
+            try
             {
-                foreach (var eventItem in events.Items)
+                var events = request.Execute();
+                var jsonEvents = CreateJsonFromEventViewModels(events);
+
+                var eventId = 0;
+
+                if (events.Items != null && events.Items.Count > 0)
                 {
-                    eventId += 1;
-                    var eventVM = new EventDisplayViewModel()
+                    foreach (var eventItem in events.Items)
                     {
-                        Title = eventItem.Summary,
-                        Description = eventItem.Description,
-                        StartDate = eventItem.Start.Date,
-                        StartTime = ExtractDateTimeFromDateTimeRaw(eventItem.Start.DateTimeRaw),
-                        Link = eventItem.HtmlLink,
-                        Location = ParseLocationFromString(eventItem.Location),
-                        IdForElement = eventId,
-                        Url = eventItem.HtmlLink
-                    };
+                        eventId += 1;
+                        var eventVM = new EventDisplayViewModel()
+                        {
+                            Title = eventItem.Summary,
+                            Description = eventItem.Description,
+                            StartDate = eventItem.Start.Date,
+                            StartTime = ExtractDateTimeFromDateTimeRaw(eventItem.Start.DateTimeRaw),
+                            Link = eventItem.HtmlLink,
+                            Location = ParseLocationFromString(eventItem.Location),
+                            IdForElement = eventId,
+                            Url = eventItem.HtmlLink
+                        };
 
-                    if (eventItem.EndTimeUnspecified != null && eventItem.EndTimeUnspecified != false)
-                    {
-                        eventVM.EndDate = eventItem.End.Date;
-                        eventVM.EndTime = eventItem.End.DateTime.ToString();
+                        if (eventItem.EndTimeUnspecified != null && eventItem.EndTimeUnspecified != false)
+                        {
+                            eventVM.EndDate = eventItem.End.Date;
+                            eventVM.EndTime = eventItem.End.DateTime.ToString();
+                        }
+
+                        eventsViewModelList.Add(eventVM);
                     }
-
-                    eventsViewModelList.Add(eventVM);
                 }
+
+                googleEventsDisplayModel.EventDisplayViewModels = eventsViewModelList;
+                googleEventsDisplayModel.SchemaJson = jsonEvents;
+
+                return View(googleEventsDisplayModel);
             }
-
-            googleEventsDisplayModel.EventDisplayViewModels = eventsViewModelList;
-            googleEventsDisplayModel.SchemaJson = jsonEvents;
-
-            return View(googleEventsDisplayModel);
+            catch
+            {
+                return View(new GoogleEventsDisplayModel() {
+                       EventDisplayViewModels = null
+                }
+                );
+                throw new Exception();
+            }
         }
 
         /// <summary>

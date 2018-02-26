@@ -117,6 +117,7 @@ namespace KYHBPA_TeamA.Controllers
                 post.PostedOn = viewModel.PostedOn;
                 post.Tags = viewModel.Tags;
                 post.Title = viewModel.Title;
+                post.FrontPageFeature = viewModel.FrontPageFeature;
 
                 _db.Posts.Add(post);
                 _db.SaveChanges();
@@ -149,6 +150,7 @@ namespace KYHBPA_TeamA.Controllers
                 Published = post.Published,
                 Title = post.Title,
                 SelectedCategoryId = post.Category.Id,
+                FrontPageFeature = post.FrontPageFeature
             };
 
             return View(viewModel);
@@ -173,6 +175,7 @@ namespace KYHBPA_TeamA.Controllers
                         postToUpdate.Description = editedPost.Description;
                         postToUpdate.Published = editedPost.Published;
                         postToUpdate.Modified = DateTime.Today.Date;
+                        postToUpdate.FrontPageFeature = editedPost.FrontPageFeature;
 
                         var newCategory = _db.Categories.FirstOrDefault(c => c.Id == editedPost.SelectedCategoryId);
 
@@ -228,7 +231,7 @@ namespace KYHBPA_TeamA.Controllers
                 Category = post.Category,
                 PostedOn = post.PostedOn,
                 Published = post.Published,
-                Title = post.Title
+                Title = post.Title,
             };
 
             if (post == null)
@@ -502,30 +505,30 @@ namespace KYHBPA_TeamA.Controllers
 
         }
 
-        //TODO: DELETE ME
-        public ActionResult UpdateAllImagesWithoutThumbnails()
-        {
-            var blogsToUpdate = _db.Posts.Where(x => x.ThumbnailPhotoContent == null);
+        
+        //public ActionResult UpdateAllImagesWithoutThumbnails()
+        //{
+        //    var blogsToUpdate = _db.Posts.Where(x => x.ThumbnailPhotoContent == null);
 
-            foreach (var blog in blogsToUpdate)
-            {
-                if (blog.PhotoContent != null)
-                {
-                    Image newImage = (Image)new ImageConverter().ConvertFrom(blog.PhotoContent);
-                    var resizedImage = GetImageThumbnail(newImage);
-                    blog.ThumbnailPhotoContent = resizedImage;
-                }
-            }
+        //    foreach (var blog in blogsToUpdate)
+        //    {
+        //        if (blog.PhotoContent != null)
+        //        {
+        //            Image newImage = (Image)new ImageConverter().ConvertFrom(blog.PhotoContent);
+        //            var resizedImage = GetImageThumbnail(newImage);
+        //            blog.ThumbnailPhotoContent = resizedImage;
+        //        }
+        //    }
 
-            if (blogsToUpdate != null)
-            {
-                _db.SaveChanges();
+        //    if (blogsToUpdate != null)
+        //    {
+        //        _db.SaveChanges();
 
-            }
+        //    }
 
-            TempData["message"] = "Thumbnails successfully updated";
-            return RedirectToAction("Admin");
-        }
+        //    TempData["message"] = "Thumbnails successfully updated";
+        //    return RedirectToAction("Admin");
+        //}
 
     }
 }

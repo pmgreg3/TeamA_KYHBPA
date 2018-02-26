@@ -11,7 +11,7 @@
 
 
 <section id="socialMediaSpan">
-    <ul id="socialMediaList">
+    <ul class="list-inline" id="socialMediaList">
         <li>
             <div class="socialMediaListIcon" onclick="window.open('http://www.instagram.com')">
                 <svg class="socialMediaIcon">
@@ -53,7 +53,7 @@
                 You are invited to drop into the HBPA office to meet the staff and
                 learn more about current projects and how you can get
                 involved in helping to improve the industry. There are no membership fees.
-                Remember – This is your organization. Become an active participant and one of the “Horsemen Helping Horseman”.
+                Remember – This is your organization. Become an active participant and one of the “Horsemen Helping Horsemen”.
             </p>
             <i class="fa fa-handshake fa-6x" style="color:#072419"></i>
             <br />
@@ -84,104 +84,149 @@
     </div>
 </section>
 
-<div id="socialEmbeds" class="cols container-lg">
-    <section id="twitterEmbed">
-        <h2 class="text-center common-UppercaseTitle" onclick="window.open('https://twitter.com/kyhbpa?lang=en')">
-            <svg class="twitterIcon">
-                <use xlink:href="~/Content/brands.svg#twitter-square"></use>
-            </svg>
-        </h2>
-        <a class="twitter-timeline" data-width="340" data-height="500" href="https://twitter.com/KyHBPA?ref_src=twsrc%5Etfw"></a>
-        <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
-    </section>
-
-    <section id="instagramEmbed">
-        <h2 class="text-center common-UppercaseTitle" onclick="window.open('http://www.instagram.com')">
-            <img src="https://www.seeklogo.net/wp-content/uploads/2016/06/Instagram-logo-400x400.png" alt="instagram logo original" class="instagramIcon" />
-        </h2>
-        <script src="//lightwidget.com/widgets/lightwidget.js"></script><iframe src="//lightwidget.com/widgets/742a05f5e19d5427b44d0313e41d0d52.html" scrolling="no" allowtransparency="true" class="lightwidget-widget" style="width: 100%; border: 0; overflow: hidden;"></iframe>
-    </section>
-
-    <section id="facebookEmbed">
-        <h2 class="text-center common-UppercaseTitle" onclick="window.open('https://www.facebook.com/KYhbpa/')">
-            <svg class="facebookIcon">
-                <use xlink:href="~/Content/brands.svg#facebook-square"></use>
-            </svg>
-        </h2>
-        <div class="fb-page" data-href="https://www.facebook.com/KYhbpa/" data-tabs="timeline" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="false"><blockquote cite="https://www.facebook.com/KYhbpa/" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/KYhbpa/">Kentucky HBPA</a></blockquote></div>
-    </section>
-
-</div>
-
-@section GoogleEvents{
-    @Html.Action("_GoogleEvents","Event")
-}
 
 <section id="primary">
-    <div class="cols">
-        <div class="row" id="latestNews">
-            <div itemscope itemtype="http://schema.org/Article">
+    <div id="latestNews" class="cols">
+        <div itemscope itemtype="http://schema.org/Article">
+            <div class="latestNewsTitle">
+                <h3 class="common-UppercaseTitle">
+                    <i class="fa fa-newspaper fa-1x" style="color:#072419"></i>
+                    Latest News
+                </h3>
+            </div>
+            
+            @for (int i = 0; i <= Model.FeaturedArticles.Count() / 3; i++)
+            {
+                <div class="row latestNewsArticleRow">
 
-                @if (Model.LatestArticle.PhotoContent != null)
+                    @foreach (var article in Model.FeaturedArticles.Skip(i * 3).Take(3))
+                    {
+                        <div class="col-md-4 latestNewsArticleCard">
+                            <img itemprop="image" class="latestNewsArticleImage" src="@Url.Action("GetBlogThumbnail", "Blog", new { article.Id })" />
+                            <div class="latestNewsArticledInnerCard">
+                                <h4 class="latestNewsArticleHeading" itemprop="headline">
+                                    @article.Title
+                                </h4>
+                                <h6 itemprop="datePublished">
+                                    @article.PostedOn.ToLongDateString()
+                                </h6>
+                                <div itemprop="description" class="latestNewsArticleBody text-muted">
+                                    @article.ShortDescription
+                                </div>
+                                @Html.ActionLink("Read", "Read", "Blog", new { postId = article.Id }, new { @class = "common-ButtonVariant", @itemprop = "url" })
+
+
+                            </div>
+                        </div>
+                    }
+                </div>
+            }
+
+            @*@foreach (var article in Model.FeaturedArticles)
+            {
+                if (article.PhotoContent != null)
                 {
-                    <div class="col-md-3 latestNewsTitle">
-                        <h3 class="common-UppercaseTitle">Latest News</h3>
-                        <i class="fa fa-newspaper fa-6x" style="color:#072419"></i>
-                    </div>
-                    <div class="col-md-9 latestNewsArticle common-BodyText">
-                        <img itemprop="image" class="img-thumbnail pull-left" style="max-height:200px;" src="@Url.Action("GetBlogThumbnail", "Blog", new { Model.LatestArticle.Id })" />
-                        <div class="latestNewsArticleHeading">
-                            <h2 itemprop="headline"> 
-                                @Model.LatestArticle.Title
-                            </h2>
-                            <h6 itemprop="datePublished">
-                                @Model.LatestArticle.PostedOn.ToLongDateString()
-                            </h6>
+                    <div class="row" id="latestNews">
+                        <div class="col-md-9 latestNewsArticle common-BodyText">
+                            <img itemprop="image" class="img-thumbnail pull-left" style="max-height:200px;" src="@Url.Action("GetBlogThumbnail", "Blog", new { article.Id })" />
+                            <div class="latestNewsArticleHeading">
+                                <h2 itemprop="headline">
+                                    @article.Title
+                                </h2>
+                                <h6 itemprop="datePublished">
+                                    @article.PostedOn.ToLongDateString()
+                                </h6>
+                            </div>
+                            <div itemprop="description" class="latestNewsArticleBody">
+                                @article.ShortDescription
+                            </div>
+                            @Html.ActionLink("Read", "Read", "Blog", new { postId = article.Id }, new { @class = "common-ButtonVariant pull-right", @itemprop = "url" })
                         </div>
-                        <div itemprop="description" class="latestNewsArticleBody">
-                            @Model.LatestArticle.ShortDescription
-                        </div>
-                        @Html.ActionLink("Read", "Read", "Blog", new { postId = Model.LatestArticle.Id }, new { @class = "common-ButtonVariant pull-right", @itemprop = "url" })
                     </div>
-
                 }
                 else
                 {
-                    <div class="col-md-4 latestNewsTitle">
-                        <h3 class="common-UppercaseTitle">Latest News</h3>
-                        <i class="fa fa-newspaper fa-6x" style="color:#072419"></i>
-                    </div>
-                    <div class="col-md-8 latestNewsArticle common-BodyText">
-                        <div class="latestNewsArticleHeading">
-                            <h2 itemprop="headline">
-                                @Model.LatestArticle.Title
-                            </h2>
-                            <h6 itemprop="datePublished">
-                                @Model.LatestArticle.PostedOn.ToLongDateString()
-                            </h6>
+                    <div class="row" id="latestNews">
+                        <div class="col-md-4 latestNewsTitle">
+                            <h3 class="common-UppercaseTitle">Latest News</h3>
+                            <i class="fa fa-newspaper fa-6x" style="color:#072419"></i>
                         </div>
-                        <img itemprop="image" class="img-thumbnail" style="max-height:200px" src="@Url.Action("GetBlogThumbnail", "Blog", new { Model.LatestArticle.Id })" />
-                        <div itemprop="description" class="latestNewsArticleBody">
-                            @Model.LatestArticle.ShortDescription
+                        <div class="col-md-8 latestNewsArticle common-BodyText">
+                            <div class="latestNewsArticleHeading">
+                                <h2 itemprop="headline">
+                                    @article.Title
+                                </h2>
+                                <h6 itemprop="datePublished">
+                                    @article.PostedOn.ToLongDateString()
+                                </h6>
+                            </div>
+                            <img itemprop="image" class="img-thumbnail" style="max-height:200px" src="@Url.Action("GetBlogThumbnail", "Blog", new { article.Id })" />
+                            <div itemprop="description" class="latestNewsArticleBody">
+                                @article.ShortDescription
+                            </div>
+                            @Html.ActionLink("Read", "Read", "Blog", new { postId = article.Id }, new { @class = "common-ButtonVariant pull-right", @itemprop = "url" })
                         </div>
-                        @Html.ActionLink("Read", "Read", "Blog", new { postId = Model.LatestArticle.Id }, new { @class = "common-ButtonVariant pull-right", @itemprop = "url" })
                     </div>
                 }
-                <span itemprop="author" itemscope itemtype="http://schema.org/Person">
-                    <meta itemprop="name" content="Kentucky HBPA">
-                </span>
-                <div itemprop="publisher" itemscope itemtype="https://schema.org/Organization">
-                    <div itemprop="logo" itemscope itemtype="https://schema.org/ImageObject">
-                        <meta itemprop="url" content="http://kentuckyhbpa.org/Content/logoForKyhbpa3.png">
-                        <meta itemprop="width" content="400">
-                        <meta itemprop="height" content="60">
-                    </div>
-                    <meta itemprop="name" content="Kentucky HBPA">
+            }*@
+
+            <span itemprop="author" itemscope itemtype="http://schema.org/Person">
+                <meta itemprop="name" content="Kentucky HBPA">
+            </span>
+            <div itemprop="publisher" itemscope itemtype="https://schema.org/Organization">
+                <div itemprop="logo" itemscope itemtype="https://schema.org/ImageObject">
+                    <meta itemprop="url" content="http://kentuckyhbpa.org/Content/logoForKyhbpa3.png">
+                    <meta itemprop="width" content="400">
+                    <meta itemprop="height" content="60">
                 </div>
+                <meta itemprop="name" content="Kentucky HBPA">
             </div>
-         </div>
+        </div>
     </div>
 </section>
+
+@section GoogleEvents{
+    @Html.Action("_GoogleEvents", "Event")
+}
+
+<div id="socialEmbeds" class="cols container-lg">
+        <section id="twitterEmbed">
+            <h2 class="text-center common-UppercaseTitle" onclick="window.open('https://twitter.com/kyhbpa?lang=en')">
+                <svg class="twitterIcon">
+                    <use xlink:href="~/Content/brands.svg#twitter-square"></use>
+                </svg>
+            </h2>
+            <a class="twitter-timeline" data-width="340" data-height="500" href="https://twitter.com/KyHBPA?ref_src=twsrc%5Etfw"></a>
+            <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+        </section>
+
+        <section id="instagramEmbed">
+            <h2 class="text-center common-UppercaseTitle" onclick="window.open('http://www.instagram.com')">
+                <svg class="instagramIcon">
+                    <use xlink:href="~/Content/brands.svg#instagram"></use>
+                </svg>
+                <svg width="0" height="0">
+                    <radialGradient id="instagramColor" r="150%" cx="30%" cy="107%">
+                        <stop stop-color="#fdf497" offset="0" />
+                        <stop stop-color="#fdf497" offset="0.05" />
+                        <stop stop-color="#fd5949" offset="0.45" />
+                        <stop stop-color="#d6249f" offset="0.6" />
+                        <stop stop-color="#285AEB" offset="0.9" />
+                    </radialGradient>
+                </svg>
+            </h2>
+            <script src="//lightwidget.com/widgets/lightwidget.js"></script><iframe src="//lightwidget.com/widgets/742a05f5e19d5427b44d0313e41d0d52.html" scrolling="no" allowtransparency="true" class="lightwidget-widget" style="width: 100%; border: 0; overflow: hidden;"></iframe>
+        </section>
+
+        <section id="facebookEmbed">
+            <h2 class="text-center common-UppercaseTitle" onclick="window.open('https://www.facebook.com/KYhbpa/')">
+                <svg class="facebookIcon">
+                    <use xlink:href="~/Content/brands.svg#facebook-square"></use>
+                </svg>
+            </h2>
+            <div class="fb-page" data-href="https://www.facebook.com/KYhbpa/" data-tabs="timeline" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="false"><blockquote cite="https://www.facebook.com/KYhbpa/" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/KYhbpa/">Kentucky HBPA</a></blockquote></div>
+        </section>
+    </div>
 
 @section PartnerOrg{
     <!--Image Gallery-->

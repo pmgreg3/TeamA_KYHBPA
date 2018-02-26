@@ -1,7 +1,7 @@
 ﻿body {
     padding-top: 50px;
     background: #f6f9fc;
-    font-family: Camphor,Open Sans,Segoe UI,sans-serif;
+    font-family: Camphor,Open Sans,Segoe UI,sans-serif !important;
     height:100%;
 }
 
@@ -200,22 +200,59 @@
     border-radius: 4px;
     border: 2px solid whitesmoke;
     height: 100%;
+    max-height:265px;
+    max-width:341px;
 }
 
 #latestNews {
-    padding: 15px;
+    padding: 1rem;
     width: 100%;
     border: 1px solid #f6f9fc;
     border-left: unset;
     margin-right: unset;
     margin-left: unset;
-    background: url(hypnotize.png);
     border-right: unset;
 }
 
 .latestNewsArticleHeading {
-    color: #072419;
+    margin-bottom:1rem;
 }
+
+.latestNewsArticleImage {
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+    border-radius: 4px;
+    margin: 1rem;
+    position: relative;
+    z-index: 4;
+    max-height: 265px;
+    max-width: 341px;
+}
+
+.latestNewsArticleBody {
+    margin-bottom: 1rem;
+    text-align: -webkit-center;
+}
+
+.latestNewsArticleCard {
+    font-family: inherit;
+    padding: 1rem;
+}
+
+.latestNewsArticledInnerCard {
+    border-radius: 4px;
+    padding: 2rem 1rem;
+    margin-top: -2rem;
+    z-index: 3;
+    background: #ffffff;
+    position: relative;
+    border: 1px solid #f4f4f4;
+    transition: all .5s ease;
+}
+
+    .latestNewsArticledInnerCard:hover {
+        box-shadow: 0 6px 15px rgba(0,0,0,0.25), 0 2px 8px rgba(0,0,0,0.22);
+        transition: all .15s ease;
+    }
 
 /* Landing Page Carousel */
 .carousel-inner > .item > img {
@@ -360,7 +397,7 @@
 .common-Uppercase {
     color: #072419;
     font-weight: 600;
-    font-size: 41px;
+    font-size: 3em;
     text-transform: uppercase;
     letter-spacing: .025em;
     font-family: Camphor,Open Sans,Segoe UI,sans-serif;
@@ -391,29 +428,22 @@
 .common-UppercaseTitle {
     color: #072419;
     text-transform: uppercase;
-    font-size: 22px;
+    font-size: 1.7em;
     line-height: 33px;
+    font-weight:400;
 }
 
 /*Twitter and Facebook Section*/
 #twitterEmbed {
-    background: #fff;
     flex: 1;
     border-width: 0 1px 0 1px;
-    border: 1px solid #f6f9fc;
     text-align: center;
 }
 
 #facebookEmbed {
-    background: #fff;
     flex: 1;
     border-width: 0 1px 0 1px;
-    border: 1px solid #f6f9fc;
     text-align: center;
-}
-
-#socialEmbeds {
-    border-radius: 10px;
 }
 
 
@@ -573,10 +603,11 @@
 }
 
 .instagramIcon {
-    height: 5.5em;
-    width: 5.5em;
+    height: 4.5em;
+    width: 4.5em;
     position: relative;
     top: -14px;
+    fill: url(#instagramColor);
 }
 
 .twitterIcon {
@@ -904,6 +935,11 @@ textarea {
     #photoGalleryContainer {
         padding-left: unset !important;
         padding-right: unset !important;
+    }
+
+    /* Landing Page News articles */
+    .latestNewsArticleImage{
+        max-width:307px;
     }
 }
 
