@@ -57,7 +57,8 @@ namespace KYHBPA_TeamA.Controllers
                 PostedOn = post.PostedOn,
                 Category = post.Category,
                 Comments = post.Comments,
-                PhotoContent = post.PhotoContent
+                PhotoContent = post.PhotoContent,
+                FrontPageFeature = post.FrontPageFeature
             });
 
             return View(allPosts);
