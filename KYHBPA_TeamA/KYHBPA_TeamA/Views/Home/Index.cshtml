@@ -134,7 +134,7 @@
                     @foreach (var article in Model.FeaturedArticles.Skip(i * 3).Take(3))
                     {
                         <div class="col-md-4 latestNewsArticleCard">
-                            <img itemprop="image" class="latestNewsArticleImage" style="max-height:265px; max-width: 341px;" src="@Url.Action("GetBlogThumbnail", "Blog", new { article.Id })" />
+                            <img itemprop="image" class="latestNewsArticleImage" src="@Url.Action("GetBlogThumbnail", "Blog", new { article.Id })" />
                             <div class="latestNewsArticledInnerCard">
                                 <h4 itemprop="headline">
                                     @article.Title

@@ -225,6 +225,8 @@
     margin: 1rem;
     position: relative;
     z-index: 4;
+    max-height: 265px;
+    max-width: 341px;
 }
 
 .latestNewsArticleBody {
