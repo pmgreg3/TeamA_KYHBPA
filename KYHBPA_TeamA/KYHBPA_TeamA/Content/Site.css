@@ -935,6 +935,10 @@ textarea {
         display:none;
     }
 
+    .staticCarouselCaption{
+        display:none;
+    }
+
     /* News and blogs */
     .common-ButtonVariant {
         margin: 1rem;
