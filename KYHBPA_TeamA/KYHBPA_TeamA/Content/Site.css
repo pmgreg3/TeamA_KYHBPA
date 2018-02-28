@@ -22,7 +22,7 @@
 .navbar-inverse .navbar-nav > li > a, .navbar-inverse .navbar-brand {
     color: white;
     font-family: Camphor,Open Sans,Segoe UI,sans-serif;
-    font-size: 20px;
+    font-size: 17px;
 }
 
 
@@ -266,8 +266,7 @@
 
 .carousel {
     max-height: 700px;
-    box-shadow: 1px -12px 20px 14px black;
-    /*box-shadow: 0px 8px 20px 0px #00000082;*/
+    box-shadow: 0px 8px 20px 0px #00000082;
 }
 
 .carousel-caption {
@@ -287,6 +286,19 @@
     position: absolute;
     bottom: 0;
     color: #ffffffba;
+}
+
+.staticCarouselCaption {
+    position: absolute;
+    top: 0;
+    color: #f6f9fc;
+    font-size: 1em;
+    text-shadow: 1px 1px 6px #000000;
+    z-index: 1;
+    letter-spacing: .05rem;
+    width: 100vw;
+    text-align: center;
+    padding: 1rem;
 }
 
 .input {
@@ -329,7 +341,7 @@
 .navbar-nav > li > .dropdown-menu {
     background: #072419;
     color: white;
-    font-size: 22px;
+    font-size: 17px;
     padding: 7px;
 }
 
@@ -922,6 +934,10 @@ textarea {
     }
 
     .carousel-credit{
+        display:none;
+    }
+
+    .staticCarouselCaption{
         display:none;
     }
 
