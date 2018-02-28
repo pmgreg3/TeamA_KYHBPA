@@ -565,6 +565,8 @@
     <Content Include="Content\imgs_glossy\top-separator.gif" />
     <Content Include="Content\imgs_glossy\white_tab.png" />
     <Content Include="Content\imgs_glossy\white_tab_wide.png" />
+    <Content Include="Content\light.js" />
+    <Content Include="Content\light.min.js" />
     <Content Include="Content\locale\locale_ar.js" />
     <Content Include="Content\locale\locale_be.js" />
     <Content Include="Content\locale\locale_ca.js" />
@@ -628,10 +630,12 @@
     <Content Include="Content\locale\recurring\repeat_template_sk.html" />
     <Content Include="Content\logoForKyhbpa3.png" />
     <Content Include="Content\regular.js" />
+    <Content Include="Content\regular.min.js" />
     <Content Include="Content\slider1.jpg" />
     <Content Include="Content\slider2.jpg" />
     <Content Include="Content\slider3.jpg" />
     <Content Include="Content\solid.js" />
+    <Content Include="Content\solid.min.js" />
     <Content Include="Content\solid.svg" />
     <Content Include="Content\Summernote\summernote.css" />
     <Content Include="Content\titleLogo.png" />

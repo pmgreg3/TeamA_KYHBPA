@@ -596,6 +596,20 @@
     color: white;
 }
 
+.calendarDay {
+    width: fit-content;
+    height: fit-content;
+    top: 42px;
+    position: absolute;
+}
+
+.calendarMonth {
+    width: fit-content;
+    height: fit-content;
+    font-size: 3rem;
+    font-weight: 400;
+}
+
 .DescrSquare {
     background-image: url(hypnotize.png);
     margin-bottom: 0px;
