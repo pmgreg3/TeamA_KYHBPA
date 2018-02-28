@@ -1,6 +1,6 @@
 ﻿@model KYHBPA_TeamA.Models.GoogleEventsDisplayModel
 
-@{ 
+@{
     Layout = null;
 }
 
@@ -29,7 +29,7 @@
                 </li>
             </ul>
         </section>
-</div>
+    </div>
 </section>
 <section id="upcomingEvents">
     <h2 class="common-UppercaseTitle">Stay Current</h2>
@@ -55,57 +55,58 @@
                                     <i data-toggle="collapse" data-target="#@item.IdForElement" style="color:#072419" class="fa fa-angle-down fa-2x"></i>
                                 </a>
                             }
+                            <div class="eventHeader">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class=" col-md-3">
+                                            <div class="eventDate">
+                                                @if (item.StartDate != null)
+                                                {
+                                                    <i class="fa fa-calendar fa-4x" style="color:#072419"></i>
+                                                    @item.StartDate
+                                                }
+                                                else if (item.StartTime != null)
+                                                {
 
-                                <div class="eventHeader">
-                                    <div class="container">
-                                        <div class="row">
-                                            <div class=" col-md-4">
-                                                <div class="eventDate">
-                                                    @if (item.StartDate != null)
-                                                    {
-                                                        <i class="fa fa-calendar fa-4x" style="color:#072419"></i>
-                                                        @item.StartDate
-                                                    }
-                                                    else if (item.StartTime != null)
-                                                    {
-
-                                                        <div class="calendarDate">
-                                                            <div class="calendarDay">
-                                                                <span class="fa-layers">
-                                                                    <i class="fa fa-calendar fa-4x" style="color:#1cba7e"></i>
-                                                                    <span class="fa-layers-text" data-fa-transform="grow-20 down-8 right-20">@item.StartTime.Day</span>
-                                                                    <span class="fa-layers-text calendarMonth" data-fa-transform="grow-5 up-28 right-13">@item.StartTime.Date.ToString("MMM")</span>
-                                                                    <i class="fa fa-clock fa-1x" data-fa-transform="grow-0 up-8 right-93" style="color:#072419"></i>
-                                                                    <span class="fa-layers-text" data-fa-transform="grow-7 up-10 right-93">@item.StartTimeAmPm</span>
-                                                                </span>
-                                                            </div>
+                                                    <div class="calendarDate">
+                                                        <div class="calendarDay">
+                                                            <span class="fa-layers">
+                                                                <i class="fal fa-calendar fa-4x" style="color:#1cba7e"></i>
+                                                                <span class="fa-layers-text" data-fa-transform="grow-20 down-8 right-20">@item.StartTime.Day</span>
+                                                                <span class="fa-layers-text calendarMonth" data-fa-transform="grow-5 up-34 right-14">@item.StartTime.Date.ToString("MMM")</span>
+                                                                <i class="fal fa-clock fa-1x" data-fa-transform="grow-0 up-8 right-93" style="color:#072419"></i>
+                                                                <span class="fa-layers-text" data-fa-transform="grow-7 up-10 right-93">@item.StartTimeAmPm</span>
+                                                            </span>
                                                         </div>
-                                                    }
-                                                </div>
-                                            </div>
-                                            <div class="col-md-8">
-                                                <div class="eventLocation">
-                                                    <div class="eventTitle">
-                                                        <a class="eventAnchorTags" target="_blank" href="@item.Url">@item.Title</a>
                                                     </div>
-                                                    @if (item.Location != null)
-                                                    {
-                                                        <i class="fa fa-map-marker-alt fa-1x" style="color:#072419"></i>
+                                                }
+                                            </div>
+                                        </div>
+                                        <div class=" col-md-1">
+                                        </div>
+                                        <div class="col-md-8">
+                                            <div class="eventLocation">
+                                                <div class="eventTitle">
+                                                    <a class="eventAnchorTags" target="_blank" href="@item.Url">@item.Title</a>
+                                                </div>
+                                                @if (item.Location != null)
+                                                {
+                                                    <i class="fa fa-map-marker-alt fa-1x" style="color:#072419"></i>
 
-                                                        @item.Location.Name
-                                                        <span class="seperator"> </span>
+                                                    @item.Location.Name
+                                                    <span class="seperator"> </span>
                                                         @item.Location.Address.StreetAddress
                                                         <span class="seperator"> </span>
                                                         @item.Location.Address.AddressLocality
                                                         <span class="seperator"> </span>
                                                         @item.Location.Address.AddressRegion
-                                                    }
-                                                </div>
+                                                }
                                             </div>
-
                                         </div>
 
                                     </div>
+
+                                </div>
                             </div>
                             <div id="@item.IdForElement" class="collapse">
                                 <div class="eventDescriptionWrapper">
@@ -116,10 +117,8 @@
 
                     </div>
                 }
-
             </div>
         }
-
     }
 </section>
 
