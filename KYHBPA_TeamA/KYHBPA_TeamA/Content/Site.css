@@ -288,6 +288,17 @@
     color: #ffffffba;
 }
 
+.staticCarouselCaption {
+    position: absolute;
+    top: 0;
+    left: 41vw;
+    color: #f6f9fc;
+    font-size: 1em;
+    text-shadow: 1px 1px 6px #000000;
+    z-index: 1;
+    letter-spacing: .05rem;
+}
+
 .input {
     max-width: none !important;
 }
