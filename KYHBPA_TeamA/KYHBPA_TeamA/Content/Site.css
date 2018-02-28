@@ -299,6 +299,7 @@
     width: 100vw;
     text-align: center;
     padding: 1rem;
+    font-weight:initial;
 }
 
 .input {

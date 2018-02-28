@@ -58,19 +58,23 @@
                             <div class="eventHeader">
                                 <div class="eventTitle">
                                     <a class="eventAnchorTags" target="_blank" href="@item.Url">@item.Title</a>
+                                    <i class="fa fa-external-link fa-1x" style="color:#072419"></i>
                                 </div>
                                 <div class="eventDate">
                                     @if (item.StartDate != null)
                                     {
+                                        <i class="fa fa-calendar fa-1x" style="color:#072419"></i>
                                         @item.StartDate
                                     }
                                     else if (item.StartTime != null)
                                     {
+                                        <i class="fa fa-calendar fa-1x" style="color:#072419"></i>
                                         @item.StartTime.Day
                                         <span class="seperator">  </span>
-                                                @item.StartTime.Date.ToString("MMM")
-                                                <span class="seperator">  </span>
-                                                @item.StartTime.TimeOfDay.ToString("h\\:mm")
+                                        @item.StartTime.Date.ToString("MMM")
+                                        <span class="seperator">  </span>
+                                        <i class="fa fa-clock fa-1x" style="color:#072419"></i>
+                                        @item.StartTimeAmPm
                                     }
                                 </div>
                                 <div class="eventLocation">
