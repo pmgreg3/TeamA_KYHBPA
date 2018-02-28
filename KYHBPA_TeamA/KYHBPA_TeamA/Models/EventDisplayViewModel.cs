@@ -17,6 +17,7 @@ namespace KYHBPA_TeamA.Models
         public string Description { get; set; }
         public string StartDate { get; set; }
         public DateTime StartTime { get; set; }
+        public string StartTimeAmPm { get; set; }
         public string EndDate { get; set; } = null;
         public string EndTime { get; set; } = null;
         public string Link { get; set; }

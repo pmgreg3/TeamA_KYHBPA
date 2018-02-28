@@ -24,7 +24,8 @@ namespace KYHBPA_TeamA
                     "~/Content/solid.js",
                     "~/Content/brands.min.js",
                     "~/Content/fontawesome-pro-brands/index.js",
-                    "~/Content/regular.js"
+                    "~/Content/regular.js",
+                    "~/Content/light.js"
                 ));
 
             bundles.Add(new ScriptBundle("~/bundles/summernote", "https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote-lite.js").Include(

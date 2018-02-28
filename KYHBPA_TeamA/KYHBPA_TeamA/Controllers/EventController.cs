@@ -227,6 +227,8 @@ namespace KYHBPA_TeamA.Controllers
                             Url = eventItem.HtmlLink
                         };
 
+                        eventVM.StartTimeAmPm = eventVM.StartTime.ToString("h:mm tt");
+
                         if (eventItem.EndTimeUnspecified != null && eventItem.EndTimeUnspecified != false)
                         {
                             eventVM.EndDate = eventItem.End.Date;
