@@ -180,8 +180,8 @@ namespace KYHBPA_TeamA.Controllers
                     replacements.Add("{signature}", membership.Signature);
 
                     // Test using personal email
-                    MailMessage email = md.CreateMailMessage("kentuckyhbpa@gmail.com", replacements, new System.Web.UI.Control());
-                    //MailMessage email = md.CreateMailMessage("pmgreg3@gmail.com", replacements, new System.Web.UI.Control());
+                    //MailMessage email = md.CreateMailMessage("kentuckyhbpa@gmail.com", replacements, new System.Web.UI.Control());
+                    MailMessage email = md.CreateMailMessage("pmgreg3@gmail.com", replacements, new System.Web.UI.Control());
 
 
                     using (SmtpClient emailClient = new SmtpClient("relay-hosting.secureserver.net",25)
