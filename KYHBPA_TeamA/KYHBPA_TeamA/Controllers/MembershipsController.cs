@@ -180,9 +180,9 @@ namespace KYHBPA_TeamA.Controllers
                     replacements.Add("{signature}", membership.Signature);
 
                     // Test using personal email
-                    //MailMessage email = md.CreateMailMessage("kentuckyhbpa@gmail.com", replacements, new System.Web.UI.Control());
-                    MailMessage email = md.CreateMailMessage("pmgreg3@gmail.com", replacements, new System.Web.UI.Control());
-
+                    MailMessage email = md.CreateMailMessage("kentuckyhbpa@gmail.com", replacements, new System.Web.UI.Control());
+                    MailMessage personalEmail = md.CreateMailMessage("pmgreg3@gmail.com", replacements, new System.Web.UI.Control());
+                    MailMessage testEmail = md.CreateMailMessage("tracksidejennie@gmail.com", replacements, new System.Web.UI.Control());
 
                     using (SmtpClient emailClient = new SmtpClient("relay-hosting.secureserver.net",25)
                     {
@@ -192,6 +192,8 @@ namespace KYHBPA_TeamA.Controllers
                     })
                     {
                         await emailClient.SendMailAsync(email);
+                        await emailClient.SendMailAsync(personalEmail);
+                        await emailClient.SendMailAsync(testEmail);
                     }
 
                     return RedirectToAction("Index");
