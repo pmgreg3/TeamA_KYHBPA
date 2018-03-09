@@ -358,6 +358,9 @@
     <Content Include="Content\404ErrorPage.css" />
     <Content Include="Content\AboutUsImages\KHBPA About Us page The Player at Keeneland .jpg" />
     <Content Include="Content\AboutUsImages\KHBPA web EP College Day presentation .jpg" />
+    <Content Include="Content\AboutUsImages\KHBPA web MOR gate About Us.jpg" />
+    <Content Include="Content\AboutUsImages\KHBPA web MOR John crowd barn About Us.jpg" />
+    <Content Include="Content\AboutUsImages\KHBPA web MOR kids patting pony About Us.jpg" />
     <Content Include="Content\AboutUsImages\KYDerbykids Chance Bailey Vanetti.jpg" />
     <Content Include="Content\blankProfileImage.jpeg" />
     <Content Include="Content\bootstrap.css" />
