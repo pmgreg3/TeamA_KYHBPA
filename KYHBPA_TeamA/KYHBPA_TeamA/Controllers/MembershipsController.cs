@@ -162,6 +162,7 @@ namespace KYHBPA_TeamA.Controllers
                         From = "no-reply@KentuckyHbpa.org"
                     };
 
+                    string nullReplacement = string.Empty;
                     ListDictionary replacements = new ListDictionary();
                     replacements.Add("{firstName}", user.FirstName);
                     replacements.Add("{lastName}", user.LastName);
@@ -174,8 +175,8 @@ namespace KYHBPA_TeamA.Controllers
                     replacements.Add("{licenseNumber}", membership.LicenseNumber);
                     replacements.Add("{owner}", membership.IsOwner.ToString());
                     replacements.Add("{trainer}", membership.IsTrainer.ToString());
-                    replacements.Add("{affiliation}", membership.Affiliation);
-                    replacements.Add("{managingParter}", membership.ManagingPartner);
+                    replacements.Add("{affiliation}", membership.Affiliation ?? nullReplacement);
+                    replacements.Add("{managingParter}", membership.ManagingPartner ?? nullReplacement);
                     replacements.Add("{agreedToTerms}", membership.AgreedToTerms.ToString());
                     replacements.Add("{signature}", membership.Signature);
 
