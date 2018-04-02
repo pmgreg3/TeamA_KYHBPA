@@ -357,7 +357,7 @@ namespace KYHBPA_TeamA.Controllers
         }
 
 
-        [OutputCache(Duration = 1800, Location = OutputCacheLocation.Client)]
+        [OutputCache(Duration = 86400, Location = OutputCacheLocation.ServerAndClient)]
         public ActionResult GetBlogOrNewsImage(int id)
         {
             var post = _db.Posts.Find(id);
@@ -490,7 +490,7 @@ namespace KYHBPA_TeamA.Controllers
         /// </summary>
         /// <param name="id">Id of the photo</param>
         /// <returns>Returns file</returns>
-        [OutputCache(Duration = 1800, Location = OutputCacheLocation.Client)]
+        [OutputCache(Duration = 86400, Location = OutputCacheLocation.ServerAndClient)]
         public ActionResult GetBlogThumbnail(int? id)
         {
             if (id == null)
