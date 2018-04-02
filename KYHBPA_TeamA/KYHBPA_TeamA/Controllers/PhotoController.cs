@@ -377,7 +377,7 @@ namespace KYHBPA_TeamA.Controllers
         /// </summary>
         /// <param name="id">ID of photo to get</param>
         /// <returns>File of image to render</returns>
-        [OutputCache(Duration = 86400, Location = OutputCacheLocation.Client)]
+        [OutputCache(Duration = 86400, Location = OutputCacheLocation.ServerAndClient)]
         public ActionResult GetPhoto(int? id)
         {
             if (id == null)
@@ -396,7 +396,7 @@ namespace KYHBPA_TeamA.Controllers
         /// </summary>
         /// <param name="id">Id of the photo</param>
         /// <returns>Returns file</returns>
-        [OutputCache(Duration = 86400, Location = OutputCacheLocation.Client)]
+        [OutputCache(Duration = 86400, Location = OutputCacheLocation.ServerAndClient)]
         public ActionResult GetThumbnail(int? id)
         {
             if (id == null)
